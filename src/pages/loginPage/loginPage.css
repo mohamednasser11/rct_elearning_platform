@@ -1,0 +1,33 @@
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-container {
+    width: 320px;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid white;
+    padding: 20px 10px;
+    border-radius: 5%;
+}
+
+.inputs-container {
+    display: flex;
+    flex-direction: column;
+    height: 5vh;
+    justify-content: space-around;
+}
+
+.remember-me-checkbox-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 2px 0 0;
+}

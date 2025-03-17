@@ -1,0 +1,68 @@
+/* Navbar container */
+.navbar-container {
+    background-color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Logo */
+  .navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff; /* Light blue */
+    text-decoration: none;
+  }
+  
+  .navbar-logo:hover {
+    color: #0056b3; /* Darker blue on hover */
+  }
+  
+  /* Nav links container */
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  /* Individual nav links */
+  .nav-link {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #007bff; /* Light blue on hover */
+  }
+  
+  /* Menu icon for mobile */
+  .menu-icon {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .nav-links {
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: white;
+      width: 100%;
+      display: none; /* Hidden by default */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  
+    .nav-links.open {
+      display: flex; /* Show when menu is open */
+    }
+  
+    .menu-icon {
+      display: block; /* Show menu icon on smaller screens */
+    }
+  }
