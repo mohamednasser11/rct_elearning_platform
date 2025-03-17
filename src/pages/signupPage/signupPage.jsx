@@ -1,4 +1,4 @@
-import Input from "../../components/inputs/Inputs";
+import Input from "../../components/Inputs/InputsComponent";
 
 const SignupPage = () => {
   return (

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Input from "../../components/inputs/Inputs";
+import Input from "../../components/Inputs/InputsComponent";
 import "./loginPage.css";
 import { useState } from "react";
 import authService from '../../services/authService'
