@@ -6,11 +6,13 @@ import SignupPage from "./pages/signupPage/signupPage";
 import CoursesPage from "./pages/coursesPage";
 import QuizzesPage from "./pages/quizzesPage";
 import Navbar from "./components/NavBar/NavBar";
+import { AuthProvider } from "./hooks/authContext";
 
 function App() {
   return (
     <Router>
-      <Navbar />
+     <AuthProvider>
+     <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -18,6 +20,7 @@ function App() {
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/quizzes" element={<QuizzesPage />} />
       </Routes>
+     </AuthProvider>
     </Router>
   );
 }

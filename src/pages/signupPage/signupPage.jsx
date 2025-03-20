@@ -7,6 +7,10 @@ const SignupPage = () => {
       <form className="form-container">
         <div className="inputs-container">
           <Input name="userName" type="text" placeholder="Name" />
+          <div className="horizontalContainer">
+          <Input name="first_name" type="text" placeholder="First Name" />
+          <Input name="last_Name" type="text" placeholder="Last Name" />
+          </div>
           <Input name="email" type="email" placeholder="Email" />
           <Input name="password" type="password" placeholder="Password" />
         </div>
