@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <nav className="navbar-container">
       <Link to="/" className="navbar-logo">
-        EduLearn
+        Beyond the blackboard
       </Link>
       <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
         ☰
@@ -47,7 +47,7 @@ const Navbar = () => {
           </>
         )}
         {isAuthenticated && (
-          <div onClick={logout} className="nav-link">
+          <div onClick={logout} className="nav-link" >
             Logout
           </div>
         )}

@@ -30,10 +30,6 @@ const login = async (email, password) => {
           sameSite: "Strict",
         }
       );
-      
-      console.log(
-        `>>>>>>>>>>>> auth_user=> ${JSON.stringify(Cookies.get("auth_user"))}`
-      );
 
       isAuthenticated();
     }

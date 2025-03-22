@@ -6,8 +6,8 @@
 }
 
 .form-container {
-    width: 320px;
-    height: 20vh;
+    width: fit-content;
+    height: 25vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -18,8 +18,8 @@
 
 .inputs-container {
     display: flex;
-    flex-direction: column;
     height: 5vh;
+    flex-direction: column;
     justify-content: space-around;
 }
 

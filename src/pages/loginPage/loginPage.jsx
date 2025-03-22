@@ -30,7 +30,7 @@ const LoginPage = () => {
     <div className="page-container">
       <h1>Login</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <form className="form-container" onSubmit={handleFormSubmit}>
+      <form className="login-form-container " onSubmit={handleFormSubmit}>
         <div className="inputs-container">
           <Input
             name="email"
