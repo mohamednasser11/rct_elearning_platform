@@ -2,14 +2,59 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 
+const signUp = async (email, password, username, firstname, lastname) => {
+  try {
+    const payload = {
+      email,
+      password,
+      username,
+      first_name: firstname,
+      last_name: lastname,
+      is_student: true,
+    };
+
+    for (const [key, value] of Object.entries(payload)) {
+      if(value === "" || !value) {
+        throw new Error('Please Fill the missing fields');
+      }
+    }
+
+    const response = await axios.post(
+      `${import.meta.env.VITE_BASE_URL}/api/v1/users/register/`,
+      payload
+    );
+
+    if (response.status === 201) {
+      return true;
+    }
+  } catch (error) {
+    if (error?.response?.status === 400) {
+      for (const [key, value] of Object.entries(error?.response?.data)) {
+        console.log(`>>>> ${key} => ${value}`);
+        throw new Error(`${key} => ${value}` || "Signup failed");
+      }
+    } else {
+      throw new Error(error?.response?.message || error.message || "Signup failed");
+    }
+  }
+};
+
 const login = async (email, password) => {
   try {
+    const payload = {
+      email: email,
+      password: password,
+    };
+
+    for (const [key, value] of Object.entries(payload)) {
+      if(value === "" || !value) {
+        throw new Error('Please Fill the missing fields');
+      }
+    };
+
     const response = await axios.post(
       `${import.meta.env.VITE_BASE_URL}/api/v1/users/login/`,
-      {
-        email: email,
-        password: password,
-      },
+      payload,
       {
         withCredentials: true,
       }
@@ -22,19 +67,16 @@ const login = async (email, password) => {
         sameSite: "Strict",
       });
 
-      Cookies.set(
-        "auth_user_id", response?.data?.user?.id,
-        {
-          expires: 1,
-          secure: true,
-          sameSite: "Strict",
-        }
-      );
+      Cookies.set("auth_user_id", response?.data?.user?.id, {
+        expires: 1,
+        secure: true,
+        sameSite: "Strict",
+      });
 
       isAuthenticated();
     }
   } catch (error) {
-    throw new Error(error.response?.data?.message || "Login failed");
+    throw new Error(error.response?.data?.message || error?.message ||"Login failed");
   }
 };
 
@@ -55,6 +97,7 @@ const logout = async () => {
 
     if (response) {
       Cookies.remove("refresh_token");
+      Cookies.remove("auth_user_id");
       isAuthenticated();
     }
   } catch (error) {
@@ -88,6 +131,7 @@ const isAuthenticated = () => {
 };
 
 export default {
+  signUp,
   login,
   logout,
   isAuthenticated,

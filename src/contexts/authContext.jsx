@@ -40,8 +40,18 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const signUp = async (email, password, username, firstname, lastname) => {
+    try {
+     const response =  await authService.signUp(email, password, username, firstname, lastname);
+      response && login(email, password);
+    } catch (error) {
+      console.error("Signup failed:", error);
+      throw error;
+    }
+  }
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout, signUp }}>
       {children}
     </AuthContext.Provider>
   );

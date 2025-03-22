@@ -1,0 +1,43 @@
+/* Container Styling */
+.container {
+    width: 100%;
+    padding: 20px;
+}
+
+/* Error Code Styling */
+.error-code {
+    font-size: 120px;
+    margin-bottom: 20px;
+    color: #FFFFFF; /* White */
+}
+
+/* Error Message Styling */
+.error-message {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #FFFFFF; /* White */
+}
+
+/* Error Description Styling */
+.error-description {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #FFFFFF; /* White */
+}
+
+/* Home Link Styling */
+.home-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FFFFFF; /* White */
+    color: #000; /* Light Blue */
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.home-link:hover {
+    background-color: #000; /* Light Cyan */
+    color: #ADD8E6; /* Light Blue */
+}

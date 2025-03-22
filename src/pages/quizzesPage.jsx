@@ -1,4 +1,5 @@
 import { useAuth } from "../contexts/authContext";
+import NotFound from "./NotFoundPage/404NotFound";
 
 const QuizzesPage = () => {
   const { isAuthenticated } = useAuth();
@@ -9,9 +10,7 @@ const QuizzesPage = () => {
       <p>Test your knowledge with our quizzes.</p>
     </div>
   ) : (
-    <div>
-      <h1>UnAuthorized!</h1>
-    </div>
+    <NotFound />
   );
 };
 

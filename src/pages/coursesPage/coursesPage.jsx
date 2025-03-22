@@ -1,4 +1,6 @@
-import { useAuth } from "../contexts/authContext";
+import { useAuth } from "../../contexts/authContext";
+import NotFound from "../NotFoundPage/404NotFound";
+import "./coursesPage.css";
 
 const CoursesPage = () => {
   const { isAuthenticated } = useAuth();
@@ -9,9 +11,7 @@ const CoursesPage = () => {
       <p>Browse our available courses.</p>
     </div>
   ) : (
-    <div>
-      <h1>UnAuthorized!</h1>
-    </div>
+    <NotFound />
   );
 };
 

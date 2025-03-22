@@ -3,10 +3,10 @@ import "./App.css";
 import HomePage from "./pages/homepage";
 import LoginPage from "./pages/loginPage/loginPage";
 import SignupPage from "./pages/signupPage/signupPage";
-import CoursesPage from "./pages/coursesPage";
+import CoursesPage from "./pages/coursesPage/coursesPage";
 import QuizzesPage from "./pages/quizzesPage";
 import Navbar from "./components/NavBar/NavBar";
-import { AuthProvider } from "./hooks/authContext";
+import { AuthProvider } from "./contexts/authContext";
 
 function App() {
   return (
