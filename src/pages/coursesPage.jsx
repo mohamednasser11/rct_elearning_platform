@@ -1,4 +1,4 @@
-import { useAuth } from "../hooks/authContext";
+import { useAuth } from "../contexts/authContext";
 
 const CoursesPage = () => {
   const { isAuthenticated } = useAuth();

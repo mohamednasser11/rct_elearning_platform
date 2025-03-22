@@ -1,4 +1,4 @@
-import { useAuth } from "../hooks/authContext";
+import { useAuth } from "../contexts/authContext";
 
 const QuizzesPage = () => {
   const { isAuthenticated } = useAuth();
