@@ -12,7 +12,7 @@
   .navbar-logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #007bff; /* Light blue */
+    color:var(--global-secondary-color); /* Light blue */
     text-decoration: none;
   }
   
@@ -37,7 +37,7 @@
   }
   
   .nav-link:hover {
-    color: #007bff; /* Light blue on hover */
+    color:var(--global-secondary-color); /* Light blue on hover */
   }
 
   .nav-link-blank {

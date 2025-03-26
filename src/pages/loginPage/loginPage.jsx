@@ -4,6 +4,7 @@ import "./loginPage.css";
 import { useState } from "react";
 import authService from '../../services/authService'
 import { useAuth } from "../../contexts/authContext";
+import CustomButton from "../../components/customButton/button";
 
 const LoginPage = () => {
   const [error, setError] = useState(undefined);
@@ -32,24 +33,24 @@ const LoginPage = () => {
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form className="login-form-container " onSubmit={handleFormSubmit}>
         <div className="inputs-container">
+          <label>Email Address</label>
           <Input
             name="email"
             type="email"
-            placeholder="Email"
+            placeholder="Enter your Email Address"
             onChangeFunction={(e) => setEmail(e.target.value)}
           />
+          <label>Password</label>
           <Input
             name="password"
             type="password"
-            placeholder="Password"
+            placeholder="Enter your Password"
             onChangeFunction={(e) => {
               setPasword(e.target.value)
             }}
           />
         </div>
-        <button className="btn-submit" type="submit">
-          Login
-        </button>
+        <CustomButton buttonText="Login" type="submit"/>
       </form>
     </div>
   );

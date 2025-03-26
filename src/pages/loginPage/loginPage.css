@@ -6,14 +6,14 @@
 }
 
 .login-form-container {
-    width: 320px;
-    height: 20vh;
+    width: 454px;
+    height: 511px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid white;
     padding: 20px 10px;
     border-radius: 5%;
+    border: 1px solid var(--global-secondary-color);
 }
 
 .inputs-container {
@@ -30,4 +30,11 @@
     justify-content: flex-start;
     align-items: center;
     margin: 0 2px 0 0;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 5px;
 }

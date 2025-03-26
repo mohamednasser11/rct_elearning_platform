@@ -2,6 +2,7 @@ import { useState } from "react";
 import Input from "../../components/Inputs/InputsComponent";
 import { useAuth } from "../../contexts/authContext";
 import "./signupPage.css"
+import CustomButton from "../../components/customButton/button";
 
 const SignupPage = () => {
   const [error, setError] = useState(undefined);
@@ -36,7 +37,7 @@ const SignupPage = () => {
           <Input name="email" type="email" placeholder="Email"  onChangeFunction={(e) => setEmail(e.target.value)}/>
           <Input name="password" type="password" placeholder="Password"  onChangeFunction={(e) => setPassword(e.target.value)}/>
         </div>
-        <button className="btn-submit" type="submit">Sign Up</button>
+        <CustomButton buttonText="Sign Up" type="submit"/>
       </form>
     </div>
   );

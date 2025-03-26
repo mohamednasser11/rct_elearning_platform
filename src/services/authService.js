@@ -75,6 +75,8 @@ const login = async (email, password) => {
 
       isAuthenticated();
     }
+
+    return response?.data?.user;
   } catch (error) {
     throw new Error(error.response?.data?.message || error?.message ||"Login failed");
   }
@@ -109,7 +111,6 @@ const isAuthenticated = () => {
   const getAccessToken = Cookies.get("refresh_token");
 
   if (!getAccessToken) {
-    // console.log(`>>>>>> accessToken ==> ${getAccessToken}`)
     return false; // No token found unAuthorized
   }
 

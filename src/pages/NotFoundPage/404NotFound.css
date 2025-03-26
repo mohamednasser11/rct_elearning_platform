@@ -8,21 +8,21 @@
 .error-code {
     font-size: 120px;
     margin-bottom: 20px;
-    color: #FFFFFF; /* White */
+    color: var(--header-text-color); /* White */
 }
 
 /* Error Message Styling */
 .error-message {
     font-size: 32px;
     margin-bottom: 20px;
-    color: #FFFFFF; /* White */
+    color: var(--header-text-color); /* White */
 }
 
 /* Error Description Styling */
 .error-description {
     font-size: 18px;
     margin-bottom: 20px;
-    color: #FFFFFF; /* White */
+    color: var(--header-text-color); /* White */
 }
 
 /* Home Link Styling */
