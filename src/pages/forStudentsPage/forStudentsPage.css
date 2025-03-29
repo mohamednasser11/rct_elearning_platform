@@ -1,0 +1,41 @@
+.for-students-container {
+  padding: 6rem 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.for-students-container h1 {
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.content {
+  display: grid;
+  gap: 2rem;
+}
+
+.features {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.features h2 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.features li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.features li:last-child {
+  border-bottom: none;
+}
