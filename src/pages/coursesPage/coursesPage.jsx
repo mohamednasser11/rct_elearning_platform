@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './CoursesPage.css';
 import { useCart } from '../../contexts/cartContext';
 import { coursesData } from '../../data/coursesData';
-import { FaStar, FaFilter, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaStar, FaFilter, FaChevronLeft, FaChevronRight, FaBookReader } from 'react-icons/fa';
 
 const CoursesPage = () => {
   const { addToCart } = useCart();
@@ -15,6 +15,7 @@ const CoursesPage = () => {
     level: 'All'
   });
   const [showFilters, setShowFilters] = useState(false);
+  const [activeTab, setActiveTab] = useState('categories');
 
   const coursesPerPage = 10;
   const totalPages = Math.ceil(courses.length / coursesPerPage);
@@ -45,10 +46,16 @@ const CoursesPage = () => {
     }
 
     if (filters.priceRange !== 'All') {
-      const selectedRange = priceRanges.find(range => range.label === filters.priceRange);
-      filteredCourses = filteredCourses.filter(
-        course => course.price >= selectedRange.min && course.price < selectedRange.max
-      );
+      if (filters.priceRange === 'Free') {
+        filteredCourses = filteredCourses.filter(course => course.price === 0);
+      } else if (filters.priceRange === 'Paid') {
+        filteredCourses = filteredCourses.filter(course => course.price > 0);
+      } else {
+        const selectedRange = priceRanges.find(range => range.label === filters.priceRange);
+        filteredCourses = filteredCourses.filter(
+          course => course.price >= selectedRange.min && course.price < selectedRange.max
+        );
+      }
     }
 
     if (filters.rating !== 'All') {
@@ -95,8 +102,9 @@ const CoursesPage = () => {
   return (
     <div className="courses-page">
       <div className="courses-header">
-        <h1>Our Courses</h1>
-        <p>Explore our wide range of courses to enhance your skills</p>
+        <h1>Explore Our Courses</h1>
+        <p>Discover a wide range of courses designed to enhance your skills and
+        knowledge. From technology to arts, we have something for everyone.</p>
         <button 
           className="filter-toggle-btn"
           onClick={() => setShowFilters(!showFilters)}
@@ -105,19 +113,68 @@ const CoursesPage = () => {
         </button>
       </div>
 
-      <div className={`filters-section ${showFilters ? 'show' : ''}`}>
-        <div className="filter-group">
-          <label>Field:</label>
-          <select 
-            value={filters.field}
-            onChange={(e) => handleFilterChange('field', e.target.value)}
-          >
-            {fields.map(field => (
-              <option key={field} value={field}>{field}</option>
-            ))}
-          </select>
+      <div className="categories-section">
+        <div className="section-heading">
+          <div className="category-icon">
+            {/* <FaBookReader /> */}
+          </div>
+          {/* <h2>
+            <img src={filterIcon} alt="Filter" className="filter-icon" />
+            Filter Courses
+          </h2> */}
         </div>
+        
+        <div className="filter-container">
+          <div className="filter-group">
+            <h3>
+              <FaFilter className="filter-icon" />
+              Categories
+            </h3>
+            <div className="categories-container">
+              {fields.map(field => {
+                const count = field === 'All' 
+                  ? coursesData.length 
+                  : coursesData.filter(course => course.field === field).length;
+                
+                return (
+                  <button
+                    key={field}
+                    className={`category-btn ${filters.field === field ? 'active' : ''}`}
+                    onClick={() => handleFilterChange('field', field)}
+                  >
+                    {field}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
+          <div className="filter-group">
+            <h3>Price</h3>
+            <div className="categories-container">
+              {['All', 'Free', 'Paid'].map(option => {
+                const count = option === 'All' 
+                  ? coursesData.length 
+                  : option === 'Free' 
+                    ? coursesData.filter(course => course.price === 0).length 
+                    : coursesData.filter(course => course.price > 0).length;
+                
+                return (
+                  <button
+                    key={option}
+                    className={`category-btn ${filters.priceRange === option ? 'active' : ''}`}
+                    onClick={() => handleFilterChange('priceRange', option)}
+                  >
+                    {option === 'All' ? 'All Prices' : option}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={`filters-section ${showFilters ? 'show' : ''}`}>
         <div className="filter-group">
           <label>Level:</label>
           <select 
@@ -126,18 +183,6 @@ const CoursesPage = () => {
           >
             {levels.map(level => (
               <option key={level} value={level}>{level}</option>
-            ))}
-          </select>
-        </div>
-
-        <div className="filter-group">
-          <label>Price Range:</label>
-          <select 
-            value={filters.priceRange}
-            onChange={(e) => handleFilterChange('priceRange', e.target.value)}
-          >
-            {priceRanges.map(range => (
-              <option key={range.label} value={range.label}>{range.label}</option>
             ))}
           </select>
         </div>
