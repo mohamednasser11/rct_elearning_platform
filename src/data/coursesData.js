@@ -176,7 +176,7 @@ export const coursesData = [
     rating: 4.7,
     field: "Cloud Computing",
     students: 10543,
-    image: "https://images.unsplash.com/photo-1451187580459-4636190af475?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 17,
@@ -231,7 +231,7 @@ export const coursesData = [
     rating: 4.8,
     field: "Programming",
     students: 10987,
-    image: "https://images.unsplash.com/photo-1580234811497-29a1b244cc32?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1580327344181-c1163234e5a0?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 22,
@@ -364,7 +364,7 @@ export const coursesData = [
     rating: 4.6,
     field: "Business",
     students: 6234,
-    image: "https://images.unsplash.com/photo-1507925921958-d2ba269cf1ac?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 34,
