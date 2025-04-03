@@ -9,6 +9,7 @@ import AiToolsPage from "./pages/aiToolsPage/aiToolsPage";
 import CartPage from "./pages/cartPage/cartPage";
 import CoursesPage from "./pages/coursesPage/CoursesPage";
 import Navbar from "./components/NavBar/NavBar";
+import Footer from "./components/Footer/Footer";
 import { CartProvider } from "./contexts/cartContext";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/cart" element={<CartPage />} />
         </Routes>
+        <Footer />
       </CartProvider>
     </Router>
   );

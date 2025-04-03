@@ -4,7 +4,7 @@ import "./Navbar.style.css";
 import { useAuth } from "../../contexts/authContext";
 import { useCart } from "../../contexts/cartContext";
 import { FaShoppingCart } from 'react-icons/fa';
-import bookLogo from "D:/CS Project/book.png";
+import bookLogo from "D:/CS Project/FRONTEND DESIGN/book.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
