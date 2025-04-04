@@ -1,57 +1,118 @@
-import { useNavigate } from "react-router-dom";
-import Input from "../../components/Inputs/InputsComponent";
-import "./loginPage.css";
 import { useState } from "react";
-import authService from '../../services/authService'
+import { Link, useNavigate } from "react-router-dom";
+import { Input } from "../SignupPage/SignupPage";
 import { useAuth } from "../../contexts/authContext";
-import CustomButton from "../../components/customButton/button";
+import "./LoginPage.css";
+import "../../components/inputs/Inputs.styles.css";
+
+// Social media icons
+import { FaGoogle, FaGithub, FaTwitter, FaMicrosoft } from "react-icons/fa";
 
 const LoginPage = () => {
   const [error, setError] = useState(undefined);
   const [email, setEmail] = useState("");
-  const [password, setPasword] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const {login} = useAuth();
+  const { login, socialLogin } = useAuth();
 
-  const handleFormSubmit = async (event) => {
+  const handleLoginSubmit = async (event) => {
     event.preventDefault();
+    setError(undefined);
+  
     try {
-      await login(email, password)
-
-      if (authService.isAuthenticated()){
-        navigate("/"); // Redirect to home page after successful login
-      }
-
-    } catch (err) {
-      setError(err.message);
+      await login(email, password);
+      navigate("/"); // Redirect to home page after successful login
+    } catch (error) {
+      setError(error.message);
     }
+  };
+
+  const handleSocialLogin = async (provider) => {
+    try {
+      await socialLogin(provider);
+      navigate("/"); // Redirect to home page after successful social login
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const CustomButton = ({ buttonText, type, handleOnClick }) => {
+    return (
+      <button className="btn-custom" type={type} onClick={handleOnClick}>
+        {buttonText}
+      </button>
+    );
   };
 
   return (
     <div className="page-container">
-      <h1>Login</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form className="login-form-container " onSubmit={handleFormSubmit}>
-        <div className="inputs-container">
-          <label>Email Address</label>
-          <Input
-            name="email"
-            type="email"
-            placeholder="Enter your Email Address"
-            onChangeFunction={(e) => setEmail(e.target.value)}
-          />
-          <label>Password</label>
-          <Input
-            name="password"
-            type="password"
-            placeholder="Enter your Password"
-            onChangeFunction={(e) => {
-              setPasword(e.target.value)
-            }}
-          />
+      <div className="login-container">
+        <h1>Log In</h1>
+        {error && <p className="error-message">{error}</p>}
+        
+        <form className="form-container" onSubmit={handleLoginSubmit}>
+          <div className="inputs-container">
+            <Input 
+              name="email" 
+              type="email" 
+              placeholder="Email" 
+              onChangeFunction={(e) => setEmail(e.target.value)}
+            />
+            <Input 
+              name="password" 
+              type="password" 
+              placeholder="Password" 
+              onChangeFunction={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className="forgot-password">
+            <Link to="/forgot-password">Forgot Password?</Link>
+          </div>
+          <CustomButton buttonText="Log In" type="submit" />
+        </form>
+        
+        <div className="divider">
+          <span>OR</span>
         </div>
-        <CustomButton buttonText="Login" type="submit"/>
-      </form>
+        
+        <div className="social-login-container">
+          <button 
+            className="social-button google" 
+            onClick={() => handleSocialLogin("google")}
+          >
+            <FaGoogle className="social-icon" />
+            <span>Log in with Google</span>
+          </button>
+          
+          <button 
+            className="social-button github" 
+            onClick={() => handleSocialLogin("github")}
+          >
+            <FaGithub className="social-icon" />
+            <span>Log in with GitHub</span>
+          </button>
+          
+          <button 
+            className="social-button twitter" 
+            onClick={() => handleSocialLogin("twitter")}
+          >
+            <FaTwitter className="social-icon" />
+            <span>Log in with Twitter</span>
+          </button>
+          
+          <button 
+            className="social-button microsoft" 
+            onClick={() => handleSocialLogin("microsoft")}
+          >
+            <FaMicrosoft className="social-icon" />
+            <span>Log in with Microsoft</span>
+          </button>
+        </div>
+        
+        <div className="signup-link">
+          Don't have an account? <Link to="/signup">Sign Up</Link>
+        </div>
+      </div>
     </div>
   );
 };

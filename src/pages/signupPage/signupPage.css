@@ -1,28 +1,228 @@
 .page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+  margin-top: 60px;
+}
+
+.signup-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.048);
+  padding: 60px;
+  width: 100%;
+  height: auto;
+  border: 3px solid #ebebeb;
+  max-width: 450px;
+}
+
+.signup-container h1 {
+  text-align: center;
+  color: #000000;
+  font-size: 29px;
+  text-shadow: #00000011 2px 2px 2px;
+  margin-top: -20px;
+  margin-bottom: 30px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #949494;
+  margin-top: -18px;
+  margin-bottom: 13%;
+  font-size:16px;
+  text-shadow: #0000000a 2px 2px 1px;
 }
 
 .form-container {
-    width: fit-content;
-    height: 25vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 1px solid var(--global-secondary-color);
-    padding: 20px 10px;
-    border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .inputs-container {
-    display: flex;
-    height: 5vh;
-    flex-direction: column;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.horizontalContainer {
-    flex-direction: row;
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  text-align: left;
+  text-shadow: #00000005 1px 1px 1px;
+}
+
+
+.terms-container {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.terms-label {
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+  color: #555;
+  cursor: pointer;
+}
+
+.terms-label input[type="checkbox"] {
+  margin-right: 10px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.terms-link {
+  color: #14c78e;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.terms-link:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: #e74c3c;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 25px 0;
+  color: #777;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.divider span {
+  padding: 0 10px;
+  font-size: 14px;
+}
+
+.social-login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+/* New modern social button styles */
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  border-radius: 8px;
+  border: none;
+  background-color: #f8f8f8;
+  box-shadow: 0 2px 4px rgba(216, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 6px;
+  transition: all 0.3s ease;
+}
+
+.social-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.social-button:active {
+  transform: translateY(-1px);
+}
+
+.social-icon {
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+/* Brand-specific styling */
+.google::before {
+  background-color: #4285F4;
+}
+
+.github::before {
+  background-color: #333;
+}
+
+.twitter::before {
+  background-color: #1DA1F2;
+}
+
+.microsoft::before {
+  background-color: #00a4ef;
+}
+
+.google .social-icon {
+  color: #4285F4;
+}
+
+.github .social-icon {
+  color: #333;
+}
+
+.twitter .social-icon {
+  color: #1DA1F2;
+}
+
+.microsoft .social-icon {
+  color: #00a4ef;
+}
+
+.btn-custom {
+  width: 100%;
+  background-color: #14c78e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: 630;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-custom:hover {
+  background-color: rgba(18, 177, 121, 0.842);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .signup-container {
+    padding: 20px;
+  }
 }
