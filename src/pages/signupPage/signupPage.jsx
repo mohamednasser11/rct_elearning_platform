@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
+import { Link } from "react-router-dom";
 import "./SignupPage.css";
 import "../../components/inputs/Inputs.styles.css";
-
-// Social media icons
-import { FaGoogle, FaGithub, FaTwitter, FaMicrosoft } from "react-icons/fa";
 
 const CustomButton = ({ buttonText, type, handleOnClick }) => {
   return (
@@ -29,7 +27,7 @@ const SignupPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
   const navigate = useNavigate();
-  const { signup, socialLogin } = useAuth();
+  const { signup } = useAuth();
 
   const handleSignUpOnSubmit = async (event) => {
     event.preventDefault();
@@ -48,14 +46,6 @@ const SignupPage = () => {
     try {
       await signup(email, password, name);
       navigate("/"); // Redirect to home page after successful sign-up
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  const handleSocialLogin = async (provider) => {
-    try {
-      await socialLogin(provider);
     } catch (error) {
       setError(error.message);
     }
@@ -125,42 +115,8 @@ const SignupPage = () => {
           <CustomButton buttonText="Create Account" type="submit" />
         </form>
         
-        <div className="divider">
-          <span>Or sign up with</span>
-        </div>
-        
-        <div className="social-login-container">
-          <button 
-            className="social-button google" 
-            onClick={() => handleSocialLogin("google")}
-          >
-            <FaGoogle className="social-icon" />
-            <span>Sign up with Google</span>
-          </button>
-          
-          <button 
-            className="social-button github" 
-            onClick={() => handleSocialLogin("github")}
-          >
-            <FaGithub className="social-icon" />
-            <span>Sign up with GitHub</span>
-          </button>
-          
-          <button 
-            className="social-button twitter" 
-            onClick={() => handleSocialLogin("twitter")}
-          >
-            <FaTwitter className="social-icon" />
-            <span>Sign up with Twitter</span>
-          </button>
-          
-          <button 
-            className="social-button microsoft" 
-            onClick={() => handleSocialLogin("microsoft")}
-          >
-            <FaMicrosoft className="social-icon" />
-            <span>Sign up with Microsoft</span>
-          </button>
+        <div className="login-link">
+          Already have an account? <Link to="/login">Log in</Link>
         </div>
       </div>
     </div>

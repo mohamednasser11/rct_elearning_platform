@@ -4,7 +4,7 @@ import "./Navbar.style.css";
 import { useAuth } from "../../contexts/authContext";
 import { useCart } from "../../contexts/cartContext";
 import { FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
-import { IoBookOutline } from "react-icons/io5";
+import { PiBookOpenBold } from "react-icons/pi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,10 +50,10 @@ const Navbar = () => {
     <nav className={`navbar-container ${scrolled ? 'scrolled' : ''}`}>
       <div className="left-section">
         <Link to="/" className="navbar-logo" onClick={closeMenu}>
-          <IoBookOutline className="nav-book-logo" color="#14c78e" />
+          <PiBookOpenBold className="nav-book-logo" color="#14c78e" />
           <div className="logo-container">
             <span className="logo-first">Beyond</span>
-            <span className="logo-second">the Blackboard</span>
+            <span className="logo-second"><span className="logo-the">The</span> Blackboard</span>
           </div>
         </Link>
       </div>
