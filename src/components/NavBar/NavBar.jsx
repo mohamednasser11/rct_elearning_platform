@@ -4,7 +4,7 @@ import "./Navbar.style.css";
 import { useAuth } from "../../contexts/authContext";
 import { useCart } from "../../contexts/cartContext";
 import { FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
-import bookLogo from "D:/CS Project/FRONTEND DESIGN/book.png";
+import { IoBookOutline } from "react-icons/io5";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +50,7 @@ const Navbar = () => {
     <nav className={`navbar-container ${scrolled ? 'scrolled' : ''}`}>
       <div className="left-section">
         <Link to="/" className="navbar-logo" onClick={closeMenu}>
-          <img src={bookLogo} alt="Book Logo" className="nav-book-logo" />
+          <IoBookOutline className="nav-book-logo" color="#14c78e" />
           <div className="logo-container">
             <span className="logo-first">Beyond</span>
             <span className="logo-second">the Blackboard</span>
