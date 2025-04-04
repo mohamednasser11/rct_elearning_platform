@@ -31,6 +31,18 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // Social login function
+  const socialLogin = async (provider) => {
+    try {
+      const user = await authService.socialLogin(provider);
+      setIsAuthenticated(true);
+      setUser(user);
+    } catch (error) {
+      console.error(`${provider} login failed:`, error);
+      throw error;
+    }
+  };
+
   // Logout function
   const logout = async () => {
     try {
@@ -61,7 +73,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, user, login, logout, signUp }}
+      value={{ isAuthenticated, user, login, logout, signUp, socialLogin }}
     >
       {children}
     </AuthContext.Provider>

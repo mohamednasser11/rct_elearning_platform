@@ -1,57 +1,74 @@
-import { useNavigate } from "react-router-dom";
-import Input from "../../components/Inputs/InputsComponent";
-import "./loginPage.css";
 import { useState } from "react";
-import authService from '../../services/authService'
+import { Link, useNavigate } from "react-router-dom";
+import { Input } from "../SignupPage/SignupPage";
 import { useAuth } from "../../contexts/authContext";
-import CustomButton from "../../components/customButton/button";
+import "./LoginPage.css";
+import "../../components/inputs/Inputs.styles.css";
 
 const LoginPage = () => {
   const [error, setError] = useState(undefined);
   const [email, setEmail] = useState("");
-  const [password, setPasword] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const {login} = useAuth();
+  const { login } = useAuth();
 
-  const handleFormSubmit = async (event) => {
+  const handleLoginSubmit = async (event) => {
     event.preventDefault();
+    setError(undefined);
+  
     try {
-      await login(email, password)
-
-      if (authService.isAuthenticated()){
-        navigate("/"); // Redirect to home page after successful login
-      }
-
-    } catch (err) {
-      setError(err.message);
+      await login(email, password);
+      navigate("/"); // Redirect to home page after successful login
+    } catch (error) {
+      setError(error.message);
     }
+  };
+
+  const CustomButton = ({ buttonText, type, handleOnClick }) => {
+    return (
+      <button className="btn-custom" type={type} onClick={handleOnClick}>
+        {buttonText}
+      </button>
+    );
   };
 
   return (
     <div className="page-container">
-      <h1>Login</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form className="login-form-container " onSubmit={handleFormSubmit}>
-        <div className="inputs-container">
-          <label>Email Address</label>
-          <Input
-            name="email"
-            type="email"
-            placeholder="Enter your Email Address"
-            onChangeFunction={(e) => setEmail(e.target.value)}
-          />
-          <label>Password</label>
-          <Input
-            name="password"
-            type="password"
-            placeholder="Enter your Password"
-            onChangeFunction={(e) => {
-              setPasword(e.target.value)
-            }}
-          />
-        </div>
-        <CustomButton buttonText="Login" type="submit"/>
-      </form>
+      <div className="login-container">
+        <h1>Sign in to your account</h1>
+        <p className="subt">Enter your credentials to access your account</p>
+        {error && <p className="error-message">{error}</p>}
+        
+        <form className="form-container" onSubmit={handleLoginSubmit}>
+          <div className="inputs-container">
+            <div className="input-group">
+              <label className="input-label">Email</label>
+              <Input 
+                name="email" 
+                type="email" 
+                placeholder="examples@examples.com" 
+                onChangeFunction={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="input-group">
+              <label className="input-label">Password</label>
+              <Input 
+                name="password" 
+                type="password" 
+                placeholder="* * * * * * * * *" 
+                onChangeFunction={(e) => setPassword(e.target.value)}
+              />
+            </div>
+          </div>
+          <CustomButton buttonText="Log In" type="submit" />
+          <div className="signup-link">
+            Don't have an account? <Link to="/signup">Sign Up</Link>
+          </div>
+          <div className="forgot-password">
+            <Link to="/forgot-password">Forgot Password?</Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

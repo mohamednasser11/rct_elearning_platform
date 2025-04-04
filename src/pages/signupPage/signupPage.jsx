@@ -1,23 +1,51 @@
 import { useState } from "react";
-import Input from "../../components/Inputs/InputsComponent";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
-import "./signupPage.css"
-import CustomButton from "../../components/customButton/button";
+import { Link } from "react-router-dom";
+import "./SignupPage.css";
+import "../../components/inputs/Inputs.styles.css";
+
+const CustomButton = ({ buttonText, type, handleOnClick }) => {
+  return (
+    <button className="btn-custom" type={type} onClick={handleOnClick}>
+      {buttonText}
+    </button>
+  );
+};
+
+const Input = ({type, placeholder, name, onChangeFunction}) => {
+  return (
+    <input className="input" name={name} type={type} placeholder={placeholder} onChange={onChangeFunction} />
+  );
+};
 
 const SignupPage = () => {
   const [error, setError] = useState(undefined);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [firstName, setfirstName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [userName, setUserName] = useState("");
-  const {signUp} = useAuth();
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const navigate = useNavigate();
+  const { signup } = useAuth();
 
-  const handleSingUpOnSubmit = async (event) => {
+  const handleSignUpOnSubmit = async (event) => {
     event.preventDefault();
+    setError(undefined);
+    
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+    
+    if (!termsAccepted) {
+      setError("You must accept the terms and conditions");
+      return;
+    }
   
     try {
-      await signUp(email, password, userName, firstName, lastName);
+      await signup(email, password, name);
+      navigate("/"); // Redirect to home page after successful sign-up
     } catch (error) {
       setError(error.message);
     }
@@ -25,22 +53,74 @@ const SignupPage = () => {
 
   return (
     <div className="page-container">
-      <h1>Sign Up</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form className="form-container" onSubmit={handleSingUpOnSubmit}>
-        <div className="inputs-container">
-          <Input name="userName" type="text" placeholder="Name" onChangeFunction={(e) => setUserName(e.target.value)} />
-          <div className="horizontalContainer">
-          <Input name="first_name" type="text" placeholder="First Name" onChangeFunction={(e) => setfirstName(e.target.value)}/>
-          <Input name="last_name" type="text" placeholder="Last Name" onChangeFunction={(e) => setlastName(e.target.value)}/>
+      <div className="signup-container">
+        <h1>Create an account</h1>
+        <p className="subtitle">Enter your information to create an account</p>
+        {error && <p className="error-message">{error}</p>}
+        
+        <form className="form-container" onSubmit={handleSignUpOnSubmit}>
+          <div className="inputs-container">
+            <div className="input-group">
+              <label className="input-label">Full Name</label>
+              <Input 
+                name="name" 
+                type="text" 
+                placeholder="Mohamed" 
+                onChangeFunction={(e) => setName(e.target.value)}
+              />
+            </div>
+            
+            <div className="input-group">
+              <label className="input-label">Email Address</label>
+              <Input 
+                name="email" 
+                type="email" 
+                placeholder="examples@examples.com" 
+                onChangeFunction={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            
+            <div className="input-group">
+              <label className="input-label">Password</label>
+              <Input 
+                name="password" 
+                type="password" 
+                placeholder=" * * * * * * * * * " 
+                onChangeFunction={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            
+            <div className="input-group">
+              <label className="input-label">Confirm Password</label>
+              <Input 
+                name="confirmPassword" 
+                type="password" 
+                placeholder=" * * * * * * * * * " 
+                onChangeFunction={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
           </div>
-          <Input name="email" type="email" placeholder="Email"  onChangeFunction={(e) => setEmail(e.target.value)}/>
-          <Input name="password" type="password" placeholder="Password"  onChangeFunction={(e) => setPassword(e.target.value)}/>
+          
+          <div className="terms-container">
+            <label className="terms-label">
+              <input 
+                type="checkbox" 
+                checked={termsAccepted}
+                onChange={(e) => setTermsAccepted(e.target.checked)}
+              />
+              <span>I agree to the <a href="/terms" className="terms-link">terms and conditions</a></span>
+            </label>
+          </div>
+          
+          <CustomButton buttonText="Create Account" type="submit" />
+        </form>
+        
+        <div className="login-link">
+          Already have an account? <Link to="/login">Log in</Link>
         </div>
-        <CustomButton buttonText="Sign Up" type="submit"/>
-      </form>
+      </div>
     </div>
   );
 };
 
-export default SignupPage;
+export { CustomButton, Input, SignupPage as default };
