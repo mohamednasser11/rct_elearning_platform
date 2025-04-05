@@ -43,6 +43,11 @@ export const CartProvider = ({ children }) => {
     };
   }, []);
 
+  // Check if item is in cart
+  const isInCart = (itemId) => {
+    return cartItems.some((item) => item.id === itemId);
+  };
+
   // Add item to cart
   const addToCart = (item) => {
     setCartItems((prevItems) => {
@@ -99,6 +104,7 @@ export const CartProvider = ({ children }) => {
     removeFromCart,
     updateQuantity,
     clearCart,
+    isInCart,
   };
 
   return (
