@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Input } from "../SignupPage/SignupPage";
+import Input from "../../components/Inputs/InputsComponent";
 import { useAuth } from "../../contexts/authContext";
 import "./LoginPage.css";
 import "../../components/inputs/Inputs.styles.css";
@@ -46,15 +46,15 @@ const LoginPage = () => {
               <Input 
                 name="email" 
                 type="email" 
-                placeholder="examples@examples.com" 
+                placeholder="example@example.com" 
                 onChangeFunction={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="input-group">
               <label className="input-label">Password</label>
-              <Input 
+              <Input
                 name="password" 
-                type="password" 
+                type="password"
                 placeholder="* * * * * * * * *" 
                 onChangeFunction={(e) => setPassword(e.target.value)}
               />
