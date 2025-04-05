@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.style.css";
+import "./MainNavigation.css";
 import { useAuth } from "../../contexts/authContext";
 import { useCart } from "../../contexts/cartContext";
-import { FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { BsCartCheckFill } from "react-icons/bs";
 import { PiBookOpenBold } from "react-icons/pi";
 
-const Navbar = () => {
+const MainNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { isAuthenticated, logout } = useAuth();
@@ -47,13 +48,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`navbar-container ${scrolled ? 'scrolled' : ''}`}>
-      <div className="left-section">
-        <Link to="/" className="navbar-logo" onClick={closeMenu}>
-          <PiBookOpenBold className="nav-book-logo" color="#14c78e" />
-          <div className="logo-container">
-            <span className="logo-first">Beyond</span>
-            <span className="logo-second"><span className="logo-the">The</span> Blackboard</span>
+    <nav className={`main-navigation-container ${scrolled ? 'scrolled' : ''}`}>
+      <div className="main-navigation-left-section">
+        <Link to="/" className="main-navigation-logo" onClick={closeMenu}>
+          <PiBookOpenBold className="main-navigation-book-logo" color="#14c78e" />
+          <div className="main-navigation-logo-container">
+            <span className="main-navigation-logo-first">Beyond</span>
+            <span className="main-navigation-logo-second"><span className="main-navigation-logo-the">The</span> Blackboard</span>
           </div>
         </Link>
       </div>
@@ -64,46 +65,46 @@ const Navbar = () => {
       
       <div className={`nav-overlay ${isOpen ? 'show' : ''}`} onClick={() => setIsOpen(false)}></div>
       
-      <div className={`nav-content ${isOpen ? 'open' : ''}`}>
-        <div className="main-nav-group">
-          <Link to="/" className="nav-link main-nav-item" onClick={closeMenu}>
+      <div className={`main-navigation-content ${isOpen ? 'open' : ''}`}>
+        <div className="main-navigation-group">
+          <Link to="/" className="nav-link main-navigation-item" onClick={closeMenu}>
             Home
           </Link>
-          <Link to="/courses" className="nav-link main-nav-item" onClick={closeMenu}>
+          <Link to="/courses" className="nav-link main-navigation-item" onClick={closeMenu}>
             Courses
           </Link>
-          <Link to="/for-students" className="nav-link main-nav-item" onClick={closeMenu}>
+          <Link to="/for-students" className="nav-link main-navigation-item" onClick={closeMenu}>
             For Students
           </Link>
-          <Link to="/for-educators" className="nav-link main-nav-item" onClick={closeMenu}>
+          <Link to="/for-educators" className="nav-link main-navigation-item" onClick={closeMenu}>
             For Educators
           </Link>
-          <Link to="/ai-tools" className="nav-link main-nav-item" onClick={closeMenu}>
+          <Link to="/ai-tools" className="nav-link main-navigation-item" onClick={closeMenu}>
             AI Tools
           </Link>
         </div>
         
-        <div className="right-section">
+        <div className="main-navigation-right-section">
           {!isAuthenticated ? (
             <div className="auth-buttons">
-              <Link to="/login" className="nav-link auth-nav-item" onClick={closeMenu}>
+              <Link to="/login" className="nav-link auth-navigation-item" onClick={closeMenu}>
                 Log In
               </Link>
-              <Link to="/signup" className="nav-link auth-nav-item signup-btn" onClick={closeMenu}>
+              <Link to="/signup" className="nav-link auth-navigation-item signup-button" onClick={closeMenu}>
                 Sign Up
               </Link>
-              <Link to="/cart" className="nav-link cart-btn auth-nav-item" onClick={closeMenu}>
-                <FaShoppingCart />
+              <Link to="/cart" className="nav-link cart-button auth-navigation-item" onClick={closeMenu}>
+                <BsCartCheckFill />
                 {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
               </Link>
             </div>
           ) : (
             <div className="auth-buttons">
-              <div onClick={() => { logout(); closeMenu(); }} className="nav-link auth-nav-item">
+              <div onClick={() => { logout(); closeMenu(); }} className="nav-link auth-navigation-item">
                 Logout
               </div>
-              <Link to="/cart" className="nav-link cart-btn auth-nav-item" onClick={closeMenu}>
-                <FaShoppingCart />
+              <Link to="/cart" className="nav-link cart-button auth-navigation-item" onClick={closeMenu}>
+                <BsCartCheckFill />
                 {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
               </Link>
             </div>
@@ -114,4 +115,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default MainNavigation;

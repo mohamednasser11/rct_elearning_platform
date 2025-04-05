@@ -8,7 +8,7 @@ import ForEducatorsPage from "./pages/forEducatorsPage/forEducatorsPage";
 import AiToolsPage from "./pages/aiToolsPage/aiToolsPage";
 import CartPage from "./pages/cartPage/cartPage";
 import CoursesPage from "./pages/coursesPage/CoursesPage";
-import Navbar from "./components/NavBar/NavBar";
+import MainNavigation from "./components/NavBar/MainNavigation";
 import Footer from "./components/Footer/Footer";
 import { CartProvider } from "./contexts/cartContext";
 
@@ -16,7 +16,7 @@ function App() {
   return (
     <Router>
       <CartProvider>
-       <Navbar />
+       <MainNavigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/courses" element={<CoursesPage />} />
