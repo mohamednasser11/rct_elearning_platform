@@ -1,7 +1,7 @@
 .ai-tools-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
 }
 
 /* Hero Section */
@@ -10,7 +10,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
-  padding: 4rem 2rem;
+  padding: 4rem 0;
   background: white;
   margin-bottom: 4rem;
   max-width: 1200px;
@@ -19,18 +19,21 @@
 
 .hero-content {
   text-align: left;
+  padding-right: 2rem;
 }
 
 .hero-section h1 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 700;
   color: #2D3748;
   margin-bottom: 1.5rem;
-  line-height: 1.4;
+  line-height: 1.2;
+  text-align: left;
 }
 
 .highlight {
-  background: linear-gradient(120deg, #4299E1 0%, #667EEA 100%);
+  background: rgb(48,74,237);
+  background: linear-gradient(90deg, rgba(48,74,237,1) 0%, rgba(10,167,60,0.8680264342064951) 51%, rgba(105,10,167,0.8680264342064951) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -41,6 +44,7 @@
   color: #718096;
   margin-bottom: 2rem;
   line-height: 1.6;
+  text-align: left;
 }
 
 .hero-features {
@@ -163,17 +167,17 @@
 @media (max-width: 1024px) {
   .hero-section {
     grid-template-columns: 1fr;
-    text-align: center;
+    text-align: left;
     gap: 3rem;
-    padding: 3rem 1.5rem;
+    padding: 3rem 0;
   }
 
   .hero-content {
-    text-align: center;
+    text-align: left;
   }
 
   .hero-features {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .hero-preview {
@@ -183,12 +187,22 @@
   .hero-preview .preview-card {
     max-width: 400px;
   }
+
+  .hero-section h1 {
+    font-size: 2.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.25rem;
+  }
 }
 
 .cta-buttons {
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .primary-btn, .secondary-btn {
@@ -244,7 +258,8 @@
 }
 
 .highlight {
-  background: linear-gradient(120deg, #4299E1 0%, #667EEA 100%);
+  background: rgb(48,74,237);
+  background: linear-gradient(90deg, rgba(48,74,237,1) 0%, rgba(10,167,60,0.8680264342064951) 51%, rgba(105,10,167,0.8680264342064951) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -544,7 +559,7 @@
 
 @media (max-width: 768px) {
   .hero-section h1 {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
 
   .hero-subtitle {

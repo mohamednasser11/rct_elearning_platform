@@ -13,7 +13,7 @@ const AiToolsPage = () => {
           <h1>
             Revolutionize<br />
             Learning with<br />
-            <span className="highlight">AI-Powered Education</span>
+            <span className="highlight" style={{ whiteSpace: 'nowrap' }}>AI-Powered Education</span>
           </h1>
           <p className="hero-subtitle">Beyond the Blackboard helps students and educators unlock their full potential with intelligent AI tools that summarize lectures and generate customized assessments.</p>
           <div className="cta-buttons">
