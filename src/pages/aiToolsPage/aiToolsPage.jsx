@@ -3,6 +3,7 @@ import './aiToolsPage.css';
 import { FaLightbulb, FaCalculator, FaCalendarAlt, FaLanguage, FaGraduationCap, FaChalkboardTeacher, FaUserGraduate, FaStar, FaRobot, FaBook, FaChartLine, FaBrain, FaBolt, FaFileAlt } from 'react-icons/fa';
 import { IoMdBook } from 'react-icons/io';
 import { BrainCircuit } from 'lucide-react';
+import { LuCircleCheckBig } from "react-icons/lu";
 
 const AiToolsPage = () => {
   return (
@@ -56,66 +57,76 @@ const AiToolsPage = () => {
         </p>
         
         <div className="tools-grid">
-          <div className="tools-column">
-            <div className="tool-card">
+          <div className="tool-card summarizer-card">
+            <div className="tool-header">
               <div className="tool-icon-wrapper blue">
-                <FaRobot className="tool-icon" />
+                <IoMdBook className="tool-icon" />
               </div>
-              <div className="tool-content">
-                <h3>Lecture Summarizer</h3>
-                <p>Convert long lectures into concise, easy-to-digest summaries</p>
+              <h3>Lecture Summarizer</h3>
+            </div>
+            <p className="tool-description">Our AI technology transforms lengthy lectures into concise <br /> summaries with key points, helping students study more efficiently.</p>
+            <div className="tool-feature">
+              <div className="feature-icon-wrapper">
+                <LuCircleCheckBig className="feature-check-icon" />
+              </div>
+              <div className="feature-content">
+                <h4>Three Summary Levels</h4>
+                <p>Choose between short, medium, and long summaries based on your needs.</p>
               </div>
             </div>
-
-            <div className="tool-card">
-              <div className="tool-icon-wrapper purple">
-                <FaBook className="tool-icon" />
+            <div className="tool-feature">
+              <div className="feature-icon-wrapper">
+                <LuCircleCheckBig className="feature-check-icon" />
               </div>
-              <div className="tool-content">
-                <h3>Study Material Generator</h3>
-                <p>Create comprehensive study materials from any topic</p>
+              <div className="feature-content">
+                <h4>Key Subject Extraction</h4>
+                <p>Automatically identifies and highlights the most important concepts.</p>
               </div>
             </div>
-
-            <div className="tool-card">
-              <div className="tool-icon-wrapper teal">
-                <FaChartLine className="tool-icon" />
+            <div className="tool-feature">
+              <div className="feature-icon-wrapper">
+                <LuCircleCheckBig className="feature-check-icon" />
               </div>
-              <div className="tool-content">
-                <h3>Progress Analytics</h3>
-                <p>Track your learning progress with detailed insights</p>
+              <div className="feature-content">
+                <h4>File Upload Support</h4>
+                <p>Upload lecture notes, PDFs, or images for instant summarization.</p>
               </div>
             </div>
           </div>
 
-          <div className="tools-column">
-            <div className="tool-card">
-              <div className="tool-icon-wrapper orange">
-                <FaBook className="tool-icon" />
+          <div className="tool-card assessment-card">
+            <div className="tool-header">
+              <div className="tool-icon-wrapper purple">
+                <FaFileAlt className="tool-icon" />
               </div>
-              <div className="tool-content">
-                <h3>Smart Tutor</h3>
-                <p>Get personalized help and instant feedback 24/7</p>
+              <h3>Assessment Generator</h3>
+            </div>
+            <p className="tool-description">Create customized quizzes and exams in seconds with our <br /> AI assessment generator, saving educators valuable time.</p>
+            <div className="tool-feature">
+              <div className="feature-icon-wrapper">
+                <LuCircleCheckBig className="feature-check-icon purple" />
+              </div>
+              <div className="feature-content">
+                <h4>Flexible Question Count</h4>
+                <p>Generate between 10-40 questions based on your requirements.</p>
               </div>
             </div>
-
-            <div className="tool-card">
-              <div className="tool-icon-wrapper green">
-                <FaCalculator className="tool-icon" />
+            <div className="tool-feature">
+              <div className="feature-icon-wrapper">
+                <LuCircleCheckBig className="feature-check-icon purple" />
               </div>
-              <div className="tool-content">
-                <h3>Problem Solver</h3>
-                <p>Step-by-step solutions for complex problems</p>
+              <div className="feature-content">
+                <h4>Difficulty Settings</h4>
+                <p>Choose from easy, medium, or hard difficulty levels for varied assessment.</p>
               </div>
             </div>
-
-            <div className="tool-card">
-              <div className="tool-icon-wrapper pink">
-                <FaLanguage className="tool-icon" />
+            <div className="tool-feature">
+              <div className="feature-icon-wrapper">
+                <LuCircleCheckBig className="feature-check-icon purple" />
               </div>
-              <div className="tool-content">
-                <h3>Language Learning</h3>
-                <p>Practice conversations with AI language partners</p>
+              <div className="feature-content">
+                <h4>Content Upload</h4>
+                <p>Upload syllabus materials to generate relevant, targeted questions.</p>
               </div>
             </div>
           </div>
