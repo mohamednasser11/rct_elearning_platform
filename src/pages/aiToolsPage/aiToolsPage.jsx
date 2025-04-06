@@ -1,9 +1,10 @@
 import React from 'react';
 import './aiToolsPage.css';
 import { FaLightbulb, FaCalculator, FaCalendarAlt, FaLanguage, FaGraduationCap, FaChalkboardTeacher, FaUserGraduate, FaStar, FaRobot, FaBook, FaChartLine, FaBrain, FaBolt, FaFileAlt } from 'react-icons/fa';
-import { IoMdBook } from 'react-icons/io';
+import { IoMdBook, IoMdTime } from 'react-icons/io';
 import { BrainCircuit } from 'lucide-react';
-import { LuCircleCheckBig } from "react-icons/lu";
+import { LuCircleCheckBig, LuBrainCircuit, LuSparkles } from "react-icons/lu";
+import { FiUpload } from 'react-icons/fi';
 
 const AiToolsPage = () => {
   return (
@@ -134,20 +135,32 @@ const AiToolsPage = () => {
 
         <div className="feature-cards">
           <div className="feature-card">
-            <FaRobot className="feature-icon" />
-            <h4>AI-Powered Support</h4>
+            <div className="feature-icon-wrapper blue">
+              <LuBrainCircuit className="feature-icon" />
+            </div>
+            <h4>AI-Powered Analysis</h4>
+            <p>Advanced algorithms to process and analyze educational content.</p>
           </div>
           <div className="feature-card">
-            <FaChartLine className="feature-icon" />
-            <h4>Smart Analytics</h4>
+            <div className="feature-icon-wrapper green">
+              <FiUpload className="feature-icon" />
+            </div>
+            <h4>Smart Uploads</h4>
+            <p>Support for PDFs, images, and various document formats.</p>
           </div>
           <div className="feature-card">
-            <FaBrain className="feature-icon" />
-            <h4>Deep Learning</h4>
+            <div className="feature-icon-wrapper purple">
+              <IoMdTime className="feature-icon" />
+            </div>
+            <h4>Time-Saving</h4>
+            <p>Cut hours of work down to minutes with automated tools.</p>
           </div>
           <div className="feature-card">
-            <FaLanguage className="feature-icon" />
-            <h4>Language Skills</h4>
+            <div className="feature-icon-wrapper blue">
+              <LuSparkles className="feature-icon" />
+            </div>
+            <h4>Customizable</h4>
+            <p>Tailor outputs to your specific educational needs.</p>
           </div>
         </div>
       </section>
