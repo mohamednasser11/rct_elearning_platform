@@ -51,8 +51,9 @@ const AiToolsPage = () => {
       {/* AI Tools Section */}
       <section className="ai-tools-section">
         <h2>AI-Powered <span className="highlight">Learning Tools</span></h2>
-        <p className="section-subtitle">Our intelligent features help both students and educators maximize their potential</p>
-        <p className="section-subtitle">through cutting-edge AI technology.</p>
+        <p className="section-subtitle">
+          Our intelligent features help both students and educators maximize their potential through cutting-edge AI technology.
+        </p>
         
         <div className="tools-grid">
           <div className="tools-column">
