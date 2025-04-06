@@ -7,6 +7,7 @@ import { coursesData } from '../../../data/coursesData';
 import './CourseDetail.css';
 import CourseVideo from './CourseVideo';
 import CourseOutline from './CourseOutline';
+import { FiCheckCircle } from "react-icons/fi";
 
 // Sample curriculum data as a fallback
 const sampleCurriculum = [
@@ -77,6 +78,7 @@ const CourseDetail = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [currentLesson, setCurrentLesson] = useState(null);
   const [addedToCart, setAddedToCart] = useState(false);
+  const [similarCourses, setSimilarCourses] = useState([]);
   
   // Calculate total lessons from curriculum
   const curriculum = useMemo(() => {
@@ -124,6 +126,10 @@ const CourseDetail = () => {
             sampleCurriculum[0].lessons && sampleCurriculum[0].lessons.length > 0) {
           setCurrentLesson(sampleCurriculum[0].lessons[0]);
         }
+        
+        // Find similar courses
+        const similar = findSimilarCourses(fetchedCourse);
+        setSimilarCourses(similar);
       } else {
         setError("Course not found");
       }
@@ -131,6 +137,25 @@ const CourseDetail = () => {
       setLoading(false);
     }, 500);
   }, [courseId]);
+
+  // Find similar courses based on the current course's field
+  const findSimilarCourses = (currentCourse) => {
+    // Filter courses in the same field, excluding the current course
+    let fieldSimilar = coursesData.filter(c => 
+      c.field === currentCourse.field && c.id !== currentCourse.id
+    );
+    
+    // If we don't have enough courses in the same field, add some popular courses
+    if (fieldSimilar.length < 3) {
+      const popularCourses = coursesData.filter(c => 
+        c.popular && c.id !== currentCourse.id && c.field !== currentCourse.field
+      );
+      fieldSimilar = [...fieldSimilar, ...popularCourses];
+    }
+    
+    // Return up to 4 similar courses
+    return fieldSimilar.slice(0, 4);
+  };
 
   // Handle back button click
   const handleBack = () => {
@@ -275,10 +300,6 @@ const CourseDetail = () => {
               <span>{course.duration} of content</span>
             </div>
             <div className="enrollment-feature">
-              <FaUserGraduate className="feature-icon" />
-              <span>{course.level} level</span>
-            </div>
-            <div className="enrollment-feature">
               <FaChalkboardTeacher className="feature-icon" />
               <span>Full lifetime access</span>
             </div>
@@ -349,16 +370,16 @@ const CourseDetail = () => {
                     {course.features ? (
                       course.features.map((feature, index) => (
                         <li key={index} className="benefit-item">
-                          <span className="check-icon">✓</span> {feature}
+                          <span className="check-icon"><FiCheckCircle /></span> {feature}
                         </li>
                       ))
                     ) : (
                       <>
-                        <li className="benefit-item"><span className="check-icon">✓</span> Master the fundamentals and advanced concepts of {course.title}</li>
-                        <li className="benefit-item"><span className="check-icon">✓</span> Build real-world projects to apply your knowledge</li>
-                        <li className="benefit-item"><span className="check-icon">✓</span> Learn best practices and industry standards</li>
-                        <li className="benefit-item"><span className="check-icon">✓</span> Gain confidence in working with {course.field || 'this field'} technologies</li>
-                        <li className="benefit-item"><span className="check-icon">✓</span> Get hands-on experience through practical exercises</li>
+                        <li className="benefit-item"><span className="check-icon"><FiCheckCircle /></span> Master the fundamentals and advanced concepts of {course.title}</li>
+                        <li className="benefit-item"><span className="check-icon"><FiCheckCircle /></span> Build real-world projects to apply your knowledge</li>
+                        <li className="benefit-item"><span className="check-icon"><FiCheckCircle /></span> Learn best practices and industry standards</li>
+                        <li className="benefit-item"><span className="check-icon"><FiCheckCircle /></span> Gain confidence in working with {course.field || 'this field'} technologies</li>
+                        <li className="benefit-item"><span className="check-icon"><FiCheckCircle /></span> Get hands-on experience through practical exercises</li>
                       </>
                     )}
                   </ul>
@@ -390,7 +411,6 @@ const CourseDetail = () => {
                   <h3 className="section-title">Course Features</h3>
                   <div className="overview-features">
                     <ul>
-                      <li><span className="feature-icon"><FaUserGraduate /></span> <span className="feature-text">Skill level: All Levels</span></li>
                       <li><span className="feature-icon"><FaRegClock /></span> <span className="feature-text">Duration: {course.duration || '10 weeks'}</span></li>
                       <li><span className="feature-icon"><MdOndemandVideo /></span> <span className="feature-text">Lessons: {totalLessons}</span></li>
                       <li><span className="feature-icon"><FaDownload /></span> <span className="feature-text">Downloadable resources: 15+</span></li>
@@ -400,10 +420,29 @@ const CourseDetail = () => {
                   </div>
                 </div>
                 
-                {currentLesson && (
-                  <div className="current-lesson-preview">
-                    <h3>Current Lesson: {currentLesson.title}</h3>
-                    <CourseVideo lesson={currentLesson} />
+                {/* Similar Courses You Might Like Section */}
+                {similarCourses.length > 0 && (
+                  <div className="similar-courses-section">
+                    <h3 className="section-title">Similar Courses You Might Like</h3>
+                    <div className="similar-courses-grid">
+                      {similarCourses.map(similarCourse => (
+                        <div key={similarCourse.id} className="similar-course-card" onClick={() => navigate(`/courses/${similarCourse.id}`)}>
+                          <div className="similar-course-image">
+                            <img src={similarCourse.image} alt={similarCourse.title} />
+                          </div>
+                          <div className="similar-course-info">
+                            <h4 className="similar-course-title">{similarCourse.title}</h4>
+                            <div className="similar-course-meta">
+                              <div className="similar-course-rating">
+                                <FaStar className="star-icon" />
+                                <span>{similarCourse.rating}</span>
+                              </div>
+                              <div className="similar-course-price">${similarCourse.price}</div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
