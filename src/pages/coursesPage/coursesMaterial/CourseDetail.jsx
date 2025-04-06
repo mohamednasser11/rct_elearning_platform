@@ -13,7 +13,7 @@ import { FiCheckCircle } from "react-icons/fi";
 const sampleCurriculum = [
   {
     title: "Introduction to the Course",
-    duration: "45 mins",
+    duration: "1 hour 30 mins",
     lessons: [
       {
         id: "1-1",
@@ -21,7 +21,8 @@ const sampleCurriculum = [
         duration: "10:00",
         type: "Video",
         description: "Welcome to the course! This lesson introduces what you'll learn and how to get the most out of the material.",
-        thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
+        thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+        preview: true
       },
       {
         id: "1-2",
@@ -36,12 +37,26 @@ const sampleCurriculum = [
         duration: "20:00",
         type: "Video",
         description: "Overview of the resources, tools, and materials you'll need for this course."
+      },
+      {
+        id: "1-4",
+        title: "Setting Up Your Workspace",
+        duration: "25:00",
+        type: "Video",
+        description: "Creating an optimal workspace to maximize your learning and productivity."
+      },
+      {
+        id: "1-5",
+        title: "Introduction Quiz",
+        duration: "20:00",
+        type: "Quiz",
+        description: "Test your understanding of the introductory concepts."
       }
     ]
   },
   {
     title: "Core Concepts",
-    duration: "2 hours",
+    duration: "3 hours 45 mins",
     lessons: [
       {
         id: "2-1",
@@ -63,6 +78,213 @@ const sampleCurriculum = [
         duration: "35:00",
         type: "Video",
         description: "Apply what you've learned to real-world scenarios."
+      },
+      {
+        id: "2-4",
+        title: "Working with Tools",
+        duration: "40:00",
+        type: "Workshop",
+        description: "Hands-on workshop to learn essential tools of the trade.",
+        preview: true
+      },
+      {
+        id: "2-5",
+        title: "Problem-Solving Approaches",
+        duration: "35:00",
+        type: "Video",
+        description: "Strategies to tackle complex problems methodically."
+      },
+      {
+        id: "2-6",
+        title: "Core Concepts Assignment",
+        duration: "60:00",
+        type: "Assignment",
+        description: "Apply core concepts to complete this graded assignment."
+      }
+    ]
+  },
+  {
+    title: "Intermediate Topics",
+    duration: "4 hours 15 mins",
+    lessons: [
+      {
+        id: "3-1",
+        title: "Building on Fundamentals",
+        duration: "30:00",
+        type: "Video",
+        description: "Extend your knowledge with more sophisticated techniques."
+      },
+      {
+        id: "3-2",
+        title: "Case Study: Real-World Example",
+        duration: "45:00",
+        type: "Case Study",
+        description: "Analyze a real-world implementation and learn from it."
+      },
+      {
+        id: "3-3",
+        title: "Industry Best Practices",
+        duration: "40:00",
+        type: "Video",
+        description: "Learn standards and conventions used by professionals."
+      },
+      {
+        id: "3-4",
+        title: "Optimization Techniques",
+        duration: "35:00",
+        type: "Video",
+        description: "Make your solutions more efficient and effective."
+      },
+      {
+        id: "3-5",
+        title: "Common Pitfalls and How to Avoid Them",
+        duration: "25:00",
+        type: "Video",
+        description: "Learn from others' mistakes to improve your own work."
+      },
+      {
+        id: "3-6",
+        title: "Live Q&A Session Recording",
+        duration: "60:00",
+        type: "Recording",
+        description: "Watch a recorded Q&A session with experts answering common questions."
+      }
+    ]
+  },
+  {
+    title: "Advanced Implementation",
+    duration: "5 hours 30 mins",
+    lessons: [
+      {
+        id: "4-1",
+        title: "Scaling Your Solutions",
+        duration: "45:00",
+        type: "Video",
+        description: "Learn how to build solutions that can grow with your needs."
+      },
+      {
+        id: "4-2",
+        title: "Integration Strategies",
+        duration: "50:00",
+        type: "Video",
+        description: "Connect your work with other systems and tools."
+      },
+      {
+        id: "4-3",
+        title: "Advanced Workshop",
+        duration: "75:00",
+        type: "Workshop",
+        description: "Hands-on practice with advanced techniques and scenarios."
+      },
+      {
+        id: "4-4",
+        title: "Troubleshooting Guide",
+        duration: "40:00",
+        type: "Video",
+        description: "Systematic approaches to diagnose and fix complex problems."
+      },
+      {
+        id: "4-5",
+        title: "Performance Optimization",
+        duration: "55:00",
+        type: "Video",
+        description: "Make your implementations faster and more efficient."
+      },
+      {
+        id: "4-6",
+        title: "Advanced Techniques Quiz",
+        duration: "25:00",
+        type: "Quiz",
+        description: "Test your understanding of advanced concepts and implementations."
+      },
+      {
+        id: "4-7",
+        title: "Final Advanced Project",
+        duration: "90:00",
+        type: "Project",
+        description: "Complete a comprehensive project applying advanced techniques."
+      }
+    ]
+  },
+  {
+    title: "Professional Application",
+    duration: "3 hours 15 mins",
+    lessons: [
+      {
+        id: "5-1",
+        title: "Industry Trends",
+        duration: "30:00",
+        type: "Video",
+        description: "Stay updated with the latest developments in the field."
+      },
+      {
+        id: "5-2",
+        title: "Career Opportunities",
+        duration: "25:00",
+        type: "Video",
+        description: "Explore potential career paths and opportunities."
+      },
+      {
+        id: "5-3",
+        title: "Building Your Portfolio",
+        duration: "45:00",
+        type: "Workshop",
+        description: "Create a professional portfolio showcasing your skills."
+      },
+      {
+        id: "5-4",
+        title: "Interview Preparation",
+        duration: "35:00",
+        type: "Video",
+        description: "Prepare for technical interviews in the field."
+      },
+      {
+        id: "5-5",
+        title: "Networking Strategies",
+        duration: "30:00",
+        type: "Video",
+        description: "Connect with professionals and expand your opportunities."
+      },
+      {
+        id: "5-6",
+        title: "Course Recap and Next Steps",
+        duration: "30:00",
+        type: "Video",
+        description: "Review what you've learned and plan your continued growth."
+      }
+    ]
+  },
+  {
+    title: "Bonus Content",
+    duration: "2 hours 10 mins",
+    lessons: [
+      {
+        id: "6-1",
+        title: "Exclusive Interview with Industry Expert",
+        duration: "45:00",
+        type: "Interview",
+        description: "Learn from a leading expert in the field about their journey and insights."
+      },
+      {
+        id: "6-2",
+        title: "Advanced Tools Deep Dive",
+        duration: "40:00",
+        type: "Video",
+        description: "In-depth exploration of specialized tools used by professionals."
+      },
+      {
+        id: "6-3",
+        title: "Future Trends and Technologies",
+        duration: "35:00",
+        type: "Video",
+        description: "Preview upcoming technologies and shifts in the industry."
+      },
+      {
+        id: "6-4",
+        title: "Additional Resources Guide",
+        duration: "10:00",
+        type: "Document",
+        description: "Comprehensive list of books, websites, and tools for further learning."
       }
     ]
   }
