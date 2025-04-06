@@ -4,13 +4,14 @@ import { FaLightbulb, FaCalculator, FaCalendarAlt, FaLanguage, FaGraduationCap, 
 import { IoMdBook, IoMdTime } from 'react-icons/io';
 import { IoBookOutline } from 'react-icons/io5';
 import { BrainCircuit } from 'lucide-react';
-import { LuCircleCheckBig, LuBrainCircuit, LuSparkles } from "react-icons/lu";
+import { LuCircleCheckBig, LuBrainCircuit, LuSparkles, LuCloud } from "react-icons/lu";
 import { FiUpload } from 'react-icons/fi';
 import { RiRobot2Line } from 'react-icons/ri';
 import { BiSolidBookAlt } from 'react-icons/bi';
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const AiToolsPage = () => {
+  const [activeLength, setActiveLength] = React.useState('medium');
   return (
     <div className="ai-tools-container">
       {/* Hero Section */}
@@ -231,6 +232,38 @@ const AiToolsPage = () => {
                   Try AI summarization
                   <LuSparkles className="button-icon" />
                 </button>
+              </div>
+              <div className="drop-box">
+                <h3 className="drop-title">Lecture Summarizer</h3>
+                <p className="drop-description">Upload your lecture material and select summary length</p>
+                <div className="drop-zone">
+                  <div className="drop-icon">
+                    <LuCloud className="cloud-icon" />
+                  </div>
+                  <h4 className="drop-zone-title">Drag & drop files here</h4>
+                  <p className="drop-zone-subtitle">or click to browse (PDFs, images)</p>
+                  <button className="select-files-btn">Select Files</button>
+                </div>
+                <div className="summary-length">
+                  <h4 className="summary-title">Summary Length</h4>
+                  <div className="length-options">
+                    <button 
+                      className={`length-btn ${activeLength === 'short' ? 'active' : ''}`}
+                      onClick={() => setActiveLength('short')}
+                    >Short</button>
+                    <button 
+                      className={`length-btn ${activeLength === 'medium' ? 'active' : ''}`}
+                      onClick={() => setActiveLength('medium')}
+                    >Medium</button>
+                    <button 
+                      className={`length-btn ${activeLength === 'long' ? 'active' : ''}`}
+                      onClick={() => setActiveLength('long')}
+                    >Long</button>
+                  </div>
+                  <p className="length-description">Brief overview with only essential points (1-2 paragraphs)</p>
+                </div>
+                <button className="generate-btn">Generate Summary</button>
+                <p className="upload-text">Upload your PDF or image files to get started</p>
               </div>
             </div>
           </div>
