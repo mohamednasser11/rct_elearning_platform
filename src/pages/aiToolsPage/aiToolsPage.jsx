@@ -7,6 +7,8 @@ import { BrainCircuit } from 'lucide-react';
 import { LuCircleCheckBig, LuBrainCircuit, LuSparkles } from "react-icons/lu";
 import { FiUpload } from 'react-icons/fi';
 import { RiRobot2Line } from 'react-icons/ri';
+import { BiSolidBookAlt } from 'react-icons/bi';
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const AiToolsPage = () => {
   return (
@@ -190,6 +192,50 @@ const AiToolsPage = () => {
                 </label>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="tools-content">
+          <div className="student-tools tab-content">
+            <div className="tab-header">
+              <BiSolidBookAlt className="tab-main-icon" />
+              <h2 className="tab-title">For Students</h2>
+            </div>
+            <div className="tab-content-section">
+              <div className="content-wrapper">
+                <h3 className="content-subtitle">AI Lecture Summarization</h3>
+                <p className="content-description">
+                  Our AI analyzes your lecture materials and generates <br /> comprehensive summaries at your preferred level of detail. <br /> Extract key concepts, identify main subjects, and save hours of <br /> study time.
+                </p>
+                <div className="features-card">
+                  <h4 className="features-title">Key Features:</h4>
+                  <ul className="features-list">
+                    <li>
+                      <div><MdOutlineKeyboardArrowRight className="feature-arrow" /><strong>Three summary levels:</strong> Choose between short, medium, or long</div>
+                      <div>summaries based on your needs</div>
+                    </li>
+                    <li>
+                      <div><MdOutlineKeyboardArrowRight className="feature-arrow" /><strong>Subject extraction:</strong> Automatically identifies and organizes key</div>
+                      <div>subjects and topics</div>
+                    </li>
+                    <li>
+                      <div><MdOutlineKeyboardArrowRight className="feature-arrow" /><strong>Smart formatting:</strong> Structured summaries with headings, bullet</div>
+                      <div>points, and highlights</div>
+                    </li>
+                    <li>
+                      <div><MdOutlineKeyboardArrowRight className="feature-arrow" /><strong>Multiple file support:</strong> Upload lecture slides, PDFs, images, or</div>
+                      <div>screenshots</div>
+                    </li>
+                  </ul>
+                </div>
+                <button className="try-button">
+                  Try AI summarization
+                  <LuSparkles className="button-icon" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="educator-tools tab-content">
+            {/* Educator content will go here */}
           </div>
         </div>
       </section>

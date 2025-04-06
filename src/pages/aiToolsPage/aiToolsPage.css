@@ -560,29 +560,311 @@
 }
 
 @media (max-width: 768px) {
-  .feature-cards {
-    padding: 0 1rem;
+  .hero-section h1 {
+    font-size: 2.25rem;
   }
-  
-  .feature-card {
-    height: 160px;
-    padding: 1.25rem;
+
+  .hero-subtitle {
+    font-size: 1rem;
   }
 
   .tools-grid {
     flex-direction: column;
-    align-items: center;
   }
 
   .tool-card {
-    width: 100%;
+    flex-direction: column;
+  }
+
+  .tool-icon-wrapper {
+    margin-bottom: 1rem;
+    margin-right: 0;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
   }
 }
 
-@media (max-width: 480px) {
-  .feature-cards {
-    grid-template-columns: 1fr;
+.user-section h2 {
+  font-size: 2rem;
+  color: #2D3748;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+}
+
+.toggle-switch-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 320px;
+  height: 45px;
+  background: #ffffff;
+  border-radius: 25px;
+  padding: 4px;
+}
+
+.toggle-input {
+  display: none;
+}
+
+.toggle-label {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background: #EDF2F7;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.toggle-label::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  width: 155px;
+  height: 37px;
+  background: rgb(48,74,237);
+  border-radius: 22px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-input:checked + .toggle-label::after {
+  left: calc(100% - 159px);
+}
+
+.toggle-text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #718096;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.toggle-icon {
+  font-size: 1.1rem;
+}
+
+.toggle-input:not(:checked) ~ .toggle-label .toggle-text.student,
+.toggle-input:checked ~ .toggle-label .toggle-text.educator {
+  color: white;
+}
+
+.tools-content {
+  margin-top: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+}
+
+.tab-content {
+  display: none;
+  padding: 2rem 0;
+  background: white;
+  border-radius: 12px;
+  min-height: 300px;
+}
+
+.tab-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  padding-left: 0rem;
+}
+
+.tab-main-icon {
+  font-size: 2rem;
+  color: white;
+  background: rgb(48,74,237);
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-top: -0.5rem;
+}
+
+.tab-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #2D3748;
+  margin: 0;
+}
+
+/* Show student tab by default */
+.student-tools {
+  display: block;
+}
+
+/* Show educator tab when toggle is checked */
+.toggle-input:checked ~ .tools-content .student-tools {
+  display: none;
+}
+
+.toggle-input:checked ~ .tools-content .educator-tools {
+  display: block;
+}
+
+/* Animation for tab switching */
+.tab-content {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab-content-section {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.content-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 2rem;
+}
+
+.tab-content-section {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.content-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgba(45,105,235,255);
+  margin: 0 0 1rem 0;
+  text-align: left;
+}
+
+.content-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #4A5568;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.features-card {
+  background-color: rgba(235, 245, 255, 0.8);
+  border: 1px solid rgba(48,74,237,0.2);
+  border-radius: 12px;
+  padding: 1.5rem 1rem 1.5rem 0;
+  margin-top: 2rem;
+  width: fit-content;
+  min-width: auto;
+}
+
+.features-title {
+  color: #000000;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 1rem 2rem;
+  text-align: left;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features-list li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1.25rem;
+  color: #000000;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.features-list li div {
+  display: flex;
+  align-items: flex-start;
+}
+
+.features-list li div:not(:first-child) {
+  padding-left: 2rem;
+}
+
+.feature-arrow {
+  color: rgba(45,105,235,255);
+  font-size: 1.2rem;
+  position: absolute;
+  left: 0.5rem;
+  top: 0.2rem;
+}
+
+.features-list li strong {
+  display: inline;
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+.try-button {
+  background-color: rgb(48,74,237);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  transition: background-color 0.2s ease;
+}
+
+.try-button:hover {
+  background-color: rgb(19,30,95);
+}
+
+.button-icon {
+  font-size: 1.2rem;
 }
 
 /* User Sections */
@@ -662,8 +944,6 @@
   border-radius: 12px;
   overflow: hidden;
 }
-
-/* Remove duplicate styles */
 
 .preview-line {
   height: 12px;
@@ -858,82 +1138,4 @@
     font-size: 2rem;
     margin-bottom: 2rem;
   }
-}
-
-.user-section h2 {
-  font-size: 2rem;
-  color: #2D3748;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-weight: 700;
-}
-
-.toggle-switch-wrapper {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-}
-
-.toggle-switch {
-  position: relative;
-  width: 320px;
-  height: 45px;
-  background: #ffffff;
-  border-radius: 25px;
-  padding: 4px;
-}
-
-.toggle-input {
-  display: none;
-}
-
-.toggle-label {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  background: #EDF2F7;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-}
-
-.toggle-label::after {
-  content: '';
-  position: absolute;
-  left: 4px;
-  width: 155px;
-  height: 37px;
-  background: rgb(48,74,237);
-  border-radius: 22px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.toggle-input:checked + .toggle-label::after {
-  left: calc(100% - 159px);
-}
-
-.toggle-text {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #718096;
-  z-index: 1;
-  transition: color 0.3s ease;
-}
-
-.toggle-icon {
-  font-size: 1.1rem;
-}
-
-.toggle-input:not(:checked) ~ .toggle-label .toggle-text.student,
-.toggle-input:checked ~ .toggle-label .toggle-text.educator {
-  color: white;
 }
