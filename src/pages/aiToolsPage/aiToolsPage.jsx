@@ -2,6 +2,7 @@ import React from 'react';
 import './aiToolsPage.css';
 import { FaLightbulb, FaCalculator, FaCalendarAlt, FaLanguage, FaGraduationCap, FaChalkboardTeacher, FaUserGraduate, FaStar, FaRobot, FaBook, FaChartLine, FaBrain, FaBolt, FaFileAlt } from 'react-icons/fa';
 import { IoMdBook, IoMdTime } from 'react-icons/io';
+import { IoBookOutline } from 'react-icons/io5';
 import { BrainCircuit } from 'lucide-react';
 import { LuCircleCheckBig, LuBrainCircuit, LuSparkles } from "react-icons/lu";
 import { FiUpload } from 'react-icons/fi';
@@ -174,6 +175,21 @@ const AiToolsPage = () => {
           <div className="header-content">
             <h2>Our AI Learning Tools</h2>
             <p className="section-subtitle">Powerful AI assistants designed specifically for students and educators.</p>
+            <div className="toggle-switch-wrapper">
+              <div className="toggle-switch">
+                <input type="checkbox" id="userTypeToggle" className="toggle-input" />
+                <label htmlFor="userTypeToggle" className="toggle-label">
+                  <span className="toggle-text student">
+                    <IoBookOutline className="toggle-icon" />
+                    For Student
+                  </span>
+                  <span className="toggle-text educator">
+                    <FaGraduationCap className="toggle-icon" />
+                    For Educator
+                  </span>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
       </section>
