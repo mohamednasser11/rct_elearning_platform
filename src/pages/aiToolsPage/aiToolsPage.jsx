@@ -1,6 +1,8 @@
 import React from 'react';
 import './aiToolsPage.css';
 import { FaLightbulb, FaCalculator, FaCalendarAlt, FaLanguage, FaGraduationCap, FaChalkboardTeacher, FaUserGraduate, FaStar, FaRobot, FaBook, FaChartLine, FaBrain, FaBolt, FaFileAlt } from 'react-icons/fa';
+import { IoMdBook } from 'react-icons/io';
+import { BrainCircuit } from 'lucide-react';
 
 const AiToolsPage = () => {
   return (
@@ -19,9 +21,9 @@ const AiToolsPage = () => {
             <button className="secondary-btn">View Demo</button>
           </div>
           <div className="hero-features">
-            <span><FaBolt className="feature-icon" /> AI-Powered</span>
-            <span><FaFileAlt className="feature-icon" /> Custom Summarise</span>
-            <span><FaBrain className="feature-icon" /> Smart Assessments</span>
+            <span><BrainCircuit className="feature-icon" /> <span className="feature-text">AI-Powered</span></span>
+            <span><FaFileAlt className="feature-icon" /> <span className="feature-text">Custom Summarise</span></span>
+            <span><IoMdBook className="feature-icon" /> <span className="feature-text">Smart Assessments</span></span>
           </div>
         </div>
         <div className="hero-preview">
