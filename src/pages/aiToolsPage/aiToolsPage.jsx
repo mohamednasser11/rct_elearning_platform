@@ -5,6 +5,7 @@ import { IoMdBook, IoMdTime } from 'react-icons/io';
 import { BrainCircuit } from 'lucide-react';
 import { LuCircleCheckBig, LuBrainCircuit, LuSparkles } from "react-icons/lu";
 import { FiUpload } from 'react-icons/fi';
+import { RiRobot2Line } from 'react-icons/ri';
 
 const AiToolsPage = () => {
   return (
@@ -164,67 +165,17 @@ const AiToolsPage = () => {
           </div>
         </div>
       </section>
-
-      {/* For Students Section */}
-      <section className="user-section students-section">
-        <div className="section-content">
-          <h2><FaUserGraduate className="section-icon" /> For Students</h2>
-          <p className="section-description">Get access to AI-powered study materials and personalized learning paths.</p>
-          <div className="login-form">
-            <input type="email" placeholder="Enter your email" className="form-input" />
-            <input type="password" placeholder="Enter your password" className="form-input" />
-            <button className="primary-btn">Try Student Tools</button>
-            <p className="form-text">Access AI-powered study materials, practice tests, and personalized learning paths.</p>
-          </div>
-        </div>
-        <div className="section-preview">
-          <div className="preview-card">
-            <div className="preview-header">
-              <div className="preview-dot"></div>
-              <div className="preview-dot"></div>
-              <div className="preview-dot"></div>
-            </div>
-            <div className="preview-content">
-              <div className="preview-line"></div>
-              <div className="preview-line short"></div>
-              <div className="preview-line medium"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* For Educators Section */}
-      <section className="user-section educators-section">
-        <div className="section-content">
-          <h2><FaChalkboardTeacher className="section-icon" /> For Educators</h2>
-          <p className="section-description">Create engaging content and track student progress with AI assistance.</p>
-          <div className="login-form">
-            <input type="email" placeholder="Enter your email" className="form-input" />
-            <input type="password" placeholder="Enter your password" className="form-input" />
-            <button className="primary-btn">Access Educator Tools</button>
-            <p className="form-text">Create custom course content, automate grading, and track student progress with AI.</p>
-          </div>
-        </div>
-        <div className="section-preview">
-          <div className="preview-card">
-            <div className="preview-header">
-              <div className="preview-dot"></div>
-              <div className="preview-dot"></div>
-              <div className="preview-dot"></div>
-            </div>
-            <div className="preview-content">
-              <div className="preview-line"></div>
-              <div className="preview-line short"></div>
-              <div className="preview-line medium"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* user Section */} 
       <section className="our-tools-section">
-        <h2>Our AI Learning Tools</h2>
-        <p className="section-subtitle">Discover how our tools can help you achieve your learning goals.</p>
-        <button className="primary-btn explore-btn">Explore All Tools</button>
+        <div className="section-header">
+          <div className="section-icon-wrapper">
+            <RiRobot2Line className="section-icon" />
+          </div>
+          <div className="header-content">
+            <h2>Our AI Learning Tools</h2>
+            <p className="section-subtitle">Powerful AI assistants designed specifically for students and educators.</p>
+          </div>
+        </div>
       </section>
 
       {/* Testimonials Section */}
