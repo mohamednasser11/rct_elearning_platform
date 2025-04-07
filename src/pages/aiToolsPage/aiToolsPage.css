@@ -977,7 +977,8 @@
 .features-panel {
   flex: 1.5;
   padding: 2rem;
-  background-color: #f8fafc;
+  background-color: #ffffff;
+  
 }
 
 .educator-header {
@@ -996,8 +997,9 @@
 }
 
 .educator-icon {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   color: #3b82f6;
+  margin-top: -20px;  
 }
 
 .educator-large-icon {
@@ -1034,9 +1036,10 @@
 .key-features-container {
   background-color: #ebf8ff;
   padding: 1.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.9rem; 
   margin-bottom: 1.5rem;
-  border: 1px solid #e2e8f0;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .features-title {
@@ -1083,8 +1086,10 @@
   gap: 1rem;
   background-color: #ffffff;
   padding: 1rem 1.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.9rem;
   margin-bottom: 1.5rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .time-icon-container {
@@ -1094,7 +1099,7 @@
 }
 
 .time-icon {
-  font-size: 1.5rem;
+  font-size: 2.2rem;
   color: #48bb78;
 }
 
