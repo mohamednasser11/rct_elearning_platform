@@ -12,6 +12,13 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const AiToolsPage = () => {
   const [activeLength, setActiveLength] = React.useState('medium');
+  const [activeTab, setActiveTab] = React.useState('student');
+  
+  // Simple toggle function with direct state update
+  const handleTabToggle = (tab) => {
+    console.log('Switching to tab:', tab);
+    setActiveTab(tab);
+  };
   return (
     <div className="ai-tools-container">
       {/* Hero Section */}
@@ -169,7 +176,7 @@ const AiToolsPage = () => {
           </div>
         </div>
       </section>
-      {/* user Section */} 
+      {/* AI Tools Toggle Section */}
       <section className="our-tools-section">
         <div className="section-header">
           <div className="section-icon-wrapper">
@@ -180,27 +187,31 @@ const AiToolsPage = () => {
             <p className="section-subtitle">Powerful AI assistants designed specifically for students and educators.</p>
             <div className="toggle-switch-wrapper">
               <div className="toggle-switch">
-                <input type="checkbox" id="userTypeToggle" className="toggle-input" />
-                <label htmlFor="userTypeToggle" className="toggle-label">
-                  <span className="toggle-text student">
-                    <IoBookOutline className="toggle-icon" />
-                    For Student
-                  </span>
-                  <span className="toggle-text educator">
-                    <FaGraduationCap className="toggle-icon" />
-                    For Educator
-                  </span>
-                </label>
+                <button 
+                  className={`toggle-btn ${activeTab === 'student' ? 'active' : ''}`}
+                  onClick={() => handleTabToggle('student')}
+                >
+                  <FaUserGraduate className="toggle-icon" />
+                  For Students
+                </button>
+                <button 
+                  className={`toggle-btn ${activeTab === 'educator' ? 'active' : ''}`}
+                  onClick={() => handleTabToggle('educator')}
+                >
+                  <FaChalkboardTeacher className="toggle-icon" />
+                  For Educators
+                </button>
               </div>
             </div>
           </div>
         </div>
         <div className="tools-content">
-          <div className="student-tools tab-content">
-            <div className="tab-header">
-              <BiSolidBookAlt className="tab-main-icon" />
-              <h2 className="tab-title">For Students</h2>
-            </div>
+          {activeTab === 'student' ? (
+            <div className="student-tools tab-content">
+              <div className="tab-header">
+                <BiSolidBookAlt className="tab-main-icon" />
+                <h2 className="tab-title">AI Lecture Summarizer</h2>
+              </div>
             <div className="tab-content-section">
               <div className="content-wrapper">
                 <h3 className="content-subtitle">AI Lecture Summarization</h3>
@@ -270,9 +281,74 @@ const AiToolsPage = () => {
               </div>
             </div>
           </div>
-          <div className="educator-tools tab-content">
-            {/* Educator content will go here */}
-          </div>
+          ) : (
+            <div className="educator-tools tab-content">
+              <div className="tab-header">
+                <FaFileAlt className="tab-main-icon" />
+                <h2 className="tab-title">AI Quiz & Exam Generator</h2>
+              </div>
+              <div className="tab-content-section">
+                <div className="content-wrapper">
+                  <h3 className="content-subtitle">Create Custom Assessments</h3>
+                  <p className="content-description">
+                    Generate comprehensive quizzes and exams tailored to your course content.
+                    Choose difficulty levels, question types, and assessment length to perfectly
+                    match your teaching needs.
+                  </p>
+                  <button className="try-button">
+                    Create assessment
+                    <LuSparkles className="button-icon" />
+                  </button>
+                </div>
+                <div className="drop-box educator-drop-box">
+                  <h3 className="drop-title">Quiz Generator</h3>
+                  <p className="drop-description">Upload your course materials and select assessment options</p>
+                  <div className="drop-zone">
+                    <div className="drop-icon">
+                      <LuCloud className="cloud-icon" />
+                    </div>
+                    <h4 className="drop-zone-title">Drag & drop files here</h4>
+                    <p className="drop-zone-subtitle">or click to browse (PDFs, documents)</p>
+                    <button className="select-files-btn">Select Files</button>
+                  </div>
+                  <div className="assessment-options">
+                    <h4 className="options-title">Assessment Options</h4>
+                    <div className="option-group">
+                      <label>Question Type</label>
+                      <select className="option-select">
+                        <option>Multiple Choice</option>
+                        <option>True/False</option>
+                        <option>Short Answer</option>
+                        <option>Mixed</option>
+                      </select>
+                    </div>
+                    <div className="option-group">
+                      <label>Difficulty</label>
+                      <select className="option-select">
+                        <option>Easy</option>
+                        <option>Medium</option>
+                        <option>Hard</option>
+                        <option>Mixed</option>
+                      </select>
+                    </div>
+                    <div className="option-group">
+                      <label>Number of Questions</label>
+                      <select className="option-select">
+                        <option>10</option>
+                        <option>15</option>
+                        <option>20</option>
+                        <option>30</option>
+                      </select>
+                    </div>
+                  </div>
+                  <button className="generate-btn">
+                    Generate Assessment
+                    <LuSparkles className="generate-icon" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
