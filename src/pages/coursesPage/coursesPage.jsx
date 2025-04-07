@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './CoursesPage.css';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../contexts/cartContext';
 import { coursesData } from '../../data/coursesData';
 import { FaStar, FaFilter, FaChevronLeft, FaChevronRight, FaBookReader, FaSearch, FaSortAmountDown, FaRegClock, FaUserGraduate } from 'react-icons/fa';
 
 const CoursesPage = () => {
   const { addToCart } = useCart();
+  const navigate = useNavigate();
   const [courses, setCourses] = useState(coursesData);
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({
@@ -51,8 +53,6 @@ const CoursesPage = () => {
     if (filters.field !== 'All') {
       filteredCourses = filteredCourses.filter(course => course.field === filters.field);
     }
-
-
 
     if (filters.priceRange !== 'All') {
       if (filters.priceRange === 'Free') {
@@ -213,6 +213,13 @@ const CoursesPage = () => {
   // Handle sort option change
   const handleSortChange = (option) => {
     setSortOption(option);
+  };
+
+  // Navigate to course detail page
+  const navigateToCourse = (courseId, event) => {
+    // Prevent the click event from bubbling up to parent elements
+    event.stopPropagation();
+    navigate(`/courses/${courseId}`);
   };
 
   return (
@@ -379,6 +386,7 @@ const CoursesPage = () => {
               key={course.id} 
               className={`course-card ${visibleCards.includes(course.id.toString()) ? 'visible' : ''}`}
               data-id={course.id}
+              onClick={(e) => navigateToCourse(course.id, e)}
             >
               {course.popular && (
                 <div className="popular-badge">Popular</div>
@@ -392,12 +400,23 @@ const CoursesPage = () => {
                   loading="lazy"
                 />
                 <div className="hover-overlay">
-                  <button 
-                    className="quick-view-btn"
-                    onClick={() => addToCart(course)}
-                  >
-                    Add to Cart
-                  </button>
+                  <div className="overlay-buttons">
+                    <button 
+                      className="quick-view-btn"
+                      onClick={(e) => navigateToCourse(course.id, e)}
+                    >
+                      View Course
+                    </button>
+                    <button 
+                      className="add-cart-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        addToCart(course);
+                      }}
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
                 </div>
               </div>
               <div className="course-content">
