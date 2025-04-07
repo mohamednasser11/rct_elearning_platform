@@ -2,6 +2,8 @@
   max-width: 100%; /* Takes up full width of the parent element */
   margin: 0; /* Removes default margins */
   padding: 0 2rem; /* Adds horizontal padding on both sides */
+  background-image: linear-gradient(to bottom, rgba(10, 238, 105, 0.15) 3%, rgba(255, 255, 255, 1) 22%);
+  min-height: 100vh;
 }
 
 /* Hero Section */
@@ -11,7 +13,7 @@
   gap: 4rem; /* Space between the columns */
   align-items: center; /* Vertically centers items in the grid */
   padding: 4rem 2rem; /* Padding around all sides */
-  background: white; /* White background color */
+  background: transparent; /* Transparent background to show gradient from parent */
   margin-bottom: 4rem; /* Space below the hero section */
   max-width: 100%; /* Takes full available width */
   margin: 0 ; /* Removes margin (overrides margin-bottom) */
@@ -58,7 +60,7 @@
 .hero-features span { /* Individual feature item */
   display: flex; /* Horizontal layout for icon and text */
   align-items: flex-start; /* Aligns items to the top */
-  gap: 0.75rem; /* Space between icon and text */
+  gap: -0.8rem; /* Reduced space between icon and text */
 }
 
 .hero-features .feature-icon { /* Icon for each feature */
@@ -469,14 +471,17 @@
 
 .feature-card .feature-icon-wrapper.blue {
   background: rgba(48,74,237,0.1);
+  box-shadow: -7px 0 0 rgba(48,74,237,0.1);
 }
 
 .feature-card .feature-icon-wrapper.green {
   background: rgba(10,167,60,0.1);
+  box-shadow: -7px 0 0 rgba(10,167,60,0.1);
 }
 
 .feature-card .feature-icon-wrapper.purple {
   background: rgba(105,10,167,0.1);
+  box-shadow: -7px 0 0 rgba(105,10,167,0.1);
 }
 
 .feature-card .feature-icon {
@@ -532,6 +537,7 @@
 .feature-check-icon {
   color: rgba(10,167,60,0.9);
   font-size: 1.5rem;
+  margin-top: -1rem;
 }
 
 .feature-check-icon.purple {
