@@ -33,8 +33,8 @@ const AiToolsPage = () => {
           </h1>
           <p className="hero-subtitle">Beyond the Blackboard helps students and educators unlock their full potential with intelligent AI tools that summarize lectures and generate customized assessments.</p>
           <div className="cta-buttons">
-            <button className="primary-btn">Get Started</button>
-            <button className="secondary-btn">View Demo</button>
+            <button className="primary-btn">Get Started free</button>
+            <button className="secondary-btn">Watch Demo</button> 
           </div>
           <div className="hero-features">
             <span><BrainCircuit className="feature-icon" /> <span className="feature-text">AI-Powered</span></span>
@@ -224,19 +224,19 @@ const AiToolsPage = () => {
                   <h4 className="features-title">Key Features:</h4>
                   <ul className="features-list">
                     <li>
-                      <div><MdOutlineKeyboardArrowRight className="feature-arrow" /><strong>Three summary levels:</strong> Choose between short, medium, or long</div>
+                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Three summary levels:</strong> Choose between short, medium, or long </div>
                       <div>summaries based on your needs</div>
                     </li>
                     <li>
-                      <div><MdOutlineKeyboardArrowRight className="feature-arrow" /><strong>Subject extraction:</strong> Automatically identifies and organizes key</div>
+                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Subject extraction:</strong> Automatically identifies and organizes key</div>
                       <div>subjects and topics</div>
                     </li>
                     <li>
-                      <div><MdOutlineKeyboardArrowRight className="feature-arrow" /><strong>Smart formatting:</strong> Structured summaries with headings, bullet</div>
+                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Smart formatting:</strong> Structured summaries with headings, bullet</div>
                       <div>points, and highlights</div>
                     </li>
                     <li>
-                      <div><MdOutlineKeyboardArrowRight className="feature-arrow" /><strong>Multiple file support:</strong> Upload lecture slides, PDFs, images, or</div>
+                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Multiple file support:</strong> Upload lecture slides, PDFs, images, or</div>
                       <div>screenshots</div>
                     </li>
                   </ul>
@@ -385,28 +385,28 @@ const AiToolsPage = () => {
                     <h4 className="features-title">Key Features:</h4>
                     <ul className="features-list">
                       <li className="feature-item">
-                        <span className="feature-arrow">›</span>
+                        <span className="feature-arrow educator-arrow">›</span>
                         <span className="feature-text">
                           <strong>Customizable question count:</strong> Generate between 10-40
                           questions per exam
                         </span>
                       </li>
                       <li className="feature-item">
-                        <span className="feature-arrow">›</span>
+                        <span className="feature-arrow educator-arrow">›</span>
                         <span className="feature-text">
                           <strong>Difficulty settings:</strong> Choose from easy, medium, or hard
                           difficulty levels
                         </span>
                       </li>
                       <li className="feature-item">
-                        <span className="feature-arrow">›</span>
+                        <span className="feature-arrow educator-arrow">›</span>
                         <span className="feature-text">
                           <strong>Multiple question types:</strong> Multiple choice, short answer, essay
                           prompts, and more
                         </span>
                       </li>
                       <li className="feature-item">
-                        <span className="feature-arrow">›</span>
+                        <span className="feature-arrow educator-arrow">›</span>
                         <span className="feature-text">
                           <strong>Automatic answer keys:</strong> Complete with explanations for each
                           question

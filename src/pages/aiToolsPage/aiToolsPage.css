@@ -1,34 +1,34 @@
-.ai-tools-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0;
+.ai-tools-container { /* Main container for all AI tools page content */
+  max-width: 100%; /* Takes up full width of the parent element */
+  margin: 0; /* Removes default margins */
+  padding: 0 2rem; /* Adds horizontal padding on both sides */
 }
 
 /* Hero Section */
-.hero-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  padding: 4rem 0;
-  background: white;
-  margin-bottom: 4rem;
-  max-width: 1200px;
-  margin: 0 auto;
+.hero-section { /* Top banner section with headline and preview */
+  display: grid; /* Uses CSS Grid for layout */
+  grid-template-columns: 1fr 1fr; /* Creates two equal columns */
+  gap: 4rem; /* Space between the columns */
+  align-items: center; /* Vertically centers items in the grid */
+  padding: 4rem 2rem; /* Padding around all sides */
+  background: white; /* White background color */
+  margin-bottom: 4rem; /* Space below the hero section */
+  max-width: 100%; /* Takes full available width */
+  margin: 0 ; /* Removes margin (overrides margin-bottom) */
 }
 
-.hero-content {
-  text-align: left;
-  padding-right: 2rem;
+.hero-content { /* Left side content of hero section */
+  text-align: left; /* Aligns text to the left */
+  padding-right: 2rem; /* Adds space on the right side */
 }
 
-.hero-section h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: #000000;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-  text-align: left;
+.hero-section h1 { /* Main heading in hero section */
+  font-size: 3.5rem; /* Large font size for heading */
+  font-weight: 700; /* Bold font weight */
+  color: #000000; /* Black text color */
+  margin-bottom: 1.5rem; /* Space below the heading */
+  line-height: 1.2; /* Tighter line height for headings */
+  text-align: left; /* Left-aligned text */
 }
 
 .highlight {
@@ -39,231 +39,240 @@
   background-clip: text;
 }
 
-.hero-subtitle {
-  font-size: 1.125rem;
-  color: #718096;
-  margin-bottom: 2rem;
-  line-height: 1.6;
-  text-align: left;
+.hero-subtitle { /* Subtitle text below the main heading */
+  font-size: 1.125rem; /* Slightly larger than body text */
+  color: #718096; /* Medium gray color */
+  margin-bottom: 2rem; /* Space below the subtitle */
+  line-height: 1.6; /* Increased line height for readability */
+  text-align: left; /* Left-aligned text */
 }
 
-.hero-features {
-  display: flex;
-  gap: 2rem;
-  margin-top: 2rem;
-  color: #4A5568;
-  font-size: 0.875rem;
+.hero-features { /* Feature list below the subtitle */
+  display: flex; /* Horizontal layout for features */
+  gap: 2rem; /* Space between feature items */
+  margin-top: 2rem; /* Space above the features section */
+  color: #4A5568; /* Dark gray text color */
+  font-size: 0.875rem; /* Slightly smaller text */
 }
 
-.hero-features span {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
+.hero-features span { /* Individual feature item */
+  display: flex; /* Horizontal layout for icon and text */
+  align-items: flex-start; /* Aligns items to the top */
+  gap: 0.75rem; /* Space between icon and text */
 }
 
-.hero-features .feature-icon {
-  color: rgba(10,167,60,0.9) !important;
-  font-size: 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
+.hero-features .feature-icon { /* Icon for each feature */
+  color: rgba(10,167,60,0.9) !important; /* Green icon color with high specificity */
+  font-size: 1.25rem; /* Size of the icon */
+  display: flex; /* Flexbox for centering */
+  align-items: center; /* Vertical centering */
+  justify-content: center; /* Horizontal centering */
+  width: 1.5rem; /* Fixed width */
+  height: 1.5rem; /* Fixed height */
 }
 
-.hero-features .feature-text {
-  margin-top: 2px;
+.hero-features .feature-text { /* Text label for each feature */
+  margin-top: 2px; /* Slight vertical adjustment */
 }
 
-.hero-preview {
-  position: relative;
+.hero-preview { /* Right side of hero section with preview image */
+  position: relative; /* Enables positioning context for children */
+  width: 100%; /* Takes full width of its column */
+  display: flex; /* Flexbox layout */
+  justify-content: center; /* Centers content horizontally */
 }
 
-.hero-preview .preview-card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
-  border: 1px solid #E2E8F0;
+.hero-preview .preview-card { /* Card showing the UI preview example */
+  background: white; /* White background */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Shadow for depth */
+  overflow: hidden; /* Clips content to the rounded corners */
+  width: 100%; /* Full width within container */
+  max-width: 580px; /* Increased for better proportion with the wider layout */
+  margin: 0 auto; /* Centers horizontally */
+  border: 1px solid #E2E8F0; /* Light gray border */
+  transform: translateY(0); /* Initial position for hover animation */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
 }
 
-.preview-header {
-  background: rgb(48,74,237);
-  padding: 0.75rem;
-  display: flex;
-  gap: 0.5rem;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+.preview-header { /* Browser-like header bar at top of preview */
+  background: rgb(48,74,237); /* Blue background color */
+  padding: 1rem; /* Space inside the header */
+  display: flex; /* Horizontal layout */
+  gap: 0.75rem; /* Space between elements */
+  border-bottom: 1px solid rgba(255,255,255,0.1); /* Subtle white border at bottom */
 }
 
 /* Gradient applied directly to header */
 
-.preview-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  opacity: 0.9;
-  position: relative;
-  z-index: 1;
-  background-color: #5e96ff;
+.preview-dot { /* Browser control dots (like close, minimize buttons) */
+  width: 12px; /* Width of circular dot */
+  height: 12px; /* Height of circular dot */
+  border-radius: 50%; /* Makes it perfectly round */
+  opacity: 0.9; /* Slightly transparent */
+  position: relative; /* Enables positioning */
+  z-index: 1; /* Stacking order */
+  background-color: #5e96ff; /* Blue background color */
 }
 
-.preview-content {
-  padding: 1.5rem;
-  padding-top: 1rem;
-  background: #FFFFFF;
+.preview-content { /* Main content area of the preview card */
+  padding: 2rem; /* Padding on all sides */
+  padding-top: 1.5rem; /* Less padding at top (overrides the 2rem) */
+  background: #FFFFFF; /* White background */
 }
 
-.preview-title {
-  color: #2D3748;
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-  letter-spacing: -0.01em;
-  text-align: left;
-  margin-top: 0;
+.preview-title { /* Title in the preview content */
+  color: #2D3748; /* Dark slate gray color */
+  font-size: 1.25rem; /* Larger text size */
+  font-weight: 600; /* Semi-bold weight */
+  margin-bottom: 2.5rem; /* Large space below title */
+  letter-spacing: -0.01em; /* Slightly tighter letter spacing */
+  text-align: left; /* Left-aligned text */
+  margin-top: 0; /* No top margin */
 }
 
-.preview-line {
-  height: 8px;
-  background: #EDF2F7;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  transition: all 0.2s ease;
+.preview-line { /* Decorative lines in the preview to simulate text content */
+  height: 10px; /* Thickness of each line */
+  background: #EDF2F7; /* Light gray background color */
+  border-radius: 5px; /* Rounded ends and corners */
+  margin-bottom: 1.25rem; /* Space between lines */
+  transition: all 0.2s ease; /* Smooth animation for any changes */
 }
 
-.preview-line.short { width: 70%; }
-.preview-line.medium { width: 85%; }
+.preview-line.short { width: 70%; } /* Shorter line variation taking 70% of container width */
+.preview-line.medium { width: 85%; } /* Medium line variation taking 85% of container width */
 
-.summary-options {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 2.5rem;
-  justify-content: flex-start;
-  border-top: 1px solid #E2E8F0;
-  padding-top: 2rem;
+.summary-options { /* Container for buttons at bottom of preview */
+  display: flex; /* Horizontal layout for buttons */
+  gap: 1rem; /* Space between buttons */
+  margin-top: 3rem; /* Large space above the options */
+  justify-content: flex-start; /* Align buttons to the left */
+  border-top: 1px solid #E2E8F0; /* Light gray border at top */
+  padding-top: 2rem; /* Space between border and buttons */
 }
 
-.summary-btn {
-  padding: 0.625rem 1.25rem;
-  border: 1px solid #E2E8F0;
-  border-radius: 6px;
-  background: #FFFFFF;
-  color: #4A5568;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
+.summary-btn { /* Button style for the summary options */
+  padding: 0.75rem 1.5rem; /* Internal padding for button */
+  border: 1px solid #E2E8F0; /* Light gray border */
+  border-radius: 6px; /* Rounded corners */
+  background: #FFFFFF; /* White background */
+  color: #4A5568; /* Dark gray text color */
+  font-size: 0.875rem; /* Slightly smaller text */
+  font-weight: 500; /* Medium font weight */
+  cursor: pointer; /* Shows hand cursor on hover */
+  transition: all 0.2s ease; /* Smooth animation for hover effects */
+  flex: 1; /* Button takes up equal space */
+  text-align: center; /* Centers text within button */
 }
 
-.summary-btn:hover {
-  background: rgb(235, 242, 254);
-  color: rgb(48,74,237);
-  border-color: rgb(48,74,237);
+.summary-btn:hover { /* Styles for when mouse hovers over button */
+  background: rgb(235, 242, 254); /* Light blue background on hover */
+  color: rgb(48,74,237); /* Changes text to blue */
+  border-color: rgb(48,74,237); /* Changes border to blue */
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px) { /* Styles for tablets and smaller devices */
   .hero-section {
-    grid-template-columns: 1fr;
-    text-align: left;
-    gap: 3rem;
-    padding: 3rem 0;
+    grid-template-columns: 1fr; /* Changes to single column layout */
+    text-align: left; /* Keeps text left-aligned */
+    gap: 3rem; /* Reduced spacing between elements */
+    padding: 3rem 2rem; /* Less padding on top/bottom */
   }
 
   .hero-content {
-    text-align: left;
+    text-align: left; /* Ensures text remains left-aligned */
   }
 
   .hero-features {
-    justify-content: flex-start;
+    justify-content: flex-start; /* Aligns features to the left */
   }
 
   .hero-preview {
-    order: -1;
+    order: -1; /* Moves preview above content on mobile */
   }
 
   .hero-preview .preview-card {
-    max-width: 400px;
+    max-width: 450px; /* Slightly larger for better proportion */
   }
 
   .hero-section h1 {
-    font-size: 2.75rem;
+    font-size: 2.75rem; /* Smaller font size for smaller screens */
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Styles for mobile phones */
   .hero-section h1 {
-    font-size: 2.25rem;
+    font-size: 2.25rem; /* Even smaller heading for phones */
   }
 }
 
-.cta-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-start;
+.cta-buttons { /* Container for call-to-action buttons */
+  display: flex; /* Horizontal layout for buttons */
+  gap: 1rem; /* Space between buttons */
+  justify-content: flex-start; /* Aligns buttons to the left */
 }
 
-.primary-btn, .secondary-btn {
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  font-size: 1rem;
-  cursor: pointer;
+.primary-btn, .secondary-btn { /* Shared styles for both button types */
+  padding: 0.75rem 2.5rem; /* Wider horizontal padding */
+  border-radius: 6px; /* Rounded corners */
+  font-weight: 500; /* Medium font weight */
+  transition: all 0.2s ease; /* Smooth animation for hover effects */
+  font-size: 1rem; /* Standard text size */
+  cursor: pointer; /* Hand cursor on hover */
+  min-width: 160px; /* Minimum width for consistent button sizing */
+  text-align: center; /* Center text within button */
 }
 
-.primary-btn {
-  background: linear-gradient(135deg, #4299E1 0%, #667EEA 100%);
-  color: white;
-  border: none;
+.primary-btn { /* Main action button style */
+  background: linear-gradient(135deg, #4299E1 0%, #667EEA 100%); /* Blue gradient background */
+  color: white; /* White text */
+  border: none; /* No border */
 }
 
-.secondary-btn {
-  background: transparent;
-  border: 2px solid #4299E1;
-  color: #4299E1;
+.secondary-btn { /* Secondary/alternative action button */
+  background: transparent; /* No background */
+  border: 2px solid #4299E1; /* Blue border */
+  color: #4299E1; /* Blue text color */
 }
 
-.primary-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 6px rgba(66, 153, 225, 0.2);
+.primary-btn:hover { /* Primary button hover effect */
+  transform: translateY(-2px); /* Slight upward movement */
+  box-shadow: 0 4px 6px rgba(66, 153, 225, 0.2); /* Subtle shadow for 3D effect */
 }
 
-.secondary-btn:hover {
-  background: rgba(66, 153, 225, 0.05);
+.secondary-btn:hover { /* Secondary button hover effect */
+  transform: translateY(-2px); /* Slight upward movement */
+  background: rgba(66, 153, 225, 0.05); /* Very light blue background */
 }
 
-/* AI Tools Section */
-.ai-tools-section {
-  padding: 4rem 0;
-  text-align: center;
-  background: #ffffff;
-  border-radius: 16px;
-  margin: 0 -1rem;
-  padding: 3rem 1rem;
+/* AI Tools Section - The main content area showcasing the learning tools */
+.ai-tools-section { /* Container for the AI tools showcase */
+  padding: 4rem 0 4rem 0; /* Large padding top and bottom */
+  text-align: center; /* Center-aligned text */
+  background: #ffffff; /* White background */
+  border-radius: 16px; /* Rounded corners */
+  margin: 0; /* No margin */
 }
 
-.ai-tools-section h2 {
-  font-size: 2rem;
-  color: #2D3748;
-  margin-bottom: 0.5rem;
+.ai-tools-section h2 { /* Main heading for AI Tools section */
+  font-size: 2rem; /* Large text size */
+  color: #2D3748; /* Dark slate gray color */
+  margin-bottom: 0.5rem; /* Small space below heading */
 }
 
-.ai-tools-section p {
-  color: #4A5568;
-  margin-bottom: 3rem;
+.ai-tools-section p { /* Paragraph text in AI Tools section */
+  color: #4A5568; /* Medium gray text color */
+  margin-bottom: 3rem; /* Large space below paragraph */
 }
 
-.section-subtitle {
-  color: #090b0f;
-  font-size: 1.25rem;
-  margin-bottom: 3rem;
-  line-height: 1.5;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+.section-subtitle { /* Subtitle text below main heading */
+  color: #090b0f; /* Very dark (almost black) text */
+  font-size: 1.25rem; /* Larger than standard text */
+  margin-bottom: 3rem; /* Large space below subtitle */
+  line-height: 1.5; /* Increased line height for readability */
+  max-width: 700px; /* Maximum width to control line length */
+  margin-left: auto; /* Centers the element horizontally */
+  margin-right: auto; /* Centers the element horizontally */
 }
 
 .highlight {
@@ -274,63 +283,63 @@
   background-clip: text;
 }
 
-.tools-grid {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto 4rem;
-  padding: 0 2rem;
-  margin-bottom: 6rem;
+.tools-grid { /* Container for the main AI tool cards */
+  display: flex; /* Horizontal layout */
+  justify-content: center; /* Center cards horizontally */
+  gap: 2rem; /* Space between cards */
+  max-width: calc(100% - 4rem); /* Full width minus 4rem padding */
+  margin: 0 auto 4rem; /* Center horizontally with bottom margin */
+  padding: 0 2rem; /* Horizontal padding only */
+  margin-bottom: 6rem; /* Large space below grid (overrides previous margin) */
 }
 
-.tool-card {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 2rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  flex: 1;
-  max-width: 500px;
-  position: relative;
+.tool-card { /* Individual card for each AI tool (e.g., Writing Assistant, Math Solver) */
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Stack content vertically */
+  gap: 1rem; /* Space between child elements */
+  padding: 2rem; /* Internal padding */
+  background: white; /* White background */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+  transition: all 0.3s ease; /* Smooth animation for hover effects */
+  flex: 1; /* Card takes equal space */
+  max-width: 500px; /* Maximum width limit */
+  position: relative; /* For positioning the colored top border */
 }
 
-.tool-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 8px;
-  border-radius: 12px 12px 0 0;
+.tool-card::before { /* Colored top border accent for each tool card */
+  content: ''; /* Required for pseudo-elements */
+  position: absolute; /* Position relative to the card */
+  top: 0; /* Position at the top of the card */
+  left: 0; /* Align with left edge */
+  right: 0; /* Span full width to right edge */
+  height: 8px; /* Thin strip height */
+  border-radius: 12px 12px 0 0; /* Match top card corners */
 }
 
-.summarizer-card::before {
-  background: linear-gradient(90deg, rgba(48,74,237,1) 0%, rgba(10,167,60,0.8680264342064951) 100%, rgba(105,10,167,0.8680264342064951) 100%);
+.summarizer-card::before { /* Blue-green gradient for the Lecture Summarizer tool */
+  background: linear-gradient(90deg, rgba(48,74,237,1) 0%, rgba(10,167,60,0.8680264342064951) 100%, rgba(105,10,167,0.8680264342064951) 100%); /* Blue to green gradient */
 }
 
-.assessment-card::before {
-  background: linear-gradient(90deg, rgba(48,74,237,1) 0%, rgba(10,167,60,0.8680264342064951) 0%, rgba(105,10,167,0.8680264342064951) 100%);
+.assessment-card::before { /* Blue-purple gradient for the Assessment Generator tool */
+  background: linear-gradient(90deg, rgba(48,74,237,1) 0%, rgba(10,167,60,0.8680264342064951) 0%, rgba(105,10,167,0.8680264342064951) 100%); /* Blue to purple gradient */
 }
 
-.tool-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.tool-header { /* Container for tool icon and title */
+  display: flex; /* Horizontal layout */
+  align-items: center; /* Vertically center icon and title */
+  gap: 1rem; /* Space between icon and title */
 }
 
-.tool-header h3 {
-  font-size: 1.5rem; 
-  font-weight: 600;
-  color: #2D3748;
-  margin: 0;
+.tool-header h3 { /* Title of each AI tool */
+  font-size: 1.5rem; /* Large text size */
+  font-weight: 600; /* Semi-bold weight */
+  color: #2D3748; /* Dark slate gray color */
+  margin: 0; /* No margin */
 }
 
-.tool-description {
-  margin: 0;
+.tool-description { /* Description text for each AI tool */
+  margin: 0; /* No margin */
   padding-left: 0;
   color: #000000;
   line-height: 1.6;
@@ -410,6 +419,9 @@
   gap: 2rem;
   margin-top: 4rem;
   padding: 0 2rem;
+  max-width: calc(100% - 4rem);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .feature-card {
@@ -529,7 +541,7 @@
 .feature-content {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  gap: 0.25rem;
   margin-top: -1rem;
 }
 
@@ -609,7 +621,7 @@
 
 .toggle-switch {
   position: relative;
-  width: 320px;
+  width: 360px; /* Slightly wider for better proportion */
   height: 48px;
   background: #f1f5f9;
   border-radius: 25px;
@@ -658,6 +670,8 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 1.5rem;
+  padding-left: 0;
+  margin-left: 0;
 }
 
 .tab-main-icon {
@@ -676,10 +690,15 @@
   color: #2D3748;
 }
 
+/* Controls layout of the toggle content area with two columns */
 .tab-content-section {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
+  margin-top: 2rem;               /* Space above the section */
+  width: 100%;                    /* Full width of parent container */
+  display: grid;                  /* Uses CSS Grid for layout */
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 1.25rem;                  /* Space between the columns */
+  padding: 0;                    /* No padding to eliminate whitespace */
+  margin-left: 0;                /* No left margin to align with edge */
 }
 
 @media (max-width: 768px) {
@@ -688,67 +707,75 @@
   }
 }
 
-.tools-content {
-  margin-top: 2rem;
+.tools-content { /* Container for the toggle content */
+  margin-top: 2rem; /* Space above the toggle content */
 }
 
 /* Fix for toggled section visibility */
-.tab-content {
-  display: block !important; /* Force display for tab content */
-  width: 100%;
+.tab-content { /* Content revealed by toggle switches */
+  display: block !important; /* Force display for tab content (high priority) */
+  width: 100%; /* Full width of container */
 }
 
-/* Educator section layout - exact match to image */
+/* Educator section layout - houses both the exam generator panel and features panel */
 .educator-layout {
-  display: flex;
-  gap: 2rem;
-  background-color: #f5f8fa;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  padding: 1rem;
+  display: flex;                  /* Use flexbox layout to place panels side by side */
+  gap: 1.25rem;                  /* Space between the left and right panels */
+  background-color: transparent; /* Removed background as requested */
+  border-radius: 0.5rem;         /* Slightly rounded corners */
+  overflow: hidden;              /* Ensures content doesn't spill outside container */
+  padding: 1.5rem 1.5rem 1.5rem 0; /* Padding around the layout except on left side */
+  max-width: 100%;               /* Allow container to take full width of parent */
+  margin: 0;                     /* Remove any margin to eliminate white space */
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px) { /* For screens up to 1024px wide (tablets) */
   .educator-layout {
-    flex-direction: column-reverse;
+    flex-direction: column-reverse; /* Stack panels vertically with features on top */
   }
 }
 
 /* Left panel - Exam Generator tool */
 .exam-generator-panel {
-  flex: 1;
-  background-color: white;
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  max-width: 450px;
+  flex: 1;                         /* Take up available space (flexible width) */
+  background-color: white;         /* White background for the panel */
+  padding: 1.5rem;                 /* Internal spacing inside the panel */
+  border-radius: 0.5rem;           /* Rounded corners for the panel */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+  max-width: 580px;                /* Maximum width to maintain proportions */
+  margin: 0;                       /* No margin to align with layout edge */
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px) { /* For screens up to 1024px wide (tablets) */
   .exam-generator-panel {
-    max-width: 100%;
+    max-width: 100%; /* Allow panel to take full width on smaller screens */
   }
 }
 
-.exam-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #000000;
-  margin: 0 0 0.25rem 0;
-  text-align: left;
+.exam-title { /* Title of the exam generator panel */
+  font-size: 1.3rem; /* Larger than standard text */
+  font-weight: 600; /* Semi-bold font weight */
+  color: #000000; /* Black text color */
+  margin: 0 0 0.25rem 0; /* Only bottom margin */
+  text-align: left; /* Left-aligned text */
+  padding-left: 0; /* Remove left padding */
 }
 
-.exam-subtitle {
-  color: #000000;
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
-  margin-top: -0.25rem;
-  text-align: left;
+.exam-subtitle { /* Subtitle below the exam generator title */
+  color: #000000; /* Black text color */
+  font-size: 0.9rem; /* Slightly smaller than standard text */
+  margin-bottom: 1.5rem; /* Space below subtitle */
+  margin-top: -0.25rem; /* Negative margin to bring closer to title */
+  text-align: left; /* Left-aligned text */
+  padding-left: 0; /* Remove left padding */
+  margin-left: 0; /* Remove left margin */
 }
 
 /* File upload area */
 .file-upload-box {
   margin-bottom: 1.5rem;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .upload-area-container {
@@ -758,6 +785,7 @@
   text-align: center;
   background-color: #f8fafc;
   transition: all 0.2s;
+  margin-left: 0;
 }
 
 .upload-area-container:hover {
@@ -806,6 +834,8 @@
 /* Question slider */
 .questions-slider-container {
   margin-bottom: 1.5rem;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .slider-label {
@@ -973,12 +1003,11 @@
   color: #718096;
 }
 
-/* Right panel - Features */
+/* Right panel - Features - contains the key features list and tool description */
 .features-panel {
-  flex: 1.5;
-  padding: 2rem;
-  background-color: #ffffff;
-  
+  flex: 1.5;                      /* Take 1.5x space compared to left panel */
+  padding: 2rem;                  /* Internal spacing inside the panel */
+  background-color: #ffffff;      /* White background for the panel */
 }
 
 .educator-header {
@@ -1032,14 +1061,14 @@
   max-width: 520px;
 }
 
-/* Features section */
+/* Features section - container for key features list in both student and educator views */
 .key-features-container {
-  background-color: #ebf8ff;
-  padding: 1.5rem;
-  border-radius: 0.9rem; 
-  margin-bottom: 1.5rem;
-  border: 2px solid #e2e8f0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  background-color: #ebf8ff;      /* Light blue background color */
+  padding: 1.5rem;                /* Internal padding inside container */
+  border-radius: 0.9rem;          /* Rounded corners for the container */
+  margin-bottom: 1.5rem;          /* Space below the container */
+  border: 2px solid #e2e8f0;      /* Light gray border for definition */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
 }
 
 .features-title {
@@ -1058,25 +1087,37 @@
   margin: 0;
 }
 
-.feature-item {
-  display: flex;
-  margin-bottom: 0.75rem;
-  margin-left: -10px;   
-  margin-top: -5px; 
+.feature-item { /* Individual feature items in the list */
+  display: flex; /* Horizontal layout for arrow and text */
+  margin-bottom: 0.75rem; /* Space between feature items */
+  margin-left: -10px; /* Negative margin to align with container edge */
+  margin-top: -5px; /* Negative margin for tighter vertical spacing */
 }
 
+/* Base styling for all feature arrows - controls appearance of arrows in feature lists */
 .feature-arrow {
-  color: #4299e1;
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-right: 0.5rem;
-  margin-top: -10px; 
+  color: #4299e1;                /* Blue color for the arrows */
+  font-size: 1.2rem;             /* Size of the arrow icon */
+  font-weight: 700;              /* Bold weight for visibility */
+  margin-right: 0.5rem;          /* Space between arrow and text */
+  margin-top: -10px;             /* Move arrows upward for vertical alignment */
 }
 
-.feature-text {
-  color: #4a5568;
-  font-size: 0.9rem;
-  line-height: 1.4;
+/* Specific adjustment for educator arrows only - fine-tunes position */
+.educator-arrow {
+  margin-top: -21px;              /* Move educator arrows higher for proper alignment with text */
+}
+
+/* Keep student arrows with specific styling to avoid empty ruleset */
+.student-arrow {
+  position: relative;            /* Establishes positioning context */
+  top: 0;                        /* Explicitly set top position to keep at current level */
+}
+
+.feature-text { /* Text content for each feature item */
+  color: #4a5568; /* Medium gray text color for readability */
+  font-size: 0.9rem; /* Slightly smaller than standard text */
+  line-height: 1.4; /* Increased line height for better readability */
 }
 
 /* Time saving box */
@@ -1193,9 +1234,9 @@
 
 .tools-content {
   margin-top: 3rem;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
   padding: 0;
 }
 
@@ -1236,8 +1277,10 @@
 }
 
 /* Show student tab by default */
-.student-tools {
+.student-tools.tab-content {
   display: block;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 /* Show educator tab when toggle is checked */
@@ -1265,36 +1308,45 @@
   }
 }
 
+/* Controls layout of the toggle content area with two columns */
 .tab-content-section {
-  margin-top: 2rem;
-  width: 100%;
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 2rem;
-  padding-right: 2rem;
+  margin-top: 2rem;               /* Space above the section */
+  width: 100%;                    /* Full width of parent container */
+  display: grid;                  /* Uses CSS Grid for layout */
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 1.25rem;                  /* Space between the columns */
+  padding: 0;                    /* No padding to eliminate whitespace */
+  margin-left: 0;                /* No left margin to align with edge */
 }
 
+/* Container for the left side content in student view */
 .content-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: fit-content;
+  display: flex;                  /* Uses flexbox for layout */
+  flex-direction: column;         /* Stack children vertically */
+  align-items: flex-start;        /* Align items to the left */
+  width: 100%;                    /* Take full width of container */
+  margin-left: 0;                 /* No left margin to eliminate whitespace */
+  padding-left: 0;                /* No left padding to eliminate whitespace */
 }
 
+/* Container for the file upload box in student view */
 .drop-box {
-  background-color: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  width: 500px;
-  min-height: 500px;
-  margin-top: -5rem;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  background-color: white;        /* White background color */
+  border: 1px solid #e2e8f0;      /* Light gray border */
+  border-radius: 12px;            /* Rounded corners */
+  padding: 2rem;                  /* Internal spacing */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+  width: 100%;                    /* Full width of container */
+  height: auto;                   /* Automatic height based on content */
+  min-height: 500px;              /* Minimum height to maintain size */
+  margin-top: 0;                  /* No top margin */
+  position: relative;             /* Enables absolute positioning of children */
+  overflow: visible;              /* Allow content to overflow if needed */
+  display: flex;                  /* Uses flexbox for layout */
+  flex-direction: column;         /* Stack children vertically */
+  gap: 1.5rem;                    /* Space between child elements */
+  max-width: 580px;               /* Maximum width to match left panel */
+  margin: 0 auto;                 /* Center horizontally in container */
 }
 
 .drop-box::before {
@@ -1303,7 +1355,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 15%;
+  height: 60px;
   background-color: rgba(238,249,254,255);
   border-radius: 12px 12px 0 0;
 }
@@ -1314,19 +1366,17 @@
   color: #000000;
   font-size: 1.5rem;
   font-weight: 600;
-  margin: 0 0 0.1rem 0;
-  margin-top: -10px;
+  margin: 0 0 0.75rem 0;
   text-align: left;
 }
 
 .drop-description {
   position: relative;
   z-index: 1;
-  color: #000000;
+  color: #4A5568;
   font-size: 1.1rem;
   line-height: 1.5;
-  margin: 0;
-  margin-top: -25px;
+  margin: 0 0 1.5rem 0;
   text-align: left;
 }
 
@@ -1485,13 +1535,14 @@
 }
 
 .features-card {
-  background-color: rgba(235, 245, 255, 0.8);
+  background-color: rgba(243,248,255,255);
   border: 1px solid rgba(48,74,237,0.2);
   border-radius: 12px;
-  padding: 1.5rem 1rem 1.5rem 0;
-  margin-top: 2rem;
-  width: fit-content;
-  min-width: auto;
+  padding: 1.5rem 0 1.5rem 0;
+  margin-top: 1rem;
+  width: 100%;
+  min-width: auto; 
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 .features-title {
@@ -1530,10 +1581,10 @@
 
 .feature-arrow {
   color: rgba(45,105,235,255);
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   position: absolute;
   left: 0.5rem;
-  top: 0.2rem;
+  top: 0.7rem; /* Moved arrows slightly downward */   
 }
 
 .features-list li strong {
@@ -1571,9 +1622,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  padding: 4rem 0;
+  padding: 4rem 2rem;
   align-items: center;
-  max-width: 1200px;
+  max-width: calc(100% - 4rem);
   margin: 0 auto;
 }
 
@@ -1636,6 +1687,9 @@
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  width: 100%;
+  max-width: 550px; /* Added max-width for better proportion */
+  margin: 0 auto;
 }
 
 .preview-card {
@@ -1658,7 +1712,7 @@
   .user-section {
     grid-template-columns: 1fr;
     gap: 2rem;
-    padding: 2rem;
+    padding: 2rem 1.5rem;
   }
 
   .section-content {
@@ -1679,6 +1733,8 @@
   padding: 4rem 2rem;
   text-align: center;
   background: white;
+  max-width: 100%;
+  margin: 0;
 }
 
 .our-tools-section h2 {
@@ -1732,7 +1788,7 @@
 .section-subtitle {
   color: #4A5568;
   font-size: 1.25rem;
-  max-width: 600px;
+  max-width: 800px; /* Wider for better proportion in the expanded layout */
   margin: 0 auto;
   line-height: 1.5;
 }
@@ -1744,14 +1800,18 @@
   color: #245ad7;
   margin-bottom: 0.5rem;
   margin-top: -15px;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .content-description {
   margin-top: 0.5rem;
   color: #000000;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.5;
   text-align: left;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 /* Testimonials Section */
@@ -1771,14 +1831,14 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  max-width: 1200px;
+  max-width: calc(100% - 4rem);
   margin: 0 auto;
   padding: 0 2rem;
 }
 
 .testimonial-card {
   background: white;
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   text-align: center;
