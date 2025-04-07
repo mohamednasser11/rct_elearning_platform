@@ -300,7 +300,6 @@ const CourseDetail = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [currentLesson, setCurrentLesson] = useState(null);
   const [addedToCart, setAddedToCart] = useState(false);
-  const [similarCourses, setSimilarCourses] = useState([]);
   
   // Calculate total lessons from curriculum
   const curriculum = useMemo(() => {
@@ -348,10 +347,6 @@ const CourseDetail = () => {
             sampleCurriculum[0].lessons && sampleCurriculum[0].lessons.length > 0) {
           setCurrentLesson(sampleCurriculum[0].lessons[0]);
         }
-        
-        // Find similar courses
-        const similar = findSimilarCourses(fetchedCourse);
-        setSimilarCourses(similar);
       } else {
         setError("Course not found");
       }
@@ -359,25 +354,6 @@ const CourseDetail = () => {
       setLoading(false);
     }, 500);
   }, [courseId]);
-
-  // Find similar courses based on the current course's field
-  const findSimilarCourses = (currentCourse) => {
-    // Filter courses in the same field, excluding the current course
-    let fieldSimilar = coursesData.filter(c => 
-      c.field === currentCourse.field && c.id !== currentCourse.id
-    );
-    
-    // If we don't have enough courses in the same field, add some popular courses
-    if (fieldSimilar.length < 3) {
-      const popularCourses = coursesData.filter(c => 
-        c.popular && c.id !== currentCourse.id && c.field !== currentCourse.field
-      );
-      fieldSimilar = [...fieldSimilar, ...popularCourses];
-    }
-    
-    // Return up to 4 similar courses
-    return fieldSimilar.slice(0, 4);
-  };
 
   // Handle back button click
   const handleBack = () => {
@@ -641,32 +617,6 @@ const CourseDetail = () => {
                     </ul>
                   </div>
                 </div>
-                
-                {/* Similar Courses You Might Like Section */}
-                {similarCourses.length > 0 && (
-                  <div className="similar-courses-section">
-                    <h3 className="section-title">Similar Courses You Might Like</h3>
-                    <div className="similar-courses-grid">
-                      {similarCourses.map(similarCourse => (
-                        <div key={similarCourse.id} className="similar-course-card" onClick={() => navigate(`/courses/${similarCourse.id}`)}>
-                          <div className="similar-course-image">
-                            <img src={similarCourse.image} alt={similarCourse.title} />
-                          </div>
-                          <div className="similar-course-info">
-                            <h4 className="similar-course-title">{similarCourse.title}</h4>
-                            <div className="similar-course-meta">
-                              <div className="similar-course-rating">
-                                <FaStar className="star-icon" />
-                                <span>{similarCourse.rating}</span>
-                              </div>
-                              <div className="similar-course-price">${similarCourse.price}</div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             )}
             

@@ -2,17 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md';
+import { PiBookOpenBold } from "react-icons/pi";
 import './Footer.css';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-section about-section">
-          <h3>About Us</h3>
-          <p>We are dedicated to providing high-quality online education that is accessible to everyone. Our mission is to help you achieve your goals through comprehensive learning experiences.</p>
+          <div className="footer-branding">
+            <div className="footer-logo"><PiBookOpenBold /></div>
+            <h3>Beyond the Blackboard</h3>
+          </div>
+          <p>Empowering education beyond traditional boundaries. Connect, learn, and grow with our innovative platform</p>
           <div className="social-icons">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF /></a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><FaTwitter /></a>
@@ -60,17 +62,6 @@ const Footer = () => {
               <a href="mailto:info@elearning.com">info@elearning.com</a>
             </li>
           </ul>
-        </div>
-      </div>
-
-      <div className="footer-bottom">
-        <div className="footer-bottom-content">
-          <p>&copy; {currentYear} E-Learning Platform. All rights reserved.</p>
-          <div className="footer-legal">
-            <Link to="/privacy">Privacy Policy</Link>
-            <Link to="/terms">Terms of Service</Link>
-            <Link to="/cookies">Cookie Policy</Link>
-          </div>
         </div>
       </div>
     </footer>

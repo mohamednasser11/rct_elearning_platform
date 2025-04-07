@@ -3,15 +3,22 @@ import { Link } from "react-router-dom";
 import "./MainNavigation.css";
 import { useAuth } from "../../contexts/authContext";
 import { useCart } from "../../contexts/cartContext";
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 import { BsCartCheckFill } from "react-icons/bs";
 import { PiBookOpenBold } from "react-icons/pi";
+import { coursesData } from "../../data/coursesData";
+import HamburgerMenu from "./HamburgerMenu";
 
 const MainNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
+  const [categoriesExpanded, setCategoriesExpanded] = useState(false);
   const { isAuthenticated, logout } = useAuth();
   const { cartCount } = useCart();
+  
+  // Extract unique course categories
+  const courseCategories = [...new Set(coursesData.map(course => course.field))];
   
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +39,7 @@ const MainNavigation = () => {
   
   useEffect(() => {
     // Prevent body scrolling when mobile menu is open
-    if (isOpen) {
+    if (isOpen || isCategoryMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
@@ -41,14 +48,30 @@ const MainNavigation = () => {
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, [isOpen]);
+  }, [isOpen, isCategoryMenuOpen]);
 
   const closeMenu = () => {
     setIsOpen(false);
   };
 
+  const closeCategoryMenu = () => {
+    setIsCategoryMenuOpen(false);
+  };
+
   return (
     <nav className={`main-navigation-container ${scrolled ? 'scrolled' : ''}`}>
+      {/* Hamburger Menu Component */}
+      <HamburgerMenu 
+        isCategoryMenuOpen={isCategoryMenuOpen}
+        setIsCategoryMenuOpen={setIsCategoryMenuOpen}
+        courseCategories={courseCategories}
+        categoriesExpanded={categoriesExpanded}
+        setCategoriesExpanded={setCategoriesExpanded}
+        isAuthenticated={isAuthenticated}
+        logout={logout}
+        closeCategoryMenu={closeCategoryMenu}
+      />
+      
       <div className="main-navigation-left-section">
         <Link to="/" className="main-navigation-logo" onClick={closeMenu}>
           <PiBookOpenBold className="main-navigation-book-logo" color="#14c78e" />
@@ -60,7 +83,7 @@ const MainNavigation = () => {
       </div>
       
       <div className="hamburger-menu" onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? <FaTimes className="close-icon" /> : <FaBars className="menu-icon" />}
+        <FaBars />
       </div>
       
       <div className={`nav-overlay ${isOpen ? 'show' : ''}`} onClick={() => setIsOpen(false)}></div>

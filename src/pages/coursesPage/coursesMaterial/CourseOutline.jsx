@@ -367,7 +367,7 @@ const CourseOutline = ({ course }) => {
             <span className="completion-percentage">{courseData.completion}%</span>
             <div className="progress-bar-container">
               <div 
-                className="progress-bar" 
+                className="progress-barC" 
                 style={{ width: `${courseData.completion}%` }}
               ></div>
             </div>

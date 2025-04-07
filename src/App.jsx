@@ -17,19 +17,23 @@ function App() {
   return (
     <Router>
       <CartProvider>
-       <MainNavigation />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/courses/:courseId" element={<CourseDetail />} />
-          <Route path="/for-students" element={<ForStudentsPage />} />
-          <Route path="/for-educators" element={<ForEducatorsPage />} />
-          <Route path="/ai-tools" element={<AiToolsPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/cart" element={<CartPage />} />
-        </Routes>
-        <Footer />
+        <div className="app-wrapper">
+          <MainNavigation />
+          <div className="app-content">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/courses" element={<CoursesPage />} />
+              <Route path="/courses/:courseId" element={<CourseDetail />} />
+              <Route path="/for-students" element={<ForStudentsPage />} />
+              <Route path="/for-educators" element={<ForEducatorsPage />} />
+              <Route path="/ai-tools" element={<AiToolsPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignupPage />} />
+              <Route path="/cart" element={<CartPage />} />
+            </Routes>
+          </div>
+          <Footer />
+        </div>
       </CartProvider>
     </Router>
   );

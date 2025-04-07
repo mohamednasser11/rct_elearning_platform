@@ -51,10 +51,9 @@
 /* Cart item styles */
 .cart-item {
   display: grid;
-  grid-template-columns: 100px 2fr 1fr 1fr auto;
+  grid-template-columns: 100px 2fr 1fr auto;
   align-items: center;
   padding: 1.2rem 0;
-  border-bottom: 1px solid #f0f0f0;
   gap: 1.5rem;
   transition: all 0.3s ease;
 }
@@ -122,86 +121,11 @@
   font-size: 1rem;
 }
 
-.item-quantity {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  position: relative;
-}
-
-.quantity-btn {
-  width: 30px;
-  height: 30px;
-  border-radius: 4px;
-  border: 1px solid #00000065;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  position: relative;
-  padding: 0;
-  overflow: visible;
-}
-
-.quantity-btn svg {
-  display: block !important;
-  font-size: 1.2rem !important;
-  transition: transform 0.2s ease;
-}
-
-.quantity-btn.decrease {
-  color: #555;
-  border-radius: 10px;
-  background-color: #f5f5f5;
-}
-
-.quantity-btn.decrease svg {
-  font-size: 1.4rem !important;
-  color: rgb(0, 0, 0) !important;
-}
-
-.quantity-btn.increase {
-  color: white;
-  background-color: #14c78e;
-  border-radius: 10px;
-  border-color: #14c78e;
-}
-
-.quantity-btn.increase svg {
-  color: white !important;
-  position: relative;
-  left: 1px;
-  border: 1px solid transparent;
-}
-
-.quantity-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid transparent;
-}
-
-.quantity-btn:hover svg {
-  transform: scale(1.2);
-}
-
-.quantity-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
-.quantity-display {
-  font-weight: 600;
-  min-width: 24px;
-  text-align: center;
-}
-
 .item-total {
   font-weight: 600;
   color: #2c3e50;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
+  grid-column: 3;
 }
 
 .remove-item {
@@ -218,6 +142,7 @@
   border-radius: 50%;
   width: 36px;
   height: 36px;
+  grid-column: 4;
 }
 
 .remove-item:hover {
@@ -579,7 +504,7 @@
   
   .cart-item {
     grid-template-columns: 80px 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto;
     gap: 0.8rem;
     position: relative;
     padding: 1rem 0;
@@ -595,14 +520,9 @@
     grid-column: 2;
   }
   
-  .item-quantity {
-    grid-column: 2;
-    grid-row: 2;
-  }
-  
   .item-total {
     grid-column: 2;
-    grid-row: 3;
+    grid-row: 2;
   }
   
   .remove-item {

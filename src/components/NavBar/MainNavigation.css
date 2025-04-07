@@ -60,7 +60,7 @@
 
 /* Second line: green text */
 .main-navigation-logo-second {
-  color: #29cb98;
+  color: #0fb480;
   font-size: 1.5rem;
   font-weight: 600;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -101,7 +101,7 @@
 
 /* Main navigation items */
 .main-navigation-item {
-  color: #000000;
+  color: #4d4d4d;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
@@ -144,7 +144,7 @@
 }
 
 .auth-navigation-item:hover {
-  color: #23b98a;
+  color: #0fb480;
 }
 
 .signup-button {
@@ -153,7 +153,6 @@
   border-radius: 50px;
   padding: 0.5rem 1.5rem;
   font-weight: 600;
-  box-shadow: 0 4px 8px rgba(20, 199, 142, 0.185);
 }
 
 .signup-button:hover {
@@ -230,12 +229,15 @@
   display: none;
   cursor: pointer;
   z-index: 1001;
-}
-
-.menu-icon, .close-icon {
-  font-size: 1.5rem;
+  margin-right: 1rem;
+  font-size: 1.2rem;
   color: #333;
   transition: all 0.3s ease;
+}
+
+.hamburger-menu:hover {
+  color: #14c78e;
+  transform: scale(1.1);
 }
 
 /* Overlay for mobile menu */
@@ -278,14 +280,21 @@
     padding: 0 1.5rem;
   }
   
+  .main-navigation-left-section {
+    margin-left: 0;
+    justify-content: flex-start;
+    flex: 1;
+  }
+  
   .hamburger-menu {
     display: block;
+    order: 1; /* Ensures it appears after the logo */
   }
   
   .main-navigation-content {
     position: fixed;
     top: 0;
-    right: -100%;
+    left: -100%;
     width: 280px;
     height: 100vh;
     background-color: white;
@@ -294,15 +303,15 @@
     align-items: flex-start;
     justify-content: flex-start;
     padding: 100px 2rem 2rem;
-    transition: right 0.3s ease;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
     z-index: 999;
     margin-left: 0;
     gap: 2rem;
   }
   
   .main-navigation-content.open {
-    right: 0;
+    left: 0;
   }
   
   .main-navigation-group {

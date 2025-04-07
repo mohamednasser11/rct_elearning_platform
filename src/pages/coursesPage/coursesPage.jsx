@@ -1,14 +1,32 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import './CoursesPage.css';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../contexts/cartContext';
 import { coursesData } from '../../data/coursesData';
 import { FaStar, FaFilter, FaChevronLeft, FaChevronRight, FaBookReader, FaSearch, FaSortAmountDown, FaRegClock, FaUserGraduate } from 'react-icons/fa';
 
+// Custom hook for debouncing values
+const useDebounce = (value, delay) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    // Set a timeout to update the debounced value after the specified delay
+    const timer = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    // Clear the timeout if the value changes before the delay has passed
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+};
+
 const CoursesPage = () => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
-  const [courses, setCourses] = useState(coursesData);
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({
     field: 'All',
@@ -17,11 +35,19 @@ const CoursesPage = () => {
   });
   const [activeTab, setActiveTab] = useState('categories');
   const [searchTerm, setSearchTerm] = useState('');
+  // Debounce the search term to avoid filtering on every keystroke
+  const debouncedSearchTerm = useDebounce(searchTerm, 300); // 300ms delay
   const [sortOption, setSortOption] = useState('popularity');
   const [isLoading, setIsLoading] = useState(true);
   const [visibleCards, setVisibleCards] = useState([]);
   const coursesRef = useRef(null);
-
+  // Object to store refs for course cards
+  const courseCardRefs = useRef({});
+  // Store the IntersectionObserver instance in a ref
+  const observerRef = useRef(null);
+  // Add error state for handling errors
+  const [error, setError] = useState(null);
+  
   // Responsive courses per page based on screen width
   const getCoursesPerPage = () => {
     const width = window.innerWidth;
@@ -32,10 +58,8 @@ const CoursesPage = () => {
   };
   
   const [coursesPerPage, setCoursesPerPage] = useState(getCoursesPerPage());
-  const totalPages = Math.ceil(courses.length / coursesPerPage);
   const indexOfLastCourse = currentPage * coursesPerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
-  const currentCourses = courses.slice(indexOfFirstCourse, indexOfLastCourse);
 
   const fields = ['All', ...new Set(coursesData.map(course => course.field))];
   const priceRanges = [
@@ -47,77 +71,79 @@ const CoursesPage = () => {
   ];
   const ratings = ['All', '4.8 & up', '4.5 & up', '4.0 & up'];
 
-  const applyFilters = () => {
-    let filteredCourses = coursesData;
+  // Memoize filtered and sorted courses to prevent unnecessary recalculations
+  const courses = useMemo(() => {
+    try {
+      let filteredCourses = coursesData;
 
-    if (filters.field !== 'All') {
-      filteredCourses = filteredCourses.filter(course => course.field === filters.field);
-    }
+      if (filters.field !== 'All') {
+        filteredCourses = filteredCourses.filter(course => course.field === filters.field);
+      }
 
-    if (filters.priceRange !== 'All') {
-      if (filters.priceRange === 'Free') {
-        filteredCourses = filteredCourses.filter(course => course.price === 0);
-      } else if (filters.priceRange === 'Paid') {
-        filteredCourses = filteredCourses.filter(course => course.price > 0);
-      } else {
-        const selectedRange = priceRanges.find(range => range.label === filters.priceRange);
-        filteredCourses = filteredCourses.filter(
-          course => course.price >= selectedRange.min && course.price < selectedRange.max
+      if (filters.priceRange !== 'All') {
+        if (filters.priceRange === 'Free') {
+          filteredCourses = filteredCourses.filter(course => course.price === 0);
+        } else if (filters.priceRange === 'Paid') {
+          filteredCourses = filteredCourses.filter(course => course.price > 0);
+        } else {
+          const selectedRange = priceRanges.find(range => range.label === filters.priceRange);
+          filteredCourses = filteredCourses.filter(
+            course => course.price >= selectedRange.min && course.price < selectedRange.max
+          );
+        }
+      }
+
+      if (filters.rating !== 'All') {
+        const minRating = parseFloat(filters.rating.split(' ')[0]);
+        filteredCourses = filteredCourses.filter(course => course.rating >= minRating);
+      }
+      
+      // Apply search term filter
+      if (debouncedSearchTerm.trim() !== '') {
+        const search = debouncedSearchTerm.toLowerCase();
+        filteredCourses = filteredCourses.filter(course => 
+          course.title.toLowerCase().includes(search) || 
+          course.description.toLowerCase().includes(search) ||
+          course.field.toLowerCase().includes(search)
         );
       }
-    }
+      
+      // Apply sorting
+      switch(sortOption) {
+        case 'popularity':
+          filteredCourses = [...filteredCourses].sort((a, b) => (b.popular ? 1 : 0) - (a.popular ? 1 : 0));
+          break;
+        case 'rating':
+          filteredCourses = [...filteredCourses].sort((a, b) => b.rating - a.rating);
+          break;
+        case 'alphabetical':
+          filteredCourses = [...filteredCourses].sort((a, b) => a.title.localeCompare(b.title));
+          break;
+        case 'price-low':
+          filteredCourses = [...filteredCourses].sort((a, b) => a.price - b.price);
+          break;
+        case 'price-high':
+          filteredCourses = [...filteredCourses].sort((a, b) => b.price - a.price);
+          break;
+        default:
+          break;
+      }
 
-    if (filters.rating !== 'All') {
-      const minRating = parseFloat(filters.rating.split(' ')[0]);
-      filteredCourses = filteredCourses.filter(course => course.rating >= minRating);
+      return filteredCourses;
+    } catch (err) {
+      // Handle any errors during filtering
+      console.error("Error filtering courses:", err);
+      setError("An error occurred while filtering courses. Please try again.");
+      return [];
     }
-    
-    // Apply search term filter
-    if (searchTerm.trim() !== '') {
-      const search = searchTerm.toLowerCase();
-      filteredCourses = filteredCourses.filter(course => 
-        course.title.toLowerCase().includes(search) || 
-        course.description.toLowerCase().includes(search) ||
-        course.field.toLowerCase().includes(search)
-      );
-    }
-    
-    // Apply sorting
-    switch(sortOption) {
-      case 'popularity':
-        filteredCourses = [...filteredCourses].sort((a, b) => (b.popular ? 1 : 0) - (a.popular ? 1 : 0));
-        break;
-      case 'rating':
-        filteredCourses = [...filteredCourses].sort((a, b) => b.rating - a.rating);
-        break;
-      case 'alphabetical':
-        filteredCourses = [...filteredCourses].sort((a, b) => a.title.localeCompare(b.title));
-        break;
-      case 'price-low':
-        filteredCourses = [...filteredCourses].sort((a, b) => a.price - b.price);
-        break;
-      case 'price-high':
-        filteredCourses = [...filteredCourses].sort((a, b) => b.price - a.price);
-        break;
-      case 'students':
-        filteredCourses = [...filteredCourses].sort((a, b) => b.students - a.students);
-        break;
-      case 'duration':
-        filteredCourses = [...filteredCourses].sort((a, b) => {
-          const durationA = parseInt(a.duration.split(' ')[0]);
-          const durationB = parseInt(b.duration.split(' ')[0]);
-          return durationA - durationB;
-        });
-        break;
-      default:
-        break;
-    }
+  }, [filters, debouncedSearchTerm, sortOption]);
 
-    // Reset visible cards when filters change
-    setVisibleCards([]);
-    setCourses(filteredCourses);
-    setCurrentPage(1); // Reset to first page when filters change
-  };
+  // Calculate total pages based on filtered courses
+  const totalPages = Math.ceil(courses.length / coursesPerPage);
+
+  const currentCourses = useMemo(() => {
+    return courses.slice(indexOfFirstCourse, indexOfLastCourse);
+  }, [courses, indexOfFirstCourse, indexOfLastCourse]);
 
   // Handle window resize for responsive courses per page
   useEffect(() => {
@@ -128,11 +154,12 @@ const CoursesPage = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  // Apply filters and search
+  
+  // Reset to first page when filters change
   useEffect(() => {
-    applyFilters();
-  }, [filters, searchTerm, sortOption]);
+    setCurrentPage(1);
+    setVisibleCards([]);
+  }, [filters, debouncedSearchTerm, sortOption]);
   
   // Simulate loading state
   useEffect(() => {
@@ -141,12 +168,36 @@ const CoursesPage = () => {
       setIsLoading(false);
     }, 600);
     return () => clearTimeout(timer);
-  }, [filters, searchTerm, sortOption, currentPage]);
+  }, [filters, debouncedSearchTerm, sortOption, currentPage]);
+  
+  // Reset error state when filters change
+  useEffect(() => {
+    setError(null);
+  }, [filters, debouncedSearchTerm, sortOption]);
   
   // Intersection Observer for lazy loading cards
   useEffect(() => {
+    // Cleanup function to stop observing and disconnect the observer
+    const cleanupObserver = () => {
+      if (observerRef.current) {
+        // Unobserve all elements that are being observed
+        Object.values(courseCardRefs.current).forEach(cardRef => {
+          if (cardRef && observerRef.current) {
+            observerRef.current.unobserve(cardRef);
+          }
+        });
+        // Disconnect the observer completely
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
+    };
+
     if (!isLoading) {
-      const observer = new IntersectionObserver(
+      // Cleanup any existing observer before creating a new one
+      cleanupObserver();
+      
+      // Create new IntersectionObserver
+      observerRef.current = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -154,25 +205,37 @@ const CoursesPage = () => {
               if (!visibleCards.includes(courseId)) {
                 setVisibleCards(prev => [...prev, courseId]);
               }
-              observer.unobserve(entry.target);
+              // Stop observing once visible
+              observerRef.current.unobserve(entry.target);
             }
           });
         },
         { threshold: 0.1 }
       );
 
-      const cardElements = document.querySelectorAll('.course-card');
-      cardElements.forEach(card => {
-        observer.observe(card);
+      // Observe each course card using refs
+      Object.values(courseCardRefs.current).forEach(cardRef => {
+        if (cardRef && observerRef.current) {
+          observerRef.current.observe(cardRef);
+        }
       });
 
-      return () => {
-        cardElements.forEach(card => {
-          observer.unobserve(card);
-        });
-      };
+      // Return cleanup function
+      return cleanupObserver;
     }
+    
+    // Clean up observer if loading state changes
+    return cleanupObserver;
   }, [isLoading, currentCourses, visibleCards]);
+
+  // Function to create or get a ref for a course card
+  const getCardRef = useCallback(id => {
+    return (element) => {
+      if (element) {
+        courseCardRefs.current[id] = element;
+      }
+    };
+  }, []);
 
   const handleFilterChange = (filterType, value) => {
     setFilters(prev => ({
@@ -358,6 +421,28 @@ const CoursesPage = () => {
               </div>
             </div>
           ))
+        ) : error ? (
+          // Error fallback UI
+          <div className="error-container">
+            <FaRegClock size={48} className="error-icon" />
+            <h3>Oops! Something went wrong</h3>
+            <p>{error}</p>
+            <button 
+              className="reset-filters-btn"
+              onClick={() => {
+                setError(null);
+                setFilters({
+                  field: 'All',
+                  priceRange: 'All',
+                  rating: 'All'
+                });
+                setSearchTerm('');
+                setSortOption('popularity');
+              }}
+            >
+              Reset and Try Again
+            </button>
+          </div>
         ) : courses.length === 0 ? (
           // No results message
           <div className="no-courses-message">
@@ -384,6 +469,7 @@ const CoursesPage = () => {
           currentCourses.map(course => (
             <div 
               key={course.id} 
+              ref={getCardRef(course.id)}
               className={`course-card ${visibleCards.includes(course.id.toString()) ? 'visible' : ''}`}
               data-id={course.id}
               onClick={(e) => navigateToCourse(course.id, e)}

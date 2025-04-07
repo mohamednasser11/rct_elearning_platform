@@ -52,11 +52,11 @@
 .progress-bar-container {
   width: 120px;
   height: 6px;
+  color: rgb(228, 194, 1);
   background-color: #f0f0f0;
   border-radius: 3px;
   overflow: hidden;
 }
-
 
 
 /* Section Styles */
@@ -260,6 +260,16 @@
   overflow: hidden;
   width: 100%;
   max-width: 200px;
+}
+
+.progress-barC {
+  flex: 1;
+  height: 5px;
+  background: #14c78e;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #00000007;
+  box-shadow: 6px 4px 8px rgba(0, 0, 0, 0.04);
 }
 
 .section-progress-bar {

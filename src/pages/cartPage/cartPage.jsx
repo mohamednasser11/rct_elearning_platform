@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BsCartCheckFill } from "react-icons/bs";
-import { FaShoppingBag, FaTrashAlt, FaLongArrowAltRight, FaTag, FaCheckCircle, FaPlus } from 'react-icons/fa';
-// import { CiSquareMinus } from "react-icons/ci";
-import { FaMinus } from "react-icons/fa";
+import { FaShoppingBag, FaTrashAlt, FaLongArrowAltRight, FaTag, FaCheckCircle } from 'react-icons/fa';
 import { useCart } from '../../contexts/cartContext';
 import './cartPage.css';
 
@@ -99,30 +97,6 @@ const CartPage = () => {
                   <div className="item-details">
                     <h3>{item.title}</h3>
                     <p className="item-price">${item.price.toFixed(2)}</p>
-                  </div>
-                  <div className="item-quantity">
-                    <button 
-                      className="quantity-btn decrease"
-                      onClick={() => {
-                        const newQuantity = item.quantity - 1;
-                        if (newQuantity <= 0) {
-                          removeFromCart(item.id);
-                        } else {
-                          updateQuantity(item.id, newQuantity);
-                        }
-                      }}
-                      aria-label="Decrease quantity"
-                    >
-                      <FaMinus size={13} />
-                    </button>
-                    <span className="quantity-display">{item.quantity}</span>
-                    <button 
-                      className="quantity-btn increase"
-                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      aria-label="Increase quantity"
-                    >
-                      <FaPlus size={15} />
-                    </button>
                   </div>
                   <div className="item-total">
                     <p>${(item.price * item.quantity).toFixed(2)}</p>
