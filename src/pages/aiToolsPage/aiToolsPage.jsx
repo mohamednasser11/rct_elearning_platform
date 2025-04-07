@@ -260,9 +260,12 @@ const AiToolsPage = () => {
                       onClick={() => setActiveLength('long')}
                     >Long</button>
                   </div>
-                  <p className="length-description">Brief overview with only essential points (1-2 paragraphs)</p>
+                  <p className="length-description">Balanced summary with key concepts and supporting details</p>
                 </div>
-                <button className="generate-btn">Generate Summary</button>
+                <button className="generate-btn">
+                  Generate Summary
+                  <LuSparkles className="generate-icon" />
+                </button>
                 <p className="upload-text">Upload your PDF or image files to get started</p>
               </div>
             </div>
