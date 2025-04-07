@@ -698,55 +698,443 @@
   width: 100%;
 }
 
-/* Remove any CSS that might be hiding the educator tools */
-.tab-content-section {
+/* Educator section layout - exact match to image */
+.educator-layout {
   display: flex;
   gap: 2rem;
-  flex-wrap: wrap;
+  background-color: #f5f8fa;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .educator-layout {
+    flex-direction: column-reverse;
+  }
+}
+
+/* Left panel - Exam Generator tool */
+.exam-generator-panel {
+  flex: 1;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  max-width: 450px;
+}
+
+@media (max-width: 1024px) {
+  .exam-generator-panel {
+    max-width: 100%;
+  }
+}
+
+.exam-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #000000;
+  margin: 0 0 0.25rem 0;
+  text-align: left;
+}
+
+.exam-subtitle {
+  color: #000000;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  margin-top: -0.25rem;
+  text-align: left;
+}
+
+/* File upload area */
+.file-upload-box {
+  margin-bottom: 1.5rem;
+}
+
+.upload-area-container {
+  border: 2px dashed #cbd5e0;
+  border-radius: 0.5rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  background-color: #f8fafc;
+  transition: all 0.2s;
+}
+
+.upload-area-container:hover {
+  border-color: #4299e1;
+  background-color: #ebf8ff;
+}
+
+.upload-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.upload-cloud-icon {
+  font-size: 2rem;
+  color: #4299e1;
+}
+
+.upload-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #2d3748;
+}
+
+.upload-subtitle {
+  color: #718096;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.select-files-button {
+  background-color: #f7fafc;
+  border: 1px solid #e2e8f0;
+  color: #4a5568;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.select-files-button:hover {
+  background-color: #edf2f7;
+}
+
+/* Question slider */
+.questions-slider-container {
+  margin-bottom: 1.5rem;
+}
+
+.slider-label {
+  font-weight: 500;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.slider-wrapper {
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
-.content-wrapper, .drop-box {
+.slider-numbers {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.slider-min, .slider-mid, .slider-max {
+  font-size: 0.8rem;
+  color: #718096;
+  text-align: center;
+}
+
+.questions-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.questions-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #4299e1;
+  cursor: pointer;
+  margin-top: -5px; /* Centers the thumb on the track */
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Difficulty buttons */
+.difficulty-container {
+  margin-bottom: 1.5rem;
+}
+
+.difficulty-label {
+  font-weight: 500;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.difficulty-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.difficulty-btn {
   flex: 1;
-  min-width: 300px;
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  color: #4a5568;
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.educator-drop-box {
-  border-top: 3px solid #9F7AEA;
+.difficulty-btn:hover {
+  background: #f7fafc;
 }
 
-.assessment-options {
-  margin-top: 1.5rem;
-  border-top: 1px solid #e2e8f0;
-  padding-top: 1.5rem;
+.difficulty-btn.easy.active {
+  background: rgba(35,197,95,255);
+  color: white;
+  border-color: rgba(35,197,95,255);
 }
 
-.options-title {
+.difficulty-btn.medium.active {
+  background: rgba(37,98,234,255);
+  color: white;
+  border-color: rgba(37,98,234,255);
+}
+
+.difficulty-btn.hard.active {
+  background: rgba(239,69,69,255);
+  color: white;
+  border-color: rgba(239,69,69,255);
+}
+
+/* Focus area input */
+.focus-area-container {
+  margin-bottom: 1.5rem;
+}
+
+.focus-text {
+  color: #000000;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  text-align: left; 
+}
+
+.focus-text.easy {
+  background-color: rgba(240,253,244,255);
+}
+
+.focus-text.medium {
+  background-color: rgba(241,249,254,255);
+}
+
+.focus-text.hard {
+  background-color: rgba(255,243,242,255);
+}
+
+/* Generate button */
+.generate-exam-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
   font-weight: 600;
-  margin-bottom: 1rem;
-  color: #2D3748;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 0.75rem;
+}
+
+.generate-exam-button:hover {
+  background: #3182ce;
+}
+
+.button-sparkle {
   font-size: 1.1rem;
 }
 
-.option-group {
+.includes-note {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #718096;
+}
+
+/* Right panel - Features */
+.features-panel {
+  flex: 1.5;
+  padding: 2rem;
+  background-color: #f8fafc;
+}
+
+.educator-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.educator-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+}
+
+.educator-icon {
+  font-size: 2.2rem;
+  color: #3b82f6;
+}
+
+.educator-large-icon {
+  font-size: 2.5rem;
+  color: #4a5568;
+}
+
+.educator-heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0;
+}
+
+.tool-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
   margin-bottom: 1rem;
+  margin-top: -35px; 
+  text-align: left;
 }
 
-.option-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: #4A5568;
+.tool-description {
+  color: #4a5568;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+  margin-top: -10px; 
+  max-width: 520px;
 }
 
-.option-select {
-  width: 100%;
-  padding: 0.5rem;
+/* Features section */
+.key-features-container {
+  background-color: #ebf8ff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
   border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  background: #f8fafc;
-  color: #2D3748;
+}
+
+.features-title {
+  font-weight: 600;
+  color: #2d3748;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  text-align: left;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-item {
+  display: flex;
+  margin-bottom: 0.75rem;
+  margin-left: -10px;   
+  margin-top: -5px; 
+}
+
+.feature-arrow {
+  color: #4299e1;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  margin-top: -10px; 
+}
+
+.feature-text {
+  color: #4a5568;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Time saving box */
+.time-saving-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #ffffff;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.time-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-icon {
+  font-size: 1.5rem;
+  color: #48bb78;
+}
+
+.time-content {
+  flex: 1;
+}
+
+.time-title {
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 0.25rem 0;
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+.time-description {
+  color: #4a5568;
+  font-size: 1rem;
+  margin: 0;
+  text-align: left;
+}
+
+/* Try generator button */
+.try-generator-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 600;
   font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.try-generator-button:hover {
+  background: #3182ce;
 }
 
 .toggle-label {

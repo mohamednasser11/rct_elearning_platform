@@ -9,10 +9,12 @@ import { FiUpload } from 'react-icons/fi';
 import { RiRobot2Line } from 'react-icons/ri';
 import { BiSolidBookAlt } from 'react-icons/bi';
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { BsCheck2Square } from "react-icons/bs";
 
 const AiToolsPage = () => {
   const [activeLength, setActiveLength] = React.useState('medium');
   const [activeTab, setActiveTab] = React.useState('student');
+  const [questionCount, setQuestionCount] = React.useState(20);
   
   // Simple toggle function with direct state update
   const handleTabToggle = (tab) => {
@@ -283,67 +285,148 @@ const AiToolsPage = () => {
           </div>
           ) : (
             <div className="educator-tools tab-content">
-              <div className="tab-header">
-                <FaFileAlt className="tab-main-icon" />
-                <h2 className="tab-title">AI Quiz & Exam Generator</h2>
-              </div>
-              <div className="tab-content-section">
-                <div className="content-wrapper">
-                  <h3 className="content-subtitle">Create Custom Assessments</h3>
-                  <p className="content-description">
-                    Generate comprehensive quizzes and exams tailored to your course content.
-                    Choose difficulty levels, question types, and assessment length to perfectly
-                    match your teaching needs.
-                  </p>
-                  <button className="try-button">
-                    Create assessment
-                    <LuSparkles className="button-icon" />
+              <div className="educator-layout">
+                {/* Left Panel - Exam Generator Tool */}
+                <div className="exam-generator-panel">
+                  <h3 className="exam-title">Exam Generator</h3>
+                  <p className="exam-subtitle">Create customized exams from your course materials</p>
+                  
+                  <div className="file-upload-box">
+                    <div className="upload-area-container">
+                      <div className="upload-icon-wrapper">
+                        <FiUpload className="upload-cloud-icon" />
+                      </div>
+                      <p className="upload-title">Drag & drop files here</p>
+                      <p className="upload-subtitle">or click to browse (PDFs, images)</p>
+                      <button className="select-files-button">Select Files</button>
+                    </div>
+                  </div>
+                  
+                  <div className="questions-slider-container">
+                    <p className="slider-label">Number of Questions: {questionCount}</p>
+                    <div className="slider-wrapper">
+                      <input 
+                        type="range" 
+                        min="10" 
+                        max="40" 
+                        value={questionCount}
+                        onChange={(e) => setQuestionCount(parseInt(e.target.value))}
+                        className="questions-slider" 
+                      />
+                      <div className="slider-numbers">
+                        <span className="slider-min">10</span>
+                        <span className="slider-mid">25</span>
+                        <span className="slider-max">40</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="difficulty-container">
+                    <p className="difficulty-label">Difficulty Level</p>
+                    <div className="difficulty-buttons">
+                      <button 
+                        className={`difficulty-btn easy ${activeLength === 'easy' ? 'active' : ''}`}
+                        onClick={() => {
+                          setActiveLength('easy');
+                          setQuestionCount(10);
+                        }}
+                      >Easy</button>
+                      <button 
+                        className={`difficulty-btn medium ${activeLength === 'medium' ? 'active' : ''}`}
+                        onClick={() => {
+                          setActiveLength('medium');
+                          setQuestionCount(25);
+                        }}
+                      >Medium</button>
+                      <button 
+                        className={`difficulty-btn hard ${activeLength === 'hard' ? 'active' : ''}`}
+                        onClick={() => {
+                          setActiveLength('hard');
+                          setQuestionCount(40);
+                        }}
+                      >Hard</button>
+                    </div>
+                  </div>
+                  
+                  <div className="focus-area-container">
+                    <p className={`focus-text ${activeLength}`}>
+                      {activeLength === 'easy' ? 'Basic recall and understanding questions' : 
+                       activeLength === 'medium' ? 'Application and analysis of concepts' : 
+                       'Advanced synthesis and evaluation questions'}
+                    </p>
+                  </div>
+                  
+                  <button className="generate-exam-button">
+                    Generate Exam <LuSparkles className="button-sparkle" />
                   </button>
+                  
+                  <p className="includes-note">Includes both questions and answer key</p>
                 </div>
-                <div className="drop-box educator-drop-box">
-                  <h3 className="drop-title">Quiz Generator</h3>
-                  <p className="drop-description">Upload your course materials and select assessment options</p>
-                  <div className="drop-zone">
-                    <div className="drop-icon">
-                      <LuCloud className="cloud-icon" />
+                
+                {/* Right Panel - Features */}
+                <div className="features-panel">
+                  <div className="educator-header">
+                    <div className="educator-icon-wrapper">
+                      <RiRobot2Line className="educator-icon" />
                     </div>
-                    <h4 className="drop-zone-title">Drag & drop files here</h4>
-                    <p className="drop-zone-subtitle">or click to browse (PDFs, documents)</p>
-                    <button className="select-files-btn">Select Files</button>
+                    <h2 className="educator-heading">For Educators</h2>
                   </div>
-                  <div className="assessment-options">
-                    <h4 className="options-title">Assessment Options</h4>
-                    <div className="option-group">
-                      <label>Question Type</label>
-                      <select className="option-select">
-                        <option>Multiple Choice</option>
-                        <option>True/False</option>
-                        <option>Short Answer</option>
-                        <option>Mixed</option>
-                      </select>
+                  
+                  <h3 className="tool-name">AI Exam Generator</h3>
+                  
+                  <p className="tool-description">
+                    Create comprehensive exams and assessments in seconds. Our
+                    AI analyzes your course materials to generate relevant
+                    questions at your specified difficulty level, saving you hours of
+                    preparation time.
+                  </p>
+                  
+                  <div className="key-features-container">
+                    <h4 className="features-title">Key Features:</h4>
+                    <ul className="features-list">
+                      <li className="feature-item">
+                        <span className="feature-arrow">›</span>
+                        <span className="feature-text">
+                          <strong>Customizable question count:</strong> Generate between 10-40
+                          questions per exam
+                        </span>
+                      </li>
+                      <li className="feature-item">
+                        <span className="feature-arrow">›</span>
+                        <span className="feature-text">
+                          <strong>Difficulty settings:</strong> Choose from easy, medium, or hard
+                          difficulty levels
+                        </span>
+                      </li>
+                      <li className="feature-item">
+                        <span className="feature-arrow">›</span>
+                        <span className="feature-text">
+                          <strong>Multiple question types:</strong> Multiple choice, short answer, essay
+                          prompts, and more
+                        </span>
+                      </li>
+                      <li className="feature-item">
+                        <span className="feature-arrow">›</span>
+                        <span className="feature-text">
+                          <strong>Automatic answer keys:</strong> Complete with explanations for each
+                          question
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div className="time-saving-box">
+                    <div className="time-icon-wrapper">
+                      <BsCheck2Square className="time-icon" />
                     </div>
-                    <div className="option-group">
-                      <label>Difficulty</label>
-                      <select className="option-select">
-                        <option>Easy</option>
-                        <option>Medium</option>
-                        <option>Hard</option>
-                        <option>Mixed</option>
-                      </select>
-                    </div>
-                    <div className="option-group">
-                      <label>Number of Questions</label>
-                      <select className="option-select">
-                        <option>10</option>
-                        <option>15</option>
-                        <option>20</option>
-                        <option>30</option>
-                      </select>
+                    <div className="time-content">
+                      <h4 className="time-title">Time-Saving Solution</h4>
+                      <p className="time-description">Reduce exam preparation time by up to 90%</p>
                     </div>
                   </div>
-                  <button className="generate-btn">
-                    Generate Assessment
-                    <LuSparkles className="generate-icon" />
+                  
+                  <button className="try-generator-button">
+                    Try AI Exam Generator <LuSparkles className="button-sparkle" />
                   </button>
                 </div>
               </div>
