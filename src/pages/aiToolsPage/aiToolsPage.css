@@ -1,54 +1,6 @@
+/* AIToolsPage styles */
 .ai-tools-container {
-  padding: 6rem 2rem 2rem;
+  padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-.ai-tools-container h1 {
-  color: #2c3e50;
-  margin-bottom: 2rem;
-}
-
-.content {
-  display: grid;
-  gap: 2rem;
-}
-
-.features {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.features h2 {
-  color: #2c3e50;
-  margin-bottom: 2rem;
-}
-
-.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-.tool-card {
-  background: #f8f9fa;
-  padding: 1.5rem;
-  border-radius: 8px;
-  transition: transform 0.2s ease;
-}
-
-.tool-card:hover {
-  transform: translateY(-5px);
-}
-
-.tool-card h3 {
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
-}
-
-.tool-card p {
-  color: #6c757d;
-  margin: 0;
 }

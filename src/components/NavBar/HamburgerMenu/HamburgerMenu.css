@@ -282,7 +282,7 @@
 .login-btn:hover {
   background-color: #f1f1f1;
   color: #333333;
-  transform: translateY(-2px);
+  transform: translateY(-4px);
 }
 
 .signup-btn {

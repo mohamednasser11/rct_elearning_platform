@@ -7,14 +7,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-
-  --primary-color: #14c78e;
-  --secondary-color: #008000;
-  --light-gray: #e0e0e0;
-  --dark-gray: #666;
-  --header-bg: #ffffff;
-  --shadow-color: rgba(0, 0, 0, 0.103);
-  --error-color: #000000;
 }
 
 html, body {
