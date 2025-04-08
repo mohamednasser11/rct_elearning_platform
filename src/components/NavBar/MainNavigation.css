@@ -225,7 +225,7 @@
 }
 
 /* Hamburger menu for mobile */
-.hamburger-menu {
+/* .hamburger-menu {
   display: none;
   cursor: pointer;
   z-index: 1001;
@@ -238,7 +238,7 @@
 .hamburger-menu:hover {
   color: #14c78e;
   transform: scale(1.1);
-}
+} */
 
 /* Overlay for mobile menu */
 .nav-overlay {
@@ -286,10 +286,6 @@
     flex: 1;
   }
   
-  .hamburger-menu {
-    display: block;
-    order: 1; /* Ensures it appears after the logo */
-  }
   
   .main-navigation-content {
     position: fixed;
