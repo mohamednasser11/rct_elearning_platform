@@ -53,8 +53,7 @@
 }
 
 .highlight {
-  background: rgb(48,74,237);
-  background: linear-gradient(90deg, rgba(48,74,237,1) 0%, rgba(10,167,60,0.8680264342064951) 51%, rgba(105,10,167,0.8680264342064951) 100%);
+  background: rgba(6,97,28,255);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -266,25 +265,26 @@
 }
 
 .primary-btn { /* Main action button style */
-  background: linear-gradient(135deg, #4299E1 0%, #667EEA 100%); /* Blue gradient background */
+  background: rgba(21,198,142,255); /* New green color */
   color: white; /* White text */
   border: none; /* No border */
 }
 
 .secondary-btn { /* Secondary/alternative action button */
   background: transparent; /* No background */
-  border: 2px solid #4299E1; /* Blue border */
-  color: #4299E1; /* Blue text color */
+  border: 2px solid rgba(21,198,142,255); /* Green border */
+  color: rgba(21,198,142,255); /* Green text color */
 }
 
 .primary-btn:hover { /* Primary button hover effect */
   transform: translateY(-2px); /* Slight upward movement */
-  box-shadow: 0 4px 6px rgba(66, 153, 225, 0.2); /* Subtle shadow for 3D effect */
+  box-shadow: 0 4px 6px rgba(21,198,142,0.2); /* Subtle shadow for 3D effect with new color */
 }
 
 .secondary-btn:hover { /* Secondary button hover effect */
   transform: translateY(-2px); /* Slight upward movement */
-  background: rgba(66, 153, 225, 0.05); /* Very light blue background */
+  background: rgba(21,198,142,0.05); /* Very light green background */
+  border-color: rgba(21,198,142,255); /* Maintain green border on hover */
 }
 
 /* AI Tools Section - The main content area showcasing the learning tools */
@@ -320,8 +320,7 @@
 }
 
 .highlight {
-  background: rgb(48,74,237);
-  background: linear-gradient(90deg, rgba(48,74,237,1) 0%, rgba(10,167,60,0.8680264342064951) 51%, rgba(105,10,167,0.8680264342064951) 100%);
+  background: rgba(6,97,28,255);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -722,15 +721,15 @@
 }
 
 .toggle-btn.active { /* Active toggle button */
-  color: #fff; /* White text color */
+  color: #fff; /* White text */
 }
 
 .toggle-btn:first-child.active { /* First active toggle button */
-  background: linear-gradient(135deg, #4299E1 0%, #667EEA 100%); /* Blue gradient background */
+  background: linear-gradient(135deg, rgba(21,198,142,255) 0%, rgba(21,198,142,255) 100%); /* Green gradient background */
 }
 
 .toggle-btn:last-child.active { /* Last active toggle button */
-  background: linear-gradient(135deg, #9F7AEA 0%, #667EEA 100%); /* Purple gradient background */
+  background: linear-gradient(135deg, rgba(21,198,142,255) 0%, rgba(21,198,142,255) 100%); /* Green gradient background */
 }
 
 .toggle-icon { /* Toggle icon */
@@ -1075,7 +1074,7 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
-  background: #4299e1;
+  background: rgba(21,198,142,255); /* New green color */
   color: white;
   border: none;
   border-radius: 0.25rem;
@@ -1087,7 +1086,8 @@
 }
 
 .generate-exam-button:hover {
-  background: #3182ce;
+  background: rgba(21,198,142,0.9); /* Slightly darker on hover */
+  transform: translateY(-2px);
 }
 
 .button-sparkle {
@@ -1266,7 +1266,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: #4299e1;
+  background: rgba(21,198,142,255); /* New green color */
   color: white;
   border: none;
   border-radius: 0.375rem;
@@ -1277,7 +1277,8 @@
 }
 
 .try-generator-button:hover {
-  background: #3182ce;
+  background: rgba(21,198,142,0.9); /* Slightly darker on hover */
+  transform: translateY(-2px);
 }
 
 .toggle-label {
@@ -1297,7 +1298,7 @@
   left: 4px;
   width: 155px;
   height: 37px;
-  background: rgb(48,74,237);
+  background: rgba(21,198,142,255); /* New green color */
   border-radius: 22px;
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -1331,7 +1332,7 @@
 .tab-main-icon {
   font-size: 2rem;
   color: white;
-  background: rgb(48,74,237);
+  background: rgba(21,198,142,255); /* New green color */
   width: 3rem;
   height: 3rem;
   display: flex;
@@ -1474,13 +1475,13 @@
 }
 
 .drop-zone:hover {
-  border-color: rgb(48,74,237);
+  border-color: rgba(21,198,142,255); /* New green color */
 }
 
 .drop-icon {
   width: 48px;
   height: 48px;
-  background-color: rgba(48,74,237,0.1);
+  background-color: rgba(21,198,142,0.1); /* New green color */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1490,7 +1491,7 @@
 
 .cloud-icon {
   font-size: 24px;
-  color: rgb(48,74,237);
+  color: rgba(21,198,142,255); /* New green color */
 }
 
 .drop-zone-title {
@@ -1559,12 +1560,12 @@
 }
 
 .length-btn:hover {
-  border-color: rgb(48,74,237);
-  color: rgb(48,74,237);
+  border-color: rgba(21,198,142,255); /* New green color */
+  color: rgba(21,198,142,255); /* New green color */
 }
 
 .length-btn.active {
-  background-color: rgb(48,74,237);
+  background-color: rgba(21,198,142,255); /* New green color */
   color: white;
   border-color: transparent;
 }
@@ -1582,7 +1583,7 @@
 
 .generate-btn {
   width: 100%;
-  background: linear-gradient(90deg, rgb(48,74,237) 0%, rgb(8,145,127) 100%);
+  background: rgba(21,198,142,255); /* New green color */
   color: white;
   border: none;
   border-radius: 8px;
@@ -1591,7 +1592,7 @@
   font-weight: 500;
   cursor: pointer;
   margin-top: 2rem;
-  transition: opacity 0.2s ease;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1599,7 +1600,8 @@
 }
 
 .generate-btn:hover {
-  opacity: 0.9;
+  background: rgba(21,198,142,0.9); /* Slightly darker on hover */
+  transform: translateY(-2px);
 }
 
 .generate-icon {
@@ -1615,7 +1617,7 @@
 
 .features-card {
   background-color: rgba(243,248,255,255);
-  border: 1px solid rgba(48,74,237,0.2);
+  border: 1px solid rgba(21,198,142,255); /* New green color */
   border-radius: 12px;
   padding: 1.5rem 0 1.5rem 0;
   margin-top: 1rem;
@@ -1659,7 +1661,7 @@
 }
 
 .feature-arrow {
-  color: rgba(45,105,235,255);
+  color: rgba(21,198,142,255); /* New green color */
   font-size: 1.5rem;
   position: absolute;
   left: 0.5rem;
@@ -1673,7 +1675,7 @@
 }
 
 .try-button {
-  background-color: rgb(48,74,237);
+  background-color: rgba(21,198,142,255); /* New green color */
   color: white;
   border: none;
   border-radius: 8px;
@@ -1689,7 +1691,7 @@
 }
 
 .try-button:hover {
-  background-color: rgb(19,30,95);
+  background-color: rgba(21,198,142,0.9); /* Slightly darker on hover */
 }
 
 .button-icon {
@@ -2053,4 +2055,17 @@
   .testimonials-grid {
     max-width: 1600px; /* Cap the width on very large screens */
   }
+}
+
+/* Style for the arrow icon in the Get Started button */
+.btn-arrow {
+  margin-left: 8px;
+  margin-bottom: -3px;
+  font-size: 0.9em;
+  transition: transform 0.2s ease;
+}
+
+/* Add hover effect to animate the arrow */
+.primary-btn:hover .btn-arrow {
+  transform: translateX(4px);
 }

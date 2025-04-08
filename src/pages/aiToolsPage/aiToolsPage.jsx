@@ -1,6 +1,6 @@
 import React from 'react';
 import './aiToolsPage.css';
-import { FaLightbulb, FaCalculator, FaCalendarAlt, FaLanguage, FaGraduationCap, FaChalkboardTeacher, FaUserGraduate, FaStar, FaRobot, FaBook, FaChartLine, FaBrain, FaBolt, FaFileAlt } from 'react-icons/fa';
+import { FaLightbulb, FaCalculator, FaCalendarAlt, FaLanguage, FaGraduationCap, FaChalkboardTeacher, FaUserGraduate, FaStar, FaRobot, FaBook, FaChartLine, FaBrain, FaBolt, FaFileAlt, FaArrowRight } from 'react-icons/fa';
 import { IoMdBook, IoMdTime } from 'react-icons/io';
 import { IoBookOutline } from 'react-icons/io5';
 import { BrainCircuit } from 'lucide-react';
@@ -44,7 +44,7 @@ const AiToolsPage = () => {
           </h1>
           <p className="hero-subtitle">Beyond the Blackboard helps students and educators unlock their full potential with intelligent AI tools that summarize lectures and generate customized assessments.</p>
           <div className="cta-buttons">
-            <button className="primary-btn">Get Started free</button>
+            <button className="primary-btn">Get Started free <FaArrowRight className="btn-arrow" /></button>
             <button className="secondary-btn">Watch Demo</button> 
           </div>
           <div className="hero-features">
