@@ -103,7 +103,7 @@ const AiToolsPage = () => {
               </div>
               <h3>Lecture Summarizer</h3>
             </div>
-            <p className="tool-description">Our AI technology transforms lengthy lectures into concise <br /> summaries with key points, helping students study more efficiently.</p>
+            <p className="tool-description">Our AI technology transforms lengthy lectures into concise summaries with key points, helping students study more efficiently.</p>
             <div className="tool-feature">
               <div className="feature-icon-wrapper">
                 <LuCircleCheckBig className="feature-check-icon" />
