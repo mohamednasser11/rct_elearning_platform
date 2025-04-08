@@ -60,11 +60,57 @@
 }
 
 .hero-subtitle { /* Subtitle text below the main heading */
-  font-size: 1.125rem; /* Slightly larger than body text */
+  font-size: 1.2rem; /* Slightly larger than body text */
   color: #718096; /* Medium gray color */
   margin-bottom: 2rem; /* Space below the subtitle */
   line-height: 1.6; /* Increased line height for readability */
   text-align: left; /* Left-aligned text */
+}
+
+/* CTA buttons in hero section */
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Primary button style */
+.primary-btn {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem 0.75rem 2.5rem;
+  background: rgba(21,198,142,255); /* Green color */
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 230px;
+}
+
+.primary-btn:hover {
+  background: rgba(21,198,142,0.9); /* Slightly darker on hover */
+  transform: translateY(-2px);
+}
+
+/* Secondary button style */
+.secondary-btn {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: rgba(21,198,142,255);
+  border: 1px solid rgba(21,198,142,255);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.secondary-btn:hover {
+  background: rgba(21,198,142,0.1);
+  transform: translateY(-2px);
 }
 
 .hero-features { /* Feature list below the subtitle */
@@ -137,7 +183,7 @@
 }
 
 .preview-header { /* Browser-like header bar at top of preview */
-  background: rgb(48,74,237); /* Blue background color */
+  background: rgba(6,97,28,255); /* Green background color */
   padding: 1rem; /* Space inside the header */
   display: flex; /* Horizontal layout */
   gap: 0.75rem; /* Space between elements */
@@ -153,7 +199,7 @@
   opacity: 0.9; /* Slightly transparent */
   position: relative; /* Enables positioning */
   z-index: 1; /* Stacking order */
-  background-color: #5e96ff; /* Blue background color */
+  background-color: #12e97d; /* Blue background color */
 }
 
 .preview-content { /* Main content area of the preview card */
@@ -193,105 +239,30 @@
 }
 
 .summary-btn { /* Button style for the summary options */
-  padding: 0.75rem 1.5rem; /* Internal padding for button */
-  border: 1px solid #E2E8F0; /* Light gray border */
-  border-radius: 6px; /* Rounded corners */
-  background: #FFFFFF; /* White background */
-  color: #4A5568; /* Dark gray text color */
-  font-size: 0.875rem; /* Slightly smaller text */
-  font-weight: 500; /* Medium font weight */
-  cursor: pointer; /* Shows hand cursor on hover */
-  transition: all 0.2s ease; /* Smooth animation for hover effects */
-  flex: 1; /* Button takes up equal space */
-  text-align: center; /* Centers text within button */
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  background: transparent;
+  color: #A0AEC0;
+  border: 1px solid #E2E8F0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: default; /* Changed from pointer to default since they're not clickable */
+  transition: none; /* Removed transition effect */
+  flex: 1;
+  text-align: center;
 }
 
-.summary-btn:hover { /* Styles for when mouse hovers over button */
-  background: rgb(235, 242, 254); /* Light blue background on hover */
-  color: rgb(48,74,237); /* Changes text to blue */
-  border-color: rgb(48,74,237); /* Changes border to blue */
-}
-
-@media (max-width: 1024px) { /* Styles for tablets and smaller devices */
-  .hero-section {
-    grid-template-columns: 1fr; /* Changes to single column layout */
-    text-align: left; /* Keeps text left-aligned */
-    gap: 3rem; /* Reduced spacing between elements */
-    padding: 3rem 2rem; /* Less padding on top/bottom */
-  }
-
-  .hero-content {
-    text-align: left; /* Ensures text remains left-aligned */
-  }
-
-  .hero-features {
-    justify-content: flex-start; /* Aligns features to the left */
-  }
-
-  .hero-preview {
-    order: -1; /* Moves preview above content on mobile */
-  }
-
-  .hero-preview .preview-card {
-    max-width: 450px; /* Slightly larger for better proportion */
-  }
-
-  .hero-section h1 {
-    font-size: 2.75rem; /* Smaller font size for smaller screens */
-  }
-}
-
-@media (max-width: 768px) { /* Styles for mobile phones */
-  .hero-section h1 {
-    font-size: 2.25rem; /* Even smaller heading for phones */
-  }
-}
-
-.cta-buttons { /* Container for call-to-action buttons */
-  display: flex; /* Horizontal layout for buttons */
-  gap: 1rem; /* Space between buttons */
-  justify-content: flex-start; /* Aligns buttons to the left */
-}
-
-.primary-btn, .secondary-btn { /* Shared styles for both button types */
-  padding: 0.75rem 2.5rem; /* Wider horizontal padding */
-  border-radius: 6px; /* Rounded corners */
-  font-weight: 500; /* Medium font weight */
-  transition: all 0.2s ease; /* Smooth animation for hover effects */
-  font-size: 1rem; /* Standard text size */
-  cursor: pointer; /* Hand cursor on hover */
-  min-width: 160px; /* Minimum width for consistent button sizing */
-  text-align: center; /* Center text within button */
-}
-
-.primary-btn { /* Main action button style */
-  background: rgba(21,198,142,255); /* New green color */
-  color: white; /* White text */
-  border: none; /* No border */
-}
-
-.secondary-btn { /* Secondary/alternative action button */
-  background: transparent; /* No background */
-  border: 2px solid rgba(21,198,142,255); /* Green border */
-  color: rgba(21,198,142,255); /* Green text color */
-}
-
-.primary-btn:hover { /* Primary button hover effect */
-  transform: translateY(-2px); /* Slight upward movement */
-  box-shadow: 0 4px 6px rgba(21,198,142,0.2); /* Subtle shadow for 3D effect with new color */
-}
-
-.secondary-btn:hover { /* Secondary button hover effect */
-  transform: translateY(-2px); /* Slight upward movement */
-  background: rgba(21,198,142,0.05); /* Very light green background */
-  border-color: rgba(21,198,142,255); /* Maintain green border on hover */
+.summary-btn:hover { /* Removed hover styles for summary buttons since they're not clickable */
+  background: transparent; /* Keep the same as default */
+  color: #A0AEC0; /* Keep the same as default */
+  border-color: #E2E8F0; /* Keep the same as default */
 }
 
 /* AI Tools Section - The main content area showcasing the learning tools */
 .ai-tools-section { /* Container for the AI tools showcase */
   padding: 4rem 0 4rem 0; /* Large padding top and bottom */
   text-align: center; /* Center-aligned text */
-  background: #ffffff; /* White background */
+  background: transparent; /* White background */
   border-radius: 16px; /* Rounded corners */
   margin: 0 auto; /* Center the section */
   max-width: 1600px; /* Maximum width to prevent excessive spreading */
@@ -299,19 +270,20 @@
 }
 
 .ai-tools-section h2 { /* Main heading for AI Tools section */
-  font-size: 2rem; /* Large text size */
+  font-size: 3rem; /* Large text size */
   color: #2D3748; /* Dark slate gray color */
   margin-bottom: 0.5rem; /* Small space below heading */
+  margin-top: -2;
 }
 
 .ai-tools-section p { /* Paragraph text in AI Tools section */
+  font-size: 1.5rem; /* Slightly larger text size */
   color: #4A5568; /* Medium gray text color */
   margin-bottom: 3rem; /* Large space below paragraph */
 }
 
 .section-subtitle { /* Subtitle text below main heading */
   color: #090b0f; /* Very dark (almost black) text */
-  font-size: 1.25rem; /* Larger than standard text */
   margin-bottom: 3rem; /* Large space below subtitle */
   line-height: 1.5; /* Increased line height for readability */
   max-width: 700px; /* Maximum width to control line length */
@@ -1274,6 +1246,7 @@
   font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.2s;
+  margin-top: 2rem;
 }
 
 .try-generator-button:hover {
@@ -2059,7 +2032,7 @@
 
 /* Style for the arrow icon in the Get Started button */
 .btn-arrow {
-  margin-left: 8px;
+  margin-left: 20px;
   margin-bottom: -3px;
   font-size: 0.9em;
   transition: transform 0.2s ease;
@@ -2068,4 +2041,8 @@
 /* Add hover effect to animate the arrow */
 .primary-btn:hover .btn-arrow {
   transform: translateX(4px);
+}
+
+.summarizer-card, .assessment-card {
+  min-height: 600px; /* Added increased height for taller cards */
 }
