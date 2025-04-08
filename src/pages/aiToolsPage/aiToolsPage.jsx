@@ -16,6 +16,17 @@ const AiToolsPage = () => {
   const [activeTab, setActiveTab] = React.useState('student');
   const [questionCount, setQuestionCount] = React.useState(20);
   
+  // Initialize slider fill effect
+  React.useEffect(() => {
+    const slider = document.querySelector('.questions-slider');
+    if (slider) {
+      const min = 10;
+      const max = 40;
+      const ratio = (questionCount - min) / (max - min);
+      slider.style.setProperty('--ratio', ratio);
+    }
+  }, [questionCount]);
+  
   // Simple toggle function with direct state update
   const handleTabToggle = (tab) => {
     console.log('Switching to tab:', tab);
@@ -43,6 +54,19 @@ const AiToolsPage = () => {
           </div>
         </div>
         <div className="hero-preview">
+          <div className="preview-card-small">
+            <div className="preview-header">
+              <div className="preview-dot"></div>
+              <div className="preview-dot"></div>
+              <div className="preview-dot"></div>
+            </div>
+            <div className="preview-content">
+              <h3 className="preview-title">AI Question Generator</h3>
+              <div className="preview-line"></div>
+              <div className="preview-line short"></div>
+              <div className="preview-line medium"></div>
+            </div>
+          </div>
           <div className="preview-card">
             <div className="preview-header">
               <div className="preview-dot "></div>
@@ -224,20 +248,18 @@ const AiToolsPage = () => {
                   <h4 className="features-title">Key Features:</h4>
                   <ul className="features-list">
                     <li>
-                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Three summary levels:</strong> Choose between short, medium, or long </div>
-                      <div>summaries based on your needs</div>
+                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Three summary levels:</strong> Choose between short, medium, or long summaries based</div>
+                      <div>on your needs</div>
                     </li>
                     <li>
-                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Subject extraction:</strong> Automatically identifies and organizes key</div>
-                      <div>subjects and topics</div>
+                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Subject extraction:</strong> Automatically identifies and organizes key subjects and topics</div>
                     </li>
                     <li>
-                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Smart formatting:</strong> Structured summaries with headings, bullet</div>
-                      <div>points, and highlights</div>
+                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Smart formatting:</strong> Structured summaries with headings, bullet points, and highlights</div>
+                      <div></div>
                     </li>
                     <li>
-                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Multiple file support:</strong> Upload lecture slides, PDFs, images, or</div>
-                      <div>screenshots</div>
+                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Multiple file support:</strong> Upload lecture slides, PDFs, images, or screenshots</div>
                     </li>
                   </ul>
                 </div>
@@ -310,7 +332,15 @@ const AiToolsPage = () => {
                         min="10" 
                         max="40" 
                         value={questionCount}
-                        onChange={(e) => setQuestionCount(parseInt(e.target.value))}
+                        onChange={(e) => {
+                          const newValue = parseInt(e.target.value);
+                          setQuestionCount(newValue);
+                          // Update the slider fill effect
+                          const min = 10;
+                          const max = 40;
+                          const ratio = (newValue - min) / (max - min);
+                          e.target.style.setProperty('--ratio', ratio);
+                        }}
                         className="questions-slider" 
                       />
                       <div className="slider-numbers">
