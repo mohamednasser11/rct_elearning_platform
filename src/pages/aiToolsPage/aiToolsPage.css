@@ -1,9 +1,24 @@
+/* Add a root font-size setting to enable consistent rem usage */
+:root {
+  font-size: 16px;
+}
+
+/* Add box-sizing to ensure consistent element sizing */
+* {
+  box-sizing: border-box;
+}
+
 .ai-tools-container { /* Main container for all AI tools page content */
   max-width: 100%; /* Takes up full width of the parent element */
   margin: 0; /* Removes default margins */
   padding: 0 2rem; /* Adds horizontal padding on both sides */
   background-image: linear-gradient(to bottom, rgba(10, 238, 105, 0.15) 3%, rgba(255, 255, 255, 1) 22%);
   min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100%; /* Ensure it takes full width */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
 }
 
 /* Hero Section */
@@ -15,13 +30,17 @@
   padding: 4rem 2rem; /* Padding around all sides */
   background: transparent; /* Transparent background to show gradient from parent */
   margin-bottom: 4rem; /* Space below the hero section */
-  max-width: 100%; /* Takes full available width */
-  margin: 0 ; /* Removes margin (overrides margin-bottom) */
+  max-width: 1600px; /* Maximum width to prevent excessive spreading when zoomed out */
+  min-width: 320px; /* Minimum width to prevent excessive squashing */
+  width: 100%; /* Take full width up to max-width */
+  margin: 0 auto; /* Center the section */
 }
 
 .hero-content { /* Left side content of hero section */
   text-align: left; /* Aligns text to the left */
   padding-right: 2rem; /* Adds space on the right side */
+  min-width: 280px; /* Minimum width to prevent excessive squashing */
+  max-width: 800px; /* Maximum width to prevent content from becoming too spread out */
 }
 
 .hero-section h1 { /* Main heading in hero section */
@@ -83,6 +102,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 350px; /* Ensures minimum height for preview area */
 }
 
 .hero-preview .preview-card-small {
@@ -273,7 +293,9 @@
   text-align: center; /* Center-aligned text */
   background: #ffffff; /* White background */
   border-radius: 16px; /* Rounded corners */
-  margin: 0; /* No margin */
+  margin: 0 auto; /* Center the section */
+  max-width: 1600px; /* Maximum width to prevent excessive spreading */
+  width: 100%; /* Take full width up to max-width */
 }
 
 .ai-tools-section h2 { /* Main heading for AI Tools section */
@@ -307,9 +329,11 @@
 
 .tools-grid { /* Container for the main AI tool cards */
   display: flex; /* Horizontal layout */
+  flex-wrap: wrap; /* Allow wrapping on zoom */
   justify-content: center; /* Center cards horizontally */
   gap: 2rem; /* Space between cards */
-  max-width: calc(100% - 4rem); /* Full width minus 4rem padding */
+  max-width: 1400px; /* Maximum width to prevent excessive spreading */
+  width: 100%; /* Take full width up to max-width */
   margin: 0 auto 4rem; /* Center horizontally with bottom margin */
   padding: 0 2rem; /* Horizontal padding only */
   margin-bottom: 6rem; /* Large space below grid (overrides previous margin) */
@@ -324,8 +348,9 @@
   border-radius: 12px; /* Rounded corners */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Subtle shadow */
   transition: all 0.3s ease; /* Smooth animation for hover effects */
-  flex: 1; /* Card takes equal space */
+  flex: 1; /* Card takes up equal space */
   max-width: 500px; /* Maximum width limit */
+  min-width: 280px; /* Minimum width to prevent excessive squashing */
   position: relative; /* For positioning the colored top border */
 }
 
@@ -461,7 +486,8 @@
   gap: 2rem; /* Spacing between cards */
   margin-top: 4rem; /* Large space above the section */
   padding: 0 2rem; /* Horizontal padding on both sides */
-  max-width: calc(100% - 4rem); /* Maximum width considering padding */
+  max-width: 1400px; /* Maximum width to prevent excessive spreading */
+  width: 100%; /* Take full width up to max-width */
   margin-left: auto; /* Center horizontally */
   margin-right: auto; /* Center horizontally */
 }
@@ -745,6 +771,8 @@
   gap: 1.25rem; /* Space between the columns */
   padding: 0; /* No padding to eliminate whitespace */
   margin-left: 0; /* No left margin to align with edge */
+  max-width: 1400px; /* Maximum width to prevent excessive spreading */
+  margin: 2rem auto 0; /* Center the section */
 }
 
 @media (max-width: 768px) { /* Styles for mobile phones */
@@ -1292,32 +1320,11 @@
   font-size: 1.1rem;
 }
 
-.toggle-input:not(:checked) ~ .toggle-label .toggle-text.student,
-.toggle-input:checked ~ .toggle-label .toggle-text.educator {
-  color: white;
-}
-
-.tools-content {
-  margin-top: 3rem;
-  max-width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-  padding: 0;
-}
-
-.tab-content {
-  display: none;
-  padding: 2rem 0;
-  background: white;
-  border-radius: 12px;
-  min-height: 300px;
-}
-
 .tab-header {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   padding-left: 0rem;
 }
 
@@ -1382,6 +1389,8 @@
   gap: 1.25rem;                  /* Space between the columns */
   padding: 0;                    /* No padding to eliminate whitespace */
   margin-left: 0;                /* No left margin to align with edge */
+  max-width: 1400px; /* Maximum width to prevent excessive spreading */
+  margin: 2rem auto 0; /* Center the section */
 }
 
 /* Container for the left side content in student view */
@@ -1392,6 +1401,7 @@
   width: 100%;                    /* Take full width of container */
   margin-left: 0;                 /* No left margin to eliminate whitespace */
   padding-left: 0;                /* No left padding to eliminate whitespace */
+  min-width: 280px; /* Minimum width to prevent squashing */
 }
 
 /* Container for the file upload box in student view */
@@ -1411,6 +1421,7 @@
   flex-direction: column;         /* Stack children vertically */
   gap: 1.5rem;                    /* Space between child elements */
   max-width: 580px;               /* Maximum width to match left panel */
+  min-width: 280px; /* Minimum width to prevent excessive squashing */
   margin: 0 auto;                 /* Center horizontally in container */
 }
 
@@ -1800,8 +1811,9 @@
 .our-tools-section {
   padding: 4rem 2rem;
   text-align: center;
-  max-width: 100%;
-  margin: 0;
+  max-width: 1600px; /* Maximum width to prevent excessive spreading */
+  width: 100%; /* Take full width up to max-width */
+  margin: 0 auto; /* Center the section */
 }
 
 .our-tools-section h2 {
@@ -1898,7 +1910,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  max-width: calc(100% - 4rem);
+  max-width: 1400px; /* Maximum width to prevent excessive spreading */
+  width: 100%; /* Take full width up to max-width */
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -1909,6 +1922,7 @@
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   text-align: center;
+  min-width: 250px; /* Minimum width to prevent excessive squashing */
 }
 
 .testimonial-avatar {
@@ -1980,5 +1994,63 @@
   .testimonials-section h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ai-tools-container {
+    padding: 0 1rem; /* Reduce horizontal padding for very small screens */
+  }
+  
+  .hero-section {
+    padding: 2rem 1rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 0.75rem;
+  }
+  
+  .primary-btn, .secondary-btn {
+    width: 100%; /* Full width buttons */
+  }
+  
+  .hero-features {
+    flex-direction: column; /* Stack features vertically */
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-section {
+    grid-template-columns: 1fr; /* Single column layout */
+    padding: 3rem 1.5rem;
+    gap: 3rem;
+  }
+  
+  .hero-content {
+    padding-right: 0;
+    order: 1; /* Content appears below preview */
+  }
+  
+  .hero-preview {
+    min-height: 400px; /* Ensure adequate space for preview */
+    margin-bottom: 2rem;
+  }
+  
+  .tab-content-section {
+    grid-template-columns: 1fr !important; /* Force single column */
+  }
+}
+
+/* Extra Large screens - prevent content from spreading too far on wide screens or when zoomed out */
+@media (min-width: 1600px) {
+  .hero-section,
+  .ai-tools-section,
+  .our-tools-section,
+  .tab-content-section,
+  .testimonials-grid {
+    max-width: 1600px; /* Cap the width on very large screens */
   }
 }
