@@ -140,7 +140,7 @@ const AiToolsPage = () => {
               </div>
               <h3>Assessment Generator</h3>
             </div>
-            <p className="tool-description">Create customized quizzes and exams in seconds with our <br /> AI assessment generator, saving educators valuable time.</p>
+            <p className="tool-description">Create customized quizzes and exams in seconds with our AI assessment generator, saving educators valuable time.</p>
             <div className="tool-feature">
               <div className="feature-icon-wrapper">
                 <LuCircleCheckBig className="feature-check-icon purple" />
