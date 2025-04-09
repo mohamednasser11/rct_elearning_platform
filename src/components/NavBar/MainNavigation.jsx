@@ -82,9 +82,6 @@ const MainNavigation = () => {
         </Link>
       </div>
       
-      <div className="hamburger-menu" onClick={() => setIsOpen(!isOpen)}>
-        <FaBars />
-      </div>
       
       <div className={`nav-overlay ${isOpen ? 'show' : ''}`} onClick={() => setIsOpen(false)}></div>
       

@@ -1,3 +1,7 @@
+.transition-default {
+  transition: all var(--transition-duration) ease;
+}
+
 /* Categories hamburger menu for left side */
 .categories-hamburger-menu {
   display: flex;
@@ -9,7 +13,7 @@
   font-size: 1.4rem;
   color: #0fb480;
   position: relative;
-  transition: all 0.3s ease;
+  transition: all var(--transition-duration) ease;
 }
 
 .categories-hamburger-menu:hover {
@@ -65,13 +69,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 1.2rem;
+  /* border-bottom: 1px solid #f0f0f0; */
   position: sticky;
   top: 0;
   background-color: white;
   z-index: 2;
 }
+
 
 /* Sidebar close button */
 .sidebar-close-button {
@@ -86,6 +91,7 @@
   padding: 0.5rem;
   border-radius: 50%;
   transition: all 0.3s ease;
+  outline: none;
 }
 
 .sidebar-close-button:hover {
@@ -111,7 +117,8 @@
   width: 32px;
   height: 32px;
   object-fit: contain;
-  transition: all 0.3s ease;
+  transition: all var(--transition-duration) ease;
+
 }
 
 .sidebar-logo-container {
@@ -146,7 +153,6 @@
 /* Category dropdown styles */
 .category-dropdown {
   width: 100%;
-  border-bottom: 1px solid #f5f5f5;
 }
 
 .category-dropdown-header {
@@ -157,8 +163,9 @@
   padding: 0.8rem 1.5rem;
   cursor: pointer;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all var(--transition-duration) ease;
   margin-top: 0.6rem;
+  margin-bottom: 0.4rem;
 }
 
 .category-dropdown-header:hover {
@@ -173,7 +180,8 @@
 
 .dropdown-icon {
   font-size: 1.2rem;
-  transition: all 0.3s ease;
+  transition: all var(--transition-duration) ease;
+
 }
 
 .dropdown-icon.expanded {
@@ -234,7 +242,7 @@
   margin-bottom: 1rem;
   font-weight: 500;
   transition: all 0.2s ease;
-  border-bottom: 1px solid #eee;
+  /* border-bottom: 1px solid #eee; */
 }
 
 .sidebar-nav-item:hover {
@@ -245,7 +253,7 @@
 /* Add bottom space to AI Tools item */
 .ai-tools-item {
   margin-bottom: 2rem;
-  border-bottom: 1px solid #eee;
+  /* border-bottom: 1px solid #eee; */
   padding-bottom: 1rem;
 }
 
@@ -262,7 +270,8 @@
   text-align: center;
   border-radius: 18px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all var(--transition-duration) ease;
+
   display: flex;
   justify-content: center;
   align-items: center;

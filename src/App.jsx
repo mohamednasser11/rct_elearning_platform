@@ -32,8 +32,8 @@ function App() {
               <Route path="/cart" element={<CartPage />} />
             </Routes>
           </div>
-          <Footer />
         </div>
+        <Footer />
       </CartProvider>
     </Router>
   );
