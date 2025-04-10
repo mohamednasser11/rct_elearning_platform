@@ -889,7 +889,9 @@
 }
 
 .select-files-button:hover {
-  background-color: #edf2f7;
+  background-color: rgba(8,145,127,255);
+  border-color: rgba(8,145,127,255);
+  color: white;
 }
 
 /* Question slider */
@@ -1114,6 +1116,7 @@
   color: #2d3748;
   margin-bottom: 1rem;
   margin-top: -35px; 
+  margin-left: 4.2rem;
   text-align: left;
 }
 
@@ -1123,6 +1126,7 @@
   line-height: 1.6;
   margin-bottom: 1.75rem;
   margin-top: -10px; 
+  margin-left: 4.2rem;
   max-width: 520px;
 }
 
@@ -1141,8 +1145,8 @@
   color: #2d3748;
   margin-top: 0;
   margin-bottom: 1rem;
-  font-size: 1rem;
-  margin-left: 0.5rem;
+  font-size: 1rem; 
+  margin-left: 0.5rem; 
   text-align: left;
 }
 
@@ -1600,6 +1604,7 @@
   font-size: 1.2rem;
   font-weight: 600;
   margin: 0 0 1rem 2rem;
+  margin-left: 2rem;
   text-align: left;
 }
 
@@ -1852,7 +1857,7 @@
   color: #245ad7;
   margin-bottom: 0.5rem;
   margin-top: -15px;
-  margin-left: 0;
+  margin-left: 4rem;
   padding-left: 0;
 }
 
@@ -1862,7 +1867,7 @@
   font-size: 1.2rem;
   line-height: 1.5;
   text-align: left;
-  margin-left: 0;
+  margin-left: 4rem;
   padding-left: 0;
 }
 
