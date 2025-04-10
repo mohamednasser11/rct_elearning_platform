@@ -342,15 +342,6 @@ const AiToolsPage = () => {
                           const newValue = parseInt(e.target.value);
                           setQuestionCount(newValue);
                           
-                          // Update difficulty level based on slider position
-                          if (newValue <= 25) {
-                            setActiveLength('easy');
-                          } else if (newValue < 40) {
-                            setActiveLength('medium');
-                          } else {
-                            setActiveLength('hard');
-                          }
-                          
                           // Update the slider fill effect
                           const min = 10;
                           const max = 40;
@@ -372,24 +363,15 @@ const AiToolsPage = () => {
                     <div className="difficulty-buttons">
                       <button 
                         className={`difficulty-btn easy ${activeLength === 'easy' ? 'active' : ''}`}
-                        onClick={() => {
-                          setActiveLength('easy');
-                          setQuestionCount(10);
-                        }}
+                        onClick={() => setActiveLength('easy')}
                       >Easy</button>
                       <button 
                         className={`difficulty-btn medium ${activeLength === 'medium' ? 'active' : ''}`}
-                        onClick={() => {
-                          setActiveLength('medium');
-                          setQuestionCount(25);
-                        }}
+                        onClick={() => setActiveLength('medium')}
                       >Medium</button>
                       <button 
                         className={`difficulty-btn hard ${activeLength === 'hard' ? 'active' : ''}`}
-                        onClick={() => {
-                          setActiveLength('hard');
-                          setQuestionCount(40);
-                        }}
+                        onClick={() => setActiveLength('hard')}
                       >Hard</button>
                     </div>
                   </div>
