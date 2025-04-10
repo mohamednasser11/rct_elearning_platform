@@ -603,44 +603,6 @@
   text-align: left; /* Left-aligned text */
 }
 
-@media (max-width: 1200px) { /* Styles for screens up to 1200px wide */
-  .feature-cards { /* Grid container for feature cards */
-    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
-    gap: 1.5rem; /* Space between cards */
-  }
-}
-
-@media (max-width: 768px) { /* Styles for mobile phones */
-  .hero-section h1 { /* Main heading in hero section */
-    font-size: 2.25rem; /* Smaller font size for mobile */
-  }
-
-  .hero-subtitle { /* Subtitle text below the main heading */
-    font-size: 1rem; /* Smaller font size for mobile */
-  }
-
-  .tools-grid { /* Container for the main AI tool cards */
-    flex-direction: column; /* Stacks cards vertically on mobile */
-  }
-
-  .tool-card { /* Individual card for each AI tool */
-    flex-direction: column; /* Stacks content vertically on mobile */
-  }
-
-  .tool-icon-wrapper { /* Container for the tool icons in each card */
-    margin-bottom: 1rem; /* Space below the icon on mobile */
-    margin-right: 0; /* No margin to the right on mobile */
-  }
-
-  .testimonials-grid { /* Grid container for testimonials */
-    grid-template-columns: 1fr; /* Single column on mobile */
-  }
-
-  .testimonials-section h2 { /* Main heading for testimonials section */
-    font-size: 2rem; /* Smaller font size for mobile */
-    margin-bottom: 2rem; /* Space below the heading on mobile */
-  }
-}
 
 .user-section h2 { /* Main heading for user section */
   font-size: 2rem; /* Font size for heading */
@@ -742,11 +704,6 @@
   margin: 2rem auto 0; /* Center the section */
 }
 
-@media (max-width: 768px) { /* Styles for mobile phones */
-  .tab-content-section { /* Container for tab content */
-    flex-direction: column; /* Stacks columns vertically on mobile */
-  }
-}
 
 .tools-content { /* Container for tools content */
   margin-top: 2rem; /* Space above the tools content */
@@ -770,11 +727,7 @@
   margin: 0; /* Remove any margin to eliminate white space */
 }
 
-@media (max-width: 1024px) { /* For screens up to 1024px wide (tablets) */
-  .educator-layout { /* Container for educator layout */
-    flex-direction: column-reverse; /* Stack panels vertically with features on top */
-  }
-}
+
 
 /* Left panel - Exam Generator tool */
 .exam-generator-panel { /* Container for exam generator panel */
@@ -801,11 +754,6 @@
   z-index: 0;
 }
 
-@media (max-width: 1024px) { /* For screens up to 1024px wide (tablets) */
-  .exam-generator-panel { /* Container for exam generator panel */
-    max-width: 100%; /* Allow panel to take full width on smaller screens */
-  }
-}
 
 .exam-title { /* Title of the exam generator panel */
   font-size: 1.3rem; /* Larger than standard text */
@@ -1766,25 +1714,6 @@
 .preview-line.short { width: 60%; }
 .preview-line.medium { width: 80%; }
 
-@media (max-width: 768px) {
-  .user-section {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2rem 1.5rem;
-  }
-
-  .section-content {
-    max-width: 100%;
-  }
-
-  .section-preview {
-    order: -1;
-  }
-
-  .section-subtitle {
-    font-size: 1.25rem;
-  }
-}
 
 /* Our Tools Section */
 .our-tools-section {
@@ -1875,6 +1804,31 @@
   padding-left: 0;
 }
 
+
+/* Style for the arrow icon in the Get Started button */
+.btn-arrow {
+  margin-left: 20px;
+  margin-bottom: -3px;
+  font-size: 0.9em;
+  transition: transform 0.2s ease;
+}
+
+/* Add hover effect to animate the arrow */
+.primary-btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.summarizer-card, .assessment-card {
+  min-height: 600px; /* Added increased height for taller cards */
+}
+
+/* Remove black border from buttons on click */
+button:focus {
+  outline: none;
+  border: none;
+}
+
+
 /* Testimonials Section */
 .testimonials-section {
   padding: 6rem 0;
@@ -1950,119 +1904,7 @@
   font-style: italic;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
-@media (max-width: 768px) {
-  .hero-section h1 {
-    font-size: 2.25rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-
-  .tools-grid {
-    flex-direction: column;
-  }
-
-  .tool-card {
-    flex-direction: column;
-  }
-
-  .tool-icon-wrapper {
-    margin-bottom: 1rem;
-    margin-right: 0;
-  }
-
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .testimonials-section h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .ai-tools-container {
-    padding: 0 1rem; /* Reduce horizontal padding for very small screens */
-  }
-  
-  .hero-section {
-    padding: 2rem 1rem;
-  }
-  
-  .cta-buttons {
-    flex-direction: column; /* Stack buttons vertically */
-    gap: 0.75rem;
-  }
-  
-  .primary-btn, .secondary-btn {
-    width: 100%; /* Full width buttons */
-  }
-  
-  .hero-features {
-    flex-direction: column; /* Stack features vertically */
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .hero-section {
-    grid-template-columns: 1fr; /* Single column layout */
-    padding: 3rem 1.5rem;
-    gap: 3rem;
-  }
-  
-  .hero-content {
-    padding-right: 0;
-    order: 1; /* Content appears below preview */
-  }
-  
-  .hero-preview {
-    min-height: 400px; /* Ensure adequate space for preview */
-    margin-bottom: 2rem;
-  }
-  
-  .tab-content-section {
-    grid-template-columns: 1fr !important; /* Force single column */
-  }
-}
-
-/* Extra Large screens - prevent content from spreading too far on wide screens or when zoomed out */
-@media (min-width: 1600px) {
-  .hero-section,
-  .ai-tools-section,
-  .our-tools-section,
-  .tab-content-section,
-  .testimonials-grid {
-    max-width: 1600px; /* Cap the width on very large screens */
-  }
-}
-
-/* Style for the arrow icon in the Get Started button */
-.btn-arrow {
-  margin-left: 20px;
-  margin-bottom: -3px;
-  font-size: 0.9em;
-  transition: transform 0.2s ease;
-}
-
-/* Add hover effect to animate the arrow */
-.primary-btn:hover .btn-arrow {
-  transform: translateX(4px);
-}
-
-.summarizer-card, .assessment-card {
-  min-height: 600px; /* Added increased height for taller cards */
-}
 
 .testimonial-card {
   background: white;
@@ -2117,11 +1959,11 @@
   line-height: 1.6;
 }
 
-/* Remove black border from buttons on click */
-button:focus {
-  outline: none;
-  border: none;
-}
+
+
+/****************************************************************/
+/****************************************************************/
+/****************************************************************/
 
 /* Mobile Responsive Styles */
 @media screen and (max-width: 768px) {
@@ -2220,5 +2062,181 @@ button:focus {
 
   .hero-preview .preview-card {
     height: 200px;
+  }
+}
+
+@media (max-width: 1200px) { /* Styles for screens up to 1200px wide */
+  .feature-cards { /* Grid container for feature cards */
+    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+    gap: 1.5rem; /* Space between cards */
+  }
+}
+
+@media (max-width: 768px) { /* Styles for mobile phones */
+  .hero-section h1 { /* Main heading in hero section */
+    font-size: 2.25rem; /* Smaller font size for mobile */
+  }
+
+  .hero-subtitle { /* Subtitle text below the main heading */
+    font-size: 1rem; /* Smaller font size for mobile */
+  }
+
+  .tools-grid { /* Container for the main AI tool cards */
+    flex-direction: column; /* Stacks cards vertically on mobile */
+  }
+
+  .tool-card { /* Individual card for each AI tool */
+    flex-direction: column; /* Stacks content vertically on mobile */
+  }
+
+  .tool-icon-wrapper { /* Container for the tool icons in each card */
+    margin-bottom: 1rem; /* Space below the icon on mobile */
+    margin-right: 0; /* No margin to the right on mobile */
+  }
+
+  .testimonials-grid { /* Grid container for testimonials */
+    grid-template-columns: 1fr; /* Single column on mobile */
+  }
+
+  .testimonials-section h2 { /* Main heading for testimonials section */
+    font-size: 2rem; /* Smaller font size for mobile */
+    margin-bottom: 2rem; /* Space below the heading on mobile */
+  }
+}
+
+@media (max-width: 768px) { /* Styles for mobile phones */
+  .tab-content-section { /* Container for tab content */
+    flex-direction: column; /* Stacks columns vertically on mobile */
+  }
+}
+
+
+@media (max-width: 1024px) { /* For screens up to 1024px wide (tablets) */
+  .educator-layout { /* Container for educator layout */
+    flex-direction: column-reverse; /* Stack panels vertically with features on top */
+  }
+}
+
+@media (max-width: 1024px) { /* For screens up to 1024px wide (tablets) */
+  .exam-generator-panel { /* Container for exam generator panel */
+    max-width: 100%; /* Allow panel to take full width on smaller screens */
+  }
+}
+
+
+@media (max-width: 768px) {
+  .user-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .section-content {
+    max-width: 100%;
+  }
+
+  .section-preview {
+    order: -1;
+  }
+
+  .section-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .tools-grid {
+    flex-direction: column;
+  }
+
+  .tool-card {
+    flex-direction: column;
+  }
+
+  .tool-icon-wrapper {
+    margin-bottom: 1rem;
+    margin-right: 0;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ai-tools-container {
+    padding: 0 1rem; /* Reduce horizontal padding for very small screens */
+  }
+  
+  .hero-section {
+    padding: 2rem 1rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 0.75rem;
+  }
+  
+  .primary-btn, .secondary-btn {
+    width: 100%; /* Full width buttons */
+  }
+  
+  .hero-features {
+    flex-direction: column; /* Stack features vertically */
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-section {
+    grid-template-columns: 1fr; /* Single column layout */
+    padding: 3rem 1.5rem;
+    gap: 3rem;
+  }
+  
+  .hero-content {
+    padding-right: 0;
+    order: 1; /* Content appears below preview */
+  }
+  
+  .hero-preview {
+    min-height: 400px; /* Ensure adequate space for preview */
+    margin-bottom: 2rem;
+  }
+  
+  .tab-content-section {
+    grid-template-columns: 1fr !important; /* Force single column */
+  }
+}
+
+/* Extra Large screens - prevent content from spreading too far on wide screens or when zoomed out */
+@media (min-width: 1600px) {
+  .hero-section,
+  .ai-tools-section,
+  .our-tools-section,
+  .tab-content-section,
+  .testimonials-grid {
+    max-width: 1600px; /* Cap the width on very large screens */
   }
 }
