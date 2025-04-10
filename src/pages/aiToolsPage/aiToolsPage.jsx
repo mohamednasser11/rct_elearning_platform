@@ -484,38 +484,54 @@ const AiToolsPage = () => {
       {/* Testimonials Section */}
       <section className="testimonials-section">
         <h2>What Our Students Say</h2>
+        <p className="testimonials-subtitle">Hear from students who've transformed their learning experience with our platform</p>
         <div className="testimonials-grid">
           <div className="testimonial-card">
-            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Student" className="testimonial-avatar" />
-            <h4>Sarah Johnson</h4>
+            <div className="testimonial-top">
+              <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Student" className="testimonial-avatar" />
+              <div className="testimonial-details">
+                <h4>Sarah Johnson</h4>
+                <p className="student-title">Computer Science Student</p>
+              </div>
+            </div>
             <div className="rating">
               {[...Array(5)].map((_, i) => (
                 <FaStar key={i} className="star-icon" />
               ))}
             </div>
-            <p>"The AI tools have completely transformed how I study. I'm learning faster than ever!"</p>
+            <p>"The AI flashcard tool completely changed how I study, I can quickly create flashcards from any lecture and the system even identifies what concepts I'm struggling with."</p>
           </div>
 
           <div className="testimonial-card">
-            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Student" className="testimonial-avatar" />
-            <h4>Michael Rodriguez</h4>
+            <div className="testimonial-top">
+              <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Student" className="testimonial-avatar" />
+              <div className="testimonial-details">
+                <h4>Michael Rodriguez</h4>
+                <p className="student-title">Physics Major</p>
+              </div>
+            </div>
             <div className="rating">
               {[...Array(5)].map((_, i) => (
                 <FaStar key={i} className="star-icon" />
               ))}
             </div>
-            <p>"As a working student, the AI study planner helps me make the most of my limited study time."</p>
+            <p>"I was struggling with quantum physics until I used the AI summarization tool, it breaks down complex concepts into understandable chunks and generates practice problems at just the right difficulty."</p>
           </div>
 
           <div className="testimonial-card">
-            <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Student" className="testimonial-avatar" />
-            <h4>Emily Chen</h4>
+            <div className="testimonial-top">
+              <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Student" className="testimonial-avatar" />
+              <div className="testimonial-details">
+                <h4>Emily Chen</h4>
+                <p className="student-title">Biology Professor</p>
+              </div>
+            </div>
             <div className="rating">
               {[...Array(5)].map((_, i) => (
                 <FaStar key={i} className="star-icon" />
               ))}
             </div>
-            <p>"The language learning AI has helped me improve my English speaking skills significantly."</p>
+            <p>"As an educator, the exam generation tools save me hours of work each week. I can create assessments that truly test understanding rather than memorizing."</p>
           </div>
         </div>
       </section>
