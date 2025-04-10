@@ -586,7 +586,7 @@
 .feature-content h4 { /* Heading within main big cards */
   font-size: 1.1rem; /* Font size for heading */
   font-weight: 600; /* Semi-bold weight for emphasis */
-  color: #2D3748; /* Dark slate gray color for heading */
+  color: #000000; /* Dark slate gray color for heading */
   margin: 0; /* No margin */
   display: flex; /* Flexbox layout */
   align-items: center; /* Centers content vertically */

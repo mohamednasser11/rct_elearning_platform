@@ -254,8 +254,8 @@ const AiToolsPage = () => {
                   <h4 className="features-title">Key Features:</h4>
                   <ul className="features-list">
                     <li>
-                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Three summary levels:</strong> Choose between short, medium, or long summaries based</div>
-                      <div>on your needs</div>
+                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Three summary levels:</strong> Choose between short, medium, or long summaries based on your needs</div>
+
                     </li>
                     <li>
                       <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Subject extraction:</strong> Automatically identifies and organizes key subjects and topics</div>
