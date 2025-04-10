@@ -12,9 +12,9 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { BsCheck2Square } from "react-icons/bs";
 
 const AiToolsPage = () => {
-  const [activeLength, setActiveLength] = React.useState('medium');
+  const [activeLength, setActiveLength] = React.useState('easy');
   const [activeTab, setActiveTab] = React.useState('student');
-  const [questionCount, setQuestionCount] = React.useState(20);
+  const [questionCount, setQuestionCount] = React.useState(10);
   
   // Initialize slider fill effect
   React.useEffect(() => {
@@ -341,6 +341,16 @@ const AiToolsPage = () => {
                         onChange={(e) => {
                           const newValue = parseInt(e.target.value);
                           setQuestionCount(newValue);
+                          
+                          // Update difficulty level based on slider position
+                          if (newValue <= 25) {
+                            setActiveLength('easy');
+                          } else if (newValue < 40) {
+                            setActiveLength('medium');
+                          } else {
+                            setActiveLength('hard');
+                          }
+                          
                           // Update the slider fill effect
                           const min = 10;
                           const max = 40;

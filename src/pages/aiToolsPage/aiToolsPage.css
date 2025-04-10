@@ -936,7 +936,7 @@
   cursor: pointer;
   background-image: linear-gradient(#4299e1, #4299e1);
   background-repeat: no-repeat;
-  background-size: calc((100% - 16px) * var(--ratio, 0.375)) 100%;
+  background-size: calc((100% - 16px) * var(--ratio, 0)) 100%;
 }
 
 .questions-slider::-webkit-slider-thumb {
