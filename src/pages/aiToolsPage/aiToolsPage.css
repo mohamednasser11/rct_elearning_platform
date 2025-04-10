@@ -1130,14 +1130,16 @@
   max-width: 520px;
 }
 
-/* Features section - container for key features list in both student and educator views */
+/* Features section - container for key features list in educator views */
 .key-features-container {
-  background-color: #ebf8ff;      /* Light blue background color */
-  padding: 1.5rem;                /* Internal padding inside container */
-  border-radius: 0.9rem;          /* Rounded corners for the container */
-  margin-bottom: 1.5rem;          /* Space below the container */
-  border: 2px solid #e2e8f0;      /* Light gray border for definition */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+  background-color: #ebf8ff;
+  padding: 1rem;
+  border-radius: 0.9rem;
+  margin-bottom: 3rem; /*space under the card*/
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 680px; /*card width*/
 }
 
 .features-title {
@@ -1200,6 +1202,8 @@
   margin-bottom: 1.5rem;
   border: 1px solid #e2e8f0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 680px; /*card width*/
 }
 
 .time-icon-container {
