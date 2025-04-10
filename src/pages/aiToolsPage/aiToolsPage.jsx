@@ -202,36 +202,42 @@ const AiToolsPage = () => {
           </div>
         </div>
       </section>
-      {/* AI Tools Toggle Section */}
-      <section className="our-tools-section">
-        <div className="section-header">
+      {/* AI Tools Toggle Section */} {/*our ai tools section header*/}
+      <section className="our-tools-section"> 
+        <div className="section-header" style={{ 
+          background: 'transparent', 
+          borderRadius: '16px', 
+          padding: '2rem', 
+          marginBottom: '2rem',
+          pointerEvents: 'none'
+        }}>
           <div className="section-icon-wrapper">
             <RiRobot2Line className="section-icon" />
           </div>
           <div className="header-content">
             <h2>Our AI Learning Tools</h2>
             <p className="section-subtitle">Powerful AI assistants designed specifically for students and educators.</p>
-            <div className="toggle-switch-wrapper">
-              <div className="toggle-switch">
-                <button 
-                  className={`toggle-btn ${activeTab === 'student' ? 'active' : ''}`}
-                  onClick={() => handleTabToggle('student')}
-                >
-                  <FaUserGraduate className="toggle-icon" />
-                  For Students
-                </button>
-                <button 
-                  className={`toggle-btn ${activeTab === 'educator' ? 'active' : ''}`}
-                  onClick={() => handleTabToggle('educator')}
-                >
-                  <FaChalkboardTeacher className="toggle-icon" />
-                  For Educators
-                </button>
-              </div>
-            </div>
           </div>
         </div>
         <div className="tools-content">
+          <div className="toggle-switch-wrapper">
+            <div className="toggle-switch">
+              <button 
+                className={`toggle-btn ${activeTab === 'student' ? 'active' : ''}`}
+                onClick={() => handleTabToggle('student')}
+              >
+                <FaUserGraduate className="toggle-icon" />
+                For Students
+              </button>
+              <button 
+                className={`toggle-btn ${activeTab === 'educator' ? 'active' : ''}`}
+                onClick={() => handleTabToggle('educator')}
+              >
+                <FaChalkboardTeacher className="toggle-icon" />
+                For Educators
+              </button>
+            </div>
+          </div>
           {activeTab === 'student' ? (
             <div className="student-tools tab-content">
               <div className="tab-header">

@@ -7,7 +7,7 @@
 }
 
 body {
-  zoom: 0.82; /* 80% scale */
+  zoom: 1; /* 100% scale */
 }
 
 @keyframes logo-spin {
