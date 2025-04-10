@@ -784,7 +784,7 @@
   border-radius: 0.5rem; /* Rounded corners for the panel */
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
   max-width: 580px; /* Maximum width to maintain proportions */
-  margin: 0; /* No margin to align with layout edge */
+  margin: 2.5rem 0 0 0; /* Add margin-top to move downward */
   position: relative; /* Create positioning context for ::before */
 }
 
