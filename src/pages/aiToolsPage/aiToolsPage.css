@@ -832,7 +832,7 @@
   z-index: 1; /* Make sure subtitle is above background */
 }
 
-/* File upload area */
+/* File upload area for educators*/
 .file-upload-box {
   margin-bottom: 1.5rem;
   margin-left: 0;
@@ -1388,7 +1388,7 @@
   width: 100%;                    /* Full width of container */
   height: auto;                   /* Automatic height based on content */
   min-height: 500px;              /* Minimum height to maintain size */
-  margin-top: 0;                  /* No top margin */
+  transform: translateY(-6rem); /* Move the box upward by 2rem */
   position: relative;             /* Enables absolute positioning of children */
   overflow: visible;              /* Allow content to overflow if needed */
   display: flex;                  /* Uses flexbox for layout */
