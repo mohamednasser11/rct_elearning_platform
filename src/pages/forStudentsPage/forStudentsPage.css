@@ -705,14 +705,15 @@
 
 .impact-details {
   display: flex;
-  gap: 3rem;
+  gap: 0;
   margin-top: 1rem;
   text-align: left;
 }
 
 .impact-progress-section {
-  flex: 1;
-  padding: 1rem;
+  flex: 0.5;
+  padding: 3rem;
+  margin-left: 10rem;
 }
 
 .progress-section-heading {
@@ -851,6 +852,7 @@
   overflow: hidden;
   border-radius: 12px;
   max-width: 500px;
+  margin-right: 5rem;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
