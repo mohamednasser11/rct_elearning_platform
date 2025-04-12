@@ -526,11 +526,27 @@
 @media (max-width: 992px) {
   .features-grid {
     grid-template-columns: 1fr;
+    padding: 0 1rem;
   }
   
   .feature-card {
     max-width: 500px;
     margin: 0 auto;
+  }
+  
+  .feature-header {
+    margin-right: 0;
+    width: 100%;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    margin-bottom: 1rem;
   }
   
   .features-heading {
@@ -609,8 +625,140 @@
     max-width: 400px;
   }
 
+  .feature-header {
+    margin-right: 0;
+  }
+
+  .feature-description {
+    padding-left: 0.5rem;
+  }
+
+  .feature-list {
+    padding-left: 1rem;
+  }
+
+  .impact-progress-section {
+    margin-left: 0;
+    padding: 1.5rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .progress-section-heading {
+    justify-content: center;
+  }
+
+  .progress-description {
+    text-align: center;
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+
+  .progress-bars {
+    max-width: 100%;
+  }
+
+  .progress-item-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .impact-image-container {
+    margin-right: 0;
+    max-width: 100%;
+  }
+  
+  .stat-badge {
+    left: 40%;
+  }
+  
+  .promo-section {
+    padding: 1rem;
+  }
+  
+  .testimonials-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .impact-details {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
 }
 
+@media (max-width: 480px) {
+  .feature-header {
+    width: 100%;
+  }
+  
+  .impact-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .impact-stat-card {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 1.5rem 1rem;
+  }
+  
+  .subheading {
+    font-size: 0.9rem;
+  }
+  
+  .laptop-container {
+    transform: scale(0.8);
+  }
+  
+  .stat-badge {
+    left: 30%;
+  }
+  
+  .testimonial-card {
+    padding: 1rem;
+  }
+  
+  .feature-title {
+    font-size: 0.95rem;
+  }
+  
+  .feature-list {
+    padding-left: 0.5rem;
+  }
+  
+  .main-heading {
+    font-size: 1.8rem;
+  }
+  
+  .progress-item {
+    margin-bottom: 2rem;
+  }
+  
+  .progress-item-values {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .progress-item-label {
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  
+  .progress-description {
+    padding: 0 0.5rem;
+  }
+  
+  .impact-progress-section {
+    padding: 1rem 0.5rem;
+  }
+  
+  .vertical-accent {
+    display: none;
+  }
+}
 
 /* Impact Section */
 .impact-section {
