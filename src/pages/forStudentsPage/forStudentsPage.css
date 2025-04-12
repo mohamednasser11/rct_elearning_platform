@@ -623,8 +623,8 @@
 }
 
 .impact-label {
-  background-color: rgba(139, 92, 246, 0.1);
-  color: #8B5CF6;
+  background-color: rgba(46, 228, 188, 0.1);
+  color: rgba(21,198,142,255);
   font-size: 0.7rem;
   font-weight: 600;
   padding: 0.35rem 0.75rem;
@@ -633,7 +633,7 @@
   margin-bottom: 1.5rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  border: 1px solid rgba(21,198,142,255);
 }
 
 .impact-heading {
