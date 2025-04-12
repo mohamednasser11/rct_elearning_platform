@@ -234,7 +234,7 @@ const ForStudentsPage = () => {
       {/* Impact Section */}
       <div className="impact-section">
         <div className="impact-label">REAL RESULTS</div>
-        <h2 className="impact-heading">The EduCraft Impact</h2>
+        <h2 className="impact-heading">The Beyond the Blackboard Impact</h2>
         <p className="impact-subheading">
           Real results from students who transformed their learning experience with our platform.
         </p>
