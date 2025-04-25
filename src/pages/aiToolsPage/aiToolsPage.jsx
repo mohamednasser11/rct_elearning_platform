@@ -48,9 +48,9 @@ const AiToolsPage = () => {
             <button className="secondary-btn">Watch Demo</button> 
           </div>
           <div className="hero-features">
-            <span><BrainCircuit className="feature-icon" /> <span className="feature-text">AI-Powered</span></span>
-            <span><FaFileAlt className="feature-icon" /> <span className="feature-text">Custom Summarise</span></span>
-            <span><IoMdBook className="feature-icon" /> <span className="feature-text">Smart Assessments</span></span>
+            <span><BrainCircuit className="hero-icon" /> <span className="feature-text">AI-Powered</span></span>
+            <span><FaFileAlt className="hero-icon" /> <span className="feature-text">Custom Summarise</span></span>
+            <span><IoMdBook className="hero-icon" /> <span className="feature-text">Smart Assessments</span></span>
           </div>
         </div>
         <div className="hero-preview">

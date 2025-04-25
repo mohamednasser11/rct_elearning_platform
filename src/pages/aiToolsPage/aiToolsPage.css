@@ -128,7 +128,8 @@
   gap: -0.8rem; /* Reduced space between icon and text */
 }
 
-.hero-features .feature-icon { /* Icon for each feature */
+/* Hero Section Icons - completely separate from feature card icons */
+.hero-features .hero-icon { /* Icon for each feature in hero section */
   color: rgba(10,167,60,0.9) !important; /* Green icon color with high specificity */
   font-size: 1.25rem; /* Size of the icon */
   display: flex; /* Flexbox for centering */
@@ -136,10 +137,13 @@
   justify-content: center; /* Horizontal centering */
   width: 1.5rem; /* Fixed width */
   height: 1.5rem; /* Fixed height */
+  position: static !important; /* Force static positioning */
+  z-index: 2 !important; /* Ensure proper stacking */
 }
 
 .hero-features .feature-text { /* Text label for each feature */
-  margin-top: 2px; /* Slight vertical adjustment */
+  margin-top: 1px; /* Slight vertical adjustment */
+  margin-left: 4px;
 }
 
 .hero-preview { /* Right side of hero section with preview image */
@@ -492,43 +496,52 @@
   border: 1px solid rgba(48,74,237,0.10); /* Light blue border for subtle definition */
 }
 
-.feature-card .feature-icon-wrapper { /* Icon container within feature cards */
+/* Feature Cards Icons - completely separate styling from hero section */
+.feature-cards .feature-card .feature-icon-wrapper { /* Icon container within feature cards */
   width: 45px; /* Fixed width for consistent sizing */
   height: 45px; /* Fixed height for consistent sizing */
   border-radius: 50%; /* Creates circular shape */
   display: flex; /* Enables flexbox layout */
   align-items: center; /* Centers content vertically */
   justify-content: center; /* Centers content horizontally */
+  position: static !important; /* Force static positioning */
 }
 
-.feature-card .feature-icon-wrapper.blue { /* Blue-themed icon wrapper in feature cards */
+.feature-cards .feature-card .feature-icon-wrapper.blue { /* Blue-themed icon wrapper in feature cards */
   background: rgba(48,74,237,0.1); /* Light blue background with 10% opacity */
   box-shadow: -7px 0 0 rgba(48,74,237,0.1); /* Extended shadow to the left for visual interest */
 }
 
-.feature-card .feature-icon-wrapper.green { /* Green-themed icon wrapper in feature cards */
+.feature-cards .feature-card .feature-icon-wrapper.green { /* Green-themed icon wrapper in feature cards */
   background: rgba(10,167,60,0.1); /* Light green background with 10% opacity */
   box-shadow: -7px 0 0 rgba(10,167,60,0.1); /* Extended shadow to the left for visual interest */
 }
 
-.feature-card .feature-icon-wrapper.purple { /* Purple-themed icon wrapper in feature cards */
+.feature-cards .feature-card .feature-icon-wrapper.purple { /* Purple-themed icon wrapper in feature cards */
   background: rgba(105,10,167,0.1); /* Light purple background with 10% opacity */
   box-shadow: -7px 0 0 rgba(105,10,167,0.1); /* Extended shadow to the left for visual interest */
 }
 
-.feature-card .feature-icon { /* Icon within feature cards */
+/* Feature Card Icons */
+.feature-cards .feature-card .feature-icon { /* Icon within feature cards */
   font-size: 1.5rem; /* Icon size */
+  position: static !important; /* Force static positioning */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: -1rem;
+  margin-bottom: -1rem;
 }
 
-.feature-card .feature-icon-wrapper.blue .feature-icon { /* Icon within blue-themed feature cards */
+.feature-cards .feature-card .feature-icon-wrapper.blue .feature-icon { /* Icon within blue-themed feature cards */
   color: rgb(48,74,237); /* Blue color for the icon */
 }
 
-.feature-card .feature-icon-wrapper.green .feature-icon { /* Icon within green-themed feature cards */
+.feature-cards .feature-card .feature-icon-wrapper.green .feature-icon { /* Icon within green-themed feature cards */
   color: rgba(10,167,60,0.9); /* Green color for the icon */
 }
 
-.feature-card .feature-icon-wrapper.purple .feature-icon { /* Icon within purple-themed feature cards */
+.feature-cards .feature-card .feature-icon-wrapper.purple .feature-icon { /* Icon within purple-themed feature cards */
   color: rgba(105,10,167,0.9); /* Purple color for the icon */
 }
 
