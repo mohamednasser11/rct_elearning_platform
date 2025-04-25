@@ -9,47 +9,48 @@
 }
 
 .ai-tools-container { /* Main container for all AI tools page content */
-  max-width: 100%; /* Takes up full width of the parent element */
-  margin: 0; /* Removes default margins */
-  padding: 0 2rem; /* Adds horizontal padding on both sides */
+  max-width: 100%; 
+  margin: 0; 
+  padding: 0 2rem; 
   background-image: linear-gradient(to bottom, rgba(10, 238, 105, 0.15) 3%, rgba(255, 255, 255, 1) 22%);
   min-height: 100vh;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  width: 100%; /* Ensure it takes full width */
+  overflow-x: hidden; 
+  width: 100%; 
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center content horizontally */
+  align-items: center; 
 }
 
 /* Hero Section */
+
 .hero-section { /* Top banner section with headline and preview */
-  display: grid; /* Uses CSS Grid for layout */
-  grid-template-columns: 1fr 1fr; /* Creates two equal columns */
-  gap: 4rem; /* Space between the columns */
-  align-items: center; /* Vertically centers items in the grid */
-  padding: 4rem 2rem; /* Padding around all sides */
-  background: transparent; /* Transparent background to show gradient from parent */
-  margin-bottom: 4rem; /* Space below the hero section */
-  max-width: 1600px; /* Maximum width to prevent excessive spreading when zoomed out */
-  min-width: 320px; /* Minimum width to prevent excessive squashing */
-  width: 100%; /* Take full width up to max-width */
-  margin: 0 auto; /* Center the section */
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 4rem; 
+  align-items: center; 
+  padding: 4rem 2rem; 
+  background: transparent; 
+  margin-bottom: 4rem; 
+  max-width: 1600px; 
+  min-width: 320px; 
+  width: 100%; 
+  margin: 0 auto; 
 }
 
 .hero-content { /* Left side content of hero section */
-  text-align: left; /* Aligns text to the left */
-  padding-right: 2rem; /* Adds space on the right side */
-  min-width: 280px; /* Minimum width to prevent excessive squashing */
-  max-width: 800px; /* Maximum width to prevent content from becoming too spread out */
+  text-align: left; 
+  padding-right: 2rem; 
+  min-width: 280px; 
+  max-width: 800px; 
 }
 
 .hero-section h1 { /* Main heading in hero section */
-  font-size: 3.5rem; /* Large font size for heading */
-  font-weight: 700; /* Bold font weight */
-  color: #000000; /* Black text color */
-  margin-bottom: 1.5rem; /* Space below the heading */
-  line-height: 1.2; /* Tighter line height for headings */
-  text-align: left; /* Left-aligned text */
+  font-size: 3.5rem; 
+  font-weight: 700; 
+  color: #000000; 
+  margin-bottom: 1.5rem; 
+  line-height: 1.2; 
+  text-align: left; 
 }
 
 .highlight {
@@ -60,11 +61,11 @@
 }
 
 .hero-subtitle { /* Subtitle text below the main heading */
-  font-size: 1.2rem; /* Slightly larger than body text */
-  color: #718096; /* Medium gray color */
-  margin-bottom: 2rem; /* Space below the subtitle */
-  line-height: 1.6; /* Increased line height for readability */
-  text-align: left; /* Left-aligned text */
+  font-size: 1.2rem; 
+  color: #718096; 
+  margin-bottom: 2rem; 
+  line-height: 1.6; 
+  text-align: left; 
 }
 
 /* CTA buttons in hero section */
@@ -79,7 +80,7 @@
   display: flex;
   align-items: center;
   padding: 0.75rem 1.5rem 0.75rem 2.5rem;
-  background: rgba(21,198,142,255); /* Green color */
+  background: rgba(21,198,142,255); 
   color: rgb(255, 255, 255);
   border: none;
   border-radius: 8px;
@@ -115,34 +116,35 @@
 }
 
 .hero-features { /* Feature list below the subtitle */
-  display: flex; /* Horizontal layout for features */
-  gap: 2rem; /* Space between feature items */
-  margin-top: 2rem; /* Space above the features section */
-  color: #4A5568; /* Dark gray text color */
-  font-size: 0.875rem; /* Slightly smaller text */
+  display: flex; 
+  gap: 2rem; 
+  margin-top: 2rem; 
+  color: #4A5568; 
+  font-size: 0.875rem; 
 }
 
 .hero-features span { /* Individual feature item */
-  display: flex; /* Horizontal layout for icon and text */
-  align-items: flex-start; /* Aligns items to the top */
-  gap: -0.8rem; /* Reduced space between icon and text */
+  display: flex; 
+  align-items: flex-start; 
+  gap: -0.8rem; 
 }
 
 /* Hero Section Icons - completely separate from feature card icons */
+
 .hero-features .hero-icon { /* Icon for each feature in hero section */
-  color: rgba(10,167,60,0.9) !important; /* Green icon color with high specificity */
-  font-size: 1.25rem; /* Size of the icon */
-  display: flex; /* Flexbox for centering */
-  align-items: center; /* Vertical centering */
-  justify-content: center; /* Horizontal centering */
-  width: 1.5rem; /* Fixed width */
-  height: 1.5rem; /* Fixed height */
-  position: static !important; /* Force static positioning */
-  z-index: 2 !important; /* Ensure proper stacking */
+  color: rgba(10,167,60,0.9) !important; 
+  font-size: 1.25rem; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 1.5rem; 
+  height: 1.5rem; 
+  position: static !important; 
+  z-index: 2 !important; 
 }
 
 .hero-features .feature-text { /* Text label for each feature */
-  margin-top: 1px; /* Slight vertical adjustment */
+  margin-top: 1px; 
   margin-left: 4px;
 }
 
@@ -152,7 +154,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 350px; /* Ensures minimum height for preview area */
+  min-height: 350px; 
 }
 
 .hero-preview .preview-card-small {
@@ -162,7 +164,7 @@
   overflow: hidden;
   width: 65%;
   max-width: 380px;
-  height: 170px; /* Reduced height */
+  height: 170px; 
   position: absolute;
   top: 50%;
   left: 41%; /* Fine-tuned position to show exactly 12% from the right side */
@@ -176,74 +178,74 @@
   border-radius: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   overflow: hidden;
-  width: 100%; /* Full width within container */
-  max-width: 580px; /* Increased for better proportion with the wider layout */
-  height: 320px; /* Increased height to fit the buttons */
-  margin: 0 auto; /* Centers horizontally */
-  position: relative; /* Changed to relative for proper stacking context */
+  width: 100%; 
+  max-width: 580px; 
+  height: 320px; 
+  margin: 0 auto; 
+  position: relative; 
   z-index: 2; /* Higher z-index so it appears above the small card */
-  border: 1px solid #E2E8F0; /* Light gray border */
-  transform: translateY(0); /* Initial position for hover animation */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+  border: 1px solid #E2E8F0; 
+  transform: translateY(0); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
 .preview-header { /* Browser-like header bar at top of preview */
-  background: rgba(6,97,28,255); /* Green background color */
-  padding: 1rem; /* Space inside the header */
-  display: flex; /* Horizontal layout */
-  gap: 0.75rem; /* Space between elements */
-  border-bottom: 1px solid rgba(255,255,255,0.1); /* Subtle white border at bottom */
+  background: rgba(6,97,28,255); 
+  padding: 1rem; 
+  display: flex; 
+  gap: 0.75rem; 
+  border-bottom: 1px solid rgba(255,255,255,0.1); 
 }
 
 /* Gradient applied directly to header */
 
 .preview-dot { /* Browser control dots (like close, minimize buttons) */
-  width: 12px; /* Width of circular dot */
-  height: 12px; /* Height of circular dot */
-  border-radius: 50%; /* Makes it perfectly round */
-  opacity: 0.9; /* Slightly transparent */
-  position: relative; /* Enables positioning */
-  z-index: 1; /* Stacking order */
-  background-color: #12e97d; /* Blue background color */
+  width: 12px; 
+  height: 12px; 
+  border-radius: 50%; 
+  opacity: 0.9; 
+  position: relative; 
+  z-index: 1; 
+  background-color: #12e97d; 
 }
 
 .preview-content { /* Main content area of the preview card */
-  padding: 2rem; /* Padding on all sides */
-  padding-top: 1.5rem; /* Less padding at top (overrides the 2rem) */
-  background: #FFFFFF; /* White background */
+  padding: 2rem; 
+  padding-top: 1.5rem; 
+  background: #FFFFFF; 
 }
 
 .preview-title { /* Title in the preview content */
-  color: #2D3748; /* Dark slate gray color */
-  font-size: 1.25rem; /* Larger text size */
-  font-weight: 600; /* Semi-bold weight */
-  margin-bottom: 2.5rem; /* Large space below title */
-  letter-spacing: -0.01em; /* Slightly tighter letter spacing */
-  text-align: left; /* Left-aligned text */
-  margin-top: 0; /* No top margin */
+  color: #2D3748; 
+  font-size: 1.25rem; 
+  font-weight: 600; 
+  margin-bottom: 2.5rem; 
+  letter-spacing: -0.01em; 
+  text-align: left; 
+  margin-top: 0; 
 }
 
 .preview-line { /* Decorative lines in the preview to simulate text content */
   height: 10px; /* Thickness of each line */
-  background: #EDF2F7; /* Light gray background color */
-  border-radius: 5px; /* Rounded ends and corners */
-  margin-bottom: 1.25rem; /* Space between lines */
-  transition: all 0.2s ease; /* Smooth animation for any changes */
+  background: #EDF2F7; 
+  border-radius: 5px; 
+  margin-bottom: 1.25rem; 
+  transition: all 0.2s ease; 
 }
 
-.preview-line.short { width: 70%; } /* Shorter line variation taking 70% of container width */
-.preview-line.medium { width: 85%; } /* Medium line variation taking 85% of container width */
+.preview-line.short { width: 70%; } 
+.preview-line.medium { width: 85%; } 
 
-.summary-options { /* Container for buttons at bottom of preview */
-  display: flex; /* Horizontal layout for buttons */
-  gap: 1rem; /* Space between buttons */
-  margin-top: 2rem; /* Reduced space above the options */
-  justify-content: flex-start; /* Align buttons to the left */
-  border-top: 1px solid #E2E8F0; /* Light gray border at top */
-  padding-top: 1.5rem; /* Reduced space between border and buttons */
+.summary-options { /* Container for buttons at bottom of preview cards*/
+  display: flex; 
+  gap: 1rem; 
+  margin-top: 2rem; 
+  justify-content: flex-start; 
+  border-top: 1px solid #E2E8F0; 
+  padding-top: 1.5rem; 
 }
 
-.summary-btn { /* Button style for the summary options */
+.summary-btn { /* Button style for the summary options in preview cards */
   padding: 0.5rem 1rem;
   border-radius: 100px;
   background: transparent;
@@ -251,49 +253,41 @@
   border: 1px solid #E2E8F0;
   font-size: 0.875rem;
   font-weight: 500;
-  cursor: default; /* Changed from pointer to default since they're not clickable */
-  transition: none; /* Removed transition effect */
+  cursor: default; 
+  transition: none; 
   flex: 1;
   text-align: center;
 }
 
-.summary-btn:hover { /* Removed hover styles for summary buttons since they're not clickable */
-  background: transparent; /* Keep the same as default */
-  color: #A0AEC0; /* Keep the same as default */
-  border-color: #E2E8F0; /* Keep the same as default */
+.summary-btn:hover { /* Removed hover styles for preview cards buttons since they're not clickable */
+  background: transparent; 
+  color: #A0AEC0; 
+  border-color: #E2E8F0; 
 }
 
 /* AI Tools Section - The main content area showcasing the learning tools */
+
 .ai-tools-section { /* Container for the AI tools showcase */
-  padding: 4rem 0 4rem 0; /* Large padding top and bottom */
-  text-align: center; /* Center-aligned text */
-  background: transparent; /* White background */
-  border-radius: 16px; /* Rounded corners */
-  margin: 0 auto; /* Center the section */
-  max-width: 1600px; /* Maximum width to prevent excessive spreading */
-  width: 100%; /* Take full width up to max-width */
+  padding: 4rem 0 4rem 0; 
+  text-align: center; 
+  background: transparent; 
+  border-radius: 16px; 
+  margin: 0 auto; 
+  max-width: 1600px; 
+  width: 100%; 
 }
 
 .ai-tools-section h2 { /* Main heading for AI Tools section */
-  font-size: 3rem; /* Large text size */
-  color: #2D3748; /* Dark slate gray color */
-  margin-bottom: 0.5rem; /* Small space below heading */
+  font-size: 3rem; 
+  color: #2D3748; 
+  margin-bottom: 0.5rem; 
   margin-top: -2;
 }
 
 .ai-tools-section p { /* Paragraph text in AI Tools section */
-  font-size: 1.5rem; /* Slightly larger text size */
-  color: #4A5568; /* Medium gray text color */
-  margin-bottom: 3rem; /* Large space below paragraph */
-}
-
-.section-subtitle { /* Subtitle text below main heading */
-  color: #090b0f; /* Very dark (almost black) text */
-  margin-bottom: 3rem; /* Large space below subtitle */
-  line-height: 1.5; /* Increased line height for readability */
-  max-width: 700px; /* Maximum width to control line length */
-  margin-left: auto; /* Centers the element horizontally */
-  margin-right: auto; /* Centers the element horizontally */
+  font-size: 1.5rem; 
+  color: #4A5568; 
+  margin-bottom: 3rem; 
 }
 
 .highlight {
@@ -304,41 +298,42 @@
 }
 
 .tools-grid { /* Container for the main AI tool cards */
-  display: flex; /* Horizontal layout */
-  flex-wrap: wrap; /* Allow wrapping on zoom */
-  justify-content: center; /* Center cards horizontally */
-  gap: 5rem; /* Space between cards */
-  max-width: 1400px; /* Maximum width to prevent excessive spreading */
-  width: 100%; /* Take full width up to max-width */
-  margin: 0 auto 4rem; /* Center horizontally with bottom margin */
-  padding: 0 2rem; /* Horizontal padding only */
-  margin-bottom: 6rem; /* Large space below grid (overrides previous margin) */
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 5rem; 
+  max-width: 1400px; 
+  width: 100%; 
+  margin: 0 auto 4rem; 
+  padding: 0 2rem; 
+  margin-bottom: 6rem; 
 }
 
-.tool-card { /* Individual card for each AI tool (e.g., Writing Assistant, Math Solver) */
-  display: flex; /* Flexbox layout */
-  flex-direction: column; /* Stack content vertically */
-  gap: 1rem; /* Space between child elements */
-  padding: 2rem; /* Internal padding */
-  background: white; /* White background */
-  border-radius: 12px; /* Rounded corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Subtle shadow */
-  transition: all 0.3s ease; /* Smooth animation for hover effects */
-  flex: 1; /* Card takes up equal space */
-  max-width: 550px; /* Maximum width limit */
-  min-width: 280px; /* Minimum width to prevent excessive squashing */
-  position: relative; /* For positioning the colored top border */
+.tool-card { /* the two big main cards in the AI tools section */
+  display: flex; 
+  flex-direction: column; 
+  gap: 1rem; 
+  padding: 2rem; 
+  background: white; 
+  border-radius: 12px; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+  transition: all 0.3s ease; 
+  flex: 1; 
+  max-width: 550px; 
+  min-width: 280px; 
+  position: relative; 
 }
 
 .tool-card::before { /* Colored top border accent for each tool card */
   content: ''; /* Required for pseudo-elements */
-  position: absolute; /* Position relative to the card */
-  top: 0; /* Position at the top of the card */
-  left: 0; /* Align with left edge */
-  right: 0; /* Span full width to right edge */
-  height: 7px; /* Thin strip height */
-  border-radius: 12px 12px 0 0; /* Match top card corners */
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  height: 7px; 
+  border-radius: 12px 12px 0 0; 
 }
+
 
 .summarizer-card::before { /* Blue-green gradient for the Lecture Summarizer tool */
   background: linear-gradient(90deg, rgb(0, 87, 26) 0%, rgba(0, 190, 57) 0%, rgb(0, 109, 33) 100%);}
@@ -346,16 +341,18 @@
 .assessment-card::before { /* Blue-purple gradient for the Assessment Generator tool */
   background: linear-gradient(90deg, rgb(0, 87, 26) 0%, rgba(0, 190, 57) 0%, rgb(0, 109, 33) 100%);}
 
-.tool-header { /* Container for tool icon and title */
-  display: flex; /* Horizontal layout */
-  align-items: center; /* Vertically center icon and title */
-  gap: 1rem; /* Space between icon and title */
+
+
+.tool-header { /* Container for tool icon and title for both cards */
+  display: flex; 
+  align-items: center; 
+  gap: 1rem; 
 }
 
 
 
 .tool-description { /* Description text for each AI tool */
-  margin: 0; /* No margin */
+  margin: 0; 
   padding-left: 0;
   color: #000000;
   line-height: 1.6;
@@ -364,72 +361,45 @@
 }
 
 .tool-card:hover { /* Interactive styles when user hovers over a tool card */
-  transform: translateY(-4px); /* Slight upward movement creates a floating effect */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Enhanced shadow effect for greater depth */
+  transform: translateY(-4px); 
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); 
 }
 
-.tool-icon-wrapper { /* Container for the tool icons in each card */
-  flex-shrink: 0; /* Prevents the icon from shrinking when space is limited */
-  width: 48px; /* Fixed width ensures consistent icon size */
-  height: 48px; /* Fixed height ensures consistent icon size */
-  border-radius: 50%; /* Creates a perfect circle for the icon background */
-  display: flex; /* Enables flexbox layout for centering the icon */
-  align-items: center; /* Vertically centers the icon within the wrapper */
-  justify-content: center; /* Horizontally centers the icon within the wrapper */
+.tool-icon-wrapper { /* Container for the tool icons in each of the two main big cards */
+  flex-shrink: 0; 
+  width: 48px; 
+  height: 48px; 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
 }
 
-.tool-icon-wrapper.blue { /* Blue variant of the icon wrapper */
-  background: rgba(66, 153, 225, 0.2); /* Light blue background with 20% opacity */
+.tool-icon-wrapper.blue { /* Blue background for Lecture Summarizer big card (icon wrapper) */
+  background: rgba(66, 153, 225, 0.2); 
 }
 
-.tool-icon-wrapper.purple { /* Purple variant of the icon wrapper */
-  background: rgba(159, 122, 234, 0.2); /* Light purple background with 20% opacity */
+.tool-icon-wrapper.purple { /* Purplebackground for Assessment Generator big card (icon wrapper) */
+  background: rgba(159, 122, 234, 0.2); 
 }
 
 .tool-icon { /* The actual icon element inside the wrapper */
-  color: #2D3748; /* Dark slate gray color for default icon */
-  font-size: 1.5rem; /* Icon size of 1.5rem for good visibility */
+  font-size: 1.5rem; 
 }
 
 .tool-icon-wrapper.blue .tool-icon { /* Icon inside a blue wrapper */
-  color: #4299E1; /* Blue color that matches the wrapper's background theme */
+  color: #4299E1; 
 }
 
 .tool-icon-wrapper.purple .tool-icon { /* Icon inside a purple wrapper */
-  color: #9F7AEA; /* Purple color that matches the wrapper's background theme */
+  color: #9F7AEA; 
 }
 
-.tool-icon-wrapper.teal { /* Teal variant of the icon wrapper */
-  background: rgba(56, 187, 172, 0.1); /* Teal background with 10% opacity */
-}
-
-.tool-icon-wrapper.teal .tool-icon { /* Icon inside a teal wrapper */
-  color: #38B2AC; /* Teal color for the icon */
-}
-
-.tool-icon-wrapper.orange { /* Orange variant of the icon wrapper */
-  background: rgba(237, 137, 54, 0.1); /* Orange background with 10% opacity */
-}
-
-.tool-icon-wrapper.orange .tool-icon { /* Icon inside an orange wrapper */
-  color: #ED8936; /* Orange color for the icon */
-}
-
-.tool-icon-wrapper.green { /* Green variant of the icon wrapper */
-  background: rgba(72, 187, 120, 0.1); /* Green background with 10% opacity */
-}
-
-.tool-icon-wrapper.green .tool-icon { /* Icon inside a green wrapper */
-  color: #48BB78; /* Green color for the icon */
-}
-
-.tool-icon-wrapper.pink { /* Pink variant of the icon wrapper */
-  background: rgba(213, 63, 140, 0.1); /* Pink background with 10% opacity */
-}
-
-.tool-icon-wrapper.pink .tool-icon { /* Icon inside a pink wrapper */
-  color: #D53F8C; /* Pink color for the icon */
-}
+/*I stoped here*/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
 
 .tool-content { /* Container for text content in tool cards */
   flex: 1; /* Takes up remaining space in the flex container */
