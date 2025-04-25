@@ -1849,9 +1849,10 @@ button:focus {
 
 /* Testimonials Section */
 .testimonials-section {
-  padding: 6rem 0;
+  /*padding: 6rem 0;*/
   text-align: center;
   background: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
+  width: 80%;
 }
 
 .testimonials-section h2 {
@@ -1877,16 +1878,8 @@ button:focus {
   max-width: 1400px; /* Maximum width to prevent excessive spreading */
   width: 100%; /* Take full width up to max-width */
   margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.testimonial-card {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  text-align: center;
-  min-width: 250px; /* Minimum width to prevent excessive squashing */
+  padding: 0 7rem;
+  
 }
 
 .testimonial-avatar {
@@ -1924,13 +1917,14 @@ button:focus {
 
 
 
-.testimonial-card {
+.testimonial-card {/*asasy*/
   background: white;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   text-align: left;
   min-width: 280px;
+  margin: 0.2rem;
 }
 
 .testimonial-top {
