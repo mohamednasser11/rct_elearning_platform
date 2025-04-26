@@ -254,18 +254,18 @@ const AiToolsPage = () => {
                   <h4 className="features-title">Key Features:</h4>
                   <ul className="features-list">
                     <li>
-                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Three summary levels:</strong> Choose between short, medium, or long summaries based on your needs</div>
+                      <div><MdOutlineKeyboardArrowRight className="new-arrows-student" /><strong>Three summary levels:</strong> Choose between short, medium, or long summaries based on your needs</div>
 
                     </li>
                     <li>
-                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Subject extraction:</strong> Automatically identifies and organizes key subjects and topics</div>
+                      <div><MdOutlineKeyboardArrowRight className="new-arrows-student" /><strong>Subject extraction:</strong> Automatically identifies and organizes key subjects and topics</div>
                     </li>
                     <li>
-                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Smart formatting:</strong> Structured summaries with headings, bullet points, and highlights</div>
+                      <div><MdOutlineKeyboardArrowRight className="new-arrows-student" /><strong>Smart formatting:</strong> Structured summaries with headings, bullet points, and highlights</div>
                       <div></div>
                     </li>
                     <li>
-                      <div><MdOutlineKeyboardArrowRight className="feature-arrow student-arrow" /><strong>Multiple file support:</strong> Upload lecture slides, PDFs, images, or screenshots</div>
+                      <div><MdOutlineKeyboardArrowRight className="new-arrows-student" /><strong>Multiple file support:</strong> Upload lecture slides, PDFs, images, or screenshots</div>
                     </li>
                   </ul>
                 </div>
