@@ -1,3 +1,4 @@
+/* Main container styling for AI Tools page */
 .ai-tools-container {
   padding: 6rem 2rem 2rem;
   max-width: 1200px;
@@ -8,12 +9,12 @@
   color: #2c3e50;
   margin-bottom: 2rem;
 }
-
+/* Main content area layout */
 .content {
   display: grid;
   gap: 2rem;
 }
-
+/* Features section styling */
 .features {
   background: #fff;
   padding: 2rem;
@@ -25,20 +26,20 @@
   color: #2c3e50;
   margin-bottom: 2rem;
 }
-
+/* Grid layout for tool cards */
 .tools-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
 }
-
+/* Individual tool card styling */
 .tool-card {
   background: #f8f9fa;
   padding: 1.5rem;
   border-radius: 8px;
   transition: transform 0.2s ease;
 }
-
+/* Card hover effect */
 .tool-card:hover {
   transform: translateY(-5px);
 }
