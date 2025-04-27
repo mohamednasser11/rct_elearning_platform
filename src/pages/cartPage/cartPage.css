@@ -1,27 +1,28 @@
+/* Main container styling */
 .cart-container {
   padding: 6rem 2rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
-
+/* Cart title styling */
 .cart-container h1 {
   color: #2c3e50;
   margin-bottom: 2rem;
 }
-
+/* Item count span styling */
 .cart-container h1 span {
   font-size: 1rem;
   color: #6c757d;
   font-weight: normal;
   margin-left: 0.5rem;
 }
-
+/* Grid layout for cart content (items + summary) */
 .cart-content {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 2rem;
 }
-
+/* Cart items container styling */
 .cart-items {
   background: #fff;
   padding: 2rem;
@@ -49,13 +50,13 @@
   border-radius: 4px;
   overflow: hidden;
 }
-
+/* Product image container styling */
 .item-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
+/* Placeholder when no image is available */
 .placeholder-image {
   color: #adb5bd;
   font-size: 0.75rem;
@@ -119,7 +120,7 @@
 .remove-item:hover {
   color: #c82333;
 }
-
+/* Cart actions container (like clear cart) */
 .cart-actions {
   display: flex;
   justify-content: flex-end;
@@ -217,7 +218,7 @@
   background: #a8e4c0;
   cursor: not-allowed;
 }
-
+/* Responsive styles for mobile devices */
 @media (max-width: 768px) {
   .cart-content {
     grid-template-columns: 1fr;
