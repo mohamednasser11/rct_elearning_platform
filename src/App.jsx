@@ -1,6 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
-import HomePage from "./pages/homePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import ForStudentsPage from "./pages/forStudentsPage/forStudentsPage";
@@ -12,6 +11,7 @@ import CourseDetail from "./pages/coursesPage/coursesMaterial/CourseDetail";
 import MainNavigation from "./components/NavBar/MainNavigation";
 import Footer from "./components/Footer/Footer";
 import { CartProvider } from "./contexts/cartContext.jsx";
+import HomePage from "./pages/HomePage/HomePage";
 
 function App() {
   return (

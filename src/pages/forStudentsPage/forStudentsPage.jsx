@@ -143,10 +143,12 @@ const ForStudentsPage = () => {
         <div className="features-grid">
           {/* Feature Card 1 */}
           <div className="feature-card">
-            <div className="feature-icon-container">
-              <IoBook className="feature-icon" />
+            <div className="feature-header">
+              <div className="feature-icon-container">
+                <IoBook className="feature-icon" />
+              </div>
+              <h3 className="feature-title">AI Study Guide Generator</h3>
             </div>
-            <h3 className="feature-title">AI Study Guide Generator</h3>
             <p className="feature-description">
               Upload your lecture notes or syllabus, and our AI will generate comprehensive study guides tailored to your course material and learning objectives.
             </p>
@@ -162,10 +164,12 @@ const ForStudentsPage = () => {
 
           {/* Feature Card 2 */}
           <div className="feature-card">
-            <div className="feature-icon-container">
-              <IoSchool className="feature-icon" />
+            <div className="feature-header">
+              <div className="feature-icon-container">
+                <IoSchool className="feature-icon" />
+              </div>
+              <h3 className="feature-title">Smart Knowledge Assessment</h3>
             </div>
-            <h3 className="feature-title">Smart Knowledge Assessment</h3>
             <p className="feature-description">
               Our AI evaluates your current knowledge level through adaptive questioning and creates a personalized study path.
             </p>
@@ -181,10 +185,12 @@ const ForStudentsPage = () => {
 
           {/* Feature Card 3 */}
           <div className="feature-card">
-            <div className="feature-icon-container">
-              <IoChatbubble className="feature-icon" />
+            <div className="feature-header">
+              <div className="feature-icon-container">
+                <IoChatbubble className="feature-icon" />
+              </div>
+              <h3 className="feature-title">Study Companion AI</h3>
             </div>
-            <h3 className="feature-title">Study Companion AI</h3>
             <p className="feature-description">
               A 24/7 AI tutor that answers questions, explains complex topics, and helps you work through problems in real-time.
             </p>
@@ -200,10 +206,12 @@ const ForStudentsPage = () => {
 
           {/* Feature Card 4 */}
           <div className="feature-card">
-            <div className="feature-icon-container">
-              <IoPeople className="feature-icon" />
+            <div className="feature-header">
+              <div className="feature-icon-container">
+                <IoPeople className="feature-icon" />
+              </div>
+              <h3 className="feature-title">Collaborative Study Spaces</h3>
             </div>
-            <h3 className="feature-title">Collaborative Study Spaces</h3>
             <p className="feature-description">
               Virtual study rooms where you can collaborate with peers, share resources, and learn together with AI assistance.
             </p>
@@ -226,7 +234,7 @@ const ForStudentsPage = () => {
       {/* Impact Section */}
       <div className="impact-section">
         <div className="impact-label">REAL RESULTS</div>
-        <h2 className="impact-heading">The EduCraft Impact</h2>
+        <h2 className="impact-heading">The Beyond the Blackboard Impact</h2>
         <p className="impact-subheading">
           Real results from students who transformed their learning experience with our platform.
         </p>

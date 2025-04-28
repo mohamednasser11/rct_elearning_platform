@@ -1,0 +1,61 @@
+/* ========== Our Global Section ========== */
+.our-global-section {
+  padding: 60px 5%;
+  background-color: var(--white);
+  text-align: center;
+}
+.our-global-grid {
+  display: grid;
+  gap: 24px;
+  justify-items: center;
+  grid-template-columns: 1fr;
+  max-width: 1060px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+@media (min-width: 768px) {
+  .our-global-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .our-global-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.our-global-card {
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 3px 3px rgb(0 0 0 / 19%);
+  text-align: left;
+  transition: transform 0.3s ease;
+  width: 245px;
+}
+.our-global-card:hover {
+  transform: translateY(-4px);
+}
+.icon-box {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+}
+.our-global-card h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 4px;
+}
+.our-global-card .sub-title {
+  font-size: 1rem;
+  color: #111827;
+  font-weight: 700;
+  margin-bottom: 6px;
+  margin-top: 0px;
+  text-align: left;
+}
+.our-global-card p {
+  font-size: 0.95rem;
+  color: #4b5563;
+}

@@ -76,13 +76,13 @@ const HamburgerMenu = ({
         aria-label="Main Navigation"
       >
         <div className="categories-sidebar-header">
-          <Link to="/" className="sidebar-logo" onClick={closeCategoryMenu}>
+          <div className="sidebar-logo">
             <PiBookOpenBold className="sidebar-book-logo" color="#0fb480" aria-hidden="true" />
             <div className="sidebar-logo-container">
               <span className="sidebar-logo-first">Beyond</span>
               <span className="sidebar-logo-second"><span className="sidebar-logo-the">The</span> Blackboard</span>
             </div>
-          </Link>
+          </div>
           <button 
             className="sidebar-close-button" 
             onClick={closeCategoryMenu}
@@ -127,6 +127,9 @@ const HamburgerMenu = ({
             </div>
           </div>
           
+          <Link to="/" className="sidebar-nav-item" onClick={closeCategoryMenu}>
+            Home
+          </Link>
           <Link to="/for-students" className="sidebar-nav-item" onClick={closeCategoryMenu}>
             For Students
           </Link>

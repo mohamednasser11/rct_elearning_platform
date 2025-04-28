@@ -1,0 +1,137 @@
+/* ========== 4. Impact Section ========== */
+.impact-section {
+  background-color: #f3f4f6;
+  padding: 60px 5%;
+}
+.impact-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 40px;
+}
+.impact-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  flex: 1 1 400px;
+  max-width: 500px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.impact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+/* .impact-card h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: left;
+  color: #1f2937;
+} */
+.results-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+.results-list li {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 25px;
+  align-items: center;
+}
+.results-list li:last-child {
+  margin-bottom: 0px;
+}
+.div-list h2 {
+  font-size: 2rem;
+  color: #111827;
+  font-weight: 600;
+  margin-bottom: 10px !important;
+}
+.div-list div {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.div-list div .arrow-up {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+.impact-icon {
+  font-size: 2rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  color: #1f2937;
+  transition: background-color 0.3s ease;
+}
+.impact-icon:hover {
+  background-color: #d1d5db;
+}
+.green,
+.blue,
+.purple,
+.teal {
+  min-width: 50px;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  font-size: 25px;
+}
+.green {
+  background-color: #d1fae5;
+  color: #059669;
+}
+.blue {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+.purple {
+  background-color: #ede9fe;
+  color: #7c3aed;
+}
+.teal {
+  background-color: #ccfbf1;
+  color: #0f766e;
+}
+.reach-card {
+  height: fit-content;
+}
+.reach-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
+  max-height: 150px;
+}
+.reach-card img:hover {
+  transform: scale(1.01);
+}
+.reach-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+.reach-list li {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #374151;
+}
+.reach-list li .reach-icon {
+  color: var(--primary-color);
+  font-size: 16px;
+}
+.reach-list li strong {
+  color: #111827;
+  font-weight: 600;
+}
