@@ -577,9 +577,9 @@
 /* Our Tools Section */
 
 .our-tools-section {
-  padding: 4rem 2rem;
+  padding: 4rem 1rem;
   text-align: center;
-  max-width: 1600px; 
+  max-width: 2000px; 
   width: 100%; 
   margin: 0 auto; 
 }
@@ -595,8 +595,8 @@
 }
 
 .section-icon-wrapper { /*icon wrapper for our tools header*/
-  width: 45px;
-  height: 45px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: rgba(48,74,237,0.1);
   display: flex;
@@ -605,7 +605,7 @@
 }
 
 .section-icon { /*icon color and size for out tools header*/
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   color: rgb(48,74,237);
 }
 
