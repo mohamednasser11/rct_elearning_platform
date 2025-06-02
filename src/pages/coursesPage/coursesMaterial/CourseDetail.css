@@ -197,8 +197,15 @@
 .feature-icon {
   color: #4CAF50;
   margin-right: 10px;
-  min-width: 16px;
+  min-width: 22px;
+  font-size: 1.2rem;
+  position: relative;
+  left: 5px;
+  margin-top: 7px;
+  padding-top: 1px;
+  font-size: 1rem;
 }
+
 
 
 .enrollment-button.in-cart {
@@ -407,7 +414,7 @@
   background-color: #ffffff;
   padding: 0.6rem 1.1rem;
   border-radius: 30px;
-  width: 9.7rem;
+  width: 13rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
   margin-top: 30px;
   margin-left: -0.3rem;
@@ -714,6 +721,7 @@
 
 .tab-icon {
   font-size: 1.1rem;
+  color: #000000a9 !important;
 }
 
 .tab-content {
@@ -722,7 +730,7 @@
 
 .course-tabs {
   display: flex;
-  margin-bottom: rem;
+  /* margin-bottom: rem; */
 }
 /* ---------------------------- */
 

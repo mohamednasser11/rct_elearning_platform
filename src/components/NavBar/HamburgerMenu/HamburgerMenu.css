@@ -191,7 +191,7 @@
 .categories-list {
   display: flex;
   flex-direction: column;
-  background-color: #f9f9f9;
+  background-color: #f9f9f91e;
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
@@ -207,7 +207,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.7rem 1.5rem 0.7rem 2.5rem;
-  color: #555;
+  color: #4d4d4def;
   text-decoration: none;
   transition: all 0.2s ease;
   font-weight: 500;
@@ -219,12 +219,12 @@
   color: #14c78e;
 }
 
-.category-arrow {
+/* .category-arrow {
   font-size: 0.8rem;
   transition: transform 0.2s ease;
-}
+} */
 
-.category-item:hover .category-arrow {
+.category-item:hover {
   transform: translateX(3px);
 }
 
@@ -235,7 +235,7 @@
 }
 
 .sidebar-nav-item {
-  color: #333;
+  color: #000000;
   display: flex;
   padding: 0.8rem 1.5rem;
   cursor: pointer;
@@ -260,9 +260,9 @@
 /* Auth buttons in sidebar */
 .auth-btn {
   margin: 0.5rem auto;
-  font-size: 13px;
-  margin-top: 3px;
-  height: auto;
+  font-size: 16px;
+  margin-top: 8px;
+  height: 37px;
   /* min-height: 40px; */
   width: 60%;
   max-width: 10rem;
@@ -275,7 +275,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.151);
 }
 
 .login-btn {
@@ -283,28 +283,23 @@
   background-color: #f1f1f1;
   color: #333333;
   width: 9.7rem; 
-  height: 18px;
+  /* height: 32px; */
   border-color: #f1f1f1;
 
 }
 
-.login-btn:hover {
+/* .login-btn:hover {
   background-color: #f1f1f1;
   color: #333333;
   transform: translateY(-4px);
-}
+} */
 
 .signup-btn {
   background-color: #0fb480;
-  color: white !important;
+  /* color: white !important; */
   width: 10rem; 
-  height: 20px;
+  /* height: 32px; */
   border-color: #0fb480;
-}
-
-.signup-btn:hover {
-  background-color: #0fb67f;
-  transform: translateY(-2px);
 }
 
 /* Responsive styles */

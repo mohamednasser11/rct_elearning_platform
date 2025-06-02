@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaChevronRight, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { PiBookOpenBold } from "react-icons/pi";
 import "./HamburgerMenu.css";
 
@@ -121,7 +121,6 @@ const HamburgerMenu = ({
                   onClick={closeCategoryMenu}
                 >
                   {category}
-                  <FaChevronRight className="category-arrow" aria-hidden="true" />
                 </Link>
               ))}
             </div>

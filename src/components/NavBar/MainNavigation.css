@@ -174,23 +174,6 @@
   gap: 1rem;
 }
 
-/* Cart styles */
-.cart-badge {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: #23b98a;
-  color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
 
 .cart-button {
   display: flex;
@@ -205,24 +188,61 @@
   height: 30px;
 }
 
-.cart-button:hover {
+/* .cart-button:hover {
   color: #ffffff;
   background-color: #14c78e;
-}
+} */
 
 .cart-button .cart-badge {
-  background-color: #14c78e;
-  color: #ffffff;
+  /* background-color: #14c78e; */
+  color: #000000;
+}
+
+/* Enhanced Cart Badge Styling */
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  color: #000000;
+  border-radius: 80%;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* border: 2px solid #ffffff; */
+  transform: scale(1);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animation on hover */
+/* .cart-button:hover .cart-badge {
+  transform: scale(1.1);
+  background-color: #ff3300;
+} */
+
+/* Animation when cart count changes */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.cart-badge.pulse {
+  animation: pulse 0.5s ease-in-out;
 }
 
 /* Cart button specific styles */
-.cart-button.auth-navigation-item {
+/* .cart-button.auth-navigation-item {
   padding: 0.1rem 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-}
+} */
 
 /* Hamburger menu for mobile */
 /* .hamburger-menu {
