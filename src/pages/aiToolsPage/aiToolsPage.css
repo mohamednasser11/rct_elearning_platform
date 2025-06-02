@@ -23,7 +23,7 @@
 
 /* Hero Section */
 
-.hero-section { /* Top banner section with headline and preview */
+.ai-hero-section { /* Top banner section with headline and preview */
   display: grid; 
   grid-template-columns: 1fr 1fr; 
   gap: 4rem; 
@@ -37,13 +37,15 @@
   margin: 0 auto; 
 }
 
-.hero-content { /* Left side content of hero section */
+.ai-hero-content { /* Left side content of hero section */
   text-align: left; 
   padding-right: 2rem; 
   max-width: 800px; 
+  background: transparent;
+  margin-left: -10rem;
 }
 
-.hero-section h1 { /* Main heading in hero section */
+.ai-hero-section h1 { /* Main heading in hero section */
   font-size: 3.5rem; 
   font-weight: 700; 
   color: #000000; 
@@ -59,7 +61,7 @@
   background-clip: text;
 }
 
-.hero-subtitle { /* Subtitle text below the main heading */
+.ai-hero-subtitle { /* Subtitle text below the main heading */
   font-size: 1.2rem; 
   color: #718096; 
   margin-bottom: 2rem; 
@@ -68,14 +70,14 @@
 }
 
 /* CTA buttons in hero section */
-.cta-buttons {
+.ai-cta-buttons {
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
 }
 
 /* Primary button style */
-.primary-btn {
+.ai-primary-btn {
   display: flex;
   align-items: center;
   padding: 0.75rem 1.5rem 0.75rem 2.5rem;
@@ -90,13 +92,13 @@
   min-width: 230px;
 }
 
-.primary-btn:hover {
+.ai-primary-btn:hover {
   background: rgba(21,198,142,0.9); /* Slightly darker on hover */
   transform: translateY(-2px);
 }
 
 /* Secondary button style */
-.secondary-btn {
+.ai-secondary-btn {
   padding: 0.75rem 1.5rem;
   background: transparent;
   color: rgba(21,198,142,255);
@@ -108,13 +110,13 @@
   transition: all 0.2s;
 }
 
-.secondary-btn:hover {
+.ai-secondary-btn:hover {
   background: rgba(21,198,142,0.1);
   border-color: rgba(21,198,142,0.9);
   transform: translateY(-2px);
 }
 
-.hero-features { /* Feature list below the subtitle */
+.ai-hero-features { /* Feature list below the subtitle */
   display: flex; 
   gap: 2rem; 
   margin-top: 2rem; 
@@ -122,7 +124,7 @@
   font-size: 0.875rem; 
 }
 
-.hero-features span { /* Individual feature item */
+.ai-hero-features span { /* Individual feature item */
   display: flex; 
   align-items: flex-start; 
   gap: -0.8rem; 
@@ -130,7 +132,7 @@
 
 /* Hero Section Icons - completely separate from feature card icons */
 
-.hero-features .hero-icon { /* Icon for each feature in hero section */
+.ai-hero-features .ai-hero-icon { /* Icon for each feature in hero section */
   color: rgba(10,167,60,0.9) !important; 
   font-size: 1.25rem; 
   display: flex; 
@@ -142,21 +144,22 @@
   z-index: 2 !important; 
 }
 
-.hero-features .feature-text { /* Text label for each feature */
+.ai-hero-features .feature-text { /* Text label for each feature */
   margin-top: 1px; 
   margin-left: 4px;
 }
 
-.hero-preview { /* Right side of hero section with preview image */
+.ai-hero-preview { /* Right side of hero section with preview image */
   position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 350px; 
+  margin-left: 11rem;
 }
 
-.hero-preview .preview-card-small {
+.ai-hero-preview .preview-card-small {
   background: white;
   border-radius: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
@@ -166,13 +169,13 @@
   height: 170px; 
   position: absolute;
   top: 50%;
-  left: 41%; /* Fine-tuned position to show exactly 12% from the right side */
+  left: 45%; /* Fine-tuned position to show exactly 12% from the right side */
   transform: translateY(-50%); /* Center vertically */
   z-index: 1;
   opacity: 0.95;
 }
 
-.hero-preview .preview-card { /* Card showing the UI preview example */
+.ai-hero-preview .preview-card { /* Card showing the UI preview example */
   background: white;
   border-radius: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
@@ -450,15 +453,18 @@
   margin-top: 2rem; 
 }
 
-.feature-check-icon { /* Check icon for features */
+.ai-Lecture-Summarizer-check-icon { /* Check icon for features */
   color: rgba(10,167,60,0.9); 
   margin-top: -1rem; 
   padding-top: 0.1rem;
-  font-size: 1.7rem;
+  font-size: 3.1rem; 
 }
 
-.feature-check-icon.purple { /* Purple check icon for features */
+.ai-Assessment-Generator-check-icon { /* Purple check icon for features */
   color: rgba(105,10,167,0.9); 
+  margin-top: -1rem; 
+  padding-top: 0.1rem;
+  font-size: 3.1rem;
 }
 
 .feature-content { /* Container for feature content */
@@ -502,7 +508,7 @@
 /* Feature Cards Icons  wrapper*/
 /*******************************/
 
-.feature-cards .feature-card .feature-icon-wrapper { /* Icon container within feature cards */
+.feature-cards .feature-card .ai-feature-icon-wrapper { /* Icon container within feature cards */
   width: 45px; 
   height: 45px; 
   border-radius: 50%; 
@@ -512,17 +518,17 @@
   position: static !important;
 }
 
-.feature-cards .feature-card .feature-icon-wrapper.blue { /* Blue-themed icon wrapper in feature cards */
+.feature-cards .feature-card .ai-feature-icon-wrapper.blue { /* Blue-themed icon wrapper in feature cards */
   background: rgba(48,74,237,0.1); 
   box-shadow: -7px 0 0 rgba(48,74,237,0.1); 
 }
 
-.feature-cards .feature-card .feature-icon-wrapper.green { /* Green-themed icon wrapper in feature cards */
+.feature-cards .feature-card .ai-feature-icon-wrapper.green { /* Green-themed icon wrapper in feature cards */
   background: rgba(10,167,60,0.1); 
   box-shadow: -7px 0 0 rgba(10,167,60,0.1); 
 }
 
-.feature-cards .feature-card .feature-icon-wrapper.purple { /* Purple-themed icon wrapper in feature cards */
+.feature-cards .feature-card .ai-feature-icon-wrapper.purple { /* Purple-themed icon wrapper in feature cards */
   background: rgba(105,10,167,0.1); 
   box-shadow: -7px 0 0 rgba(105,10,167,0.1); 
 }
@@ -539,15 +545,15 @@
   margin-bottom: -1rem;
 }
 
-.feature-cards .feature-card .feature-icon-wrapper.blue .feature-icon { /* Icon within blue-themed feature cards */
+.feature-cards .feature-card .ai-feature-icon-wrapper.blue .feature-icon { /* Icon within blue-themed feature cards */
   color: rgb(48,74,237);
 }
 
-.feature-cards .feature-card .feature-icon-wrapper.green .feature-icon { /* Icon within green-themed feature cards */
+.feature-cards .feature-card .ai-feature-icon-wrapper.green .feature-icon { /* Icon within green-themed feature cards */
   color: rgba(10,167,60,0.9); 
 }
 
-.feature-cards .feature-card .feature-icon-wrapper.purple .feature-icon { /* Icon within purple-themed feature cards */
+.feature-cards .feature-card .ai-feature-icon-wrapper.purple .feature-icon { /* Icon within purple-themed feature cards */
   color: rgba(105,10,167,0.9); 
 }
 
