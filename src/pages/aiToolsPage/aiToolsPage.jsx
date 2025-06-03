@@ -503,7 +503,7 @@ const AiToolsPage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="testimonials-section">
+      <section className="ai-testimonials-section">
         <h2>What Our Students Say</h2>
         <p className="testimonials-subtitle">Hear from students who've transformed their learning experience with our platform</p>
         <div className="testimonials-grid">
