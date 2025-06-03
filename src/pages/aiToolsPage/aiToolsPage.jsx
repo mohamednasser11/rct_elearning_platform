@@ -10,8 +10,10 @@ import { RiRobot2Line } from 'react-icons/ri';
 import { BiSolidBookAlt } from 'react-icons/bi';
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { BsCheck2Square } from "react-icons/bs";
+import { useNavigate } from 'react-router-dom';
 
 const AiToolsPage = () => {
+  const navigate = useNavigate();
   const [activeLength, setActiveLength] = React.useState('easy');
   const [activeTab, setActiveTab] = React.useState('student');
   const [questionCount, setQuestionCount] = React.useState(10);
@@ -80,7 +82,7 @@ const AiToolsPage = () => {
           </h1>
           <p className="ai-hero-subtitle">Beyond the Blackboard helps students and educators unlock their full potential with intelligent AI tools that summarize lectures and generate customized assessments.</p>
           <div className="ai-cta-buttons">
-            <button className="ai-primary-btn">Get Started free <FaArrowRight className="btn-arrow" /></button>
+            <button className="ai-primary-btn" onClick={() => navigate('/signup')}>Get Started free <FaArrowRight className="btn-arrow" /></button>
             <button className="ai-secondary-btn">Watch Demo</button> 
           </div>
           <div className="ai-hero-features">
