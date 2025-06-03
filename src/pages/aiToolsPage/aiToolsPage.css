@@ -584,15 +584,6 @@
   margin: 0 auto; 
 }
 
-.section-header { /*our tools header section container*/
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-  background-color: #ffffff; 
-}
 
 .section-icon-wrapper { /*icon wrapper for our tools header*/
   width: 70px;
@@ -617,21 +608,23 @@
   background-color: #ffffff;  
 }
 
-.our-tools-section h2 { /*header title of our tools header section*/
-  font-size: 2.5rem;
+.our-tools-section h2 {
+  font-size: 3rem;
   color: #26344d;
   font-weight: 700;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  text-align: center;
 }
 
 .section-subtitle { /*subtitle of our tools header section*/
-  font-size: 1.7rem; 
+  font-size: 1.8rem; 
   text-align: center;
   color: #4A5568; 
   max-width: 970px; 
   margin-top: 2rem;
   margin-left: 20rem;
+  margin-bottom: 8rem;
   line-height: 1.5;
 }
 
@@ -640,15 +633,15 @@
 }
 
 .toggle-switch-wrapper { /* Container for toggle switch */
-  margin: 3rem 0 2rem; 
+  margin: 3rem 0 6rem; 
   display: flex; 
   justify-content: center; 
 }
 
 .toggle-switch { /* Toggle switch */
   position: relative; 
-  width: 360px; 
-  height: 48px; 
+  width: 800px; 
+  height:70px; 
   background: #f1f5f9; 
   border-radius: 25px; 
   padding: 3px; 
@@ -688,7 +681,7 @@
 }
 
 .toggle-icon { /*toggle icon*/
-  font-size: 1.1rem;
+  font-size: 1.8rem;
 }
 
 .toggle-label {
@@ -767,8 +760,8 @@
   margin-top: -0.5rem;
 }
 
-.tab-title { /*title for student tab header*/
-  font-size: 1.75rem;
+.for-student-tab-header { /*title for student tab header*/
+  font-size: 2rem;
   font-weight: 600;
   color: #2D3748;
   margin: 0;
@@ -791,14 +784,15 @@
   display: flex;                  
   flex-direction: column;         
   align-items: flex-start;        
-  width: 100%;                    
+  width: 100%;    
+  margin-top: 2rem;                
   margin-left: 0;                 
   padding-left: 0;               
   min-width: 280px; 
 }
 
 .content-subtitle { /*title in left side in student tab */
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 600;
   color: #245ad7;
   margin-bottom: 0.5rem;
@@ -809,8 +803,9 @@
 
 .content-description { /*description text in left side student tab*/
   margin-top: 0.5rem;
+  margin-bottom: 2rem;
   color: #000000;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   line-height: 1.5;
   text-align: left;
   margin-left: 4rem;
@@ -897,7 +892,8 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
+  margin-left: 15rem;  
 }
 
 .try-button:hover {
@@ -927,9 +923,10 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-width: 580px;
+  max-width: 600px;
   min-width: 280px;
-  margin: 0 auto;
+  margin-top: 6.2rem;
+  margin-left: 5rem;
 }
 
 .drop-box::before {
@@ -1152,7 +1149,9 @@
   border-radius: 0.5rem; 
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); 
   max-width: 580px; 
-  margin: 2.5rem 0 0 0;
+  margin-top: 2.5rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
   position: relative;
 }
 
@@ -1451,7 +1450,7 @@
   height: 3rem;
 }
 
-.educator-icon {
+.ai-educator-icon {
   font-size: 2.5rem;
   color: #3b82f6;
   margin-top: -20px;  

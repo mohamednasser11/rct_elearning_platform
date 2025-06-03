@@ -15,6 +15,42 @@ const AiToolsPage = () => {
   const [activeLength, setActiveLength] = React.useState('easy');
   const [activeTab, setActiveTab] = React.useState('student');
   const [questionCount, setQuestionCount] = React.useState(10);
+
+  // Refs for file inputs
+  const studentFileRef = React.useRef(null);
+  const educatorFileRef = React.useRef(null);
+
+  // Click handlers for "Select Files" buttons
+  const handleStudentSelectFileClick = () => {
+    if (studentFileRef.current) {
+      studentFileRef.current.value = null; // Reset file input to allow re-selecting the same file
+      studentFileRef.current.click();
+    }
+  };
+
+  const handleEducatorSelectFileClick = () => {
+    if (educatorFileRef.current) {
+      educatorFileRef.current.value = null; // Reset file input
+      educatorFileRef.current.click();
+    }
+  };
+
+  // Change handlers for file inputs
+  const handleStudentFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      console.log('Student tab file selected:', file.name, file.type);
+      // TODO: Add file processing logic here (e.g., upload, display preview)
+    }
+  };
+
+  const handleEducatorFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      console.log('Educator tab file selected:', file.name, file.type);
+      // TODO: Add file processing logic here (e.g., upload, display preview)
+    }
+  };
   
   // Initialize slider fill effect
   React.useEffect(() => {
@@ -204,21 +240,8 @@ const AiToolsPage = () => {
       </section>
       {/* AI Tools Toggle Section */} {/*our ai tools section header*/}
       <section className="our-tools-section"> 
-        <div className="section-header" style={{ 
-          background: 'transparent', 
-          borderRadius: '16px', 
-          padding: '2rem', 
-          marginBottom: '2rem',
-          pointerEvents: 'none'
-        }}>
-          <div className="section-icon-wrapper">
-            <RiRobot2Line className="section-icon" />
-          </div>
-          <div className="header-content">
-            <h2>Our AI Learning Tools</h2>
-            <p className="section-subtitle">Powerful AI assistants designed specifically for students and educators.</p>
-          </div>
-        </div>
+        <h2>Our AI Learning Tools</h2>
+        <p className="section-subtitle">Powerful AI assistants designed specifically for students and educators.</p>
         <div className="tools-content">
           <div className="toggle-switch-wrapper">
             <div className="toggle-switch">
@@ -242,7 +265,7 @@ const AiToolsPage = () => {
             <div className="student-tools tab-content">
               <div className="tab-header">
                 <BiSolidBookAlt className="tab-main-icon" />
-                <h2 className="tab-title">AI Lecture Summarizer</h2>
+                <h2 className="for-student-tab-header">AI Lecture Summarizer</h2>
               </div>
             <div className="tab-content-section">
               <div className="content-wrapper">
@@ -283,7 +306,14 @@ const AiToolsPage = () => {
                   </div>
                   <h4 className="drop-zone-title">Drag & drop files here</h4>
                   <p className="drop-zone-subtitle">or click to browse (PDFs, images)</p>
-                  <button className="select-files-btn">Select Files</button>
+                  <input 
+                    type="file" 
+                    ref={studentFileRef} 
+                    style={{ display: 'none' }} 
+                    onChange={handleStudentFileChange}
+                    accept=".pdf,.doc,.docx,.txt,image/*"
+                  />
+                  <button className="select-files-btn" onClick={handleStudentSelectFileClick}>Select Files</button>
                 </div>
                 <div className="summary-length">
                   <h4 className="summary-title">Summary Length</h4>
@@ -320,13 +350,20 @@ const AiToolsPage = () => {
                   <p className="exam-subtitle">Create customized exams from your course materials</p>
                   
                   <div className="file-upload-box">
-                    <div className="upload-area-container">
-                      <div className="upload-icon-wrapper">
-                        <FiUpload className="upload-cloud-icon" />
+                    <div className="drop-zone">
+                      <div className="drop-icon">
+                        <LuCloud className="cloud-icon" />
                       </div>
-                      <p className="upload-title">Drag & drop files here</p>
-                      <p className="upload-subtitle">or click to browse (PDFs, images)</p>
-                      <button className="select-files-button">Select Files</button>
+                      <h4 className="drop-zone-title">Drag & drop files here</h4>
+                      <p className="drop-zone-subtitle">or click to browse (PDFs, images)</p>
+                      <input 
+                        type="file" 
+                        ref={educatorFileRef} 
+                        style={{ display: 'none' }} 
+                        onChange={handleEducatorFileChange}
+                        accept=".pdf,.doc,.docx,.txt,image/*"
+                      />
+                      <button className="select-files-btn" onClick={handleEducatorSelectFileClick}>Select Files</button>
                     </div>
                   </div>
                   
@@ -394,8 +431,8 @@ const AiToolsPage = () => {
                 {/* Right Panel - Features */}
                 <div className="features-panel">
                   <div className="educator-header">
-                    <div className="educator-icon-wrapper">
-                      <RiRobot2Line className="educator-icon" />
+                    <div className="ai-educator-icon-wrapper">
+                      <RiRobot2Line className="ai-educator-icon" />
                     </div>
                     <h2 className="educator-heading">For Educators</h2>
                   </div>
