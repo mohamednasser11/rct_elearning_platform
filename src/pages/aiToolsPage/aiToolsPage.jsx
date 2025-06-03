@@ -242,7 +242,7 @@ const AiToolsPage = () => {
       </section>
       {/* AI Tools Toggle Section */} {/*our ai tools section header*/}
       <section className="our-tools-section"> 
-        <h2>Our AI Learning Tools</h2>
+        <h2 className="our-tools-section-title">Our AI Learning Tools</h2>
         <p className="section-subtitle">Powerful AI assistants designed specifically for students and educators.</p>
         <div className="tools-content">
           <div className="toggle-switch-wrapper">

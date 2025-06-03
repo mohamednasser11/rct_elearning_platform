@@ -608,7 +608,7 @@
   background-color: #ffffff;  
 }
 
-.our-tools-section h2 {
+.our-tools-section-title {
   font-size: 3rem;
   color: #26344d;
   font-weight: 700;
@@ -757,14 +757,14 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  margin-top: -0.5rem;
+  margin-top: 2.5rem;
 }
 
 .for-student-tab-header { /*title for student tab header*/
   font-size: 2rem;
   font-weight: 600;
   color: #2D3748;
-  margin: 0;
+  margin-top: 2rem;
 }
 
 .tab-content-section { /* Container for student tab content */
@@ -796,7 +796,7 @@
   font-weight: 600;
   color: #245ad7;
   margin-bottom: 0.5rem;
-  margin-top: -15px;
+  margin-top: -3rem;
   margin-left: 4rem;
   padding-left: 0;
 }
@@ -925,7 +925,6 @@
   gap: 1.5rem;
   max-width: 600px;
   min-width: 280px;
-  margin-top: 6.2rem;
   margin-left: 5rem;
 }
 
@@ -1462,10 +1461,10 @@
 }
 
 .educator-heading {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #2d3748;
-  margin: 0;
+  margin-bottom: 2rem;
 }
 
 .tool-name {
