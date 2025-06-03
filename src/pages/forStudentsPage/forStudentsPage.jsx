@@ -142,7 +142,7 @@ const ForStudentsPage = () => {
 
         <div className="features-grid">
           {/* Feature Card 1 */}
-          <div className="feature-card">
+          <div className="for-student-feature-card">
             <div className="feature-header">
               <div className="feature-icon-container">
                 <IoBook className="feature-icon" />
@@ -163,7 +163,7 @@ const ForStudentsPage = () => {
           </div>
 
           {/* Feature Card 2 */}
-          <div className="feature-card">
+          <div className="for-student-feature-card">
             <div className="feature-header">
               <div className="feature-icon-container">
                 <IoSchool className="feature-icon" />
@@ -184,7 +184,7 @@ const ForStudentsPage = () => {
           </div>
 
           {/* Feature Card 3 */}
-          <div className="feature-card">
+          <div className="for-student-feature-card">
             <div className="feature-header">
               <div className="feature-icon-container">
                 <IoChatbubble className="feature-icon" />
@@ -205,7 +205,7 @@ const ForStudentsPage = () => {
           </div>
 
           {/* Feature Card 4 */}
-          <div className="feature-card">
+          <div className="for-student-feature-card">
             <div className="feature-header">
               <div className="feature-icon-container">
                 <IoPeople className="feature-icon" />
@@ -300,7 +300,7 @@ const ForStudentsPage = () => {
                     <span className="change-badge positive">+23%</span>
                   </div>
                 </div>
-                <div className="progress-bar-container">
+                <div className="for-student-progress-bar-container">
                   <div className="progress-bar-bg"></div>
                   <div 
                     className="progress-bar-fill purple" 
@@ -321,7 +321,7 @@ const ForStudentsPage = () => {
                     <span className="change-badge positive">+20%</span>
                   </div>
                 </div>
-                <div className="progress-bar-container">
+                <div className="for-student-progress-bar-container">
                   <div className="progress-bar-bg"></div>
                   <div 
                     className="progress-bar-fill purple" 
@@ -342,7 +342,7 @@ const ForStudentsPage = () => {
                     <span className="change-badge reduction">-40%</span>
                   </div>
                 </div>
-                <div className="progress-bar-container">
+                <div className="for-student-progress-bar-container">
                   <div className="progress-bar-bg"></div>
                   <div 
                     className="progress-bar-fill green" 

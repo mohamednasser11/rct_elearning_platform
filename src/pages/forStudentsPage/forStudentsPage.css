@@ -359,7 +359,7 @@
   margin-right: auto;
 }
 
-.feature-card {
+.for-student-feature-card {
   background: rgba(240, 253, 250, 255) !important ;
   border-radius: 10px;
   padding: 1.25rem;
@@ -374,27 +374,27 @@
   box-sizing: border-box;
 }
 
-.feature-card:hover {
+.for-student-feature-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
 }
 
-.feature-card:nth-child(1) .feature-icon-container {
+.for-student-feature-card:nth-child(1) .feature-icon-container {
   background: rgba(120, 112, 255, 0.1);
   border-radius: 8px;
 }
 
-.feature-card:nth-child(2) .feature-icon-container {
+.for-student-feature-card:nth-child(2) .feature-icon-container {
   background: rgba(149, 117, 205, 0.1);
   border-radius: 8px;
 }
 
-.feature-card:nth-child(3) .feature-icon-container {
+.for-student-feature-card:nth-child(3) .feature-icon-container {
   background: rgba(233, 137, 206, 0.1);
   border-radius: 8px;
 }
 
-.feature-card:nth-child(4) .feature-icon-container {
+.for-student-feature-card:nth-child(4) .feature-icon-container {
   background: rgba(108, 142, 254, 0.1);
   border-radius: 8px;
 }
@@ -419,19 +419,19 @@
   position: relative;
 }
 
-.feature-card:nth-child(1) .feature-icon {
+.for-student-feature-card:nth-child(1) .feature-icon {
   color: #6c63ff;
 }
 
-.feature-card:nth-child(2) .feature-icon {
+.for-student-feature-card:nth-child(2) .feature-icon {
   color: #9575cd;
 }
 
-.feature-card:nth-child(3) .feature-icon {
+.for-student-feature-card:nth-child(3) .feature-icon {
   color: #e989ce;
 }
 
-.feature-card:nth-child(4) .feature-icon {
+.for-student-feature-card:nth-child(4) .feature-icon {
   color: #6c8efe;
 }
 
@@ -529,7 +529,7 @@
     padding: 0 1rem;
   }
   
-  .feature-card {
+  .for-student-feature-card {
     max-width: 500px;
     margin: 0 auto;
   }
@@ -954,11 +954,11 @@
   color: #22C55E;
 }
 
-.progress-bar-container {
+.for-student-progress-bar-container {
   height: 10px;
   width: 100%;
   background: #f3f4f6;
-  border-radius: 10px;
+  border-radius: 2px;
   position: relative;
   overflow: hidden;
 }
@@ -968,13 +968,13 @@
   height: 100%;
   width: 100%;
   background: #f3f4f6;
-  border-radius: 10px;
+  border-radius: 2px;
 }
 
 .progress-bar-fill {
   position: absolute;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 0px;
   transition: width 1s ease;
 }
 
