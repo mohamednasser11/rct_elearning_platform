@@ -33,7 +33,7 @@ const ForStudentsPage = () => {
           <div className="laptop-container">
             <div className="rating-badge">
               {[...Array(5)].map((_, i) => (
-                <FaStar key={i} className="star-icon" />
+                <FaStar key={i} className="fs-star-icon" />
               ))}
             </div>
             <img 
@@ -42,8 +42,8 @@ const ForStudentsPage = () => {
               className="laptop-image" 
             />
             <div className="stat-badge">
-              <div className="check-icon-container">
-                <FaCheck className="check-icon" />
+              <div className="fs-check-icon-container">
+                <FaCheck className="fs-check-icon" />
               </div>
               <div className="stat-text">
                 Study time reduced by 40%

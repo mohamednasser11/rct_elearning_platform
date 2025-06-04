@@ -9,7 +9,7 @@
 
 .promo-section {
   display: flex;
-  min-height: 480px;
+  min-height: 600px;
   border-radius: 12px;
   overflow: hidden;
   padding: 0.5rem;
@@ -28,7 +28,7 @@
 .student-badge {
   background-color: rgba(21,198,142,255);;
   color: white;
-  font-size: 0.65rem;
+  font-size: 1rem;
   font-weight: 600;
   padding: 0.3rem 0.7rem;
   border-radius: 20px;
@@ -39,7 +39,7 @@
 }
 
 .main-heading {
-  font-size: 2.3rem;
+  font-size: 3rem;
   font-weight: 800;
   margin-bottom: 0.8rem;
   line-height: 1.2;
@@ -54,11 +54,11 @@
 }
 
 .subheading {
-  font-size: 0.95rem;
+  font-size: 1.6rem;
   line-height: 1.5;
   color: #555;
-  margin-bottom: 1.5rem;
-  max-width: 95%;
+  margin-bottom: 2rem;
+  max-width: 100%;
   text-align: left;
 }
 
@@ -71,7 +71,7 @@
   padding: 0.7rem 1.4rem;
   border-radius: 30px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
@@ -118,12 +118,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: -3rem;
+  margin-top: 5rem;
 }
 
 .laptop-container {
   position: relative;
-  width: 90%;
-  max-width: 500px;
+  width: 100%; 
+  max-width: 600px;
 }
 
 .laptop-image {
@@ -146,12 +148,14 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 2;
   margin-top: -1.5rem;
-  margin-right: -1rem;
+  margin-right: -1.5rem;
 }
 
-.star-icon {
+.fs-star-icon {
   color: #FFD700;
   margin: 0 1px;
+  font-size: 1.5rem;
+  width: 2rem;
 }
 
 .stat-badge {
@@ -168,9 +172,10 @@
   min-width: 200px;
   z-index: 2;
   border-left: 3px solid #0ca848;
+  width: 280px;
 }
 
-.check-icon-container {
+.fs-check-icon-container {
   background: #059968;
   width: 24px;
   height: 24px;
@@ -181,13 +186,13 @@
   margin-right: 12px;
 }
 
-.check-icon {
+.fs-check-icon {
   color: white;
-  font-size: 0.7rem;
+  font-size: 1rem;
 }
 
 .stat-text {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #333;
 }
