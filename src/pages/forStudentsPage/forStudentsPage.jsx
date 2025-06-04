@@ -230,7 +230,7 @@ const ForStudentsPage = () => {
       </div>
 
       {/* Impact Section */}
-      <div className="impact-section">
+      <div className="fs-impact-section">
         <div className="impact-label">REAL RESULTS</div>
         <h2 className="impact-heading">The Beyond the Blackboard Impact</h2>
         <p className="impact-subheading">
