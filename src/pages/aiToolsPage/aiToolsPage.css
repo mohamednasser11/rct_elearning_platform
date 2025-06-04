@@ -474,7 +474,7 @@
 /* Feature Cards the 4 small cards*/
 /*******************************/
 
-.feature-cards { /* Grid container for feature cards (the 4 small cards) */
+.ai-feature-cards { /* Grid container for feature cards (the 4 small cards) */
   display: grid; 
   grid-template-columns: repeat(4, 1fr); 
   gap: 2rem; 
@@ -506,7 +506,7 @@
 /* Feature Cards Icons  wrapper*/
 /*******************************/
 
-.feature-cards .feature-card .ai-feature-icon-wrapper { /* Icon container within feature cards */
+.ai-feature-cards .feature-card .ai-feature-icon-wrapper { /* Icon container within feature cards */
   width: 45px; 
   height: 45px; 
   border-radius: 50%; 
@@ -516,42 +516,40 @@
   position: static !important;
 }
 
-.feature-cards .feature-card .ai-feature-icon-wrapper.blue { /* Blue-themed icon wrapper in feature cards */
+.ai-feature-cards .feature-card .ai-feature-icon-wrapper.blue { /* Blue-themed icon wrapper in feature cards */
   background: rgba(48,74,237,0.1); 
   box-shadow: -7px 0 0 rgba(48,74,237,0.1); 
 }
 
-.feature-cards .feature-card .ai-feature-icon-wrapper.green { /* Green-themed icon wrapper in feature cards */
+.ai-feature-cards .feature-card .ai-feature-icon-wrapper.green { /* Green-themed icon wrapper in feature cards */
   background: rgba(10,167,60,0.1); 
   box-shadow: -7px 0 0 rgba(10,167,60,0.1); 
 }
 
-.feature-cards .feature-card .ai-feature-icon-wrapper.purple { /* Purple-themed icon wrapper in feature cards */
+.ai-feature-cards .feature-card .ai-feature-icon-wrapper.purple { /* Purple-themed icon wrapper in feature cards */
   background: rgba(105,10,167,0.1); 
   box-shadow: -7px 0 0 rgba(105,10,167,0.1); 
 }
 
 /* Feature Card Icons */
 
-.feature-cards .feature-card .feature-icon { /* Icon within feature cards */
+.ai-feature-cards .feature-card .feature-icon { /* Icon within feature cards */
   font-size: 1.5rem; 
   position: static !important; 
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: -1rem;
-  margin-bottom: -1rem;
-}
+} 
 
-.feature-cards .feature-card .ai-feature-icon-wrapper.blue .feature-icon { /* Icon within blue-themed feature cards */
+.ai-feature-cards .feature-card .ai-feature-icon-wrapper.blue .feature-icon { /* Icon within blue-themed feature cards */
   color: rgb(48,74,237);
 }
 
-.feature-cards .feature-card .ai-feature-icon-wrapper.green .feature-icon { /* Icon within green-themed feature cards */
+.ai-feature-cards .feature-card .ai-feature-icon-wrapper.green .feature-icon { /* Icon within green-themed feature cards */
   color: rgba(10,167,60,0.9); 
 }
 
-.feature-cards .feature-card .ai-feature-icon-wrapper.purple .feature-icon { /* Icon within purple-themed feature cards */
+.ai-feature-cards .feature-card .ai-feature-icon-wrapper.purple .feature-icon { /* Icon within purple-themed feature cards */
   color: rgba(105,10,167,0.9); 
 }
 
@@ -1843,7 +1841,7 @@ button:focus {
 }
 
 @media (max-width: 1200px) { /* Styles for screens up to 1200px wide */
-  .feature-cards { 
+  .ai-feature-cards { 
     grid-template-columns: repeat(2, 1fr); 
     gap: 1.5rem;
   }

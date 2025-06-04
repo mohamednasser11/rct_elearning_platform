@@ -209,7 +209,7 @@ const AiToolsPage = () => {
           </div>
         </div>
 
-        <div className="feature-cards">
+        <div className="ai-feature-cards">
           <div className="feature-card">
             <div className="ai-feature-icon-wrapper blue">
               <LuBrainCircuit className="feature-icon" />
