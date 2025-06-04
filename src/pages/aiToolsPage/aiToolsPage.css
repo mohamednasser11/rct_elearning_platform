@@ -502,6 +502,24 @@
   border: 1px solid rgba(48,74,237,0.10);
 }
 
+.ai-feature-cards .feature-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Individual feature card background colors (slightly darker than icon wrappers) */
+.ai-feature-cards .feature-card:nth-child(1),
+.ai-feature-cards .feature-card:nth-child(4) {
+  background-color: rgba(48, 74, 237, 0.15); /* Blue */
+}
+
+.ai-feature-cards .feature-card:nth-child(2) {
+  background-color: rgba(10, 167, 60, 0.15); /* Green */
+}
+
+.ai-feature-cards .feature-card:nth-child(3) {
+  background-color: rgba(105, 10, 167, 0.15); /* Purple */
+}
 
 /* Feature Cards Icons  wrapper*/
 /*******************************/
