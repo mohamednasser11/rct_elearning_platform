@@ -49,7 +49,7 @@ export default function Benefits() {
             " Join a network sharing best practices and innovative approaches.",
           ],
         ].map(([icon, title, desc]) => (
-          <div className="benefit-card" key={title}>
+          <div className="fe-benefit-card" key={title}>
             <div className="icon-box">{icon}</div>
             <h3>{title}</h3>
             <p>{desc}</p>

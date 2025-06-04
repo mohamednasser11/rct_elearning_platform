@@ -71,7 +71,7 @@ const ForStudentsPage = () => {
             <div className="icon-container">
               <IoMdTime className="benefit-icon" />
             </div>
-            <h3 className="benefit-title">Study Less, Learn More</h3>
+            <h3 className="fs-benefit-title">Study Less, Learn More</h3>
             <p className="benefit-description">
               Our AI identifies your knowledge gaps and creates study plans focused only on what you need to learn.
             </p>
@@ -93,7 +93,7 @@ const ForStudentsPage = () => {
             <div className="icon-container">
               <AiOutlineUser className="benefit-icon" />
             </div>
-            <h3 className="benefit-title">Personalized to Your Learning Style</h3>
+            <h3 className="fs-benefit-title">Personalized to Your Learning Style</h3>
             <p className="benefit-description">
               Everyone learns differently. Our AI adapts to your unique learning style and preferences.
             </p>
@@ -115,7 +115,7 @@ const ForStudentsPage = () => {
             <div className="icon-container">
               <BiBrain className="benefit-icon" />
             </div>
-            <h3 className="benefit-title">Better Academic Results</h3>
+            <h3 className="fs-benefit-title">Better Academic Results</h3>
             <p className="benefit-description">
               Students using Beyond the Blackboard see significant improvements in their grades and comprehension.
             </p>

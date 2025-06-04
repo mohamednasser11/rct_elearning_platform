@@ -281,7 +281,7 @@
   font-size: 1.5rem;
 }
 
-.benefit-title {
+.fs-benefit-title {
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -289,7 +289,7 @@
 }
 
 .benefit-description {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   line-height: 1.5;
   color: #555;
   margin-bottom: 1.5rem;

@@ -42,13 +42,13 @@
   color: var(--primary-color);
   margin-bottom: 12px;
 }
-.benefit-card h3 {
+.fe-benefit-card h3 {
   font-size: 1.1rem;
   font-weight: 600;
   color: #111827;
   margin-bottom: 8px;
 }
-.benefit-card p {
+.fe-benefit-card  {
   font-size: 0.95rem;
   color: #4b5563;
 }
