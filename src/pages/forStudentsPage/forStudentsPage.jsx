@@ -55,11 +55,11 @@ const ForStudentsPage = () => {
       </div>
 
       {/* Benefits Section */}
-      <div className="benefits-section">
+      <div className="fs-benefits-section">
         <div className="why-choose-badge">WHY CHOOSE US</div>
         <h2 className="benefits-heading">Benefits for Students</h2>
         <p className="benefits-subtext">
-          Our platform provides unique advantages that traditional study methods can't match. Here's
+          Our platform provides unique advantages that traditional study methods can't match. <br /> Here's
           how Beyond the Blackboard helps you excel.
         </p>
 
@@ -144,8 +144,8 @@ const ForStudentsPage = () => {
           {/* Feature Card 1 */}
           <div className="for-student-feature-card">
             <div className="feature-header">
-              <div className="feature-icon-container">
-                <IoBook className="feature-icon" />
+              <div className="sf-feature-icon-container">
+                <IoBook className="sf-feature-icon" />
               </div>
               <h3 className="feature-title">AI Study Guide Generator</h3>
             </div>
@@ -153,10 +153,10 @@ const ForStudentsPage = () => {
               Upload your lecture notes or syllabus, and our AI will generate comprehensive study guides tailored to your course material and learning objectives.
             </p>
             <ul className="feature-list">
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> Converts dense material into easy-to-understand concepts
               </li>
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> Creates practice questions focused on important topics
               </li>
             </ul>
@@ -165,8 +165,8 @@ const ForStudentsPage = () => {
           {/* Feature Card 2 */}
           <div className="for-student-feature-card">
             <div className="feature-header">
-              <div className="feature-icon-container">
-                <IoSchool className="feature-icon" />
+              <div className="sf-feature-icon-container">
+                <IoSchool className="sf-feature-icon" />
               </div>
               <h3 className="feature-title">Smart Knowledge Assessment</h3>
             </div>
@@ -174,10 +174,10 @@ const ForStudentsPage = () => {
               Our AI evaluates your current knowledge level through adaptive questioning and creates a personalized study path.
             </p>
             <ul className="feature-list">
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> Identifies specific knowledge gaps
               </li>
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> Adapts difficulty based on your responses
               </li>
             </ul>
@@ -186,8 +186,8 @@ const ForStudentsPage = () => {
           {/* Feature Card 3 */}
           <div className="for-student-feature-card">
             <div className="feature-header">
-              <div className="feature-icon-container">
-                <IoChatbubble className="feature-icon" />
+              <div className="sf-feature-icon-container">
+                <IoChatbubble className="sf-feature-icon" />
               </div>
               <h3 className="feature-title">Study Companion AI</h3>
             </div>
@@ -195,10 +195,10 @@ const ForStudentsPage = () => {
               A 24/7 AI tutor that answers questions, explains complex topics, and helps you work through problems in real-time.
             </p>
             <ul className="feature-list">
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> Subject-matter expertise across all disciplines
               </li>
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> Explains concepts in multiple ways until you understand
               </li>
             </ul>
@@ -207,8 +207,8 @@ const ForStudentsPage = () => {
           {/* Feature Card 4 */}
           <div className="for-student-feature-card">
             <div className="feature-header">
-              <div className="feature-icon-container">
-                <IoPeople className="feature-icon" />
+              <div className="sf-feature-icon-container">
+                <IoPeople className="sf-feature-icon" />
               </div>
               <h3 className="feature-title">Collaborative Study Spaces</h3>
             </div>
@@ -216,10 +216,10 @@ const ForStudentsPage = () => {
               Virtual study rooms where you can collaborate with peers, share resources, and learn together with AI assistance.
             </p>
             <ul className="feature-list">
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> Real-time document collaboration
               </li>
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> AI moderator to keep study sessions productive
               </li>
             </ul>

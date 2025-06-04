@@ -212,7 +212,7 @@
 .why-choose-badge {
   background-color: rgba(21,198,142,255);
   color: white;
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: 600;
   padding: 0.35rem 0.75rem;
   border-radius: 20px;
@@ -222,18 +222,19 @@
 }
 
 .benefits-heading {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   color: #121212;
 }
 
 .benefits-subtext {
-  font-size: 1rem;
+  font-size: 1.4rem;
   line-height: 1.6;
   color: #555;
   margin: 0 auto 3rem;
-  max-width: 700px;
+  max-width: 900px;
+  text-align: center;
 }
 
 .benefits-cards {
@@ -313,7 +314,7 @@
 
 /* Features Section */
 .features-section,
-.benefits-section {
+.fs-benefits-section {
   margin: 5rem 0;
   padding: 3rem 1.5rem;
   background: transparent;
@@ -324,7 +325,7 @@
 .features-badge {
   background-color: rgba(21,198,142,255);
   color: white;
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: 600;
   padding: 0.35rem 0.75rem;
   border-radius: 20px;
@@ -335,18 +336,19 @@
 }
 
 .features-heading {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   color: #121212;
 }
 
 .features-subtext {
-  font-size: 1rem;
+  font-size: 1.5rem;
   line-height: 1.6;
   color: #555;
-  margin: 0 auto 3rem;
-  max-width: 700px;
+  margin-bottom: 3rem;
+  margin-left: 30rem;
+  max-width: 1000px;
 }
 
 .features-grid {
@@ -354,7 +356,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   margin-bottom: 3rem;
-  max-width: 1200px;
+  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -367,8 +369,8 @@
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
-  min-height: 205px;
-  max-width: 600px;
+  min-height: 250px;
+  max-width: 800px;
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
@@ -379,22 +381,22 @@
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
 }
 
-.for-student-feature-card:nth-child(1) .feature-icon-container {
+.for-student-feature-card:nth-child(1) .sf-feature-icon-container {
   background: rgba(120, 112, 255, 0.1);
   border-radius: 8px;
 }
 
-.for-student-feature-card:nth-child(2) .feature-icon-container {
+.for-student-feature-card:nth-child(2) .sf-feature-icon-container {
   background: rgba(149, 117, 205, 0.1);
   border-radius: 8px;
 }
 
-.for-student-feature-card:nth-child(3) .feature-icon-container {
+.for-student-feature-card:nth-child(3) .sf-feature-icon-container {
   background: rgba(233, 137, 206, 0.1);
   border-radius: 8px;
 }
 
-.for-student-feature-card:nth-child(4) .feature-icon-container {
+.for-student-feature-card:nth-child(4) .sf-feature-icon-container {
   background: rgba(108, 142, 254, 0.1);
   border-radius: 8px;
 }
@@ -408,7 +410,7 @@
   margin-right: 16rem;
 }
 
-.feature-icon-container {
+.sf-feature-icon-container {
   width: 30px;
   height: 30px;
   border-radius: 8px;
@@ -419,23 +421,23 @@
   position: relative;
 }
 
-.for-student-feature-card:nth-child(1) .feature-icon {
+.for-student-feature-card:nth-child(1) .sf-feature-icon {
   color: #6c63ff;
 }
 
-.for-student-feature-card:nth-child(2) .feature-icon {
+.for-student-feature-card:nth-child(2) .sf-feature-icon {
   color: #9575cd;
 }
 
-.for-student-feature-card:nth-child(3) .feature-icon {
+.for-student-feature-card:nth-child(3) .sf-feature-icon {
   color: #e989ce;
 }
 
-.for-student-feature-card:nth-child(4) .feature-icon {
+.for-student-feature-card:nth-child(4) .sf-feature-icon {
   color: #6c8efe;
 }
 
-.feature-icon {
+.sf-feature-icon {
   font-size: 0.9rem;
   position: absolute;
   top: 50%;
@@ -444,7 +446,7 @@
 }
 
 .feature-title {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
   color: #333;
@@ -454,10 +456,11 @@
 }
 
 .feature-description {
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   line-height: 1.4;
   color: #666;
-  margin: 0 0 1rem 0;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
   word-wrap: break-word;
   overflow-wrap: break-word;
   max-width: 100%;
@@ -477,11 +480,11 @@
   padding-left: 2.3rem;
 }
 
-.feature-item {
+.sf-feature-item {
   display: flex;
   align-items: flex-start;
   margin-bottom: 0.35rem;
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: #666;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -495,7 +498,7 @@
   font-size: 0.7rem;
   flex-shrink: 0;
   position: relative;
-  top: 17px;
+  top: 5px;
 }
 
 .explore-features-button {
