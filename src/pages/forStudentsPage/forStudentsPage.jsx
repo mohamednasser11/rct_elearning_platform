@@ -1,12 +1,14 @@
 import React from 'react';
 import './forStudentsPage.css';
-import { FaCheck, FaStar, FaChartLine, FaGraduationCap, FaUsers, FaClock } from 'react-icons/fa';
+import { FaStar, FaCheck, FaClock, FaChartLine, FaUsers, FaGraduationCap } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import { IoMdTime } from 'react-icons/io';
 import { AiOutlineUser } from 'react-icons/ai';
 import { BiBrain } from 'react-icons/bi';
 import { IoBook, IoSchool, IoChatbubble, IoPeople } from 'react-icons/io5';
 
 const ForStudentsPage = () => {
+  const navigate = useNavigate();
   return (
     <div className="for-students-container">
       {/* Promo Section */}
@@ -21,7 +23,7 @@ const ForStudentsPage = () => {
             study time, improve comprehension, and achieve better results.
           </p>
           <div className="cta-buttons">
-            <button className="cta-button primary">Start Free Trial</button>
+            <button className="cta-button primary" onClick={() => navigate('/signup')}>Start Free Trial</button>
             <button className="cta-button secondary">
               Watch Demo <span className="arrow">→</span>
             </button>
@@ -225,10 +227,6 @@ const ForStudentsPage = () => {
             </ul>
           </div>
         </div>
-
-        <button className="explore-features-button">
-          Explore All Features <span className="arrow">→</span>
-        </button>
       </div>
 
       {/* Impact Section */}
