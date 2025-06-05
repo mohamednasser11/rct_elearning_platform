@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-.ai-tools-container { /* Main container for all AI tools page content */
+.edu-tools-wrapper { /* Main container for all AI tools page content */
   max-width: 100%; 
   margin: 0; 
   padding: 0 2rem; 
@@ -23,7 +23,7 @@
 
 /* Hero Section */
 
-.hero-section { /* Top banner section with headline and preview */
+.edu-banner-section { /* Top banner section with headline and preview */
   display: grid; 
   grid-template-columns: 1fr 1fr; 
   gap: 4rem; 
@@ -37,13 +37,15 @@
   margin: 0 auto; 
 }
 
-.hero-content { /* Left side content of hero section */
+.edu-banner-content { /* Left side content of hero section */
   text-align: left; 
   padding-right: 2rem; 
   max-width: 800px; 
+  background: transparent;
+  margin-left: -10rem;
 }
 
-.hero-section h1 { /* Main heading in hero section */
+.edu-banner-section h1 { /* Main heading in hero section */
   font-size: 3.5rem; 
   font-weight: 700; 
   color: #000000; 
@@ -59,7 +61,7 @@
   background-clip: text;
 }
 
-.hero-subtitle { /* Subtitle text below the main heading */
+.edu-banner-subtitle { /* Subtitle text below the main heading */
   font-size: 1.2rem; 
   color: #718096; 
   margin-bottom: 2rem; 
@@ -68,14 +70,14 @@
 }
 
 /* CTA buttons in hero section */
-.cta-buttons {
+.edu-action-buttons {
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
 }
 
 /* Primary button style */
-.primary-btn {
+.edu-primary-button {
   display: flex;
   align-items: center;
   padding: 0.75rem 1.5rem 0.75rem 2.5rem;
@@ -90,13 +92,13 @@
   min-width: 230px;
 }
 
-.primary-btn:hover {
+.edu-primary-button:hover {
   background: rgba(21,198,142,0.9); /* Slightly darker on hover */
   transform: translateY(-2px);
 }
 
 /* Secondary button style */
-.secondary-btn {
+.edu-secondary-button {
   padding: 0.75rem 1.5rem;
   background: transparent;
   color: rgba(21,198,142,255);
@@ -108,13 +110,13 @@
   transition: all 0.2s;
 }
 
-.secondary-btn:hover {
+.edu-secondary-button:hover {
   background: rgba(21,198,142,0.1);
   border-color: rgba(21,198,142,0.9);
   transform: translateY(-2px);
 }
 
-.hero-features { /* Feature list below the subtitle */
+.edu-banner-features { /* Feature list below the subtitle */
   display: flex; 
   gap: 2rem; 
   margin-top: 2rem; 
@@ -122,7 +124,7 @@
   font-size: 0.875rem; 
 }
 
-.hero-features span { /* Individual feature item */
+.edu-banner-features span { /* Individual feature item */
   display: flex; 
   align-items: flex-start; 
   gap: -0.8rem; 
@@ -130,7 +132,7 @@
 
 /* Hero Section Icons - completely separate from feature card icons */
 
-.hero-features .hero-icon { /* Icon for each feature in hero section */
+.edu-banner-features .edu-banner-icon { /* Icon for each feature in hero section */
   color: rgba(10,167,60,0.9) !important; 
   font-size: 1.25rem; 
   display: flex; 
@@ -142,21 +144,22 @@
   z-index: 2 !important; 
 }
 
-.hero-features .feature-text { /* Text label for each feature */
+.edu-banner-features .feature-label { /* Text label for each feature */
   margin-top: 1px; 
   margin-left: 4px;
 }
 
-.hero-preview { /* Right side of hero section with preview image */
+.edu-banner-preview { /* Right side of hero section with preview image */
   position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 350px; 
+  margin-left: 11rem;
 }
 
-.hero-preview .preview-card-small {
+.edu-banner-preview .preview-card-mini {
   background: white;
   border-radius: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
@@ -166,13 +169,13 @@
   height: 170px; 
   position: absolute;
   top: 50%;
-  left: 41%; /* Fine-tuned position to show exactly 12% from the right side */
+  left: 45%; /* Fine-tuned position to show exactly 12% from the right side */
   transform: translateY(-50%); /* Center vertically */
   z-index: 1;
   opacity: 0.95;
 }
 
-.hero-preview .preview-card { /* Card showing the UI preview example */
+.edu-banner-preview .preview-card-main { /* Card showing the UI preview example */
   background: white;
   border-radius: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
@@ -266,7 +269,7 @@
 
 /* AI Tools Section - The main content area showcasing the learning tools */
 
-.ai-tools-section { /* Container for the AI tools showcase */
+.edu-tools-section { /* Container for the AI tools showcase */
   padding: 4rem 0 4rem 0; 
   text-align: center; 
   background: transparent; 
@@ -276,18 +279,14 @@
   width: 100%; 
 }
 
-.ai-tools-section h2 { /* Main heading for AI Tools section */
-  font-size: 3rem; 
+.edu-tools-section h2 { /* Main heading for AI Tools section */
+  font-size: 3.5rem; 
   color: #2D3748; 
   margin-bottom: 0.5rem; 
   margin-top: -2;
 }
 
-.ai-tools-section p { /* Paragraph text in AI Tools section head*/
-  font-size: 1.5rem; 
-  color: #4A5568; 
-  margin-bottom: 3rem; 
-}
+
 
 .highlight {
   background: rgba(6,97,28,255);
@@ -296,7 +295,7 @@
   background-clip: text;
 }
 
-.tools-grid { /* Container for the main AI tool cards */
+.tools-container { /* Container for the main AI tool cards */
   display: flex; 
   flex-wrap: wrap; 
   justify-content: center; 
@@ -306,9 +305,10 @@
   margin: 0 auto 4rem; 
   padding: 0 2rem; 
   margin-bottom: 6rem; 
+  margin-top: 6rem;
 }
 
-.tool-card { /* the two big main cards in the AI tools section */
+.module-card { /* the two big main cards in the AI tools section */
   display: flex; 
   flex-direction: column; 
   gap: 1rem; 
@@ -323,7 +323,7 @@
   position: relative; 
 }
 
-.tool-card::before { /* Colored top border accent for each tool card */
+.module-card::before { /* Colored top border accent for each tool card */
   content: ''; /* Required for pseudo-elements */
   position: absolute; 
   top: 0; 
@@ -334,15 +334,15 @@
 }
 
 
-.summarizer-card::before { /* Blue-green gradient for the Lecture Summarizer tool */
+.summary-module-card::before { /* Blue-green gradient for the Lecture Summarizer tool */
   background: linear-gradient(90deg, rgb(0, 87, 26) 0%, rgba(0, 190, 57) 0%, rgb(0, 109, 33) 100%);}
 
-.assessment-card::before { /* Blue-purple gradient for the Assessment Generator tool */
+.exam-module-card::before { /* Blue-purple gradient for the Assessment Generator tool */
   background: linear-gradient(90deg, rgb(0, 87, 26) 0%, rgba(0, 190, 57) 0%, rgb(0, 109, 33) 100%);}
 
 
 
-.tool-header { /* Container for tool icon and title for both cards */
+.module-header { /* Container for tool icon and title for both cards */
   display: flex; 
   align-items: center; 
   gap: 1rem; 
@@ -350,7 +350,7 @@
 
 
 
-.tool-description { /* Description text for each AI tool */
+.module-description { /* Description text for each AI tool */
   margin: 0; 
   padding-left: 0;
   color: #000000;
@@ -359,12 +359,12 @@
   font-size: 1.5rem;
 }
 
-.tool-card:hover { /* Interactive styles when user hovers over a tool card */
+.module-card:hover { /* Interactive styles when user hovers over a tool card */
   transform: translateY(-4px); 
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); 
 }
 
-.tool-icon-wrapper { /* Container for the tool icons in each of the two main big cards */
+.module-icon-container { /* Container for the tool icons in each of the two main big cards */
   flex-shrink: 0; 
   width: 48px; 
   height: 48px; 
@@ -374,23 +374,23 @@
   justify-content: center; 
 }
 
-.tool-icon-wrapper.blue { /* Blue background for Lecture Summarizer big card (icon wrapper) */
+.module-icon-container.blue { /* Blue background for Lecture Summarizer big card (icon wrapper) */
   background: rgba(66, 153, 225, 0.2); 
 }
 
-.tool-icon-wrapper.purple { /* Purplebackground for Assessment Generator big card (icon wrapper) */
+.module-icon-container.purple { /* Purplebackground for Assessment Generator big card (icon wrapper) */
   background: rgba(159, 122, 234, 0.2); 
 }
 
-.tool-icon { /* The actual icon element inside the wrapper */
+.module-icon { /* The actual icon element inside the wrapper */
   font-size: 1.5rem; 
 }
 
-.tool-icon-wrapper.blue .tool-icon { /* Icon inside a blue wrapper */
+.module-icon-container.blue .module-icon { /* Icon inside a blue wrapper */
   color: #4299E1; 
 }
 
-.tool-icon-wrapper.purple .tool-icon { /* Icon inside a purple wrapper */
+.module-icon-container.purple .module-icon { /* Icon inside a purple wrapper */
   color: #9F7AEA; 
 }
 
@@ -400,18 +400,18 @@
 /******************************************************/
 /******************************************************/
 
-.tool-content { /* Container for text content in tool cards */
+.module-content { /* Container for text content in tool cards */
   flex: 1; 
 }
 
-.tool-card h3 { /* Heading of the two main big cards */
+.module-card h3 { /* Heading of the two main big cards */
   font-size: 1.8rem; 
   color: #2D3748; 
   margin: 0; 
   font-weight: 600; 
 }
 
-.tool-card p { /* Paragraph text in the two main big cards */
+.module-card p { /* Paragraph text in the two main big cards */
   color: #0b0e12; 
   line-height: 1.5; 
   font-size: 1.2rem; 
@@ -438,7 +438,7 @@
   text-align: left; 
 }
 
-.tool-feature { /* Container for tool features in the two main big cards */
+.module-feature { /* Container for tool features in the two main big cards */
   display: flex; 
   align-items: flex-start; 
   gap: 1rem; 
@@ -446,19 +446,22 @@
   padding-top: 0.5rem; 
 }
 
-.tool-feature:first-of-type { /* First feature item */
+.module-feature:first-of-type { /* First feature item */
   margin-top: 2rem; 
 }
 
-.feature-check-icon { /* Check icon for features */
+.edu-summary-check-icon { /* Check icon for features */
   color: rgba(10,167,60,0.9); 
   margin-top: -1rem; 
   padding-top: 0.1rem;
-  font-size: 1.7rem;
+  font-size: 3.1rem; 
 }
 
-.feature-check-icon.purple { /* Purple check icon for features */
+.edu-exam-check-icon { /* Purple check icon for features */
   color: rgba(105,10,167,0.9); 
+  margin-top: -1rem; 
+  padding-top: 0.1rem;
+  font-size: 3.1rem;
 }
 
 .feature-content { /* Container for feature content */
@@ -471,7 +474,7 @@
 /* Feature Cards the 4 small cards*/
 /*******************************/
 
-.feature-cards { /* Grid container for feature cards (the 4 small cards) */
+.benefit-cards { /* Grid container for feature cards (the 4 small cards) */
   display: grid; 
   grid-template-columns: repeat(4, 1fr); 
   gap: 2rem; 
@@ -479,13 +482,14 @@
   padding: 0 2rem; 
   max-width: 1400px; 
   width: 100%; 
-  margin-left: auto; 
+  margin-left: 1rem; 
   margin-right: auto; 
 }
 
-.feature-card { /* feature cards (the 4 small cards) styling */
+.benefit-card { /* feature cards (the 4 small cards) styling */
   background: rgb(255, 255, 255); 
-  height: 180px; 
+  height: 250px; 
+  width: 350px;
   padding: 1.5rem; 
   border-radius: 12px; 
   text-align: center; 
@@ -502,7 +506,7 @@
 /* Feature Cards Icons  wrapper*/
 /*******************************/
 
-.feature-cards .feature-card .feature-icon-wrapper { /* Icon container within feature cards */
+.benefit-cards .benefit-card .edu-benefit-icon-container { /* Icon container within feature cards */
   width: 45px; 
   height: 45px; 
   border-radius: 50%; 
@@ -512,24 +516,24 @@
   position: static !important;
 }
 
-.feature-cards .feature-card .feature-icon-wrapper.blue { /* Blue-themed icon wrapper in feature cards */
+.benefit-cards .benefit-card .edu-benefit-icon-container.blue { /* Blue-themed icon wrapper in feature cards */
   background: rgba(48,74,237,0.1); 
   box-shadow: -7px 0 0 rgba(48,74,237,0.1); 
 }
 
-.feature-cards .feature-card .feature-icon-wrapper.green { /* Green-themed icon wrapper in feature cards */
+.benefit-cards .benefit-card .edu-benefit-icon-container.green { /* Green-themed icon wrapper in feature cards */
   background: rgba(10,167,60,0.1); 
   box-shadow: -7px 0 0 rgba(10,167,60,0.1); 
 }
 
-.feature-cards .feature-card .feature-icon-wrapper.purple { /* Purple-themed icon wrapper in feature cards */
+.benefit-cards .benefit-card .edu-benefit-icon-container.purple { /* Purple-themed icon wrapper in feature cards */
   background: rgba(105,10,167,0.1); 
   box-shadow: -7px 0 0 rgba(105,10,167,0.1); 
 }
 
 /* Feature Card Icons */
 
-.feature-cards .feature-card .feature-icon { /* Icon within feature cards */
+.benefit-cards .benefit-card .benefit-icon { /* Icon within feature cards */
   font-size: 1.5rem; 
   position: static !important; 
   display: flex;
@@ -539,31 +543,32 @@
   margin-bottom: -1rem;
 }
 
-.feature-cards .feature-card .feature-icon-wrapper.blue .feature-icon { /* Icon within blue-themed feature cards */
+.benefit-cards .benefit-card .edu-benefit-icon-container.blue .benefit-icon { /* Icon within blue-themed feature cards */
   color: rgb(48,74,237);
 }
 
-.feature-cards .feature-card .feature-icon-wrapper.green .feature-icon { /* Icon within green-themed feature cards */
+.benefit-cards .benefit-card .edu-benefit-icon-container.green .benefit-icon { /* Icon within green-themed feature cards */
   color: rgba(10,167,60,0.9); 
 }
 
-.feature-cards .feature-card .feature-icon-wrapper.purple .feature-icon { /* Icon within purple-themed feature cards */
+.benefit-cards .benefit-card .edu-benefit-icon-container.purple .benefit-icon { /* Icon within purple-themed feature cards */
   color: rgba(105,10,167,0.9); 
 }
 
-.feature-card h4 { /* Heading within feature cards */
-  font-size: 1rem;
+.benefit-card h4 { /* Heading within feature cards */
+  font-size: 1.5rem;
   color: #2D3748; 
   margin: 0; 
   font-weight: 600; 
 }
 
-.feature-card p { /* Paragraph text within feature cards */
-  font-size: 0.85rem; 
+.benefit-card p { /* Paragraph text within feature cards */
+  font-size: 1rem; 
   color: #4A5568; 
   line-height: 1.3; 
   margin: 0; 
   max-width: 90%; 
+  text-align: center;
 }
 
 /*our AI tool section and toggle switch*/
@@ -571,27 +576,18 @@
 
 /* Our Tools Section */
 
-.our-tools-section {
-  padding: 4rem 2rem;
+.our-modules-section {
+  padding: 4rem 1rem;
   text-align: center;
-  max-width: 1600px; 
+  max-width: 2000px; 
   width: 100%; 
   margin: 0 auto; 
 }
 
-.section-header { /*our tools header section container*/
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-  background-color: #ffffff; 
-}
 
 .section-icon-wrapper { /*icon wrapper for our tools header*/
-  width: 45px;
-  height: 45px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: rgba(48,74,237,0.1);
   display: flex;
@@ -600,11 +596,11 @@
 }
 
 .section-icon { /*icon color and size for out tools header*/
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   color: rgb(48,74,237);
 }
 
-.header-content { /*header content of our tools header section*/
+.header-content { /*header content of our modules header section*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -612,23 +608,27 @@
   background-color: #ffffff;  
 }
 
-.our-tools-section h2 { /*header title of our tools header section*/
-  font-size: 2.5rem;
+.our-modules-section h2 {
+  font-size: 3rem;
   color: #26344d;
   font-weight: 700;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  text-align: center;
 }
 
-.section-subtitle { /*subtitle of our tools header section*/
-  color: #4A5568;
-  font-size: 1.25rem;
-  max-width: 800px; 
-  margin: 0 auto;
+.section-subtitle { /*subtitle of our modules header section*/
+  font-size: 1.8rem; 
+  text-align: center;
+  color: #4A5568; 
+  max-width: 970px; 
+  margin-top: 2rem;
+  margin-left: 20rem;
+  margin-bottom: 8rem;
   line-height: 1.5;
 }
 
-.tools-content { /* Container for tools content tabs and toggle switch*/
+.tools-content { /* Container for modules content tabs and toggle switch*/
   margin-top: 2rem; 
 }
 
@@ -640,8 +640,8 @@
 
 .toggle-switch { /* Toggle switch */
   position: relative; 
-  width: 360px; 
-  height: 48px; 
+  width: 800px; 
+  height:70px; 
   background: #f1f5f9; 
   border-radius: 25px; 
   padding: 3px; 
@@ -681,7 +681,7 @@
 }
 
 .toggle-icon { /*toggle icon*/
-  font-size: 1.1rem;
+  font-size: 1.8rem;
 }
 
 .toggle-label {

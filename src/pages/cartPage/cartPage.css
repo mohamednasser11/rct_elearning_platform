@@ -287,7 +287,7 @@
   justify-content: space-between;
   margin-top: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 2px solid #f0f0f0;
+  /* border-top: 2px solid #f0f0f0; */
   font-weight: 600;
   color: #000000;
   text-shadow: #0000000a 2px 2px 1px;
@@ -325,7 +325,7 @@
 .promo-code-section {
   margin-top: 1.5rem;
   padding: 1rem 0;
-  border-top: 1px solid #f0f0f0;
+  /* border-top: 1px solid #f0f0f0; */
 }
 
 .promo-code-header {
@@ -349,8 +349,8 @@
 
 .promo-code-input-group input {
   flex: 1;
-  padding: 0.8rem 1rem;
-  border: 1px solid #dee2e6;
+  padding: 1.1rem 1rem;
+  border: 1px solid #dee2e67e;
   border-radius: 9px;
   font-size: 0.rem;
   width: 100%;

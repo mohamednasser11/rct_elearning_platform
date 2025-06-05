@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import "./MainNavigation.css";
 import { useAuth } from "../../contexts/authContext";
 import { useCart } from "../../contexts/cartContext";
-import { FaBars } from 'react-icons/fa';
-import { BsCartCheckFill } from "react-icons/bs";
 import { PiBookOpenBold } from "react-icons/pi";
+import { FaShoppingCart } from "react-icons/fa";
 import { coursesData } from "../../data/coursesData";
 import HamburgerMenu from "./HamburgerMenu";
 
@@ -14,12 +13,24 @@ const MainNavigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
   const [categoriesExpanded, setCategoriesExpanded] = useState(false);
+  const [isPulsing, setIsPulsing] = useState(false);
   const { isAuthenticated, logout } = useAuth();
   const { cartCount } = useCart();
   
+  // Add pulse animation when cart count changes
+  useEffect(() => {
+    if (cartCount > 0) {
+      setIsPulsing(true);
+      const timer = setTimeout(() => {
+        setIsPulsing(false);
+      }, 500); // Duration of the pulse animation
+      return () => clearTimeout(timer);
+    }
+  }, [cartCount]);
+
   // Extract unique course categories
   const courseCategories = [...new Set(coursesData.map(course => course.field))];
-  
+
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -29,14 +40,14 @@ const MainNavigation = () => {
         setScrolled(false);
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll);
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  
+
   useEffect(() => {
     // Prevent body scrolling when mobile menu is open
     if (isOpen || isCategoryMenuOpen) {
@@ -44,7 +55,7 @@ const MainNavigation = () => {
     } else {
       document.body.style.overflow = 'auto';
     }
-    
+
     return () => {
       document.body.style.overflow = 'auto';
     };
@@ -61,7 +72,7 @@ const MainNavigation = () => {
   return (
     <nav className={`main-navigation-container ${scrolled ? 'scrolled' : ''}`}>
       {/* Hamburger Menu Component */}
-      <HamburgerMenu 
+      <HamburgerMenu
         isCategoryMenuOpen={isCategoryMenuOpen}
         setIsCategoryMenuOpen={setIsCategoryMenuOpen}
         courseCategories={courseCategories}
@@ -71,7 +82,7 @@ const MainNavigation = () => {
         logout={logout}
         closeCategoryMenu={closeCategoryMenu}
       />
-      
+
       <div className="main-navigation-left-section">
         <Link to="/" className="main-navigation-logo" onClick={closeMenu}>
           <PiBookOpenBold className="main-navigation-book-logo" color="#14c78e" />
@@ -81,10 +92,10 @@ const MainNavigation = () => {
           </div>
         </Link>
       </div>
-      
-      
+
+
       <div className={`nav-overlay ${isOpen ? 'show' : ''}`} onClick={() => setIsOpen(false)}></div>
-      
+
       <div className={`main-navigation-content ${isOpen ? 'open' : ''}`}>
         <div className="main-navigation-group">
           <Link to="/" className="nav-link main-navigation-item" onClick={closeMenu}>
@@ -92,6 +103,9 @@ const MainNavigation = () => {
           </Link>
           <Link to="/courses" className="nav-link main-navigation-item" onClick={closeMenu}>
             Courses
+          </Link>
+          <Link to="/course-creation" className="nav-link main-navigation-item" onClick={closeMenu}>
+            Course Creation
           </Link>
           <Link to="/for-students" className="nav-link main-navigation-item" onClick={closeMenu}>
             For Students
@@ -103,7 +117,7 @@ const MainNavigation = () => {
             AI Tools
           </Link>
         </div>
-        
+
         <div className="main-navigation-right-section">
           {!isAuthenticated ? (
             <div className="auth-buttons">
@@ -114,8 +128,8 @@ const MainNavigation = () => {
                 Sign Up
               </Link>
               <Link to="/cart" className="nav-link cart-button auth-navigation-item" onClick={closeMenu}>
-                <BsCartCheckFill />
-                {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+                <FaShoppingCart />
+                {cartCount > 0 && <span className={`cart-badge ${isPulsing ? 'pulse' : ''}`}>{cartCount}</span>}
               </Link>
             </div>
           ) : (
@@ -124,8 +138,8 @@ const MainNavigation = () => {
                 Logout
               </div>
               <Link to="/cart" className="nav-link cart-button auth-navigation-item" onClick={closeMenu}>
-                <BsCartCheckFill />
-                {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+                <FaShoppingCart />
+                {cartCount > 0 && <span className={`cart-badge ${isPulsing ? 'pulse' : ''}`}>{cartCount}</span>}
               </Link>
             </div>
           )}

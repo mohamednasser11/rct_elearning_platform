@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import './CoursesPage.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { useCart } from '../../contexts/cartContext';
 import { coursesData } from '../../data/coursesData';
 import { FaStar, FaFilter, FaChevronLeft, FaChevronRight, FaBookReader, FaSearch, FaSortAmountDown, FaRegClock, FaUserGraduate } from 'react-icons/fa';
@@ -27,9 +27,11 @@ const useDebounce = (value, delay) => {
 const CoursesPage = () => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({
-    field: 'All',
+    field: searchParams.get('field') || 'All',
     priceRange: 'All',
     rating: 'All'
   });
@@ -174,6 +176,17 @@ const CoursesPage = () => {
   useEffect(() => {
     setError(null);
   }, [filters, debouncedSearchTerm, sortOption]);
+  
+  // Update filters when URL parameters change
+  useEffect(() => {
+    const fieldParam = searchParams.get('field');
+    if (fieldParam) {
+      setFilters(prev => ({
+        ...prev,
+        field: fieldParam
+      }));
+    }
+  }, [searchParams]);
   
   // Intersection Observer for lazy loading cards
   useEffect(() => {

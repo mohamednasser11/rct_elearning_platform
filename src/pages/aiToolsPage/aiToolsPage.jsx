@@ -4,7 +4,7 @@ import { FaLightbulb, FaCalculator, FaCalendarAlt, FaLanguage, FaGraduationCap, 
 import { IoMdBook, IoMdTime } from 'react-icons/io';
 import { IoBookOutline } from 'react-icons/io5';
 import { BrainCircuit } from 'lucide-react';
-import { LuCircleCheckBig, LuBrainCircuit, LuSparkles, LuCloud } from "react-icons/lu";
+// import { LuCircleCheckBig, LuBrainCircuit, LuSparkles, LuCloud } from "react-icons/lu";
 import { FiUpload } from 'react-icons/fi';
 import { RiRobot2Line } from 'react-icons/ri';
 import { BiSolidBookAlt } from 'react-icons/bi';
@@ -33,28 +33,28 @@ const AiToolsPage = () => {
     setActiveTab(tab);
   };
   return (
-    <div className="ai-tools-container">
+    <div className="edu-tools-wrapper">
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-content">
+      <section className="edu-banner-section">
+        <div className="edu-banner-content">
           <h1>
             Revolutionize<br />
             Learning with<br />
             <span className="highlight" style={{ whiteSpace: 'nowrap' }}>AI-Powered Education</span>
           </h1>
-          <p className="hero-subtitle">Beyond the Blackboard helps students and educators unlock their full potential with intelligent AI tools that summarize lectures and generate customized assessments.</p>
-          <div className="cta-buttons">
-            <button className="primary-btn">Get Started free <FaArrowRight className="btn-arrow" /></button>
-            <button className="secondary-btn">Watch Demo</button> 
+          <p className="edu-banner-subtitle">Beyond the Blackboard helps students and educators unlock their full potential with intelligent AI tools that summarize lectures and generate customized assessments.</p>
+          <div className="edu-action-buttons">
+            <button className="edu-primary-button">Get Started free <FaArrowRight className="btn-arrow" /></button>
+            <button className="edu-secondary-button">Watch Demo</button> 
           </div>
-          <div className="hero-features">
-            <span><BrainCircuit className="hero-icon" /> <span className="feature-text">AI-Powered</span></span>
-            <span><FaFileAlt className="hero-icon" /> <span className="feature-text">Custom Summarise</span></span>
-            <span><IoMdBook className="hero-icon" /> <span className="feature-text">Smart Assessments</span></span>
+          <div className="edu-banner-features">
+            <span><BrainCircuit className="edu-banner-icon" /> <span className="feature-label">AI-Powered</span></span>
+            <span><FaFileAlt className="edu-banner-icon" /> <span className="feature-label">Custom Summarise</span></span>
+            <span><IoMdBook className="edu-banner-icon" /> <span className="feature-label">Smart Assessments</span></span>
           </div>
         </div>
-        <div className="hero-preview">
-          <div className="preview-card-small">
+        <div className="edu-banner-preview">
+          <div className="preview-card-mini">
             <div className="preview-header">
               <div className="preview-dot"></div>
               <div className="preview-dot"></div>
@@ -67,7 +67,7 @@ const AiToolsPage = () => {
               <div className="preview-line medium"></div>
             </div>
           </div>
-          <div className="preview-card">
+          <div className="preview-card-main">
             <div className="preview-header">
               <div className="preview-dot "></div>
               <div className="preview-dot "></div>
@@ -89,24 +89,24 @@ const AiToolsPage = () => {
       </section>
 
       {/* AI Tools Section */}
-      <section className="ai-tools-section">
+      <section className="edu-tools-section">
         <h2>AI-Powered <span className="highlight">Learning Tools</span></h2>
         <p className="section-subtitle">
           Our intelligent features help both students and educators maximize their potential through cutting-edge AI technology.
         </p>
         
-        <div className="tools-grid">
-          <div className="tool-card summarizer-card">
-            <div className="tool-header">
-              <div className="tool-icon-wrapper blue">
-                <IoMdBook className="tool-icon" />
+        <div className="tools-container">
+          <div className="module-card summary-module-card">
+            <div className="module-header">
+              <div className="module-icon-container blue">
+                <IoMdBook className="module-icon" />
               </div>
               <h3>Lecture Summarizer</h3>
             </div>
-            <p className="tool-description">Our AI technology transforms lengthy lectures into concise summaries with key points, helping students study more efficiently.</p>
-            <div className="tool-feature">
-              <div className="feature-icon-wrapper">
-                <LuCircleCheckBig className="feature-check-icon" />
+            <p className="module-description">Our AI technology transforms lengthy lectures into concise summaries with key points, helping students study more efficiently.</p>
+            <div className="module-feature">
+              <div className="ai-feature-icon-wrapper">
+                <LuCircleCheckBig className="edu-summary-check-icon" />
               </div>
               <div className="feature-content">
                 <h4>Three Summary Levels</h4>
@@ -114,8 +114,8 @@ const AiToolsPage = () => {
               </div>
             </div>
             <div className="tool-feature">
-              <div className="feature-icon-wrapper">
-                <LuCircleCheckBig className="feature-check-icon" />
+              <div className="ai-feature-icon-wrapper">
+                <LuCircleCheckBig className="ai-Lecture-Summarizer-check-icon" />
               </div>
               <div className="feature-content">
                 <h4>Key Subject Extraction</h4>
@@ -123,8 +123,8 @@ const AiToolsPage = () => {
               </div>
             </div>
             <div className="tool-feature">
-              <div className="feature-icon-wrapper">
-                <LuCircleCheckBig className="feature-check-icon" />
+              <div className="ai-feature-icon-wrapper">
+                <LuCircleCheckBig className="ai-Lecture-Summarizer-check-icon" />
               </div>
               <div className="feature-content">
                 <h4>File Upload Support</h4>
@@ -133,17 +133,17 @@ const AiToolsPage = () => {
             </div>
           </div>
 
-          <div className="tool-card assessment-card">
-            <div className="tool-header">
-              <div className="tool-icon-wrapper purple">
-                <FaFileAlt className="tool-icon" />
+          <div className="module-card exam-module-card">
+            <div className="module-header">
+              <div className="module-icon-container purple">
+                <FaFileAlt className="module-icon" />
               </div>
               <h3>Assessment Generator</h3>
             </div>
-            <p className="tool-description">Create customized quizzes and exams in seconds with our AI assessment generator, saving educators valuable time.</p>
-            <div className="tool-feature">
-              <div className="feature-icon-wrapper">
-                <LuCircleCheckBig className="feature-check-icon purple" />
+            <p className="module-description">Create customized quizzes and exams in seconds with our AI assessment generator, saving educators valuable time.</p>
+            <div className="module-feature">
+              <div className="ai-feature-icon-wrapper">
+                <LuCircleCheckBig className="edu-exam-check-icon purple" />
               </div>
               <div className="feature-content">
                 <h4>Flexible Question Count</h4>
@@ -151,8 +151,8 @@ const AiToolsPage = () => {
               </div>
             </div>
             <div className="tool-feature">
-              <div className="feature-icon-wrapper">
-                <LuCircleCheckBig className="feature-check-icon purple" />
+              <div className="ai-feature-icon-wrapper">
+                <LuCircleCheckBig className="ai-Assessment-Generator-check-icon purple" />
               </div>
               <div className="feature-content">
                 <h4>Difficulty Settings</h4>
@@ -160,8 +160,8 @@ const AiToolsPage = () => {
               </div>
             </div>
             <div className="tool-feature">
-              <div className="feature-icon-wrapper">
-                <LuCircleCheckBig className="feature-check-icon purple" />
+              <div className="ai-feature-icon-wrapper">
+                <LuCircleCheckBig className="ai-Assessment-Generator-check-icon purple" /> 
               </div>
               <div className="feature-content">
                 <h4>Content Upload</h4>
@@ -171,31 +171,31 @@ const AiToolsPage = () => {
           </div>
         </div>
 
-        <div className="feature-cards">
-          <div className="feature-card">
-            <div className="feature-icon-wrapper blue">
-              <LuBrainCircuit className="feature-icon" />
+        <div className="benefit-cards">
+          <div className="benefit-card">
+            <div className="edu-benefit-icon-container blue">
+              <LuBrainCircuit className="benefit-icon" />
             </div>
             <h4>AI-Powered Analysis</h4>
             <p>Advanced algorithms to process and analyze educational content.</p>
           </div>
-          <div className="feature-card">
-            <div className="feature-icon-wrapper green">
-              <FiUpload className="feature-icon" />
+          <div className="benefit-card">
+            <div className="edu-benefit-icon-container green">
+              <FiUpload className="benefit-icon" />
             </div>
             <h4>Smart Uploads</h4>
             <p>Support for PDFs, images, and various document formats.</p>
           </div>
-          <div className="feature-card">
-            <div className="feature-icon-wrapper purple">
-              <IoMdTime className="feature-icon" />
+          <div className="benefit-card">
+            <div className="edu-benefit-icon-container purple">
+              <IoMdTime className="benefit-icon" />
             </div>
             <h4>Time-Saving</h4>
             <p>Cut hours of work down to minutes with automated tools.</p>
           </div>
-          <div className="feature-card">
-            <div className="feature-icon-wrapper blue">
-              <LuSparkles className="feature-icon" />
+          <div className="benefit-card">
+            <div className="edu-benefit-icon-container blue">
+              <LuSparkles className="benefit-icon" />
             </div>
             <h4>Customizable</h4>
             <p>Tailor outputs to your specific educational needs.</p>
@@ -203,22 +203,9 @@ const AiToolsPage = () => {
         </div>
       </section>
       {/* AI Tools Toggle Section */} {/*our ai tools section header*/}
-      <section className="our-tools-section"> 
-        <div className="section-header" style={{ 
-          background: 'transparent', 
-          borderRadius: '16px', 
-          padding: '2rem', 
-          marginBottom: '2rem',
-          pointerEvents: 'none'
-        }}>
-          <div className="section-icon-wrapper">
-            <RiRobot2Line className="section-icon" />
-          </div>
-          <div className="header-content">
-            <h2>Our AI Learning Tools</h2>
-            <p className="section-subtitle">Powerful AI assistants designed specifically for students and educators.</p>
-          </div>
-        </div>
+      <section className="our-modules-section"> 
+        <h2>Our AI Learning Tools</h2>
+        <p className="section-subtitle">Powerful AI assistants designed specifically for students and educators.</p>
         <div className="tools-content">
           <div className="toggle-switch-wrapper">
             <div className="toggle-switch">
