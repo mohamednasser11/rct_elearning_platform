@@ -781,7 +781,7 @@
 .impact-label {
   background-color: rgba(46, 228, 188, 0.1);
   color: rgba(21,198,142,255);
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: 600;
   padding: 0.35rem 0.75rem;
   border-radius: 20px;
@@ -793,18 +793,19 @@
 }
 
 .impact-heading {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   color: #121212;
 }
 
 .impact-subheading {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   line-height: 1.6;
   color: #555;
-  margin: 0 auto 3rem;
-  max-width: 700px;
+  margin-bottom: 5rem;
+  max-width: 1000px;
+margin-left: 29rem;
 }
 
 .impact-stats {
@@ -861,9 +862,10 @@
 
 .impact-details {
   display: flex;
-  gap: 0;
+  gap: 4rem;
   margin-top: 1rem;
   text-align: left;
+
 }
 
 .impact-progress-section {
@@ -982,7 +984,7 @@
 .progress-bar-fill {
   position: absolute;
   height: 100%;
-  border-radius: 0px;
+  border-radius: 0px !important;
   transition: width 1s ease;
 }
 
@@ -1060,7 +1062,7 @@
 }
 
 /* Testimonials Section */
-.testimonials-section {
+.fs-testimonials-section {
   background-color: #FAFAFA;
   padding: 4rem 1.5rem;
   text-align: center;
@@ -1074,18 +1076,19 @@
 }
 
 .testimonials-heading {
-  font-size: 28px;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #333;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .testimonials-subheading {
-  font-size: 16px;
+  font-size: 1.5rem;
   line-height: 1.6;
   color: #666;
-  max-width: 700px;
-  margin: 0 auto 3rem;
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  text-align: center;
 }
 
 .testimonials-container {
@@ -1179,9 +1182,9 @@
 }
 
 .testimonials-count {
-  font-size: 15px;
+  font-size: 1.5rem;
   color: #666;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .join-button {
@@ -1190,7 +1193,7 @@
   border: none;
   border-radius: 4px;
   padding: 12px 24px;
-  font-size: 16px;
+  font-size: 1.2rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;

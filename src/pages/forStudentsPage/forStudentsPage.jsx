@@ -367,7 +367,7 @@ const ForStudentsPage = () => {
       </div>
 
       {/* Testimonials Section */}
-      <div className="testimonials-section">
+      <div className="fs-testimonials-section">
         <h2 className="testimonials-heading">What Our Students Are Saying</h2>
         <p className="testimonials-subheading">
           Thousands of students have transformed their learning experience with Beyond the
