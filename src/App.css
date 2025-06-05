@@ -18,9 +18,9 @@ html, body {
 .app-wrapper {
   display: flex;
   flex-direction: column;
-  max-width: 2000px;
+  max-width: 4000px;
   margin: 0 auto;
-  width: 95%;
+  width: 100%;
   min-height: 100vh;
 }
 

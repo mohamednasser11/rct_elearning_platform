@@ -8,6 +8,7 @@ import AiToolsPage from "./pages/aiToolsPage/aiToolsPage";
 import CartPage from "./pages/cartPage/cartPage";
 import CoursesPage from "./pages/coursesPage/coursesPage";
 import CourseDetail from "./pages/coursesPage/coursesMaterial/CourseDetail";
+import CourseCreationPage from "./pages/courseCreationPage/CourseCreationPage";
 import MainNavigation from "./components/NavBar/MainNavigation";
 import Footer from "./components/Footer/Footer";
 import { CartProvider } from "./contexts/cartContext.jsx";
@@ -30,6 +31,7 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/course-creation" element={<CourseCreationPage />} />
             </Routes>
           </div>
         </div>
