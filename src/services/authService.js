@@ -1,6 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import jwtDecode from 'jwt-decode';
+import { jwtDecode } from "jwt-decode";
 
 const signUp = async (email, password, username, firstname, lastname) => {
   try {

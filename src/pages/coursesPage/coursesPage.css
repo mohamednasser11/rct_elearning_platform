@@ -522,7 +522,8 @@
 
 .student-icon {
   font-size: 1.1rem;
-  color: #b3b3b3;
+  fill: #b3b3b3;
+  background-color: white !important;
   margin-right: 0.4rem;
 }
 
@@ -538,7 +539,6 @@
   padding: 0.6rem 1.2rem;
   border-radius: 4px;
   border: 1px solid #0fb57f;
-
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;

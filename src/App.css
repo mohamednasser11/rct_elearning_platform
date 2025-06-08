@@ -24,9 +24,9 @@ html, body {
   min-height: 100vh;
 }
 
-body {
-  zoom: 0.82; /* 80% scale */
-}
+/* body {
+  zoom: 0.82; 
+} */
 
 .app-content {
   flex: 1 0 auto;
