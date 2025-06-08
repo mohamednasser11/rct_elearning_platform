@@ -39,21 +39,20 @@ const CourseCreationPage = () => {
   const [language, setLanguage] = useState('');
   
   // State for file uploads
-  const [thumbnailFile, setThumbnailFile] = useState(null);
-  const [thumbnailPreview, setThumbnailPreview] = useState(null);
-  const [videoFile, setVideoFile] = useState(null);
-  const [videoFileName, setVideoFileName] = useState('');
-  const [videoPreview, setVideoPreview] = useState(null);
+const [thumbnailFile, setThumbnailFile] = useState(null);
+// const [thumbnailPreview, setThumbnailPreview] = useState(null); // Removing this state
+const [videoFile, setVideoFile] = useState(null);
+const [videoFileName, setVideoFileName] = useState('');
   
   // State for notification
   const [showNotification, setShowNotification] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState('');
   
   // Load data from localStorage on component mount
-  useEffect(() => {
-    const storedData = localStorage.getItem(COURSE_CREATION_STORAGE_KEY);
-    if (storedData) {
-      const parsedData = JSON.parse(storedData);
+ useEffect(() => {
+  const storedData = localStorage.getItem(COURSE_CREATION_STORAGE_KEY);
+  if (storedData) {
+    const parsedData = JSON.parse(storedData);
       
       // Restore all state from localStorage
       setCurrentStep(parsedData.currentStep || 1);
@@ -73,45 +72,42 @@ const CourseCreationPage = () => {
         setExpandedSections(parsedData.expandedSections || []);
       }
       
-      // Restore thumbnail preview if available
-      if (parsedData.thumbnailPreview) {
-        setThumbnailPreview(parsedData.thumbnailPreview);
+      // Restore thumbnail filename if available
+      if (parsedData.thumbnailFileName) {
+        // Create a File object with the stored name
+        const dummyFile = new File([""], parsedData.thumbnailFileName, { type: "image/jpeg" });
+        setThumbnailFile(dummyFile);
       }
       
-      // Restore video file name and preview if available
+      // Restore video file name if available
       if (parsedData.videoFileName) {
-        setVideoFileName(parsedData.videoFileName);
-      }
-      
-      if (parsedData.videoPreview) {
-        setVideoPreview(parsedData.videoPreview);
+      setVideoFileName(parsedData.videoFileName);
       }
     }
   }, []);
   
   // Save data to localStorage whenever state changes
   useEffect(() => {
-    const dataToStore = {
-      currentStep,
-      prerequisites,
-      learningObjectives,
-      courseTitle,
-      courseDescription,
-      isFree,
-      price,
-      courseSubtitle,
-      category,
-      language,
-      thumbnailPreview,
-      videoFileName,
-      videoPreview,
-      curriculumSections,
-      expandedSections
-    };
+  const dataToStore = {
+    currentStep,
+    prerequisites,
+    learningObjectives,
+    courseTitle,
+    courseDescription,
+    isFree,
+    price,
+    courseSubtitle,
+    category,
+    language,
+    thumbnailFileName: thumbnailFile ? thumbnailFile.name : null,
+    videoFileName, // Only save filename
+    curriculumSections,
+    expandedSections
+  };
     
     localStorage.setItem(COURSE_CREATION_STORAGE_KEY, JSON.stringify(dataToStore));
-  }, [currentStep, prerequisites, learningObjectives, courseTitle, courseDescription, isFree, price, courseSubtitle, category, language, thumbnailPreview, videoFileName, videoPreview, curriculumSections, expandedSections]);
-  
+}, [currentStep, prerequisites, learningObjectives, courseTitle, courseDescription, isFree, price, courseSubtitle, category, language, thumbnailFile, videoFileName, curriculumSections, expandedSections]);
+
   // Calculate progress percentage based on current step
   const progressPercentage = (currentStep / 3) * 100;
 
@@ -188,9 +184,9 @@ const handlePrevious = () => {
   };
   
   // Handle reset button click - clears all form fields and uploaded media
-  const handleReset = () => {
-    // Animate the reset buttons before performing the actual reset
-    animateResetButtons();
+const handleReset = () => {
+  // Animate the reset buttons before performing the actual reset
+  animateResetButtons();
     
     // Perform the actual reset after animation completes
     setTimeout(() => {
@@ -209,7 +205,7 @@ const handlePrevious = () => {
       
       // Reset file uploads
       setThumbnailFile(null);
-      setThumbnailPreview(null);
+      // setThumbnailPreview(null); // No longer needed
       setVideoFile(null);
       setVideoFileName('');
       setVideoPreview(null);
@@ -231,6 +227,7 @@ const handlePrevious = () => {
     }, 1000); // Wait for animation to complete
   };
   
+  
   // CSS styles for reset button animation
   const resetButtonCss = `
     .reset-btn-animated .letter {
@@ -251,6 +248,8 @@ const handlePrevious = () => {
         `<span class="letter">${letter}</span>`
       ).join('');
     }
+
+    
 
     // Scramble letters with random characters
     function scrambleLetters() {
@@ -470,31 +469,18 @@ const handlePrevious = () => {
     const file = e.target.files[0];
     if (file) {
       setThumbnailFile(file);
-      
-      // Create a preview URL for the image
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setThumbnailPreview(reader.result);
-      };
-      reader.readAsDataURL(file);
+      // We no longer need to create a preview URL since we're only showing the filename
     }
   };
   
   // Handle video file selection
   const handleVideoChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setVideoFile(file);
-      setVideoFileName(file.name);
-      
-      // Create a preview data URL for the video
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setVideoPreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  const file = e.target.files[0];
+  if (file) {
+    setVideoFile(file);
+    setVideoFileName(file.name);
+  }
+};
   
   return (
     <div className="course-creation-page">
@@ -756,15 +742,22 @@ const handlePrevious = () => {
                     {/* Thumbnail Upload */}
                     <div className="media-column">
                       <h4>Course Thumbnail</h4>
-                      <div className="upload-area" style={thumbnailPreview ? {borderColor: '#15a72d', backgroundColor: 'rgba(139, 92, 246, 0.05)'} : {}}>
-                        {thumbnailPreview ? (
+                      <div className="upload-area" style={thumbnailFile ? {borderColor: '#15a72d', backgroundColor: 'rgba(139, 92, 246, 0.05)'} : {}}>
+                        {thumbnailFile ? (
                           <div style={{width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-                            <img 
-                              src={thumbnailPreview} 
-                              alt="Thumbnail preview" 
-                              style={{maxWidth: '100%', maxHeight: '120px', objectFit: 'contain', marginBottom: '10px'}} 
-                            />
-                            <p className="upload-text">Change Thumbnail</p>
+                            <div className="upload-icon" style={{color: '#15a72d', marginBottom: '10px'}}>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                              </svg>
+                            </div>
+                            <p className="upload-text" style={{color: '#15a72d', fontWeight: '600', marginBottom: '4px'}}>
+                              {thumbnailFile.name}
+                            </p>
+                            <p className="upload-specs">
+                              Image uploaded successfully • Click to change
+                            </p>
                           </div>
                         ) : (
                           <>
@@ -792,47 +785,59 @@ const handlePrevious = () => {
                     
                     {/* Promotional Video Upload */}
                     <div className="media-column">
-                      <h4>Promotional Video</h4>
-                      <div className="upload-area" style={videoFileName || videoPreview ? {borderColor: '#15a72d', backgroundColor: 'rgba(139, 92, 246, 0.05)'} : {}}>
-                        {videoFileName || videoPreview ? (
-                          <div style={{width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-                            {videoPreview && (
-                              <video 
-                                style={{maxWidth: '100%', maxHeight: '120px', objectFit: 'contain', marginBottom: '10px'}} 
-                                controls
-                              >
-                                <source src={videoPreview} type="video/mp4" />
-                                Your browser does not support the video tag.
-                              </video>
-                            )}
-                            <div className="upload-icon video-icon">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                              </svg>
-                            </div>
-                            <p className="upload-text">{videoFileName}</p>
-                            <p className="upload-specs">Click to change video</p>
-                          </div>
-                        ) : (
-                          <>
-                            <div className="upload-icon video-icon">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                              </svg>
-                            </div>
-                            <p className="upload-text">Upload Preview Video</p>
-                            <p className="upload-specs">2-15 minutes recommended</p>
-                          </>
-                        )}
-                        <input 
-                          type="file" 
-                          id="courseVideo" 
-                          accept="video/*" 
-                          className="file-input"
-                          onChange={handleVideoChange}
-                        />
-                      </div>
-                    </div>
+  <h4>Promotional Video</h4>
+  <div className="upload-area" style={videoFileName ? {
+    borderColor: '#15a72d', 
+    backgroundColor: 'rgba(21, 167, 45, 0.05)'
+  } : {}}>
+    {videoFileName ? (
+      <div style={{
+        width: '100%', 
+        height: '100%', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        justifyContent: 'center'
+      }}>
+        <div className="upload-icon video-icon" style={{
+          color: '#15a72d', 
+          marginBottom: '10px'
+        }}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+        </div>
+        <p className="upload-text" style={{
+          color: '#15a72d', 
+          fontWeight: '600',
+          marginBottom: '4px'
+        }}>
+          {videoFileName}
+        </p>
+        <p className="upload-specs">
+          Video uploaded successfully • Click to change
+        </p>
+      </div>
+    ) : (
+      <>
+        <div className="upload-icon video-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+        </div>
+        <p className="upload-text">Upload Preview Video</p>
+        <p className="upload-specs">2-15 minutes recommended</p>
+      </>
+    )}
+    <input 
+      type="file" 
+      id="courseVideo" 
+      accept="video/*" 
+      className="file-input"
+      onChange={handleVideoChange}
+    />
+  </div>
+</div>
                   </div>
                 </div>
               </div>
@@ -1162,14 +1167,14 @@ const handlePrevious = () => {
                     </span>
                   </div>
                   
-                  <div className={`requirement-item ${thumbnailPreview ? 'completed' : 'incomplete'}`}>
-                    {thumbnailPreview ? 
+                  <div className={`requirement-item ${thumbnailFile ? 'completed' : 'incomplete'}`}>
+                    {thumbnailFile ? 
                       <FaCheckCircle className="requirement-icon completed-icon" /> : 
                       <FaTimes className="requirement-icon" />
                     }
                     <span className="requirement-text">Course thumbnail</span>
-                    <span className={`required-badge ${thumbnailPreview ? 'completed-badge' : ''}`}>
-                      {thumbnailPreview ? 'Completed' : 'Required'}
+                    <span className={`required-badge ${thumbnailFile ? 'completed-badge' : ''}`}>
+                      {thumbnailFile ? 'Completed' : 'Required'}
                     </span>
                   </div>
                   
@@ -1189,20 +1194,18 @@ const handlePrevious = () => {
                
                 
                 {/* Only show alert if any requirements are incomplete */}
-              {(!courseTitle || !courseDescription || !category || !language || curriculumSections.length === 0 || !thumbnailPreview || (isFree === false && price <= 0)) ? (
+              {(!courseTitle || !courseDescription || !category || !language || curriculumSections.length === 0 || !thumbnailFile || (isFree === false && price <= 0)) ? (
                 <div className="publish-alert">
-                  <FaTimes className="alert-icon" />
+                  <FiAlertCircle className="alert-icon" />
                   <div className="alert-content">
-                    <h4 className="alert-title">Complete required items</h4>
-                    <p className="alert-message">Please complete all required items above before publishing your course.</p>
+                    <p className="alert-text">Please complete all required fields before publishing.</p>
                   </div>
                 </div>
               ) : (
                 <div className="publish-alert completed">
                   <FaCheckCircle className="alert-icon completed" />
                   <div className="alert-content">
-                    <h4 className="alert-title completed">All requirements completed</h4>
-                    <p className="alert-message completed">Your course is ready to be published!</p>
+                    <p className="alert-text">Your course is ready to publish!</p>
                   </div>
                 </div>
               )}
@@ -1222,9 +1225,9 @@ const handlePrevious = () => {
             <button type="button" className="nav-btn save-draft-btn reset-btn" onClick={handleReset}>Reset</button>
             <button 
                 type="button" 
-                className={`nav-btn continue-btn ${(currentStep === 3 && (!courseTitle || !courseDescription || !category || !language || curriculumSections.length === 0 || !thumbnailPreview || (isFree === false && price <= 0))) ? 'disabled-btn' : ''}`}
+                className={`nav-btn continue-btn ${(currentStep === 3 && (!courseTitle || !courseDescription || !category || !language || curriculumSections.length === 0 || !thumbnailFile || (isFree === false && price <= 0))) ? 'disabled-btn' : ''}`}
                 onClick={handleContinue}
-                disabled={(currentStep === 3 && (!courseTitle || !courseDescription || !category || !language || curriculumSections.length === 0 || !thumbnailPreview || (isFree === false && price <= 0)))}
+                disabled={(currentStep === 3 && (!courseTitle || !courseDescription || !category || !language || curriculumSections.length === 0 || !thumbnailFile || (isFree === false && price <= 0)))}
               >
               {currentStep === 3 ? 'Publish Course' : 'Continue'}
             </button>

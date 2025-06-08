@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-.edu-tools-wrapper { /* Main container for all AI tools page content */
+.ai-tools-container { /* Main container for all AI tools page content */
   max-width: 100%; 
   margin: 0; 
   padding: 0 2rem; 
@@ -23,7 +23,7 @@
 
 /* Hero Section */
 
-.edu-banner-section { /* Top banner section with headline and preview */
+.ai-hero-section { /* Top banner section with headline and preview */
   display: grid; 
   grid-template-columns: 1fr 1fr; 
   gap: 4rem; 
@@ -37,7 +37,7 @@
   margin: 0 auto; 
 }
 
-.edu-banner-content { /* Left side content of hero section */
+.ai-hero-content { /* Left side content of hero section */
   text-align: left; 
   padding-right: 2rem; 
   max-width: 800px; 
@@ -45,7 +45,7 @@
   margin-left: -10rem;
 }
 
-.edu-banner-section h1 { /* Main heading in hero section */
+.ai-hero-section h1 { /* Main heading in hero section */
   font-size: 3.5rem; 
   font-weight: 700; 
   color: #000000; 
@@ -61,7 +61,7 @@
   background-clip: text;
 }
 
-.edu-banner-subtitle { /* Subtitle text below the main heading */
+.ai-hero-subtitle { /* Subtitle text below the main heading */
   font-size: 1.2rem; 
   color: #718096; 
   margin-bottom: 2rem; 
@@ -70,14 +70,14 @@
 }
 
 /* CTA buttons in hero section */
-.edu-action-buttons {
+.ai-cta-buttons {
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
 }
 
 /* Primary button style */
-.edu-primary-button {
+.ai-primary-btn {
   display: flex;
   align-items: center;
   padding: 0.75rem 1.5rem 0.75rem 2.5rem;
@@ -92,13 +92,13 @@
   min-width: 230px;
 }
 
-.edu-primary-button:hover {
+.ai-primary-btn:hover {
   background: rgba(21,198,142,0.9); /* Slightly darker on hover */
   transform: translateY(-2px);
 }
 
 /* Secondary button style */
-.edu-secondary-button {
+.ai-secondary-btn {
   padding: 0.75rem 1.5rem;
   background: transparent;
   color: rgba(21,198,142,255);
@@ -110,13 +110,13 @@
   transition: all 0.2s;
 }
 
-.edu-secondary-button:hover {
+.ai-secondary-btn:hover {
   background: rgba(21,198,142,0.1);
   border-color: rgba(21,198,142,0.9);
   transform: translateY(-2px);
 }
 
-.edu-banner-features { /* Feature list below the subtitle */
+.ai-hero-features { /* Feature list below the subtitle */
   display: flex; 
   gap: 2rem; 
   margin-top: 2rem; 
@@ -124,7 +124,7 @@
   font-size: 0.875rem; 
 }
 
-.edu-banner-features span { /* Individual feature item */
+.ai-hero-features span { /* Individual feature item */
   display: flex; 
   align-items: flex-start; 
   gap: -0.8rem; 
@@ -132,7 +132,7 @@
 
 /* Hero Section Icons - completely separate from feature card icons */
 
-.edu-banner-features .edu-banner-icon { /* Icon for each feature in hero section */
+.ai-hero-features .ai-hero-icon { /* Icon for each feature in hero section */
   color: rgba(10,167,60,0.9) !important; 
   font-size: 1.25rem; 
   display: flex; 
@@ -144,12 +144,12 @@
   z-index: 2 !important; 
 }
 
-.edu-banner-features .feature-label { /* Text label for each feature */
+.ai-hero-features .feature-text { /* Text label for each feature */
   margin-top: 1px; 
   margin-left: 4px;
 }
 
-.edu-banner-preview { /* Right side of hero section with preview image */
+.ai-hero-preview { /* Right side of hero section with preview image */
   position: relative;
   width: 100%;
   display: flex;
@@ -159,7 +159,7 @@
   margin-left: 11rem;
 }
 
-.edu-banner-preview .preview-card-mini {
+.ai-hero-preview .preview-card-small {
   background: white;
   border-radius: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
@@ -175,7 +175,7 @@
   opacity: 0.95;
 }
 
-.edu-banner-preview .preview-card-main { /* Card showing the UI preview example */
+.ai-hero-preview .preview-card { /* Card showing the UI preview example */
   background: white;
   border-radius: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
@@ -269,7 +269,7 @@
 
 /* AI Tools Section - The main content area showcasing the learning tools */
 
-.edu-tools-section { /* Container for the AI tools showcase */
+.ai-tools-section { /* Container for the AI tools showcase */
   padding: 4rem 0 4rem 0; 
   text-align: center; 
   background: transparent; 
@@ -279,7 +279,7 @@
   width: 100%; 
 }
 
-.edu-tools-section h2 { /* Main heading for AI Tools section */
+.ai-tools-section h2 { /* Main heading for AI Tools section */
   font-size: 3.5rem; 
   color: #2D3748; 
   margin-bottom: 0.5rem; 
@@ -295,7 +295,7 @@
   background-clip: text;
 }
 
-.tools-container { /* Container for the main AI tool cards */
+.tools-grid { /* Container for the main AI tool cards */
   display: flex; 
   flex-wrap: wrap; 
   justify-content: center; 
@@ -308,7 +308,7 @@
   margin-top: 6rem;
 }
 
-.module-card { /* the two big main cards in the AI tools section */
+.tool-card { /* the two big main cards in the AI tools section */
   display: flex; 
   flex-direction: column; 
   gap: 1rem; 
@@ -323,7 +323,7 @@
   position: relative; 
 }
 
-.module-card::before { /* Colored top border accent for each tool card */
+.tool-card::before { /* Colored top border accent for each tool card */
   content: ''; /* Required for pseudo-elements */
   position: absolute; 
   top: 0; 
@@ -334,15 +334,15 @@
 }
 
 
-.summary-module-card::before { /* Blue-green gradient for the Lecture Summarizer tool */
+.summarizer-card::before { /* Blue-green gradient for the Lecture Summarizer tool */
   background: linear-gradient(90deg, rgb(0, 87, 26) 0%, rgba(0, 190, 57) 0%, rgb(0, 109, 33) 100%);}
 
-.exam-module-card::before { /* Blue-purple gradient for the Assessment Generator tool */
+.assessment-card::before { /* Blue-purple gradient for the Assessment Generator tool */
   background: linear-gradient(90deg, rgb(0, 87, 26) 0%, rgba(0, 190, 57) 0%, rgb(0, 109, 33) 100%);}
 
 
 
-.module-header { /* Container for tool icon and title for both cards */
+.tool-header { /* Container for tool icon and title for both cards */
   display: flex; 
   align-items: center; 
   gap: 1rem; 
@@ -350,21 +350,21 @@
 
 
 
-.module-description { /* Description text for each AI tool */
+.tool-description { /* Description text for each AI tool */
   margin: 0; 
   padding-left: 0;
   color: #000000;
   line-height: 1.6;
   text-align: left;
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
 }
 
-.module-card:hover { /* Interactive styles when user hovers over a tool card */
+.tool-card:hover { /* Interactive styles when user hovers over a tool card */
   transform: translateY(-4px); 
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); 
 }
 
-.module-icon-container { /* Container for the tool icons in each of the two main big cards */
+.tool-icon-wrapper { /* Container for the tool icons in each of the two main big cards */
   flex-shrink: 0; 
   width: 48px; 
   height: 48px; 
@@ -374,23 +374,23 @@
   justify-content: center; 
 }
 
-.module-icon-container.blue { /* Blue background for Lecture Summarizer big card (icon wrapper) */
+.tool-icon-wrapper.blue { /* Blue background for Lecture Summarizer big card (icon wrapper) */
   background: rgba(66, 153, 225, 0.2); 
 }
 
-.module-icon-container.purple { /* Purplebackground for Assessment Generator big card (icon wrapper) */
+.tool-icon-wrapper.purple { /* Purplebackground for Assessment Generator big card (icon wrapper) */
   background: rgba(159, 122, 234, 0.2); 
 }
 
-.module-icon { /* The actual icon element inside the wrapper */
+.tool-icon { /* The actual icon element inside the wrapper */
   font-size: 1.5rem; 
 }
 
-.module-icon-container.blue .module-icon { /* Icon inside a blue wrapper */
+.tool-icon-wrapper.blue .tool-icon { /* Icon inside a blue wrapper */
   color: #4299E1; 
 }
 
-.module-icon-container.purple .module-icon { /* Icon inside a purple wrapper */
+.tool-icon-wrapper.purple .tool-icon { /* Icon inside a purple wrapper */
   color: #9F7AEA; 
 }
 
@@ -400,18 +400,18 @@
 /******************************************************/
 /******************************************************/
 
-.module-content { /* Container for text content in tool cards */
+.tool-content { /* Container for text content in tool cards */
   flex: 1; 
 }
 
-.module-card h3 { /* Heading of the two main big cards */
+.tool-card h3 { /* Heading of the two main big cards */
   font-size: 1.8rem; 
   color: #2D3748; 
   margin: 0; 
   font-weight: 600; 
 }
 
-.module-card p { /* Paragraph text in the two main big cards */
+.tool-card p { /* Paragraph text in the two main big cards */
   color: #0b0e12; 
   line-height: 1.5; 
   font-size: 1.2rem; 
@@ -438,7 +438,7 @@
   text-align: left; 
 }
 
-.module-feature { /* Container for tool features in the two main big cards */
+.tool-feature { /* Container for tool features in the two main big cards */
   display: flex; 
   align-items: flex-start; 
   gap: 1rem; 
@@ -446,18 +446,18 @@
   padding-top: 0.5rem; 
 }
 
-.module-feature:first-of-type { /* First feature item */
+.tool-feature:first-of-type { /* First feature item */
   margin-top: 2rem; 
 }
 
-.edu-summary-check-icon { /* Check icon for features */
+.ai-Lecture-Summarizer-check-icon { /* Check icon for features */
   color: rgba(10,167,60,0.9); 
   margin-top: -1rem; 
   padding-top: 0.1rem;
   font-size: 3.1rem; 
 }
 
-.edu-exam-check-icon { /* Purple check icon for features */
+.ai-Assessment-Generator-check-icon { /* Purple check icon for features */
   color: rgba(105,10,167,0.9); 
   margin-top: -1rem; 
   padding-top: 0.1rem;
@@ -474,7 +474,7 @@
 /* Feature Cards the 4 small cards*/
 /*******************************/
 
-.benefit-cards { /* Grid container for feature cards (the 4 small cards) */
+.ai-feature-cards { /* Grid container for feature cards (the 4 small cards) */
   display: grid; 
   grid-template-columns: repeat(4, 1fr); 
   gap: 2rem; 
@@ -486,7 +486,7 @@
   margin-right: auto; 
 }
 
-.benefit-card { /* feature cards (the 4 small cards) styling */
+.feature-card { /* feature cards (the 4 small cards) styling */
   background: rgb(255, 255, 255); 
   height: 250px; 
   width: 350px;
@@ -499,70 +499,64 @@
   align-items: center; 
   gap: 0.75rem; 
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
-  border: 1px solid rgba(48,74,237,0.10);
+  border: 1px solid rgba(25, 160, 36, 0.219);
 }
 
+.ai-feature-cards .feature-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Individual feature card background colors (slightly darker than icon wrappers) */
+.ai-feature-cards .feature-card:nth-child(1),
+.ai-feature-cards .feature-card:nth-child(4),
+.ai-feature-cards .feature-card:nth-child(2),
+.ai-feature-cards .feature-card:nth-child(3) {
+  background-color: rgba(15, 167, 10, 0.068);
+  border-radius: 10%;
+  
+}
 
 /* Feature Cards Icons  wrapper*/
 /*******************************/
 
-.benefit-cards .benefit-card .edu-benefit-icon-container { /* Icon container within feature cards */
+.ai-feature-cards .feature-card .ai-feature-icon-wrapper { /* Icon container within feature cards */
   width: 45px; 
   height: 45px; 
-  border-radius: 50%; 
   display: flex; 
   align-items: center; 
   justify-content: center; 
   position: static !important;
-}
-
-.benefit-cards .benefit-card .edu-benefit-icon-container.blue { /* Blue-themed icon wrapper in feature cards */
-  background: rgba(48,74,237,0.1); 
-  box-shadow: -7px 0 0 rgba(48,74,237,0.1); 
-}
-
-.benefit-cards .benefit-card .edu-benefit-icon-container.green { /* Green-themed icon wrapper in feature cards */
-  background: rgba(10,167,60,0.1); 
-  box-shadow: -7px 0 0 rgba(10,167,60,0.1); 
-}
-
-.benefit-cards .benefit-card .edu-benefit-icon-container.purple { /* Purple-themed icon wrapper in feature cards */
-  background: rgba(105,10,167,0.1); 
-  box-shadow: -7px 0 0 rgba(105,10,167,0.1); 
+  margin-bottom: 1rem;
 }
 
 /* Feature Card Icons */
 
-.benefit-cards .benefit-card .benefit-icon { /* Icon within feature cards */
-  font-size: 1.5rem; 
-  position: static !important; 
+.ai-feature-cards .feature-card .feature-icon { /* Icon within feature cards */
+  font-size: 2rem; 
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: -1rem;
-  margin-bottom: -1rem;
 }
-
-.benefit-cards .benefit-card .edu-benefit-icon-container.blue .benefit-icon { /* Icon within blue-themed feature cards */
+.ai-feature-cards .feature-card .ai-feature-icon-wrapper.blue .feature-icon { /* Icon within blue-themed feature cards */
   color: rgb(48,74,237);
 }
-
-.benefit-cards .benefit-card .edu-benefit-icon-container.green .benefit-icon { /* Icon within green-themed feature cards */
+.ai-feature-cards .feature-card .ai-feature-icon-wrapper.green .feature-icon { /* Icon within green-themed feature cards */
   color: rgba(10,167,60,0.9); 
 }
-
-.benefit-cards .benefit-card .edu-benefit-icon-container.purple .benefit-icon { /* Icon within purple-themed feature cards */
+.ai-feature-cards .feature-card .ai-feature-icon-wrapper.purple .feature-icon { /* Icon within purple-themed feature cards */
   color: rgba(105,10,167,0.9); 
 }
 
-.benefit-card h4 { /* Heading within feature cards */
+
+.feature-card h4 { /* Heading within feature cards */
   font-size: 1.5rem;
   color: #2D3748; 
   margin: 0; 
   font-weight: 600; 
 }
 
-.benefit-card p { /* Paragraph text within feature cards */
+.feature-card p { /* Paragraph text within feature cards */
   font-size: 1rem; 
   color: #4A5568; 
   line-height: 1.3; 
@@ -576,7 +570,7 @@
 
 /* Our Tools Section */
 
-.our-modules-section {
+.our-tools-section {
   padding: 4rem 1rem;
   text-align: center;
   max-width: 2000px; 
@@ -600,7 +594,7 @@
   color: rgb(48,74,237);
 }
 
-.header-content { /*header content of our modules header section*/
+.header-content { /*header content of our tools header section*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -608,7 +602,7 @@
   background-color: #ffffff;  
 }
 
-.our-modules-section h2 {
+.our-tools-section-title {
   font-size: 3rem;
   color: #26344d;
   font-weight: 700;
@@ -617,7 +611,7 @@
   text-align: center;
 }
 
-.section-subtitle { /*subtitle of our modules header section*/
+.section-subtitle { /*subtitle of our tools header section*/
   font-size: 1.8rem; 
   text-align: center;
   color: #4A5568; 
@@ -628,66 +622,70 @@
   line-height: 1.5;
 }
 
-.tools-content { /* Container for modules content tabs and toggle switch*/
+.tools-content { /* Container for tools content tabs and toggle switch*/
   margin-top: 2rem; 
 }
 
 .toggle-switch-wrapper { /* Container for toggle switch */
-  margin: 3rem 0 2rem; 
+  margin: 3rem 0 6rem; 
   display: flex; 
   justify-content: center; 
 }
 
 .toggle-switch { /* Toggle switch */
   position: relative; 
-  width: 800px; 
-  height:70px; 
   background: #f1f5f9; 
   border-radius: 25px; 
   padding: 3px; 
-  display: flex; 
+  display: flex !important; 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); 
 }
 
-.toggle-btn { /* Toggle button */
-  flex: 1; 
-  border: none; 
-  background: transparent; 
-  border-radius: 24px; 
-  font-size: 0.9rem; 
-  font-weight: 600; 
-  color: #64748b; 
-  cursor: pointer; 
-  transition: all 0.3s ease; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  gap: 0.5rem; 
-  position: relative; 
-  z-index: 1; 
-  outline: none; 
+.toggle-btn {
+  /* Toggle button */
+  flex: 1;
+  width: 300px;
+  height: 80px;
+  border: none;
+  background: transparent;
+  border-radius: 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 1;
+  outline: none;
 }
 
-.toggle-btn.active { /* Active toggle button */
-  color: #fff; 
+.toggle-btn.active {
+  /* Active toggle button */
+  color: #fff;
 }
 
-.toggle-btn:first-child.active { /* First active toggle button */
-  background: linear-gradient(135deg, rgba(21,198,142,255) 0%, rgba(21,198,142,255) 100%); 
+.toggle-btn:first-child.active {
+  /* First active toggle button */
+  background: linear-gradient(135deg, rgba(21, 198, 142, 255) 0%, rgba(21, 198, 142, 255) 100%);
 }
 
-.toggle-btn:last-child.active { /* Last active toggle button */
-  background: linear-gradient(135deg, rgba(21,198,142,255) 0%, rgba(21,198,142,255) 100%); 
+.toggle-btn:last-child.active {
+  /* Last active toggle button */
+  background: linear-gradient(135deg, rgba(21, 198, 142, 255) 0%, rgba(21, 198, 142, 255) 100%);
 }
 
-.toggle-icon { /*toggle icon*/
+.toggle-icon {
+  /*toggle icon*/
   font-size: 1.8rem;
 }
 
 .toggle-label {
   position: relative;
   display: flex;
-  width: 100%;
   height: 100%;
   cursor: pointer;
   background: #EDF2F7;
@@ -699,16 +697,16 @@
   content: '';
   position: absolute;
   left: 4px;
-  width: 155px;
+  width: calc(50% - 8px);
   height: 37px;
-  background: rgba(21,198,142,255); 
+  background: rgba(21, 198, 142, 255);
   border-radius: 22px;
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .toggle-text {
-  flex: 1;
+  /* flex: 1; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -721,11 +719,14 @@
 }
 
 /* Show educator tab when toggle is checked */
-.toggle-input:checked ~ .tools-content .student-tools {
+.toggle-input:checked~.toggle-label::after {
+  left: calc(50% + 4px);
+}
+.toggle-input:checked~.tools-content .student-tools {
   display: none;
 }
 
-.toggle-input:checked ~ .tools-content .educator-tools {
+.toggle-input:checked~.tools-content .educator-tools {
   display: block;
 }
 
@@ -757,14 +758,14 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  margin-top: -0.5rem;
+  margin-top: 2.5rem;
 }
 
-.tab-title { /*title for student tab header*/
-  font-size: 1.75rem;
+.for-student-tab-header { /*title for student tab header*/
+  font-size: 2rem;
   font-weight: 600;
-  color: #2D3748;
-  margin: 0;
+  color: #000000;
+  margin-top: 2rem;
 }
 
 .tab-content-section { /* Container for student tab content */
@@ -776,7 +777,7 @@
   padding: 0; 
   margin-left: 0; 
   max-width: 1400px; 
-  margin: 2rem auto 0; 
+  margin: 0.2rem 0.8rem 0;   
 }
 
 
@@ -784,41 +785,45 @@
   display: flex;                  
   flex-direction: column;         
   align-items: flex-start;        
-  width: 100%;                    
+  width: 100%;    
+  margin-top: 2rem;                
   margin-left: 0;                 
   padding-left: 0;               
   min-width: 280px; 
 }
 
 .content-subtitle { /*title in left side in student tab */
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 600;
-  color: #245ad7;
+  color: #15c68e;
   margin-bottom: 0.5rem;
-  margin-top: -15px;
   margin-left: 4rem;
   padding-left: 0;
+  margin-top: -2rem;
 }
 
 .content-description { /*description text in left side student tab*/
   margin-top: 0.5rem;
+  margin-bottom: 2rem;
   color: #000000;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   line-height: 1.5;
   text-align: left;
   margin-left: 4rem;
   padding-left: 0;
 }
 
-.features-card { /*feature card left side student tab*/
+.features-card { /*feature card right side student tab*/
   background-color: rgba(243,248,255,255);
   border: 1px solid rgba(21,198,142,255); 
   border-radius: 12px;
   padding: 1.5rem 0 1.5rem 0;
   margin-top: 1rem;
-  width: 100%;
+  margin-left: 4rem;
+  width: 110%;
   min-width: auto; 
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); */
+
 }
 
 .features-title { /*title for feature card in student tab*/
@@ -867,34 +872,19 @@
 .new-arrows-student { /*arrows next to each item in student tab*/
   color: rgba(21,198,142,255); 
   font-size: 1.2rem;
-  position: absolute;
+  /* position: absolute;
   left: 0.5rem;
-  top: 0.1rem;  
+  top: 0.1rem;   */
+  text-align: left;
 }
 
 .features-list li strong { /*bold text for each item*/
   display: inline;
   font-weight: 600;
   margin-right: 0.25rem;
-}
-
-.try-button { /*try button in student tab*/
-  background-color: rgba(21,198,142,255); 
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 0.8rem 1.5rem;
+  text-align: left;
   font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 2rem;
-}
-
-.try-button:hover {
-  background-color: rgba(21,198,142,0.9); 
+  color: #000000;
 }
 
 .button-icon { /*try button icon*/
@@ -920,9 +910,9 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-width: 580px;
+  max-width: 600px;
   min-width: 280px;
-  margin: 0 auto;
+  margin-left: 20rem;
 }
 
 .drop-box::before {
@@ -959,50 +949,213 @@
 }
 
 .drop-zone { /*drag and drop file box */
-  border: 2px dashed #e2e8f0;
-  border-radius: 8px;
-  padding: 2rem;
+  border: 2px dashed rgba(21,198,142,0.3);
+  border-radius: 16px;
+  padding: 3rem 2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  background-color: #fff;
+  gap: 1rem;
+  background-color: rgba(21,198,142,0.02);
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .drop-zone:hover {
-  border-color: rgba(21,198,142,255); 
+  border-color: rgba(21,198,142,0.8);
+  background-color: rgba(21,198,142,0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(21,198,142,0.1);
+}
+
+.drop-zone::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 0%, rgba(21,198,142,0.03) 100%);
+  pointer-events: none;
 }
 
 .drop-icon { /*icon wrapper within the drag and drop box*/
-  width: 48px;
-  height: 48px;
-  background-color: rgba(21,198,142,0.1); 
+  width: 64px;
+  height: 64px;
+  background-color: rgba(21,198,142,0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.drop-zone:hover .drop-icon {
+  transform: scale(1.1);
+  background-color: rgba(21,198,142,0.15);
 }
 
 .cloud-icon { /*icon within the drag and drop box*/
-  font-size: 24px;
-  color: rgba(21,198,142,255); 
+  font-size: 32px;
+  color: rgba(21,198,142,0.8);
+  transition: all 0.3s ease;
+}
+
+.drop-zone:hover .cloud-icon {
+  color: rgba(21,198,142,1);
 }
 
 .drop-zone-title { /*title in the drag and drop box*/
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #2d3748;
   margin: 0;
+  transition: all 0.3s ease;
 }
 
 .drop-zone-subtitle { /*subtitle in the drag and drop box*/
   color: #718096;
-  font-size: 0.875rem;
+  font-size: 1rem;
   margin: 0;
+  max-width: 80%;
+  line-height: 1.5;
+}
+
+/* File name display styles */
+.file-name-container {
+  display: none; /* Hidden by default, shown when file is selected */
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(21,198,142,0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(21,198,142,0.2);
+  transition: all 0.3s ease;
+}
+
+.file-name-container.visible {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  animation: slideDown 0.3s ease-out;
+}
+
+.file-icon {
+  color: rgba(21,198,142,0.8);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.file-name {
+  flex: 1;
+  font-size: 0.95rem;
+  color: #2d3748;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.file-size {
+  font-size: 0.85rem;
+  color: #718096;
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+
+.remove-file {
+  color: #718096;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-file:hover {
+  color: #e53e3e;
+  background-color: rgba(229, 62, 62, 0.1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Update drop zone styles when file is selected */
+.drop-zone.has-file {
+  border-style: solid;
+  border-color: rgba(21,198,142,0.5);
+  background-color: rgba(21,198,142,0.03);
+}
+
+.drop-zone.has-file:hover {
+  border-color: rgba(21,198,142,0.7);
+  background-color: rgba(21,198,142,0.05);
+}
+
+/* Add a subtle success animation when file is selected */
+@keyframes successPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(21,198,142,0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(21,198,142,0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(21,198,142,0);
+  }
+}
+
+.drop-zone.file-selected {
+  animation: successPulse 1s ease-out;
+}
+
+/* Add a subtle animation for the upload area */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(21,198,142,0.2);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(21,198,142,0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(21,198,142,0);
+  }
+}
+
+.drop-zone:active {
+  animation: pulse 1s infinite;
+}
+
+/* Add a subtle border animation */
+@keyframes borderDance {
+  0% {
+    border-color: rgba(21,198,142,0.3);
+  }
+  50% {
+    border-color: rgba(21,198,142,0.6);
+  }
+  100% {
+    border-color: rgba(21,198,142,0.3);
+  }
+}
+
+.drop-zone:hover {
+  animation: borderDance 2s infinite;
 }
 
 .select-files-btn { /*select file button*/
@@ -1084,7 +1237,7 @@
   background: rgba(21,198,142,255); 
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 0.8rem;
   font-size: 1rem;
   font-weight: 500;
@@ -1120,8 +1273,8 @@
 
 .tab-content { /* for educators Content revealed by toggle switches */
   display: block !important; 
-  width: 100%; 
-  animation: fadeIn 0.3s ease-in-out; 
+  width: 120%; 
+  animation: fadeIn 0.9s ease-in-out; 
 }
 
 /* Educator section layout - houses both the exam generator panel and features panel */
@@ -1144,8 +1297,10 @@
   padding: 1.5rem; 
   border-radius: 0.5rem; 
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); 
-  max-width: 580px; 
-  margin: 2.5rem 0 0 0;
+  max-width: 600px; 
+  /* margin-top: 2.5rem; */
+  margin-left: 4rem;
+  margin-right: 4rem;
   position: relative;
 }
 
@@ -1162,20 +1317,20 @@
 }
 
 .exam-title { /* Title of the exam generator panel */
-  font-size: 1.3rem; 
+  font-size: 1.5rem;
   font-weight: 600; 
   color: #000000; 
   margin: 0 0 0.25rem 0; 
   margin-top: -0.5rem; 
   margin-bottom: 0.5rem;
   text-align: left; 
-  padding-left: 0; 
+  padding-top: 0.2; 
   position: relative; 
   z-index: 1; 
 }
 
 .exam-subtitle { /* Subtitle below the exam generator title */
-  color: #000000; 
+  color: #4A5568;
   font-size: 1rem;
   margin-bottom: 1.5rem;
   margin-top: -0.25rem;
@@ -1258,6 +1413,7 @@
 .slider-label { /*text for label for the slider*/
   font-weight: 500;
   color: #2d3748;
+  margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
   text-align: left;
@@ -1399,12 +1555,13 @@
   background: rgba(21,198,142,255); 
   color: white;
   border: none;
-  border-radius: 0.25rem;
+  border-radius: 20px;
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.7rem;
+  
 }
 
 .generate-exam-button:hover {
@@ -1444,54 +1601,60 @@
   height: 3rem;
 }
 
-.educator-icon {
-  font-size: 2.5rem;
-  color: #3b82f6;
+.ai-educator-icon {
+  font-size: 3.7rem;
+  color: #2ccc99;
   margin-top: -20px;  
+  margin-left: -2rem;
+  margin-top: -8rem;
 }
 
 .educator-large-icon {
   font-size: 2.5rem;
   color: #4a5568;
+  
 }
 
 .educator-heading {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #2d3748;
-  margin: 0;
+  margin-bottom: 2rem;
+  margin-top: -1rem;
 }
 
 .tool-name {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
-  color: #2d3748;
+  color: #2ccc99;
   margin-bottom: 1rem;
   margin-top: -35px; 
-  margin-left: 4.2rem;
+  margin-left: 3rem;
   text-align: left;
 }
 
 .tool-description {
-  color: #4a5568;
-  font-size: 1.2rem;
+  color: #000000;
+  font-size: 1.4rem;
   line-height: 1.6;
   margin-bottom: 1.75rem;
   margin-top: -10px; 
-  margin-left: 4.2rem;
-  max-width: 520px;
+  margin-left: 3rem;
+  max-width: 720px;
 }
 
 /* Features section - container for key features list in educator views */
 .key-features-container {
-  background-color: #ebf8ff;
+  background-color: rgba(243, 248, 255, 255) !important;
   padding: 1rem;
-  border-radius: 0.9rem;
+  border: 1px solid rgba(21, 198, 142, 255)!important;
+  border-radius: 12px;
   margin-bottom: 3rem;
-  border: 2px solid #e2e8f0;
+  margin-left: 3rem;  border: 2px solid #e2e8f0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  width: 100%;
-  max-width: 680px;
+  width: 80%;
+  
+  /* max-width: 680px; */
 }
 
 .feature-item { /* Individual feature items in the list */
@@ -1537,6 +1700,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: 680px;
+  margin-left: 3rem;
 }
 
 .time-icon-container {
@@ -1569,65 +1733,25 @@
   text-align: left;
 }
 
-.try-generator-button { /* Try generator button */
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: rgba(21,198,142,255); 
-  color: white;
-  border: none;
-  border-radius: 0.375rem;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  margin-top: 2rem;
-}
-
-.try-generator-button:hover {
-  background: rgba(21,198,142,0.9); 
-  transform: translateY(-2px);
-}
-
-/* Style for the arrow icon in the Get Started button */
-.btn-arrow {
-  margin-left: 20px;
-  margin-bottom: -3px;
-  font-size: 0.9em;
-  transition: transform 0.2s ease;
-}
-
-/* Add hover effect to animate the arrow */
-.primary-btn:hover .btn-arrow {
-  transform: translateX(4px);
-}
-
-.summarizer-card, .assessment-card {
-  min-height: 600px; /* Added increased height for taller cards */
-}
-
-/* Remove black border from buttons on click */
-button:focus {
-  outline: none;
-  border: none;
-}
-
 /* Testimonials Section */
-.testimonials-section {
+.ai-testimonials-section {
   text-align: center;
-  background: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
+  /* background: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%); */
   width: 80%;
+  height: 600px;
+  margin: 0 auto 5rem;
 }
 
-.testimonials-section h2 {
+.ai-testimonials-section h2 {
   font-size: 2.5rem;
   color: #2D3748;
   margin-bottom: 1rem;
+  margin-top: 1.5rem;
 }
 
 .testimonials-subtitle {
   font-size: 1.3rem;
+  text-align: center;
   color: #4A5568;
   margin-bottom: 3rem;
   max-width: 800px;
@@ -1659,6 +1783,7 @@ button:focus {
   color: #2D3748;
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
+  
 }
 
 .rating {
@@ -1684,10 +1809,12 @@ button:focus {
   background: white;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); */
   text-align: left;
   min-width: 280px;
   margin: 0.2rem;
+    box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.15) !important;
+
 }
 
 .testimonial-top {
@@ -1733,6 +1860,38 @@ button:focus {
   margin: 0;
   line-height: 1.6;
 }
+
+.download-result-btn {
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -0.8rem !important;
+}
+
+.download-result-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #15c68e;
+}
+
+.download-result-btn:not(:disabled) {
+  background: #0dbd857a;
+  color: #fff;
+  /* border-color: #15c68e; */
+}
+
+
+.download-result-btn:hover:not(:disabled) {
+  background: #15c68e;
+  color: #fff;
+  border-color: #fdfdfd;
+}
+
 
 
 @media screen and (max-width: 768px) { /* Mobile Responsive Styles */
@@ -1835,7 +1994,7 @@ button:focus {
 }
 
 @media (max-width: 1200px) { /* Styles for screens up to 1200px wide */
-  .feature-cards { 
+  .ai-feature-cards { 
     grid-template-columns: repeat(2, 1fr); 
     gap: 1.5rem;
   }
@@ -1867,7 +2026,7 @@ button:focus {
     grid-template-columns: 1fr;
   }
 
-  .testimonials-section h2 { /* Main heading for testimonials section */
+  .ai-testimonials-section h2 { /* Main heading for testimonials section */
     font-size: 2rem;
     margin-bottom: 2rem;
   }
@@ -1943,7 +2102,7 @@ button:focus {
     grid-template-columns: 1fr;
   }
 
-  .testimonials-section h2 {
+  .ai-testimonials-section h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
   }

@@ -1,12 +1,14 @@
 import React from 'react';
 import './forStudentsPage.css';
-import { FaCheck, FaStar, FaChartLine, FaGraduationCap, FaUsers, FaClock } from 'react-icons/fa';
+import { FaStar, FaCheck, FaClock, FaChartLine, FaUsers, FaGraduationCap } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import { IoMdTime } from 'react-icons/io';
 import { AiOutlineUser } from 'react-icons/ai';
 import { BiBrain } from 'react-icons/bi';
 import { IoBook, IoSchool, IoChatbubble, IoPeople } from 'react-icons/io5';
 
 const ForStudentsPage = () => {
+  const navigate = useNavigate();
   return (
     <div className="for-students-container">
       {/* Promo Section */}
@@ -21,7 +23,7 @@ const ForStudentsPage = () => {
             study time, improve comprehension, and achieve better results.
           </p>
           <div className="cta-buttons">
-            <button className="cta-button primary">Start Free Trial</button>
+            <button className="cta-button primary" onClick={() => navigate('/signup')}>Start Free Trial</button>
             <button className="cta-button secondary">
               Watch Demo <span className="arrow">→</span>
             </button>
@@ -31,7 +33,7 @@ const ForStudentsPage = () => {
           <div className="laptop-container">
             <div className="rating-badge">
               {[...Array(5)].map((_, i) => (
-                <FaStar key={i} className="star-icon" />
+                <FaStar key={i} className="fs-star-icon" />
               ))}
             </div>
             <img 
@@ -40,8 +42,8 @@ const ForStudentsPage = () => {
               className="laptop-image" 
             />
             <div className="stat-badge">
-              <div className="check-icon-container">
-                <FaCheck className="check-icon" />
+              <div className="fs-check-icon-container">
+                <FaCheck className="fs-check-icon" />
               </div>
               <div className="stat-text">
                 Study time reduced by 40%
@@ -55,11 +57,11 @@ const ForStudentsPage = () => {
       </div>
 
       {/* Benefits Section */}
-      <div className="benefits-section">
+      <div className="fs-benefits-section">
         <div className="why-choose-badge">WHY CHOOSE US</div>
         <h2 className="benefits-heading">Benefits for Students</h2>
         <p className="benefits-subtext">
-          Our platform provides unique advantages that traditional study methods can't match. Here's
+          Our platform provides unique advantages that traditional study methods can't match. <br /> Here's
           how Beyond the Blackboard helps you excel.
         </p>
 
@@ -69,7 +71,7 @@ const ForStudentsPage = () => {
             <div className="icon-container">
               <IoMdTime className="benefit-icon" />
             </div>
-            <h3 className="benefit-title">Study Less, Learn More</h3>
+            <h3 className="fs-benefit-title">Study Less, Learn More</h3>
             <p className="benefit-description">
               Our AI identifies your knowledge gaps and creates study plans focused only on what you need to learn.
             </p>
@@ -91,7 +93,7 @@ const ForStudentsPage = () => {
             <div className="icon-container">
               <AiOutlineUser className="benefit-icon" />
             </div>
-            <h3 className="benefit-title">Personalized to Your Learning Style</h3>
+            <h3 className="fs-benefit-title">Personalized to Your Learning Style</h3>
             <p className="benefit-description">
               Everyone learns differently. Our AI adapts to your unique learning style and preferences.
             </p>
@@ -113,7 +115,7 @@ const ForStudentsPage = () => {
             <div className="icon-container">
               <BiBrain className="benefit-icon" />
             </div>
-            <h3 className="benefit-title">Better Academic Results</h3>
+            <h3 className="fs-benefit-title">Better Academic Results</h3>
             <p className="benefit-description">
               Students using Beyond the Blackboard see significant improvements in their grades and comprehension.
             </p>
@@ -142,10 +144,10 @@ const ForStudentsPage = () => {
 
         <div className="features-grid">
           {/* Feature Card 1 */}
-          <div className="feature-card">
+          <div className="for-student-feature-card">
             <div className="feature-header">
-              <div className="feature-icon-container">
-                <IoBook className="feature-icon" />
+              <div className="sf-feature-icon-container">
+                <IoBook className="sf-feature-icon" />
               </div>
               <h3 className="feature-title">AI Study Guide Generator</h3>
             </div>
@@ -153,20 +155,20 @@ const ForStudentsPage = () => {
               Upload your lecture notes or syllabus, and our AI will generate comprehensive study guides tailored to your course material and learning objectives.
             </p>
             <ul className="feature-list">
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> Converts dense material into easy-to-understand concepts
               </li>
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> Creates practice questions focused on important topics
               </li>
             </ul>
           </div>
 
           {/* Feature Card 2 */}
-          <div className="feature-card">
+          <div className="for-student-feature-card">
             <div className="feature-header">
-              <div className="feature-icon-container">
-                <IoSchool className="feature-icon" />
+              <div className="sf-feature-icon-container">
+                <IoSchool className="sf-feature-icon" />
               </div>
               <h3 className="feature-title">Smart Knowledge Assessment</h3>
             </div>
@@ -174,20 +176,20 @@ const ForStudentsPage = () => {
               Our AI evaluates your current knowledge level through adaptive questioning and creates a personalized study path.
             </p>
             <ul className="feature-list">
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> Identifies specific knowledge gaps
               </li>
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> Adapts difficulty based on your responses
               </li>
             </ul>
           </div>
 
           {/* Feature Card 3 */}
-          <div className="feature-card">
+          <div className="for-student-feature-card">
             <div className="feature-header">
-              <div className="feature-icon-container">
-                <IoChatbubble className="feature-icon" />
+              <div className="sf-feature-icon-container">
+                <IoChatbubble className="sf-feature-icon" />
               </div>
               <h3 className="feature-title">Study Companion AI</h3>
             </div>
@@ -195,20 +197,20 @@ const ForStudentsPage = () => {
               A 24/7 AI tutor that answers questions, explains complex topics, and helps you work through problems in real-time.
             </p>
             <ul className="feature-list">
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> Subject-matter expertise across all disciplines
               </li>
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> Explains concepts in multiple ways until you understand
               </li>
             </ul>
           </div>
 
           {/* Feature Card 4 */}
-          <div className="feature-card">
+          <div className="for-student-feature-card">
             <div className="feature-header">
-              <div className="feature-icon-container">
-                <IoPeople className="feature-icon" />
+              <div className="sf-feature-icon-container">
+                <IoPeople className="sf-feature-icon" />
               </div>
               <h3 className="feature-title">Collaborative Study Spaces</h3>
             </div>
@@ -216,23 +218,19 @@ const ForStudentsPage = () => {
               Virtual study rooms where you can collaborate with peers, share resources, and learn together with AI assistance.
             </p>
             <ul className="feature-list">
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> Real-time document collaboration
               </li>
-              <li className="feature-item">
+              <li className="sf-feature-item">
                 <FaCheck className="feature-check-icon" /> AI moderator to keep study sessions productive
               </li>
             </ul>
           </div>
         </div>
-
-        <button className="explore-features-button">
-          Explore All Features <span className="arrow">→</span>
-        </button>
       </div>
 
       {/* Impact Section */}
-      <div className="impact-section">
+      <div className="fs-impact-section">
         <div className="impact-label">REAL RESULTS</div>
         <h2 className="impact-heading">The Beyond the Blackboard Impact</h2>
         <p className="impact-subheading">
@@ -300,7 +298,7 @@ const ForStudentsPage = () => {
                     <span className="change-badge positive">+23%</span>
                   </div>
                 </div>
-                <div className="progress-bar-container">
+                <div className="for-student-progress-bar-container">
                   <div className="progress-bar-bg"></div>
                   <div 
                     className="progress-bar-fill purple" 
@@ -321,7 +319,7 @@ const ForStudentsPage = () => {
                     <span className="change-badge positive">+20%</span>
                   </div>
                 </div>
-                <div className="progress-bar-container">
+                <div className="for-student-progress-bar-container">
                   <div className="progress-bar-bg"></div>
                   <div 
                     className="progress-bar-fill purple" 
@@ -342,10 +340,10 @@ const ForStudentsPage = () => {
                     <span className="change-badge reduction">-40%</span>
                   </div>
                 </div>
-                <div className="progress-bar-container">
+                <div className="for-student-progress-bar-container">
                   <div className="progress-bar-bg"></div>
                   <div 
-                    className="progress-bar-fill green" 
+                    className="progress-bar-fill purple" 
                     style={{ width: '60%' }}
                   ></div>
                   <div className="progress-marker" style={{ left: '100%' }}></div>
@@ -369,7 +367,7 @@ const ForStudentsPage = () => {
       </div>
 
       {/* Testimonials Section */}
-      <div className="testimonials-section">
+      <div className="fs-testimonials-section">
         <h2 className="testimonials-heading">What Our Students Are Saying</h2>
         <p className="testimonials-subheading">
           Thousands of students have transformed their learning experience with Beyond the
@@ -452,12 +450,9 @@ const ForStudentsPage = () => {
 
         <div className="testimonials-cta">
           <p className="testimonials-count">Join over 100,000 satisfied students</p>
-          <button className="join-button">Join Our Community</button>
+          <button className="join-button" onClick={() => navigate('/signup')}>Join Our Community</button>
         </div>
 
-        <div className="support-icon">
-          <FaCheck />
-        </div>
       </div>
     </div>
   );
