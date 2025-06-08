@@ -172,6 +172,7 @@
 
 .ai-hero-preview .preview-card-small {
   background: #15c68e;
+  background: #15c68e;
   border-radius: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   overflow: hidden;
@@ -320,6 +321,7 @@
 
 
 .highlight {
+  background: rgb(21, 198, 142);
   background: rgb(21, 198, 142);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
