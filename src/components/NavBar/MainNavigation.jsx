@@ -104,6 +104,9 @@ const MainNavigation = () => {
           <Link to="/courses" className="nav-link main-navigation-item" onClick={closeMenu}>
             Courses
           </Link>
+          <Link to="/course-creation" className="nav-link main-navigation-item" onClick={closeMenu}>
+            Course Creation
+          </Link>
           <Link to="/for-students" className="nav-link main-navigation-item" onClick={closeMenu}>
             For Students
           </Link>

@@ -343,7 +343,7 @@ const ForStudentsPage = () => {
                 <div className="for-student-progress-bar-container">
                   <div className="progress-bar-bg"></div>
                   <div 
-                    className="progress-bar-fill green" 
+                    className="progress-bar-fill purple" 
                     style={{ width: '60%' }}
                   ></div>
                   <div className="progress-marker" style={{ left: '100%' }}></div>
@@ -450,12 +450,9 @@ const ForStudentsPage = () => {
 
         <div className="testimonials-cta">
           <p className="testimonials-count">Join over 100,000 satisfied students</p>
-          <button className="join-button">Join Our Community</button>
+          <button className="join-button" onClick={() => navigate('/signup')}>Join Our Community</button>
         </div>
 
-        <div className="support-icon">
-          <FaCheck />
-        </div>
       </div>
     </div>
   );
