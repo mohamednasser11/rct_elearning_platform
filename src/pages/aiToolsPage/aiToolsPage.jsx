@@ -406,7 +406,7 @@ const AiToolsPage = () => {
                       <LuCloud className="cloud-icon" />
                     </div>
                     <h4 className="drop-zone-title">Drag & drop files here</h4>
-                    <p className="drop-zone-subtitle">or click to browse (PDFs, images)</p>
+                    <p className="drop-zone-subtitle">or click to browse (PDFs, Text)</p>
                     <input 
                       type="file" 
                       ref={studentFileRef} 
