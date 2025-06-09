@@ -8,6 +8,7 @@ import './CourseDetail.css';
 import CourseVideo from './CourseVideo';
 import CourseOutline from './CourseOutline';
 import { FiCheckCircle } from "react-icons/fi";
+import ChatbotHead from './ChatbotHead';
 
 // Sample curriculum data as a fallback
 const sampleCurriculum = [
@@ -717,6 +718,8 @@ const CourseDetail = () => {
           </div>
         </div>
       </div>
+
+      <ChatbotHead courseTitle={course.title} />
     </div>
   );
 };
