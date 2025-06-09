@@ -465,7 +465,7 @@
 }
 
 .course-duration span {
-  color: var(--text-light);
+  color: var(--text-secondary);
   font-weight: 600;
 }
 
@@ -538,14 +538,14 @@
 
 .clock-icon {
   margin-right: 0.5rem;
-  color: var(--text-light);
+  color: var(--text-secondary);
 }
 
 .course-rating {
   display: flex;
   align-items: center;
   background: var(--white);
-  color: var(--text-light);
+  color: var(--text-secondary);
   font-size: 0.9rem;
   font-weight: 800;
   padding: 0.4rem 0.8rem;
@@ -579,7 +579,7 @@
 
 .students-count span {
   font-weight: 600;
-  color: var(--text-light);
+  color: var(--text-secondary);
 }
 
 .add-to-cart-btn {
