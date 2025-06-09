@@ -48,7 +48,7 @@
 }
 
 .back-button:hover {
-transform: translateY(-2px);
+  transform: translateY(-2px);
   background-color: #0bca8e;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
@@ -68,9 +68,11 @@ transform: translateY(-2px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   margin-right: 90%;
 }
-.course-category-tag:hover{
+
+.course-category-tag:hover {
   transform: translateY(-2px);
-  color:#0ba574;;
+  color: #0ba574;
+  ;
 }
 
 .course-title {
@@ -144,7 +146,8 @@ transform: translateY(-2px);
 }
 
 .tab-button:hover {
-  color: #0ba574;;
+  color: #0ba574;
+  ;
 }
 
 .tab-button.active {
@@ -203,8 +206,8 @@ transform: translateY(-2px);
   border-radius: 12px;
   box-shadow: 5px 4px 15px rgba(0, 0, 0, 0.164) !important;
   padding: 20px !important;
- width: 60%;
- margin-bottom: 6rem;
+  width: 60%;
+  margin-bottom: 6rem;
 }
 
 .overview-section {
@@ -348,7 +351,7 @@ transform: translateY(-2px);
   padding: 0;
   margin: 1rem 0;
   text-align: left;
-    margin-left: 1rem;
+  margin-left: 1rem;
 
 }
 
@@ -402,7 +405,8 @@ transform: translateY(-2px);
 .overview-features li::before {
   content: '✓';
   position: relative;
-  color: #0ba574;;
+  color: #0ba574;
+  ;
   font-weight: bold;
   background-color: #e0f2e0;
   width: 10px;
@@ -412,7 +416,7 @@ transform: translateY(-2px);
   align-items: center;
   justify-content: center;
   font-size: 0.9rem;
-  
+
 }
 
 
@@ -480,7 +484,7 @@ transform: translateY(-2px);
   animation: button-pulse 0.5s ease-in-out forwards;
 }
 
-.enrollment-button.in-cart:focus{
+.enrollment-button.in-cart:focus {
   border: #0ba574;
   outline: none;
 }
@@ -541,7 +545,7 @@ transform: translateY(-2px);
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(0,128,0,0.7), transparent);
+  background: linear-gradient(to top, rgba(0, 128, 0, 0.7), transparent);
 }
 
 .instructor-image img {
@@ -801,6 +805,3 @@ transform: translateY(-2px);
   top: -1rem;
   font-family: serif;
 }
-
-
-
