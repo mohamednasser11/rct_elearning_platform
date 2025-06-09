@@ -25,7 +25,7 @@ const ForStudentsPage = () => {
           <div className="cta-buttons">
             <button className="cta-button primary" onClick={() => navigate('/signup')}>Start Free Trial</button>
             <button className="cta-button secondary">
-              Watch Demo <span className="arrow">→</span>
+              Watch Demo
             </button>
           </div>
         </div>
@@ -244,7 +244,7 @@ const ForStudentsPage = () => {
               <FaClock className="stat-icon" />
             </div>
             <div className="stat-value">40%</div>
-            <div className="stat-label">Average study time reduction</div>
+            <div className="impact-stat-label">Average study time reduction</div>
           </div>
 
           {/* Stat Card 2 */}
@@ -253,7 +253,7 @@ const ForStudentsPage = () => {
               <FaChartLine className="stat-icon" />
             </div>
             <div className="stat-value">18%</div>
-            <div className="stat-label">Average grade improvement</div>
+            <div className="impact-stat-label">Average grade improvement</div>
           </div>
 
           {/* Stat Card 3 */}
@@ -262,7 +262,7 @@ const ForStudentsPage = () => {
               <FaUsers className="stat-icon" />
             </div>
             <div className="stat-value">92%</div>
-            <div className="stat-label">Student retention rate</div>
+            <div className="impact-stat-label">Student retention rate</div>
           </div>
 
           {/* Stat Card 4 */}
@@ -271,7 +271,7 @@ const ForStudentsPage = () => {
               <FaGraduationCap className="stat-icon" />
             </div>
             <div className="stat-value">3.5M+</div>
-            <div className="stat-label">Study hours optimized</div>
+            <div className="impact-stat-label">Study hours optimized</div>
           </div>
         </div>
 
@@ -343,7 +343,7 @@ const ForStudentsPage = () => {
                 <div className="for-student-progress-bar-container">
                   <div className="progress-bar-bg"></div>
                   <div 
-                    className="progress-bar-fill green" 
+                    className="progress-bar-fill purple" 
                     style={{ width: '60%' }}
                   ></div>
                   <div className="progress-marker" style={{ left: '100%' }}></div>
@@ -360,7 +360,7 @@ const ForStudentsPage = () => {
             />
             <div className="image-overlay">
               <h3>Success Stories</h3>
-              <p>Join thousands of students who have transformed their academic journey with EduCraft</p>
+              <p>Join thousands of students who have transformed their academic journey with Beyond The Blackboard</p>
             </div>
           </div>
         </div>
@@ -431,8 +431,7 @@ const ForStudentsPage = () => {
               ))}
             </div>
             <p className="testimonial-quote">
-              "As a medical student, time is precious. The flashcard generator and notes 
-              summarizer have saved me countless hours of study time while improving my retention."
+              "As a medical student, time is precious. The AI lecture summarizer and course chatbot have saved me countless hours of study time while improving my retention. ."
             </p>
             <div className="testimonial-profile">
               <img 
@@ -450,12 +449,9 @@ const ForStudentsPage = () => {
 
         <div className="testimonials-cta">
           <p className="testimonials-count">Join over 100,000 satisfied students</p>
-          <button className="join-button">Join Our Community</button>
+          <button className="join-button" onClick={() => navigate('/signup')}>Join Our Community</button>
         </div>
 
-        <div className="support-icon">
-          <FaCheck />
-        </div>
       </div>
     </div>
   );
