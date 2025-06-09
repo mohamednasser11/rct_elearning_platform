@@ -552,6 +552,7 @@ function HomePage() {
       {/* Trusted By Section */}
       <Trusted />
       
+      
       {/* Quote Section */}
       <Quote />
 
@@ -566,6 +567,7 @@ function HomePage() {
 
       {/* Share Your Knowledge Section */}
       <Share />
+      
       
       {/* Student Testimonials */}
       <Student />

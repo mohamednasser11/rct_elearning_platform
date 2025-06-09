@@ -1,8 +1,11 @@
 /* HomePage.css
    Merged styles for the HomePage component and all its sub-components */
+   Merged styles for the HomePage component and all its sub-components */
 
 /* ===== VARIABLES ===== */
 :root {
+  --primary-color: #0fb480;
+  --primary-light: rgba(15, 180, 128, 0.1);
   --primary-color: #0fb480;
   --primary-light: rgba(15, 180, 128, 0.1);
   --primary-dark: #0d9668;
@@ -11,6 +14,7 @@
   --white: #ffffff;
   
   /* Text colors */
+  --text-dark: #111827;
   --text-dark: #111827;
   --text-gray: #6b7280;
   --text-light: #e5e7eb;
