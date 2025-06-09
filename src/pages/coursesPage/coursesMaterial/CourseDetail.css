@@ -1,7 +1,7 @@
 /* Course Detail Page Styles */
 .course-detail-container {
   box-sizing: border-box;
-  background-image: linear-gradient(to bottom, rgba(10, 238, 105, 0.15) 3%, rgba(255, 255, 255, 1) 22%);
+  background: linear-gradient(to bottom, rgba(10, 238, 105, 0.15) 3%, rgba(255, 255, 255, 1) 22%);
   min-height: 180vh;
   width: 100%;
   max-width: 100%;
@@ -17,135 +17,201 @@
   width: 72%;
 }
 
+.course-header-section {
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .back-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
+  border: none;
+  font-size: 1.08rem;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  margin-top: 4rem;
   margin-bottom: 1rem;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color: #0ba574;
+  justify-content: center;
+  border-radius: 30px;
+  box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.09);
   width: 160px;
   min-width: 190px;
   max-width: 210px;
 }
 
-.course-title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 1rem;
-  line-height: 1.3;
+.back-button:hover {
+transform: translateY(-2px);
+  background-color: #0bca8e;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
-.course-brief-description {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
 
 .course-category-tag {
   display: inline-block;
   padding: 0.3rem 1rem;
-  background-color: rgba(76, 175, 80, 0.1);
-  color: #4CAF50;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  gap: 0.8rem;
+  margin-top: -1rem;
+  background-color: rgb(255, 255, 255);
+  color: #0ba574;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.8rem;
   margin-bottom: 1rem;
-  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin-right: 90%;
+}
+.course-category-tag:hover{
+  transform: translateY(-2px);
+  color:#0ba574;;
+}
+
+.course-title {
+  font-size: 2.8rem;
+  text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.04);
+  font-weight: 700;
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  margin: 0rem 0 0rem;
+  line-height: 1.2;
+}
+
+.course-brief-description {
+  font-size: 1.2rem;
+  color: #555;
+  text-align: left;
+  margin-top: -1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 0rem;
+  line-height: 1.5;
+  max-width: 800px;
+}
+
+
+
+.course-meta-info .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #000000ce;
+  font-weight: 00;
+  font-size: 1rem;
+  background-color: #ffffff;
+  padding: 0.6rem 0.4rem;
+  border-radius: 30px;
+  width: 13rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+  margin-top: 30px;
+  margin-left: -0.3rem;
 }
 
 .course-meta-info {
   display: flex;
-  gap: 2rem;
-  margin-bottom: 1.5rem;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-.meta-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.95rem;
+.course-meta-info .meta-icon {
+  color: #e9ba20;
+  font-size: 1.1rem;
+}
+
+.tab-button {
+  padding: 1.4rem 1.8rem;
+  border: none;
+  background: none;
+  font-weight: 600;
   color: #666;
-}
-
-.meta-icon {
-  color: #4CAF50;
-}
-
-/* Course content area with exact proportions */
-
-
-.enrollment-thumbnail {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
   cursor: pointer;
-}
-
-
-.enrollment-thumbnail {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  cursor: pointer;
-}
-
-.play-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease;
-}
-
-.play-button {
-  width: 60px;
-  height: 60px;
-  background-color: rgba(76, 175, 80, 0.8);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.5rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-.enrollment-details {
-  padding: 1.5rem;
   position: relative;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  outline: none;
 }
 
-/* Price formatting that matches the screenshot */
-.enrollment-price-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 2.5rem;
+.tab-button:focus {
+  outline: none;
 }
+
+.tab-button:hover {
+  color: #0ba574;;
+}
+
+.tab-button.active {
+  color: #0ba574;
+}
+
+
+.tab-button:not(.active)::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #0ba574;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.tab-button:not(.active):hover::after {
+  width: 60%;
+}
+
+.tab-icon {
+  font-size: 1.1rem;
+  color: #000000a9 !important;
+}
+
+.course-tabs {
+  display: flex;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1.5rem;
+  margin-top: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+
+.section-content {
+  font-size: 1rem;
+  text-align: left;
+  line-height: 1.8;
+  color: #000000;
+  max-width: 50rem;
+  background-color: transparent !important;
+  margin-bottom: 1rem;
+}
+
+.tab-content {
+  border-radius: 12px;
+  box-shadow: 5px 4px 15px rgba(0, 0, 0, 0.164) !important;
+  padding: 20px !important;
+ width: 60%;
+ margin-bottom: 6rem;
+}
+
+.overview-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.2rem;
+}
+
 
 
 .dollar-sign {
@@ -163,28 +229,73 @@
   top: 0.2rem;
 }
 
+
+
+.course-enrollment-card {
+  position: absolute;
+  width: 25rem;
+  right: 2%;
+  top: 80px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+.course-enrollment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+.enrollment-details {
+  padding: 1.5rem;
+  position: relative;
+}
+
+.enrollment-price {
+  font-size: 2.5rem;
+  font-weight: 550;
+  color: #0ba574;
+  display: flex;
+  align-items: flex-start;
+  font-family: sans-serif;
+}
+
+.original-price {
+  font-size: 1rem;
+  color: #888;
+  padding: 2px 3px;
+  border-radius: 7px;
+  text-decoration: line-through;
+  font-weight: 400;
+  display: flex;
+  align-items: flex-start;
+}
+
+.enrollment-price-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
 .discount-badge {
   background: rgba(255, 94, 97, 0.09);
-  color: #d13134;
+  color: #d13134d8;
   text-align: center;
-  padding: 3px 15px;
+  padding: 3px 19px;
   font-size: 0.8rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   font-weight: 600;
   border-radius: 10px;
   position: absolute;
-  left: 1.5rem;
-  top: 4rem;
+  left: 1.2rem;
+  top: 3.7rem;
 }
 
-/* Course features styled like the screenshot */
-.enrollment-features {
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  padding: 1.2rem;
-}
 
 .enrollment-feature {
   display: flex;
@@ -194,561 +305,85 @@
   color: #555;
 }
 
-.feature-icon {
-  color: #4CAF50;
-  margin-right: 10px;
-  min-width: 22px;
-  font-size: 1.2rem;
-  position: relative;
-  left: 5px;
-  margin-top: 7px;
-  padding-top: 1px;
-  font-size: 1rem;
-}
-
-
-
-.enrollment-button.in-cart {
-  background-color: #ff0000;
-}
-
-.secure-payment-note {
+.overview-features .feature-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  color: #666;
-  font-size: 0.8rem;
-  margin-top: 0.8rem;
-}
-
-.lock-icon {
-  color: #4CAF50;
-}
-
-/* Responsiveness that scales properly with zoom */
-@media (max-width: 1400px) {
-  .course-detail-content {
-    width: 60%;
-  }
-  
-  .course-header-section {
-    width: 60%;
-  }
-  
-  .course-enrollment-card {
-    width: 33%;
-  }
-}
-
-@media (max-width: 1100px) {
-  .course-detail-content,
-  .course-header-section {
-    width: 55%;
-  }
-  
-  .course-enrollment-card {
-    width: 35%;
-  }
-}
-
-@media (max-width: 900px) {
-  .course-detail-container {
-    padding: 1.5rem 3%;
-  }
-  
-  .course-detail-content,
-  .course-header-section {
-    width: 100%;
-    padding-right: 0;
-  }
-  
-  .course-enrollment-card {
-    position: relative;
-    width: 100%;
-    right: auto;
-    top: auto;
-    margin: 2rem 0;
-  }
-}
-
-/* Loading and Error States */
-.course-detail-loading,
-.course-detail-error {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 70vh;
-  text-align: center;
-  padding: 2rem;
-  background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-}
-
-.course-detail-error h2 {
-  color: #e53935;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.spinner {
-  width: 60px;
-  height: 60px;
-  border: 5px solid rgba(0, 128, 0, 0.1);
+  background-color: rgba(0, 128, 0, 0.1);
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
-  border-top-color: #008000;
-  animation: spin 1s ease-in-out infinite;
-  margin-bottom: 1.5rem;
+  color: #0ba574;
+  font-size: 1.2rem;
+  min-width: 16px;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.feature-icon {
+  color: #0ba574;
+  margin-right: 10px;
+  min-width: 16px;
 }
 
-/* Course Header Section */
-.course-header-section {
-  margin-bottom: 2rem;
-  padding: 2rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.benefit-item {
+  gap: 1rem;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 0.9rem;
+  line-height: 1;
+  color: #000000 !important;
+  margin-left: 1rem;
 }
 
-/* Course field */
-.course-filed {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-top: -1rem;
-  margin-bottom: 0.4rem;
-  font-size: 0.95rem;
-  color: #555;
-}
 
-.course-header-info {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  margin-bottom: 1.8rem;
-}
-
-.meta-item {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  color: #444;
+.benefit-item .check-icon {
+  color: #0ba574;
   font-size: 1rem;
-  background-color: #f0f7f0;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.meta-item svg {
-  color: #008000;
-  font-size: 1.2rem;
-}
-
-.course-category-tag {
-  display: inline-block;
-  padding: 0.3rem 1rem;
-  background-color: rgb(255, 255, 255);
-  /* border: 0.5px solid #14c78e; */
-  color: #14c78e;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 0.8rem;
-  transition: all 0.3s ease;
-  margin-right: 0.5rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.course-category-tag:hover {
-  background-color: #ffffff;
-  color: #14c78e;
-  border: 0.5px solid #14c78e;
-  transform: translateY(-2px);
-  /* border: 1px solid #ffffff; */
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-}
-
-.course-title {
-  font-size: 2.8rem;
-  text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.04);
-  font-weight: 700;
-  text-align: left;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #222;
-  margin: 0rem 0 0rem;
-  line-height: 1.2;
-}
-
-.course-brief-description {
-  font-size: 1.2rem;
-  color: #555;
-  text-align: left;
-  margin-top: -1rem;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin-bottom: 0rem;
-  line-height: 1.5;
-  max-width: 800px;
-}
-
-.course-meta-info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
-  justify-content: flex-start;
-}
-
-.course-meta-info .meta-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #000000ce;
-  font-weight: 00;
-  font-size: 1rem;
-  background-color: #ffffff;
-  padding: 0.6rem 1.1rem;
-  border-radius: 30px;
-  width: 13rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
-  margin-top: 30px;
-  margin-left: -0.3rem;
-}
-
-.course-meta-info .meta-icon {
-  color: #e9ba20;
-  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
 }
 
 
-.back-button:hover {
-  color: #008000;
-  background-color: #e0f2e0;
-  transform: translateX(-5px);
-}
-
-/* Course Header */
-.course-header {
-  background-color: #fff;
-  border-radius: 16px;
-  padding: 2.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  position: relative;
-  overflow: hidden;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80');
-  background-size: cover;
-  background-position: center;
-  border-left: 6px solid #008000;
-}
-
-.back-button {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 1.08rem;
-  color: #ffffff;
-  font-weight: 500;
-  margin-top: 4rem;
-  /* margin-bottom: rem; */
-  cursor: pointer;
-  transition: all 0.3s;
-  background-color: #14c78e;
-  /* padding: 0.6rem 1rem; */
-  border-radius: 30px;
-  display: inline-flex;
-  box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.09);
-  width: 10%;
-}
-
-.back-button:hover {
-  color: #149169;
-  font-size: 1.08rem;
-  border: 2px solid #149169;
-  font-weight: 500;
-  background-color: #e0f2e0;
-  transform: translateX(-5px);
-}
-
-.course-header-content {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 3rem;
-  align-items: center;
-}
-
-.course-header-info h1 {
-  font-size: 2.6rem;
-  margin-bottom: 1.5rem;
-  color: #222;
-  font-weight: 800;
-  line-height: 1.2;
-}
-
-.course-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-bottom: 1.8rem;
-}
-
-/* .meta-item {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  color: #444;
-  font-size: 1rem;
-  background-color: #f0f7f0;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-} */
-
-.meta-item svg {
-  color: #008000;
-  font-size: 1.2rem;
-}
-
-.course-header-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  min-width: 240px;
-}
-
-/* .course-price {
-  font-size: 20rem;
-  font-weight: 800;
-  color: #008000;
-  margin-bottom: 0.8rem;
-  position: relative;
-} */
-
-.course-price::before {
-  content: '$';
-  position: absolute;
-  font-size: 1.2rem;
-  top: 0.2rem;
-  left: -0.8rem;
-  font-weight: 500;
-}
-
-/* .add-to-cart-btn,
-.in-cart-btn {
-  padding: 1rem 2rem;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  width: 100%;
-  text-align: center;
-  letter-spacing: 0.5px;
-}
-
-.add-to-cart-btn {
-  background-color: #008000;
-  color: white;
-  border: none;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.add-to-cart-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: 0.5s;
-  z-index: -1;
-}
-
-.add-to-cart-btn:hover::before {
-  left: 100%;
-}
-
-.add-to-cart-btn:hover {
-  background-color: #006400;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 128, 0, 0.3);
-}
-
-.in-cart-btn {
-  background-color: #e0f2e0;
-  color: #800000;
-  border: 2px solid #008000;
-} */
-
-.course-detail-content {
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  margin-bottom: 2rem;
-  padding: 30;
-  border-radius: 25px;
-  margin-top: 2rem;
-  width: 72%;
-  margin-right: 5%;
-}
-
-/* Course Content */
-.course-detail-content {
-  display:block;
-  width: 70%;
-  grid-template-columns: 1fr 500px 500px;
-  /* gap: 5rem; */
-}
-
-/* Course Tabs
-.course-tabs {
-  display: flex;
-  background-color: #ff000000;
-  padding: -1rem 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.11);
-  border-radius: 13px;
-  /* width: 60rem; 
-}*/
-/* ------------------------  */
-.tab-button {
-  padding: 1.4rem 1.8rem;
-  border: none;
-  background: none;
-  font-weight: 600;
-  color: #666;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  outline: none;
-}
-
-.tab-button:focus {
-  outline: none;
-}
-
-.tab-button:hover {
-  color: #008000;
-}
-
-.tab-button.active {
-  color: #008000;
-}
-
-.tab-button.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 2rem;
-  width: 60%;
-  height: 3px;
-  background-color: #008000;
-  border-radius: 2px;
-}
-
-.tab-button:not(.active)::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background-color: #008000;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: width 0.3s ease;
-}
-
-.tab-button:not(.active):hover::after {
-  width: 60%;
-}
-
-/* Active Tab Styles */
-.tab-button.active {
-  color: #008000;
-  font-weight: 600;
-}
-
-/* Active Underline Animation (Existing) */
-.tab-button.active-underline-animation {
-  display: inline-block;
-  position: relative;
-}
-
-.tab-button.active::before {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background-color: #008000;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: width 1s ease;
-}
-
-.tab-button.active-underline-animation {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-.tab-button.active::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 2;
-  width: 60%;
-  height: 3px;
-  background-color: #008000;
-}
-
-.tab-icon {
-  font-size: 1.1rem;
-  color: #000000a9 !important;
-}
-
-.tab-content {
-  padding: 2rem;
-}
-
-.course-tabs {
-  display: flex;
-  /* margin-bottom: rem; */
-}
-/* ---------------------------- */
-
-.overview-features {
-  background-color: #f9f9f9;
-  border-radius: 13px;
-  padding: 1rem;
-  margin-bottom: 2.5rem;
-  box-shadow: 5px 8px 10px rgba(0, 0, 0, 0.06);
-}
-
-
-/* Changed to block layout for a vertical list */
-.overview-features ul {
+.req-list {
   list-style: none;
-  padding: 1px;
-  margin-top: -0.8rem;
-  margin-bottom: -1.1rem;
+  padding: 0;
+  margin: 1rem 0;
+  text-align: left;
+    margin-left: 1rem;
+
+}
+
+.req-item {
+  font-size: 0.98rem;
+  color: #000000;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.req-item::before {
+  content: "•";
+  color: #0ba574;
+  font-weight: bold;
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.audience-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  color: #000000;
+  line-height: 1;
+  margin-left: 1rem;
+}
+
+
+.audience-item::before {
+  content: "•";
+  color: #4CAF50;
+  font-weight: bold;
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
 }
 
 .overview-features li {
@@ -756,20 +391,18 @@
   align-items: center;
   gap: 1rem;
   font-size: 0.8rem;
-  color: #444;
+  color: #000000;
   padding: 0.7rem 0;
   position: relative;
-  border-bottom: 1px solid #eee; 
-}
-
-.overview-features li:hover {
-  transform: translateX(5px);
+  width: 70%;
+  border-radius: 13px;
+  padding: 1rem;
 }
 
 .overview-features li::before {
   content: '✓';
-  position: relative; 
-  color: #008000;
+  position: relative;
+  color: #0ba574;;
   font-weight: bold;
   background-color: #e0f2e0;
   width: 10px;
@@ -779,23 +412,90 @@
   align-items: center;
   justify-content: center;
   font-size: 0.9rem;
+  
 }
 
-/* Optional feature icon styling if you use a separate element */
-.overview-features .feature-icon {
+
+/* Secure Payment Note */
+.secure-payment-note {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 128, 0, 0.1);
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  color: #008000;
-  font-size: 1.2rem;
+  gap: 5px;
+}
+
+.lock-icon {
+  color: #0ba574;
+  font-size: 0.9rem;
 }
 
 
-/* ---------------------------- */
+/* Enhanced Enrollment Button */
+.enrollment-button {
+  width: 100%;
+  padding: 1.2rem 0;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: center;
+  letter-spacing: 0.5px;
+  background: linear-gradient(to right, #008000a8, #00a000c5);
+  color: white;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 8px 20px rgba(0, 128, 0, 0.25);
+  margin-top: 1rem;
+}
+
+.enrollment-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.575), transparent);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.enrollment-button:hover::before {
+  left: 100%;
+}
+
+
+.enrollment-button.in-cart {
+  background: linear-gradient(to right, #e0f2e0, #d0e8d0);
+  color: #0ba574;
+  border: 2px solid #0080004d;
+  box-shadow: 0 5px 15px rgba(0, 128, 0, 0.15);
+  animation: button-pulse 0.5s ease-in-out forwards;
+}
+
+.enrollment-button.in-cart:focus{
+  border: #0ba574;
+  outline: none;
+}
+
+@keyframes focus-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 128, 0, 0.5);
+  }
+
+  100% {
+    box-shadow: 0 0 0 8px rgba(0, 128, 0, 0.2);
+  }
+}
+
+
 
 /* Instructor Tab */
 .course-instructor h2 {
@@ -814,7 +514,7 @@
   left: 0;
   width: 60px;
   height: 4px;
-  background-color: #008000;
+  background-color: #0ba574;
   border-radius: 2px;
 }
 
@@ -878,6 +578,7 @@
   margin-bottom: 2rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid #eee;
+  justify-content: center;
 }
 
 .stat-item {
@@ -889,7 +590,7 @@
 .stat-value {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #008000;
+  color: #000000;
 }
 
 .stat-label {
@@ -921,7 +622,7 @@
   left: 0;
   width: 60px;
   height: 4px;
-  background-color: #008000;
+  background-color: #0ba574;
   border-radius: 2px;
 }
 
@@ -949,7 +650,7 @@
 .rating-value {
   font-size: 4rem;
   font-weight: 800;
-  color: #222;
+  color: #0ba574;
   line-height: 1;
 }
 
@@ -969,7 +670,7 @@
 }
 
 .rating-count {
-  color: #555;
+  color: #0ba574;
   font-size: 1rem;
   background-color: #f5f5f5;
   padding: 0.3rem 0.8rem;
@@ -981,7 +682,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 40%;
+  width: 70%;
 }
 
 .rating-bar {
@@ -991,7 +692,7 @@
 }
 
 .rating-level {
-  width: 75px;
+  width: 70px;
   font-size: 1rem;
   color: #555;
   font-weight: 700;
@@ -1005,12 +706,11 @@
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #00000007;
-  box-shadow: 6px 4px 8px rgba(0, 0, 0, 0.04);
 }
 
 .progress-fill {
   height: 100%;
-  background-color: #14c78e;
+  background-color: #0ba574;
   border-radius: 5px;
   transition: width 1s ease-in-out;
 }
@@ -1033,7 +733,7 @@
   padding: 2rem;
   background-color: #fff;
   border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
 }
 
@@ -1053,7 +753,7 @@
   height: 60px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid #e0f2e0;
+  border: 3px solid #0ba574;
 }
 
 .reviewer-avatar img {
@@ -1067,6 +767,7 @@
   font-size: 1.2rem;
   color: #222;
   font-weight: 600;
+  text-align: left;
 }
 
 .review-rating {
@@ -1094,1090 +795,12 @@
 .review-content::before {
   content: '\201C';
   font-size: 3rem;
-  color: #e0f2e0;
+  color: #0ba574;
   position: absolute;
   left: 0;
   top: -1rem;
   font-family: serif;
 }
 
-/* Enhanced Course Enrollment Card Visualization */
-.course-enrollment-card {
-  position: absolute;
-  width: 25rem;
-  right: 2%;
-  top: 80px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: white;
-  border: 1px solid rgba(5, 211, 5, 0.15);
-  transition: transform 0.3s ease;
-}
 
-.course-enrollment-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-}
 
-.enrollment-video-container {
-  width: 100%;
-  position: relative;
-  padding-top:0%;
-  background-color: #000;
-}
-
-.enrollment-thumbnail {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  cursor: pointer;
-}
-
-.enrollment-details {
-  padding: 1.5rem;
-  position: relative;
-}
-
-.enrollment-price-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 3rem;
-  position: relative;
-}
-
-.enrollment-price {
-  font-size: 2.5rem;
-  font-weight: 550;
-  color: #09af7a;
-  display: flex;
-  align-items: flex-start;
-  font-family: sans-serif;
-}
-
-.original-price {
-  font-size: 1rem;
-  color: #888;
-  padding: 2px 3px;
-  border-radius: 7px;
-  text-decoration: line-through;
-  font-weight: 400;
-  display: flex;
-  align-items: flex-start;
-}
-
-
-
-.discount-badge {
-  background: rgba(255, 94, 97, 0.09);
-  color: #d13134d8;
-  text-align: center;
-  padding: 3px 19px;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  font-weight: 600;
-  border-radius: 10px;
-  position: absolute;
-  left: 1.2rem;
-  top: 3.7rem;
-}
-
-.enrollment-features {
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
-  background-color: #fbfcfb;
-  border-radius: 12px;
-  padding: 1.2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.enrollment-feature {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.8rem;
-  font-size: 0.9rem;
-  color: #555;
-}
-
-.feature-icon {
-  color: #008000;
-  margin-right: 10px;
-  min-width: 16px;
-}
-
-
-/* Secure Payment Note */
-.secure-payment-note {
-  text-align: center;
-  color: #666;
-  font-size: 0.9rem;
-  margin-top: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
-
-.lock-icon {
-  color: #008000;
-  font-size: 0.9rem;
-}
-
-/* Enhanced Enrollment Button */
-.enrollment-button {
-  width: 100%;
-  padding: 1.2rem 0;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  text-align: center;
-  letter-spacing: 0.5px;
-  background: linear-gradient(to right, #008000a8, #00a000c5);
-  color: white;
-  border: none;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  box-shadow: 0 8px 20px rgba(0, 128, 0, 0.25);
-  margin-top: 1rem;
-}
-
-.enrollment-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-    width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.575), transparent);
-  transition: 0.5s;
-  z-index: -1;
-  }
-  
-.enrollment-button:hover::before {
-  left: 100%;
-  }
-  
-.enrollment-button:hover {
-  background: linear-gradient(to right, #006800a9, #008800d7);
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 128, 0, 0.35);
-  }
-  
-.enrollment-button.in-cart {
-  background: linear-gradient(to right, #e0f2e0, #d0e8d0);
-  color: #008000;
-  border: 2px solid #0080004d;
-  box-shadow: 0 5px 15px rgba(0, 128, 0, 0.15);
-  animation:button-pulse 0.5s ease-in-out forwards;
-  }
-  
-.enrollment-button.in-cart:hover {
-  background: linear-gradient(to right, #d0e8d0, #c0e0c0);
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 128, 0, 0.2);
-  }
-  
-.enrollment-button.in-cart:focus {
-  outline: none;
-  border: 2px solid #0080004d;
-}
-
-
-@keyframes focus-pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(0, 128, 0, 0.5);
-  }
-  100% {
-    box-shadow: 0 0 0 8px rgba(0, 128, 0, 0.2);
-  }
-}
-
-/* Lesson Content Styles */
-.lesson-content {
-  padding: 24px;
-  border-radius: 6px;
-  background: #ffffff;
-  color: #333;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  margin-top: 2rem;
-}
-
-.lesson-title {
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: #000000;
-}
-
-.lesson-description {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 24px;
-}
-
-.lesson-attachments {
-  margin-top: 32px;
-  border-top: 1px solid #eee;
-  padding-top: 24px;
-}
-
-.lesson-attachments h3 {
-  font-size: 1.1rem;
-  margin-bottom: 16px;
-  color: #000000;
-}
-
-.attachment-item {
-  margin-bottom: 12px;
-}
-
-.download-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  background: #f9f9f9;
-  border-radius: 8px;
-  color: #333;
-  text-decoration: none;
-  transition: background-color 0.2s;
-}
-
-.download-link:hover {
-  background-color: #f0f0f0;
-}
-
-.download-icon {
-  color: #008000;
-  font-size: 1.2rem;
-}
-
-.file-size {
-  color: #888;
-  font-size: 0.85rem;
-  margin-left: auto;
-}
-
-/* Overview Sections Styling */
-.overview-section {
-  margin-bottom: 2.5rem;
-  padding-bottom: 2rem;
-}
-
-.overview-section:last-child {
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
-
-.section-title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.section-title svg {
-  color: #008000;
-  font-size: 1.3rem;
-}
-
-.section-content {
-  font-size: 1rem;
-  text-align: left;
-  line-height: 1.8;
-  color: #555555;
-  max-width: 50rem;
-  margin-bottom: 1rem;
-} 
-
-/* Lists Styling */
-.benefits-list,
-.requirements-list,
-.audience-list {
-  list-style:none;
-  text-align: left;
-  padding: 0;
-  margin: 0;
-  display:contents;
-  font-size: 1.1rem;
-  line-height: 1.5;
-  color: #444;
-}
-
-/* .benefit-item,
-.requirement-item,
-.audience-item {
-  
-} */
-
-.benefit-item .check-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #0ab45f;
-  /* background-color: #000000; */
-  min-width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin-right: 10px;
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-
-.requirement-item:before,
-.audience-item:before {
-  content: "•";
-  color: #008000;
-  font-weight: bold;
-  display: inline-block;
-  width: 1em;
-  margin-left: 0.2rem;
-}
-
-/* Course Features Section */
-
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .benefits-list,
-  .requirements-list,
-  .audience-list,
-  .overview-features ul {
-    grid-template-columns: 1fr;
-  }
-  
-  .section-title {
-    font-size: 1.3rem;
-  }
-  
-  .section-content {
-    font-size: 1rem;
-  }
-}
-
-/* Responsive Design Enhancements */
-@media (max-width: 1600px) {
-  .course-enrollment-card {
-    left: 78%;
-    width: 22%;
-  }
-}
-
-@media (max-width: 1400px) {
-  .course-enrollment-card {
-    left: 76%;
-    width: 24%;
-  }
-  
-  .enrollment-price {
-    left: 1.1rem;
-  }
-  
-  .discount-badge {
-    left: 2rem;
-  }
-}
-
-@media (max-width: 1200px) {
-  .course-detail-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .course-enrollment-card {
-    position: static;
-    width: 100%;
-    margin: 2rem auto;
-    max-width: 400px;
-    left: auto;
-  }
-  
-  .enrollment-price, 
-  .original-price,
-  .discount-badge {
-    position: static;
-  }
-  
-  .enrollment-price {
-    font-size: 2.2rem;
-  }
-  
-  .enrollment-price-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .original-price {
-    margin-top: 0;
-  }
-  
-  .discount-badge {
-    margin-top: 0.5rem;
-  }
-  
-  .enrollment-features {
-    margin-top: 2rem;
-  }
-  
-  .curriculum-list {
-    max-height: 400px;
-  }
-}
-
-@media (max-width: 768px) {
-  .course-detail-container {
-    width: 95%;
-    padding: 0 1rem;
-  }
-  
-  .course-header {
-    padding: 1.5rem;
-  }
-  
-  .course-header-info h1 {
-    font-size: 1.8rem;
-  }
-  
-  .course-tabs {
-    overflow-x: auto;
-    padding: 0;
-    justify-content: flex-start;
-  }
-  
-  .tab-button {
-    padding: 0.8rem;
-    min-width: 100px;
-    justify-content: center;
-  }
-  
-  .lesson-content {
-    padding: 1.5rem;
-  }
-  
-  .back-button {
-    width: auto;
-    margin-top: 1rem;
-    padding: 0.5rem 0.8rem;
-    font-size: 0.9rem;
-    min-width: auto;
-  }
-  
-  .enrollment-features {
-    padding: 0.8rem;
-  }
-  
-  .enrollment-feature {
-    padding-bottom: 0.5rem;
-  }
-  
-  .enrollment-button {
-    padding: 1rem 0;
-  }
-
-  .instructor-profile {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .instructor-info {
-    padding: 1rem;
-  }
-
-  .instructor-stats {
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-
-  .review-item {
-    padding: 1rem;
-  }
-
-  .reviewer-info {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .review-content {
-    font-size: 0.95rem;
-    padding-left: 1rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .course-detail-container {
-    padding: 0.8rem;
-  }
-  
-  .course-header-section {
-    margin-bottom: 0.5rem;
-    padding: 0.5rem 0;
-  }
-  
-  .tab-button {
-    flex-basis: auto;
-    padding: 0.7rem 0.8rem;
-    font-size: 0.9rem;
-  }
-  
-  .course-title {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .course-filed {
-    margin-top: -0.5rem;
-    margin-bottom: 0.2rem;
-    font-size: 0.85rem;
-  }
-  
-  .course-brief-description {
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
-  
-  .meta-item {
-    font-size: 0.85rem;
-    gap: 0.3rem;
-  }
-
-  .meta-icon {
-    font-size: 0.9rem;
-  }
-  
-  .enrollment-price {
-    font-size: 1.8rem;
-  }
-
-  .dollar-sign {
-    font-size: 1rem;
-    top: 0.4rem;
-  }
-  
-  .enrollment-price-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-  
-  .enrollment-feature {
-    font-size: 0.85rem;
-  }
-  
-  .feature-icon {
-    font-size: 0.9rem;
-    min-width: 14px;
-  }
-  
-  .enrollment-button {
-    padding: 0.8rem;
-    font-size: 1rem;
-  }
-  
-  .secure-payment-note {
-    font-size: 0.75rem;
-  }
-
-  .section-title {
-    font-size: 1.2rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .section-content {
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-
-  .lesson-header {
-    padding: 0.8rem;
-  }
-
-  .lesson-title {
-    font-size: 1rem;
-  }
-
-  .lesson-duration {
-    font-size: 0.8rem;
-  }
-
-  .benefit-item, 
-  .requirement-item, 
-  .audience-item {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    margin-bottom: 0.5rem;
-  }
-
-  .reviews-list {
-    margin-top: 1rem;
-  }
-
-  .reviewer-name {
-    font-size: 1rem;
-  }
-
-  .review-rating {
-    font-size: 0.8rem;
-  }
-
-  .star-filled, .star-empty {
-    font-size: 0.9rem;
-  }
-
-  .rating-breakdown .rating-bar {
-    margin-bottom: 0.5rem;
-  }
-
-  .rating-level {
-    font-size: 0.8rem;
-    min-width: 50px;
-  }
-
-  .rating-percent {
-    font-size: 0.8rem;
-    width: 35px;
-  }
-}
-
-/* Additional fixes for very small devices */
-@media (max-width: 380px) {
-  .course-detail-container {
-    padding: 0.5rem;
-  }
-  
-  .course-header-section {
-    padding: 0.3rem 0;
-  }
-  
-  .course-title {
-    font-size: 1.3rem;
-  }
-  
-  .course-brief-description {
-    font-size: 0.85rem;
-  }
-  
-  .tab-button {
-    padding: 0.6rem;
-    font-size: 0.85rem;
-  }
-  
-  .tab-content {
-    padding: 1rem 0.8rem;
-  }
-  
-  .back-button {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.6rem;
-  }
-
-  .enrollment-price {
-    font-size: 1.6rem;
-  }
-  
-  .discount-badge {
-    font-size: 0.75rem;
-    padding: 2px 10px;
-  }
-  
-  .curriculum-section {
-    margin-bottom: 0.8rem;
-  }
-  
-  .meta-item svg {
-    font-size: 1rem;
-  }
-
-  .instructor-bio {
-    font-size: 0.85rem;
-    line-height: 1.4;
-  }
-}
-
-/* Enhance existing mobile responsiveness */
-@media (max-width: 1200px) {
-  .course-detail-container {
-    padding: 1.5rem;
-    min-height: initial;
-  }
-
-  .course-header-section {
-    width: 100%;
-  }
-
-  .course-enrollment-card {
-    position: static;
-    width: 100%;
-    margin: 2rem auto;
-    max-width: 400px;
-    left: auto;
-  }
-  
-  .enrollment-price-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .original-price {
-    margin-top: 0;
-  }
-  
-  .discount-badge {
-    position: relative;
-    left: auto;
-    top: auto;
-    margin-top: 0.5rem;
-  }
-  
-  .enrollment-features {
-    margin-top: 2rem;
-  }
-  
-  .curriculum-list {
-    max-height: 400px;
-  }
-}
-
-@media (max-width: 992px) {
-  .course-enrollment-card {
-    flex-direction: column;
-  }
-  
-  .enrollment-video-container,
-  .enrollment-details {
-    width: 100%;
-  }
-
-  .course-meta-info {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .reviews-summary {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .overall-rating {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .course-detail-container {
-    width: 100%;
-    padding: 1rem;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  
-  .course-header {
-    padding: 1rem;
-  }
-
-  .course-header-section {
-    padding: 1rem 0;
-    gap: 1rem;
-  }
-  
-  .course-title {
-    font-size: 1.8rem;
-    line-height: 1.2;
-  }
-
-  .course-brief-description {
-    font-size: 1rem;
-    margin-top: 0;
-  }
-  
-  .course-tabs {
-    overflow-x: auto;
-    padding: 0;
-    justify-content: flex-start;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-  }
-
-  .course-tabs::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-  }
-  
-  .tab-button {
-    padding: 0.8rem;
-    min-width: 100px;
-    white-space: nowrap;
-  }
-  
-  .tab-content {
-    padding: 1.5rem 1rem;
-  }
-  
-  .lesson-content {
-    padding: 1rem;
-  }
-  
-  .back-button {
-    width: auto;
-    margin-top: 1rem;
-    padding: 0.5rem 0.8rem;
-    font-size: 0.9rem;
-    min-width: auto;
-  }
-  
-  .enrollment-features {
-    padding: 0.8rem;
-  }
-  
-  .enrollment-feature {
-    padding-bottom: 0.5rem;
-  }
-  
-  .enrollment-button {
-    padding: 1rem 0;
-  }
-
-  .instructor-profile {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .instructor-info {
-    padding: 1rem;
-  }
-
-  .instructor-stats {
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-
-  .review-item {
-    padding: 1rem;
-  }
-
-  .reviewer-info {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .review-content {
-    font-size: 0.95rem;
-    padding-left: 1rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .course-detail-container {
-    padding: 0.8rem;
-  }
-  
-  .course-header-section {
-    margin-bottom: 0.5rem;
-    padding: 0.5rem 0;
-  }
-  
-  .tab-button {
-    flex-basis: auto;
-    padding: 0.7rem 0.8rem;
-    font-size: 0.9rem;
-  }
-  
-  .course-title {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .course-filed {
-    margin-top: -0.5rem;
-    margin-bottom: 0.2rem;
-    font-size: 0.85rem;
-  }
-  
-  .course-brief-description {
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
-  
-  .meta-item {
-    font-size: 0.85rem;
-    gap: 0.3rem;
-  }
-
-  .meta-icon {
-    font-size: 0.9rem;
-  }
-  
-  .enrollment-price {
-    font-size: 1.8rem;
-  }
-
-  .dollar-sign {
-    font-size: 1rem;
-    top: 0.4rem;
-  }
-  
-  .enrollment-price-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-  
-  .enrollment-feature {
-    font-size: 0.85rem;
-  }
-  
-  .feature-icon {
-    font-size: 0.9rem;
-    min-width: 14px;
-  }
-  
-  .enrollment-button {
-    padding: 0.8rem;
-    font-size: 1rem;
-  }
-  
-  .secure-payment-note {
-    font-size: 0.75rem;
-  }
-
-  .section-title {
-    font-size: 1.2rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .section-content {
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-
-  .lesson-header {
-    padding: 0.8rem;
-  }
-
-  .lesson-title {
-    font-size: 1rem;
-  }
-
-  .lesson-duration {
-    font-size: 0.8rem;
-  }
-
-  .benefit-item, 
-  .requirement-item, 
-  .audience-item {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    margin-bottom: 0.5rem;
-  }
-
-  .reviews-list {
-    margin-top: 1rem;
-  }
-
-  .reviewer-name {
-    font-size: 1rem;
-  }
-
-  .review-rating {
-    font-size: 0.8rem;
-  }
-
-  .star-filled, .star-empty {
-    font-size: 0.9rem;
-  }
-
-  .rating-breakdown .rating-bar {
-    margin-bottom: 0.5rem;
-  }
-
-  .rating-level {
-    font-size: 0.8rem;
-    min-width: 50px;
-  }
-
-  .rating-percent {
-    font-size: 0.8rem;
-    width: 35px;
-  }
-}
-
-/* Additional fixes for very small devices */
-@media (max-width: 380px) {
-  .course-detail-container {
-    padding: 0.5rem;
-  }
-  
-  .course-header-section {
-    padding: 0.3rem 0;
-  }
-  
-  .course-title {
-    font-size: 1.3rem;
-  }
-  
-  .course-brief-description {
-    font-size: 0.85rem;
-  }
-  
-  .tab-button {
-    padding: 0.6rem;
-    font-size: 0.85rem;
-  }
-  
-  .tab-content {
-    padding: 1rem 0.8rem;
-  }
-  
-  .back-button {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.6rem;
-  }
-
-  .enrollment-price {
-    font-size: 1.6rem;
-  }
-  
-  .discount-badge {
-    font-size: 0.75rem;
-    padding: 2px 10px;
-  }
-  
-  .curriculum-section {
-    margin-bottom: 0.8rem;
-  }
-  
-  .meta-item svg {
-    font-size: 1rem;
-  }
-
-  .instructor-bio {
-    font-size: 0.85rem;
-    line-height: 1.4;
-  }
-}

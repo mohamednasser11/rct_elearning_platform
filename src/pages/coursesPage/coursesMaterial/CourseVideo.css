@@ -2,8 +2,8 @@
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  background-color: #000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  background-color: #0bca8e;
   aspect-ratio: 16/9;
 }
 
@@ -81,7 +81,7 @@
 }
 
 .control-button:hover {
-  color: #008000;
+  color: #0ba574;
   transform: scale(1.1);
 }
 
@@ -108,7 +108,7 @@
   appearance: none;
   width: 10px;
   height: 10px;
-  background: #008000;
+  background: #0ba574;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -116,7 +116,7 @@
 .volume-slider::-moz-range-thumb {
   width: 10px;
   height: 10px;
-  background: #008000;
+  background:#0ba574;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -182,70 +182,6 @@
   color: white;
 }
 
-/* Lesson Content */
-.lesson-content {
-  padding: 24px;
-  border-radius: 6px;
-  background: #ffffff;
-  color: #333;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.lesson-title {
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: #000000;
-}
-
-.lesson-description {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 24px;
-}
-
-.lesson-attachments {
-  margin-top: 32px;
-  border-top: 1px solid #eee;
-  padding-top: 24px;
-}
-
-.lesson-attachments h3 {
-  font-size: 1.1rem;
-  margin-bottom: 16px;
-  color: #000000;
-}
-
-.attachment-item {
-  margin-bottom: 12px;
-}
-
-.download-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  background: #f9f9f9;
-  border-radius: 8px;
-  color: #333;
-  text-decoration: none;
-  transition: background-color 0.2s;
-}
-
-.download-link:hover {
-  background: #f0f0f0;
-}
-
-.download-icon {
-  color: #008000;
-}
-
-.file-size {
-  color: #888;
-  font-size: 0.8rem;
-  margin-left: auto;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {

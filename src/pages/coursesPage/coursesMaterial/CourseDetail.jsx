@@ -582,14 +582,13 @@ const CourseDetail = () => {
                     )}
                   </ul>
                 </div>
-                
-                {/* Requirements Section */}
+                {/* Req. Section */}
                 <div className="overview-section">
                   <h3 className="section-title">Requirements</h3>
-                  <ul className="requirements-list">
-                    <li className="requirement-item">Basic understanding of {course.field || 'this subject'} concepts</li>
-                    <li className="requirement-item">A computer with internet access</li>
-                    <li className="requirement-item">Enthusiasm and willingness to learn</li>
+                   <ul className="req-list">
+                    <li className="req-item">Basic understanding of {course.field || 'this subject'} concepts</li>
+                    <li className="req-item">A computer with internet access</li>
+                    <li className="req-item">Enthusiasm and willingness to learn</li>
                   </ul>
                 </div>
                 

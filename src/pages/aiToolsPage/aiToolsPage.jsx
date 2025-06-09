@@ -1,10 +1,10 @@
 import React from 'react';
 import './aiToolsPage.css';
-import { FaLightbulb, FaCalculator, FaCalendarAlt, FaLanguage, FaGraduationCap, FaChalkboardTeacher, FaUserGraduate, FaStar, FaRobot, FaBook, FaChartLine, FaBrain, FaBolt, FaFileAlt, FaArrowRight } from 'react-icons/fa';
+import { FaLightbulb, FaCalculator, FaCalendarAlt, FaLanguage, FaGraduationCap, FaChalkboardTeacher, FaUserGraduate, FaStar, FaRobot, FaBook, FaChartLine, FaBrain, FaBolt, FaFileAlt, FaArrowRight, FaArrowDown } from 'react-icons/fa';
 import { IoMdBook, IoMdTime } from 'react-icons/io';
 import { IoBookOutline } from 'react-icons/io5';
 import { BrainCircuit } from 'lucide-react';
-import { LuCircleCheckBig, LuBrainCircuit, LuSparkles, LuCloud } from "react-icons/lu";
+import { LuCircleCheckBig, LuBrainCircuit, LuSparkles, LuCloud, LuX } from "react-icons/lu";
 import { FiUpload } from 'react-icons/fi';
 import { RiRobot2Line } from 'react-icons/ri';
 import { BiSolidBookAlt } from 'react-icons/bi';
@@ -12,27 +12,84 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { BsCheck2Square } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom';
 
+// Storage keys for file persistence
+const STUDENT_FILE_STORAGE_KEY = 'student_file_data';
+const EDUCATOR_FILE_STORAGE_KEY = 'educator_file_data';
+
 const AiToolsPage = () => {
   const navigate = useNavigate();
   const [activeLength, setActiveLength] = React.useState('easy');
   const [activeTab, setActiveTab] = React.useState('student');
   const [questionCount, setQuestionCount] = React.useState(10);
+  const [studentFile, setStudentFile] = React.useState(null);
+  const [educatorFile, setEducatorFile] = React.useState(null);
+  const [isDragging, setIsDragging] = React.useState(false);
 
   // Refs for file inputs
   const studentFileRef = React.useRef(null);
   const educatorFileRef = React.useRef(null);
 
+  // Load saved files from localStorage on component mount
+  React.useEffect(() => {
+    const savedStudentFile = localStorage.getItem(STUDENT_FILE_STORAGE_KEY);
+    const savedEducatorFile = localStorage.getItem(EDUCATOR_FILE_STORAGE_KEY);
+
+    if (savedStudentFile) {
+      setStudentFile(JSON.parse(savedStudentFile));
+    }
+    if (savedEducatorFile) {
+      setEducatorFile(JSON.parse(savedEducatorFile));
+    }
+  }, []);
+
+  // Save files to localStorage whenever they change
+  React.useEffect(() => {
+    if (studentFile) {
+      localStorage.setItem(STUDENT_FILE_STORAGE_KEY, JSON.stringify(studentFile));
+    } else {
+      localStorage.removeItem(STUDENT_FILE_STORAGE_KEY);
+    }
+  }, [studentFile]);
+
+  React.useEffect(() => {
+    if (educatorFile) {
+      localStorage.setItem(EDUCATOR_FILE_STORAGE_KEY, JSON.stringify(educatorFile));
+    } else {
+      localStorage.removeItem(EDUCATOR_FILE_STORAGE_KEY);
+    }
+  }, [educatorFile]);
+
+  // Format file size
+  const formatFileSize = (bytes) => {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  };
+
+  // Handle file selection
+  const handleFileSelect = (file, setFile) => {
+    if (file) {
+      setFile({
+        name: file.name,
+        size: formatFileSize(file.size),
+        type: file.type
+      });
+    }
+  };
+
   // Click handlers for "Select Files" buttons
   const handleStudentSelectFileClick = () => {
     if (studentFileRef.current) {
-      studentFileRef.current.value = null; // Reset file input to allow re-selecting the same file
+      studentFileRef.current.value = null;
       studentFileRef.current.click();
     }
   };
 
   const handleEducatorSelectFileClick = () => {
     if (educatorFileRef.current) {
-      educatorFileRef.current.value = null; // Reset file input
+      educatorFileRef.current.value = null;
       educatorFileRef.current.click();
     }
   };
@@ -40,18 +97,45 @@ const AiToolsPage = () => {
   // Change handlers for file inputs
   const handleStudentFileChange = (event) => {
     const file = event.target.files[0];
-    if (file) {
-      console.log('Student tab file selected:', file.name, file.type);
-      // TODO: Add file processing logic here (e.g., upload, display preview)
-    }
+    handleFileSelect(file, setStudentFile);
   };
 
   const handleEducatorFileChange = (event) => {
     const file = event.target.files[0];
-    if (file) {
-      console.log('Educator tab file selected:', file.name, file.type);
-      // TODO: Add file processing logic here (e.g., upload, display preview)
+    handleFileSelect(file, setEducatorFile);
+  };
+
+  // Remove file handlers
+  const handleRemoveStudentFile = () => {
+    setStudentFile(null);
+    if (studentFileRef.current) {
+      studentFileRef.current.value = null;
     }
+  };
+
+  const handleRemoveEducatorFile = () => {
+    setEducatorFile(null);
+    if (educatorFileRef.current) {
+      educatorFileRef.current.value = null;
+    }
+  };
+
+  // Drag and drop handlers
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e, setFile) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files[0];
+    handleFileSelect(file, setFile);
   };
   
   // Initialize slider fill effect
@@ -70,6 +154,20 @@ const AiToolsPage = () => {
     console.log('Switching to tab:', tab);
     setActiveTab(tab);
   };
+
+  // Add download handler function inside AiToolsPage
+  const handleDownloadFile = (file) => {
+    if (!file) return;
+    // Simulate download by creating a blob and link
+    const blob = new Blob([JSON.stringify(file)], { type: file.type || 'application/octet-stream' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = file.name || 'downloaded_file';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="ai-tools-container">
       {/* Hero Section */}
@@ -264,173 +362,105 @@ const AiToolsPage = () => {
             </div>
           </div>
           {activeTab === 'student' ? (
-            <div className="student-tools tab-content">
+            <div className="student-tools ai-tools-content">
               <div className="tab-header">
                 <BiSolidBookAlt className="tab-main-icon" />
                 <h2 className="for-student-tab-header">AI Lecture Summarizer</h2>
               </div>
-            <div className="tab-content-section">
-              <div className="content-wrapper">
-                <h3 className="content-subtitle">AI Lecture Summarization</h3>
-                <p className="content-description">
-                  Our AI analyzes your lecture materials and generates <br /> comprehensive summaries at your preferred level of detail. <br /> Extract key concepts, identify main subjects, and save hours of <br /> study time.
-                </p>
-                <div className="features-card">
-                  <h4 className="features-title">Key Features:</h4>
-                  <ul className="features-list">
-                    <li>
-                      <div><MdOutlineKeyboardArrowRight className="new-arrows-student" /><strong>Three summary levels:</strong> Choose between short, medium, or long summaries based on your needs</div>
+              <div className="tab-content-section align-right">
+                <div className="content-wrapper">
+                  <h3 className="content-subtitle">AI Lecture Summarization</h3>
+                  <p className="content-description">
+                    Our AI analyzes your lecture materials and generates <br /> comprehensive summaries at your preferred level of detail. <br /> Extract key concepts, identify main subjects, and save hours of <br /> study time.
+                  </p>
+                  <div className="features-card">
+                    <h4 className="features-title">Key Features:</h4>
+                    <ul className="features-list">
+                      <li>
+                        <div><MdOutlineKeyboardArrowRight className="new-arrows-student" /><strong>Three summary levels:</strong> Choose between short, medium, or long summaries based on your needs</div>
 
-                    </li>
-                    <li>
-                      <div><MdOutlineKeyboardArrowRight className="new-arrows-student" /><strong>Subject extraction:</strong> Automatically identifies and organizes key subjects and topics</div>
-                    </li>
-                    <li>
-                      <div><MdOutlineKeyboardArrowRight className="new-arrows-student" /><strong>Smart formatting:</strong> Structured summaries with headings, bullet points, and highlights</div>
-                      <div></div>
-                    </li>
-                    <li>
-                      <div><MdOutlineKeyboardArrowRight className="new-arrows-student" /><strong>Multiple file support:</strong> Upload lecture slides, PDFs, images, or screenshots</div>
-                    </li>
-                  </ul>
-                </div>
-                <button className="try-button">
-                  Try AI summarization
-                  <LuSparkles className="button-icon" />
-                </button>
-              </div>
-              <div className="drop-box">
-                <h3 className="drop-title">Lecture Summarizer</h3>
-                <p className="drop-description">Upload your lecture material and select summary length</p>
-                <div className="drop-zone">
-                  <div className="drop-icon">
-                    <LuCloud className="cloud-icon" />
+                      </li>
+                      <li>
+                        <div><MdOutlineKeyboardArrowRight className="new-arrows-student" /><strong>Subject extraction:</strong> Automatically identifies and organizes key subjects and topics</div>
+                      </li>
+                      <li>
+                        <div><MdOutlineKeyboardArrowRight className="new-arrows-student" /><strong>Smart formatting:</strong> Structured summaries with headings, bullet points, and highlights</div>
+                        <div></div>
+                      </li>
+                      <li>
+                        <div><MdOutlineKeyboardArrowRight className="new-arrows-student" /><strong>Multiple file support:</strong> Upload lecture slides, PDFs, images, or screenshots</div>
+                      </li>
+                    </ul>
                   </div>
-                  <h4 className="drop-zone-title">Drag & drop files here</h4>
-                  <p className="drop-zone-subtitle">or click to browse (PDFs, images)</p>
-                  <input 
-                    type="file" 
-                    ref={studentFileRef} 
-                    style={{ display: 'none' }} 
-                    onChange={handleStudentFileChange}
-                    accept=".pdf,.doc,.docx,.txt,image/*"
-                  />
-                  <button className="select-files-btn" onClick={handleStudentSelectFileClick}>Select Files</button>
                 </div>
-                <div className="summary-length">
-                  <h4 className="summary-title">Summary Length</h4>
-                  <div className="length-options">
-                    <button 
-                      className={`length-btn ${activeLength === 'short' ? 'active' : ''}`}
-                      onClick={() => setActiveLength('short')}
-                    >Short</button>
-                    <button 
-                      className={`length-btn ${activeLength === 'medium' ? 'active' : ''}`}
-                      onClick={() => setActiveLength('medium')}
-                    >Medium</button>
-                    <button 
-                      className={`length-btn ${activeLength === 'long' ? 'active' : ''}`}
-                      onClick={() => setActiveLength('long')}
-                    >Long</button>
-                  </div>
-                  <p className="length-description">Balanced summary with key concepts and supporting details</p>
-                </div>
-                <button className="generate-btn">
-                  Generate Summary
-                  <LuSparkles className="generate-icon" />
-                </button>
-                <p className="upload-text">Upload your PDF or image files to get started</p>
-              </div>
-            </div>
-          </div>
-          ) : (
-            <div className="educator-tools tab-content">
-              <div className="educator-layout">
-                {/* Left Panel - Exam Generator Tool */}
-                <div className="exam-generator-panel">
-                  <h3 className="exam-title">Exam Generator</h3>
-                  <p className="exam-subtitle">Create customized exams from your course materials</p>
-                  
-                  <div className="file-upload-box">
-                    <div className="drop-zone">
-                      <div className="drop-icon">
-                        <LuCloud className="cloud-icon" />
-                      </div>
-                      <h4 className="drop-zone-title">Drag & drop files here</h4>
-                      <p className="drop-zone-subtitle">or click to browse (PDFs, images)</p>
-                      <input 
-                        type="file" 
-                        ref={educatorFileRef} 
-                        style={{ display: 'none' }} 
-                        onChange={handleEducatorFileChange}
-                        accept=".pdf,.doc,.docx,.txt,image/*"
-                      />
-                      <button className="select-files-btn" onClick={handleEducatorSelectFileClick}>Select Files</button>
+                <div className="drop-box">
+                  <h3 className="drop-title">Lecture Summarizer</h3>
+                  <p className="drop-description">Upload your lecture material and select summary length</p>
+                  <div 
+                    className={`drop-zone ${isDragging ? 'dragging' : ''} ${studentFile ? 'has-file' : ''}`}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    onDrop={(e) => handleDrop(e, setStudentFile)}
+                  >
+                    <div className="drop-icon">
+                      <LuCloud className="cloud-icon" />
                     </div>
-                  </div>
-                  
-                  <div className="questions-slider-container">
-                    <p className="slider-label">Number of Questions: {questionCount}</p>
-                    <div className="slider-wrapper">
-                      <input 
-                        type="range" 
-                        min="10" 
-                        max="40" 
-                        value={questionCount}
-                        onChange={(e) => {
-                          const newValue = parseInt(e.target.value);
-                          setQuestionCount(newValue);
-                          
-                          // Update the slider fill effect
-                          const min = 10;
-                          const max = 40;
-                          const ratio = (newValue - min) / (max - min);
-                          e.target.style.setProperty('--ratio', ratio);
-                        }}
-                        className="questions-slider" 
-                      />
-                      <div className="slider-numbers">
-                        <span className="slider-min">10</span>
-                        <span className="slider-mid">25</span>
-                        <span className="slider-max">40</span>
+                    <h4 className="drop-zone-title">Drag & drop files here</h4>
+                    <p className="drop-zone-subtitle">or click to browse (PDFs, Text)</p>
+                    <input 
+                      type="file" 
+                      ref={studentFileRef} 
+                      style={{ display: 'none' }} 
+                      onChange={handleStudentFileChange}
+                      accept=".pdf,.doc,.docx,.txt,image/*"
+                    />
+                    <button className="select-files-btn" onClick={handleStudentSelectFileClick}>Select Files</button>
+                    {studentFile && (
+                      <div className="file-name-container visible">
+                        <span className="file-icon">📄</span>
+                        <span className="file-name">{studentFile.name}</span>
+                        <span className="file-size">{studentFile.size}</span>
+                        <button className="remove-file" onClick={handleRemoveStudentFile}>
+                          <LuX />
+                        </button>
                       </div>
-                    </div>
+                    )}
                   </div>
-                  
-                  <div className="difficulty-container">
-                    <p className="difficulty-label">Difficulty Level</p>
-                    <div className="difficulty-buttons">
+                  <div className="summary-length">
+                    <h4 className="summary-title">Summary Length</h4>
+                    <div className="length-options">
                       <button 
-                        className={`difficulty-btn easy ${activeLength === 'easy' ? 'active' : ''}`}
-                        onClick={() => setActiveLength('easy')}
-                      >Easy</button>
+                        className={`length-btn ${activeLength === 'short' ? 'active' : ''}`}
+                        onClick={() => setActiveLength('short')}
+                      >Short</button>
                       <button 
-                        className={`difficulty-btn medium ${activeLength === 'medium' ? 'active' : ''}`}
+                        className={`length-btn ${activeLength === 'medium' ? 'active' : ''}`}
                         onClick={() => setActiveLength('medium')}
                       >Medium</button>
                       <button 
-                        className={`difficulty-btn hard ${activeLength === 'hard' ? 'active' : ''}`}
-                        onClick={() => setActiveLength('hard')}
-                      >Hard</button>
+                        className={`length-btn ${activeLength === 'long' ? 'active' : ''}`}
+                        onClick={() => setActiveLength('long')}
+                      >Long</button>
                     </div>
+                    <p className="length-description">Balanced summary with key concepts and supporting details</p>
                   </div>
-                  
-                  <div className="focus-area-container">
-                    <p className={`focus-text ${activeLength}`}>
-                      {activeLength === 'easy' ? 'Basic recall and understanding questions' : 
-                       activeLength === 'medium' ? 'Application and analysis of concepts' : 
-                       'Advanced synthesis and evaluation questions'}
-                    </p>
-                  </div>
-                  
-                  <button className="generate-exam-button">
-                    Generate Exam <LuSparkles className="button-sparkle" />
+                  <button className="generate-btn">
+                    Generate Summary
+                    <LuSparkles className="generate-icon" />
                   </button>
-                  
-                  <p className="includes-note">Includes both questions and answer key</p>
+                  <button className="download-result-btn" style={{marginTop: '1rem', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem'}}
+                    onClick={() => handleDownloadFile(studentFile)}
+                    disabled={!studentFile}
+                  >
+                    <FaArrowDown style={{fontSize: '1.1rem'}} /> Download Result
+                  </button>
                 </div>
-                
-                {/* Right Panel - Features */}
+              </div>
+            </div>
+          ) : (
+            <div className="educator-tools ai-tools-content">
+              <div className="educator-layout">
+                {/* Left Panel - Features */}
                 <div className="features-panel">
                   <div className="educator-header">
                     <div className="ai-educator-icon-wrapper">
@@ -491,10 +521,108 @@ const AiToolsPage = () => {
                       <p className="time-description">Reduce exam preparation time by up to 90%</p>
                     </div>
                   </div>
+                </div>
+                {/* Right Panel - Exam Generator Tool */}
+                <div className="exam-generator-panel">
+                  <h3 className="exam-title">Exam Generator</h3>
+                  <p className="exam-subtitle">Create customized exams from your course materials</p>
                   
-                  <button className="try-generator-button">
-                    Try AI Exam Generator <LuSparkles className="button-sparkle" />
+                  <div 
+                    className={`drop-zone ${isDragging ? 'dragging' : ''} ${educatorFile ? 'has-file' : ''}`}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    onDrop={(e) => handleDrop(e, setEducatorFile)}
+                  >
+                    <div className="drop-icon">
+                      <LuCloud className="cloud-icon" />
+                    </div>
+                    <h4 className="drop-zone-title">Drag & drop files here</h4>
+                    <p className="drop-zone-subtitle">or click to browse (PDFs, images)</p>
+                    <input 
+                      type="file" 
+                      ref={educatorFileRef} 
+                      style={{ display: 'none' }} 
+                      onChange={handleEducatorFileChange}
+                      accept=".pdf,.doc,.docx,.txt,image/*"
+                    />
+                    <button className="select-files-btn" onClick={handleEducatorSelectFileClick}>Select Files</button>
+                    {educatorFile && (
+                      <div className="file-name-container visible">
+                        <span className="file-icon">📄</span>
+                        <span className="file-name">{educatorFile.name}</span>
+                        <span className="file-size">{educatorFile.size}</span>
+                        <button className="remove-file" onClick={handleRemoveEducatorFile}>
+                          <LuX />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="questions-slider-container">
+                    <p className="slider-label">Number of Questions: {questionCount}</p>
+                    <div className="slider-wrapper">
+                      <input 
+                        type="range" 
+                        min="10" 
+                        max="40" 
+                        value={questionCount}
+                        onChange={(e) => {
+                          const newValue = parseInt(e.target.value);
+                          setQuestionCount(newValue);
+                          
+                          // Update the slider fill effect
+                          const min = 10;
+                          const max = 40;
+                          const ratio = (newValue - min) / (max - min);
+                          e.target.style.setProperty('--ratio', ratio);
+                        }}
+                        className="questions-slider" 
+                      />
+                      <div className="slider-numbers">
+                        <span className="slider-min">10</span>
+                        <span className="slider-mid">25</span>
+                        <span className="slider-max">40</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="difficulty-container">
+                    <p className="difficulty-label">Difficulty Level</p>
+                    <div className="difficulty-buttons">
+                      <button 
+                        className={`difficulty-btn easy ${activeLength === 'easy' ? 'active' : ''}`}
+                        onClick={() => setActiveLength('easy')}
+                      >Easy</button>
+                      <button 
+                        className={`difficulty-btn medium ${activeLength === 'medium' ? 'active' : ''}`}
+                        onClick={() => setActiveLength('medium')}
+                      >Medium</button>
+                      <button 
+                        className={`difficulty-btn hard ${activeLength === 'hard' ? 'active' : ''}`}
+                        onClick={() => setActiveLength('hard')}
+                      >Hard</button>
+                    </div>
+                  </div>
+                  
+                  <div className="focus-area-container">
+                    <p className={`focus-text ${activeLength}`}>
+                      {activeLength === 'easy' ? 'Basic recall and understanding questions' : 
+                       activeLength === 'medium' ? 'Application and analysis of concepts' : 
+                       'Advanced synthesis and evaluation questions'}
+                    </p>
+                  </div>
+                  
+                  <button className="generate-exam-button">
+                    Generate Exam <LuSparkles className="button-sparkle" />
                   </button>
+                  
+                  <button className="download-result-btn" style={{marginTop: '1rem', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem'}}
+                    onClick={() => handleDownloadFile(educatorFile)}
+                    disabled={!educatorFile}
+                  >
+                    <FaArrowDown style={{fontSize: '1.1rem'}} /> Download Result
+                  </button>
+                  
                 </div>
               </div>
             </div>

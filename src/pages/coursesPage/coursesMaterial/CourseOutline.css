@@ -77,7 +77,7 @@
   display: flex;
   align-items: center;
   padding: 20px;
-  background-color: #f9f9fb;
+  background-color: #0ba574;
   cursor: pointer;
   position: relative;
 }
@@ -93,10 +93,10 @@
   width: 28px;
   height: 28px;
   background-color: #e6f7ff;
-  color: #1890ff;
+  color: #0ba574;
   border-radius: 50%;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   margin-right: 15px;
   flex-shrink: 0;
 }
@@ -138,7 +138,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #666;
+  color: #0ba574;
   transition: transform 0.3s ease;
 }
 
@@ -152,7 +152,7 @@
   display: flex;
   align-items: center;
   padding: 12px 20px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #0ba574;
   position: relative;
 }
 
@@ -163,7 +163,7 @@
 .lesson-checkbox {
   width: 18px;
   height: 18px;
-  border: 2px solid #d9d9d9;
+  border: 2px solid #0ba574;
   border-radius: 50%;
   margin-right: 15px;
   display: flex;
@@ -175,7 +175,7 @@
 .lesson-checkbox .check-icon {
   width: 12px;
   height: 12px;
-  fill: #52c41a;
+  fill: #0ba574;
 }
 
 .lesson-details {
@@ -198,8 +198,8 @@
   font-size: 12px;
   padding: 2px 8px;
   background-color: transparent;
-  border: 1px solid #52c41a;
-  color: #52c41a;
+  border: 1px solid #0ba574;
+  color: #0ba574;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -218,18 +218,19 @@
   fill: #666;
 }
 
-.lock-icon {
+.lock-iconz {
   position: absolute;
-  right: 20px;
+  right: 90px;
+  top: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.lock-icon svg {
+.lock-iconz svg {
   width: 16px;
   height: 16px;
-  fill: #d9d9d9;
+  fill: #000000af;
 }
 
 /* Section Footer */
@@ -265,7 +266,7 @@
 .progress-barC {
   flex: 1;
   height: 5px;
-  background: #14c78e;
+  background: #0ba574;
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #00000007;
@@ -274,13 +275,13 @@
 
 .section-progress-bar {
   height: 100%;
-  background-color: #52c41a;
+  background-color: #0ba574;
   border-radius: 2px;
 }
 
 .start-section-button {
   padding: 6px 12px;
-  background-color: #52c41a;
+  background-color: #0ba574;
   color: white;
   border: none;
   border-radius: 4px;
@@ -291,5 +292,6 @@
 }
 
 .start-section-button:hover {
-  background-color: #49ad15;
+  background-color: #0bca8e;
 }
+

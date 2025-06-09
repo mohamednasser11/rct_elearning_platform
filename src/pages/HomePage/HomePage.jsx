@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./HomePage.css";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
@@ -12,16 +13,25 @@ import { IoCheckmark, IoCheckmarkSharp } from "react-icons/io5";
 import { TiMessages } from "react-icons/ti";
 import { VscGraph } from "react-icons/vsc";
 
-// Import components
-import Header from "./components/Header";
+// Header Component
+function Header({ title, desc }) {
+  return (
+    <div className="header">
+      <h2>{title}</h2>
+      <p>{desc}</p>
+    </div>
+  );
+}
 
 // Hero Component
 function Hero() {
-  const Button = ({ text, icon }) => (
-    <button>
-      {icon}
-      <span>{text}</span>
-    </button>
+  const Button = ({ text, icon, to }) => (
+    <Link to={to}>
+      <button>
+        {icon}
+        <span>{text}</span>
+      </button>
+    </Link>
   );
 
   return (
@@ -33,8 +43,8 @@ function Hero() {
           instructors and AI-powered tools to help you master any subject.
         </p>
         <div className="hero-btn">
-          <Button text="Explore Courses" icon={<HiOutlineArrowNarrowRight />} />
-          <Button text="Become an instructor" icon={<FaChalkboardTeacher />} />
+          <Button text="Explore Courses" icon={<HiOutlineArrowNarrowRight />} to="/courses" />
+          <Button text="Become an instructor" icon={<FaChalkboardTeacher />} to="/for-educators" />
         </div>
         <div className="hero-trust-badge">
           <div className="hero-stars">
@@ -500,10 +510,10 @@ for freelance opportunities."
                 <BenefitItem key={index} text={benefit} color="green" />
               ))}
             </ul>
-            <a href="/for-students" className="learn-more">
+            <Link to="/for-students" className="learn-more">
               Learn more about student features{" "}
               <HiOutlineArrowNarrowRight className="icon-more" />
-            </a>
+            </Link>
           </div>
           <div className="why-choose-card educator-card">
             <div className="card-icon educator-icon">E</div>
@@ -518,10 +528,10 @@ for freelance opportunities."
                 <BenefitItem key={index} text={benefit} />
               ))}
             </ul>
-            <a href="/for-educators" className="learn-more">
+            <Link to="/for-educators" className="learn-more">
               Explore educator opportunities
               <HiOutlineArrowNarrowRight className="icon-more" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
