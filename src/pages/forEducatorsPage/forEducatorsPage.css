@@ -448,7 +448,7 @@ p {
 .impact-cards {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
   gap: 32px;
   margin-top: 40px;
@@ -462,6 +462,8 @@ p {
   flex: 1 1 400px;
   max-width: 500px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .impact-card:hover {
@@ -474,6 +476,10 @@ p {
   padding: 0;
   margin: 0;
   text-align: left;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .results-list li {
@@ -516,6 +522,7 @@ p {
   background-color: #e5e7eb;
   color: #1f2937;
   transition: background-color 0.3s ease;
+  margin-top: -3rem;
 }
 
 .impact-icon:hover {
@@ -555,16 +562,14 @@ p {
   color: #0f766e;
 }
 
-.reach-card {
-  height: fit-content;
-}
 
 .reach-card img {
   width: 100%;
   border-radius: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 3rem;
+  margin-top: 2rem;
   transition: transform 0.3s ease;
-  max-height: 150px;
+  max-height: 2000px;
 }
 
 .reach-card img:hover {
@@ -575,6 +580,7 @@ p {
   list-style: none;
   padding: 0;
   text-align: left;
+  flex-grow: 1;
 }
 
 .reach-list li {
