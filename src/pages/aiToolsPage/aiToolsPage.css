@@ -348,14 +348,17 @@
   transition: none;
   flex: 1;
   text-align: center;
+  pointer-events: none; /* Disable all pointer events */
 }
 
-/* .summary-btn:hover { */
-/* Removed hover styles for preview cards buttons since they're not clickable */
-/* background: transparent;
-  color: #A0AEC0;
-  border-color: #E2E8F0;
-} */
+.summary-btn:hover {
+  /* Explicitly disable hover effects */
+  background: transparent;
+  color: var(--text-light);
+  border-color: var(--border-color);
+  transform: none;
+  box-shadow: none;
+}
 
 /* AI Tools Section - The main content area showcasing the learning tools */
 .ai-tools-section {
