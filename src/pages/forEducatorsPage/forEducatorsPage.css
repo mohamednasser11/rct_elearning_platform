@@ -44,7 +44,7 @@ p {
 
 /* ========== Hero Section ========== */
 .hero {
-  background-color: #0fb4802e;
+  background: linear-gradient(to bottom, var(--primary-light) 3%, var(--white) 22%);
   padding: 100px 5% 80px;
 }
 
