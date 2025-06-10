@@ -18,7 +18,8 @@ const EDUCATOR_FILE_STORAGE_KEY = 'educator_file_data';
 
 const AiToolsPage = () => {
   const navigate = useNavigate();
-  const [activeLength, setActiveLength] = React.useState('easy');
+  const [activeLength, setActiveLength] = React.useState('short');
+  const [activeDifficulty, setActiveDifficulty] = React.useState('easy');
   const [activeTab, setActiveTab] = React.useState('student');
   const [questionCount, setQuestionCount] = React.useState(10);
   const [studentFile, setStudentFile] = React.useState(null);
@@ -590,25 +591,26 @@ const AiToolsPage = () => {
                     <p className="difficulty-label">Difficulty Level</p>
                     <div className="difficulty-buttons">
                       <button 
-                        className={`difficulty-btn easy ${activeLength === 'easy' ? 'active' : ''}`}
-                        onClick={() => setActiveLength('easy')}
+                        className={`difficulty-btn easy ${activeDifficulty === 'easy' ? 'active' : ''}`}
+                        onClick={() => setActiveDifficulty('easy')}
                       >Easy</button>
                       <button 
-                        className={`difficulty-btn medium ${activeLength === 'medium' ? 'active' : ''}`}
-                        onClick={() => setActiveLength('medium')}
+                        className={`difficulty-btn medium ${activeDifficulty === 'medium' ? 'active' : ''}`}
+                        onClick={() => setActiveDifficulty('medium')}
                       >Medium</button>
                       <button 
-                        className={`difficulty-btn hard ${activeLength === 'hard' ? 'active' : ''}`}
-                        onClick={() => setActiveLength('hard')}
+                        className={`difficulty-btn hard ${activeDifficulty === 'hard' ? 'active' : ''}`}
+                        onClick={() => setActiveDifficulty('hard')}
                       >Hard</button>
                     </div>
                   </div>
                   
                   <div className="focus-area-container">
-                    <p className={`focus-text ${activeLength}`}>
-                      {activeLength === 'easy' ? 'Basic recall and understanding questions' : 
-                       activeLength === 'medium' ? 'Application and analysis of concepts' : 
-                       'Advanced synthesis and evaluation questions'}
+                    <p className={`focus-text ${activeDifficulty}`}>
+                      {activeDifficulty === 'easy' ? 'Basic recall and understanding questions' : 
+                       activeDifficulty === 'medium' ? 'Application and analysis of concepts' : 
+                       activeDifficulty === 'hard' ? 'Advanced synthesis and evaluation questions' :
+                       'Select a difficulty level to see the focus area.'}
                     </p>
                   </div>
                   
