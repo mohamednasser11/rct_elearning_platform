@@ -193,14 +193,7 @@ const Benefits = () => {
           </div>
         ))}
       </div>
-      <div className="next-previous">
-        <div>
-          <FaArrowLeft className="icon" />
-        </div>
-        <div>
-          <FaArrowRight className="icon" />
-        </div>
-      </div>
+
     </section>
   );
 };
