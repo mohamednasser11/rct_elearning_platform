@@ -225,7 +225,6 @@ p {
   justify-content: space-between;
   gap: 40px;
   padding: 60px 5%;
-  background-color: var(--white);
   flex-direction: row;
 }
 
@@ -337,7 +336,7 @@ p {
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 3px 3px rgb(0 0 0 / 19%);
-  max-width: 570px;
+  max-width: 600px;
   text-align: left;
 }
 
