@@ -19,6 +19,7 @@ p {
 
 #for-educators-page {
   padding-top: 50px;
+  background: linear-gradient(to bottom, rgba(10, 238, 105, 0.15) 3%, rgba(255, 255, 255, 1) 22%);
 }
 
 @media (max-width: 768px) {
@@ -44,7 +45,6 @@ p {
 
 /* ========== Hero Section ========== */
 .hero {
-  background: linear-gradient(to bottom, var(--primary-light) 3%, var(--white) 22%);
   padding: 100px 5% 80px;
 }
 
