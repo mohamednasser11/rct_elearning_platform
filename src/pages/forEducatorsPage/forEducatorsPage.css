@@ -81,19 +81,24 @@ p {
 }
 
 /* ========== Header Styles ========== */
-.header h2 {
+.fe-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.fe-header h2 {
   font-size: var(--font-size-4xl);
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
-.header p {
+.fe-header p {
   font-size: var(--font-size-lg);
   color: var(--text-gray);
   max-width: 640px;
   margin: 0 auto 40px auto;
   text-align: center;
-}
+} 
 
 /* ========== Hero Section ========== */
 .promo-section {
@@ -364,6 +369,7 @@ p {
   padding: 60px 5%;
   background-color: var(--white);
   text-align: center;
+  margin-bottom: 3rem;
 }
 
 .benefits-grid {
@@ -436,7 +442,6 @@ p {
 
 /* ========== Impact Section ========== */
 .impact-section {
-  background-color: #f3f4f6;
   padding: 60px 5%;
 }
 

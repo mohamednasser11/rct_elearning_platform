@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 // Header Component
 const Header = ({ title, desc }) => (
-  <div className="header">
+  <div className="fe-header">
     <h2>{title}</h2>
     <p>{desc}</p>
   </div>
