@@ -4,7 +4,7 @@ import { LuLightbulb, LuBook, LuQuote } from "react-icons/lu";
 import { FaRegClock, FaArrowUp, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { TbTargetArrow } from "react-icons/tb";
 import { MdOutlineAnalytics } from "react-icons/md";
-import { HiUserGroup, HiOutlineArrowLongRight } from "react-icons/hi2";
+import { HiUserGroup } from "react-icons/hi2";
 import { IoIosArrowDown, IoIosRadioButtonOn, IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { RiGraduationCapLine } from "react-icons/ri";
 import { FiBook } from "react-icons/fi";
@@ -22,48 +22,33 @@ const Header = ({ title, desc }) => (
 // Hero Component
 const Hero = () => {
   return (
-    <section className="hero">
-      <div className="hero-container">
-        <div className="hero-left">
-          <h1>
-            Empower Your <br />
-            <span className="text-blue">Teaching</span> with AI
-          </h1>
-          <p>
-            Join our community of educators and transform your teaching approach
-            with innovative AI tools designed for modern education.
-          </p>
-          <div className="hero-buttons">
-            <HeroButton
-              href="#"
-              className="btn btn-primary"
-              text="Become an Educator"
-              icon={<HiOutlineArrowLongRight className="arrow-icon" />}
-            />
-            <HeroButton
-              href="#"
-              className="btn btn-secondary"
-              text="Learn More"
-            />
-          </div>
+    <div className="promo-section">
+      <div className="text-column">
+        <div className="student-badge">FOR EDUCATORS</div>
+        <h1 className="main-heading">
+          Empower Your <span className="highlight">Teaching</span> with AI
+        </h1>
+        <p className="subheading">
+          Join our community of educators and transform your teaching approach
+          with innovative AI tools designed for modern education.
+        </p>
+        <div className="cta-buttons">
+          <button className="cta-button primary">Become an Educator</button>
+          <button className="cta-button secondary">
+            Learn More
+          </button>
         </div>
-        <div className="hero-right">
+      </div>
+      <div className="image-column">
+        <div className="laptop-container">
           <img
             src="https://lifeandletters.la.utexas.edu/wp-content/uploads/2019/07/image001.jpg"
             alt="Classroom"
+            className="laptop-image"
           />
         </div>
       </div>
-    </section>
-  );
-};
-
-const HeroButton = ({ href, className, text, icon }) => {
-  return (
-    <a href={href} className={className}>
-      <span>{text}</span>
-      {icon && icon}
-    </a>
+    </div>
   );
 };
 
