@@ -10,6 +10,7 @@ import { RiGraduationCapLine } from "react-icons/ri";
 import { FiBook } from "react-icons/fi";
 import { TiArrowUp } from "react-icons/ti";
 import { CgArrowLongRight } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 
 // Header Component
 const Header = ({ title, desc }) => (
@@ -21,6 +22,8 @@ const Header = ({ title, desc }) => (
 
 // Hero Component
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="promo-section">
       <div className="text-column">
@@ -33,7 +36,12 @@ const Hero = () => {
           with innovative AI tools designed for modern education.
         </p>
         <div className="cta-buttons">
-          <button className="cta-button primary">Become an Educator</button>
+          <button
+            className="cta-button primary"
+            onClick={() => navigate("/signup")}
+          >
+            Become an Educator
+          </button>
           <button className="cta-button secondary">
             Learn More
           </button>
