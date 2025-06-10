@@ -325,7 +325,6 @@ with my students."`,
           ],
         ].map(([img, name, role, school, text], i) => (
           <div className="testimonial-card" key={i}>
-            <LuQuote className="quote-icon-testimonial" />
             <p>{text}</p>
             <div className="testimonial-author">
               <img src={img} alt={name} />
@@ -450,9 +449,9 @@ const ForEducatorsPage = () => {
       <FreelanceEducator />
       <Benefits />
       <Impact />
-      <Testimonials />
       <GetStarted />
       <FAQ />
+      <Testimonials />
     </div>
   );
 };
