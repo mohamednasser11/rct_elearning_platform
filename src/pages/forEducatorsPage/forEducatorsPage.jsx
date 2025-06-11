@@ -398,27 +398,24 @@ const FAQ = () => {
         {[
           [
             "What qualifications do I need to become an educator?",
-            "You should have experience in your subject area, but formal teaching credentials are not always required.",
+            "We welcome educators with diverse backgrounds and expertise. While formal qualifications are valued, practical experience and a passion for teaching are equally important. You can create a profile highlighting your skills and experience to attract students.",
           ],
           [
             "How does the revenue sharing work?",
-            "You earn based on course sales or hourly sessions, minus a small platform fee.",
+            "Educators earn revenue based on course sales or hourly tutoring sessions. We operate on a revenue-sharing model where you receive a percentage of the sales, minus a small platform fee.",
           ],
           [
             "How much time does it take to create a course?",
-            "It depends on the depth of content, but most educators create their first course in under a week using our tools.",
+            "The time required to create a course varies depending on the complexity and length of the content. Typically, educators spend several hours to a few days developing a comprehensive course.",
           ],
           [
             "Can I import existing course materials?",
-            "Yes, you can upload PDFs, videos, and slides to build your course quickly.",
+            "Yes, you can import existing course materials such as presentations, documents, videos, and quizzes to our platform. This can help you streamline the course creation process.",
           ],
-          [
-            "What kind of support do you offer to educators?",
-            "We offer onboarding support, AI content tools, marketing help, and dedicated educator success teams.",
-          ],
+
           [
             "Do I retain ownership of my course content?",
-            "Absolutely. You retain full rights and can remove your content anytime.",
+            "Yes, as an educator, you retain ownership of the course content you create. You have the freedom to publish, update, and manage your courses as you see fit. Our platform respects your intellectual property rights.",
           ],
         ].map(([q, a], i) => (
           <FAQItem key={i} question={q} answer={a} />

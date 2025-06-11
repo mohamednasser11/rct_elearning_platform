@@ -669,7 +669,6 @@ p {
 
 /* ========== Get Started Section ========== */
 .get-started-section {
-  background-color: #0fb4802e;
   padding: 100px 5% 80px;
   text-align: center;
 }
@@ -690,10 +689,12 @@ p {
   text-align: left;
   box-shadow: 0 3px 3px rgb(0 0 0 / 19%);
   transition: .3s;
+  border-left: 5px solid #0ba574;
 }
 
 .step-card:hover {
   transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 .step-card h1 {
@@ -721,7 +722,7 @@ p {
 .step-number {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #0fb4802e;
+  color: #13c48c70;
   margin-right: 8px;
   line-height: 1;
 }
