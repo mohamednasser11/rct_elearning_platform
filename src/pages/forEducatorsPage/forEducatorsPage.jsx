@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./forEducatorsPage.css";
 import { LuLightbulb, LuBook, LuQuote } from "react-icons/lu";
-import { FaRegClock, FaArrowUp, FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaRegClock, FaArrowUp, FaArrowLeft, FaArrowRight, FaStar } from "react-icons/fa";
 import { TbTargetArrow } from "react-icons/tb";
 import { MdOutlineAnalytics } from "react-icons/md";
 import { HiUserGroup } from "react-icons/hi2";
@@ -291,10 +291,8 @@ const Impact = () => {
 const Testimonials = () => {
   return (
     <section className="testimonials-section">
-      <Header
-        title="Educators Love Beyond The Blackboard"
-        desc="Hear from educators who have transformed their teaching experience with our platform."
-      />
+      <h2>Educators Love Beyond The Blackboard</h2>
+      <p className="testimonials-subtitle">Hear from educators who have transformed their teaching experience with our platform.</p>
 
       <div className="testimonial-grid">
         {[
@@ -303,9 +301,8 @@ const Testimonials = () => {
             "Dr. Emily Rodriguez",
             "High School Science Teacher",
             "Lincoln High School",
-            `" Beyond the Blackboard has completely transformed my teaching. I can now create 
-personalized learning paths for each student, and the AI grading tool saves me hours every 
-week."`,
+            `"Beyond the Blackboard has completely transformed my teaching. I can now create 
+personalized learning paths for each student."`,
           ],
           [
             "https://i.pravatar.cc/50?img=32",
@@ -325,15 +322,19 @@ with my students."`,
           ],
         ].map(([img, name, role, school, text], i) => (
           <div className="testimonial-card" key={i}>
-            <p>{text}</p>
-            <div className="testimonial-author">
-              <img src={img} alt={name} />
-              <div>
-                <strong>{name}</strong>
-                <div className="testimonial-role">{role}</div>
-                <div className="testimonial-school">{school}</div>
+            <div className="testimonial-top">
+              <img src={img} alt={name} className="testimonial-avatar" />
+              <div className="testimonial-details">
+                <h4>{name}</h4>
+                <p className="student-title">{role} at {school}</p>
               </div>
             </div>
+            <div className="rating">
+              {[...Array(5)].map((_, i) => (
+                <FaStar key={i} className="star-icon" />
+              ))}
+            </div>
+            <p>{text}</p>
           </div>
         ))}
       </div>
