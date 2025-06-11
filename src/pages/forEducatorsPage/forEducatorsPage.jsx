@@ -89,9 +89,7 @@ const FreelanceEducator = () => {
             </li>
           ))}
         </ul>
-        <a href="#" className="btn apply-btn">
-          Apply Now
-        </a>
+
       </div>
 
       <div className="freelance-right">
