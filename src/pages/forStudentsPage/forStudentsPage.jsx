@@ -367,92 +367,86 @@ const ForStudentsPage = () => {
       </div>
 
       {/* Testimonials Section */}
-      <div className="fs-testimonials-section">
+      <section className="testimonials-section">
         <h2 className="testimonials-heading">What Our Students Are Saying</h2>
-        <p className="testimonials-subheading">
+        <p className="testimonials-subtitle">
           Thousands of students have transformed their learning experience with Beyond the
           Blackboard. Here's what some of them have to say.
         </p>
 
-        <div className="testimonials-container">
+        <div className="testimonial-grid">
           {/* Testimonial Card 1 */}
           <div className="testimonial-card">
-            <div className="testimonial-stars">
-              {[...Array(5)].map((_, i) => (
-                <FaStar key={i} />
-              ))}
-            </div>
-            <p className="testimonial-quote">
-              "Beyond the Blackboard changed my approach to learning programming. 
-              The AI tools helped me grasp complex concepts much faster than traditional methods."
-            </p>
-            <div className="testimonial-profile">
+            <div className="testimonial-top">
               <img 
                 src="https://randomuser.me/api/portraits/women/44.jpg" 
                 alt="Emma Rodriguez" 
                 className="testimonial-avatar" 
               />
-              <div className="testimonial-info">
-                <div className="testimonial-name">Emma Rodriguez</div>
-                <div className="testimonial-role">Computer Science Student</div>
+              <div className="testimonial-details">
+                <h4>Emma Rodriguez</h4>
+                <p className="student-title">Computer Science Student</p>
               </div>
             </div>
+            <div className="rating">
+              {[...Array(5)].map((_, i) => (
+                <FaStar key={i} className="star-icon" />
+              ))}
+            </div>
+            <p>
+              "Beyond the Blackboard changed my approach to learning programming. 
+              The AI tools helped me grasp complex concepts much faster than traditional methods."
+            </p>
           </div>
 
           {/* Testimonial Card 2 */}
           <div className="testimonial-card">
-            <div className="testimonial-stars">
-              {[...Array(5)].map((_, i) => (
-                <FaStar key={i} />
-              ))}
-            </div>
-            <p className="testimonial-quote">
-              "The quality of courses and instructors is exceptional. I especially love the 
-              personalized recommendations that helped me discover courses I wouldn't have found otherwise."
-            </p>
-            <div className="testimonial-profile">
+            <div className="testimonial-top">
               <img 
                 src="https://randomuser.me/api/portraits/men/32.jpg" 
                 alt="David Chen" 
                 className="testimonial-avatar" 
               />
-              <div className="testimonial-info">
-                <div className="testimonial-name">David Chen</div>
-                <div className="testimonial-role">Business Administration Major</div>
+              <div className="testimonial-details">
+                <h4>David Chen</h4>
+                <p className="student-title">Business Administration Major</p>
               </div>
             </div>
+            <div className="rating">
+              {[...Array(5)].map((_, i) => (
+                <FaStar key={i} className="star-icon" />
+              ))}
+            </div>
+            <p>
+              "The quality of courses and instructors is exceptional. I especially love the 
+              personalized recommendations that helped me discover courses I wouldn't have found otherwise."
+            </p>
           </div>
 
           {/* Testimonial Card 3 */}
           <div className="testimonial-card">
-            <div className="testimonial-stars">
-              {[...Array(5)].map((_, i) => (
-                <FaStar key={i} />
-              ))}
-            </div>
-            <p className="testimonial-quote">
-              "As a medical student, time is precious. The AI lecture summarizer and course chatbot have saved me countless hours of study time while improving my retention. ."
-            </p>
-            <div className="testimonial-profile">
+            <div className="testimonial-top">
               <img 
                 src="https://randomuser.me/api/portraits/women/68.jpg" 
                 alt="Sophia Williams" 
                 className="testimonial-avatar" 
               />
-              <div className="testimonial-info">
-                <div className="testimonial-name">Sophia Williams</div>
-                <div className="testimonial-role">Medical Student</div>
+              <div className="testimonial-details">
+                <h4>Sophia Williams</h4>
+                <p className="student-title">Medical Student</p>
               </div>
             </div>
+            <div className="rating">
+              {[...Array(5)].map((_, i) => (
+                <FaStar key={i} className="star-icon" />
+              ))}
+            </div>
+            <p>
+              "As a medical student, time is precious. The AI lecture summarizer and course chatbot have saved me countless hours of study time while improving my retention. ."
+            </p>
           </div>
         </div>
-
-        <div className="testimonials-cta">
-          <p className="testimonials-count">Join over 100,000 satisfied students</p>
-          <button className="join-button" onClick={() => navigate('/signup')}>Join Our Community</button>
-        </div>
-
-      </div>
+      </section>
     </div>
   );
 };
