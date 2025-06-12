@@ -431,6 +431,7 @@ body {
 .desc-card {
   margin-bottom: 15px;
   color: var(--text-gray);
+  text-align: left!important;
 }
 
 .card-description {
