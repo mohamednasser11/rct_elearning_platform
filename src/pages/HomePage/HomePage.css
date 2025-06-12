@@ -792,29 +792,40 @@ body {
   content: none !important;
 }
 
-.tab-content {
-  animation: fadeIn 0.3s ease;
+@keyframes fadeUpIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.h-tab-content {
   background-color: var(--white);
   border-radius: 12px;
   box-shadow: 0px 2px 5px rgb(0 0 0 / 19%);
   padding: 20px !important;
+  animation: fadeUpIn 0.7s ease-out;
 }
 
-.tab-content .content-title {
+.h-tab-content .content-title {
   font-weight: bold;
   color: #111827;
   margin-bottom: 15px;
   font-size: 1rem;
 }
 
-.tab-content .tab-title {
+.h-tab-content .tab-title {
   font-weight: bold;
   color: #111827;
   margin-bottom: 4px;
   font-size: 1rem;
 }
 
-.tab-content .tab-desc {
+.h-tab-content .tab-desc {
   color: #4b5563;
   margin-bottom: 12px;
   font-size: 0.95rem;

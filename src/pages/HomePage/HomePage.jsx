@@ -253,7 +253,7 @@ function Share() {
             ))}
           </div>
 
-          <div className="tab-content">
+          <div className="h-tab-content" key={activeTab}>
             <p className="content-title">Everything You Need to Succeed</p>
 
             {tabs[activeTab].map((item, index) =>
