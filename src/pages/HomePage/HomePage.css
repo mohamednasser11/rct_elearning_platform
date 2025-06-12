@@ -839,17 +839,18 @@ body {
 }
 
 .div-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  background-color: #0fb48014;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #0fb480c5;
 }
 
-.tab-icon {
-  color: var(--primary-color);
-  font-size: 1.2rem;
-  flex-shrink: 0;
-  margin-top: 4px;
+.h-tab-icon {
+  color: white;
+  font-size: 1.3rem;
+  flex-shrink: 0; 
+  margin-top: 2px;
+  margin-left: 2px;
 }
 
 .tab-title {

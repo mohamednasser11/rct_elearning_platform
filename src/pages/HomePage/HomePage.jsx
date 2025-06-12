@@ -260,7 +260,7 @@ function Share() {
               index % 2 === 0 ? (
                 <div className="tab-box" key={index}>
                   <div className="div-icon">
-                    <IoCheckmarkSharp className="tab-icon" />{" "}
+                    <IoCheckmarkSharp className="h-tab-icon" />{" "}
                   </div>
                   <div>
                     <p className="tab-title">{item}</p>
@@ -270,7 +270,7 @@ function Share() {
               ) : null
             )}
           </div>
-          <button className="botton-rigth">Join Our Educator Network</button>
+
         </div>
       </div>
     </section>
@@ -356,10 +356,7 @@ saved me countless hours of study time while improving my retention."`,
           </div>
         ))}
       </div>
-      <div className="btn-down">
-        <p>Join Our Educator Network</p>
-        <button className="botton">Join Our Educator Network</button>
-      </div>
+
     </section>
   );
 }
