@@ -343,7 +343,6 @@ body {
 /* ===== WHY CHOOSE US SECTION ===== */
 .why-choose-section {
   padding: 5rem 0;
-  background-color: #f8f9fa;
 }
 
 .section-container {
@@ -385,8 +384,14 @@ body {
   flex: 1;
   min-width: 280px;
   max-width: 500px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
   position: relative;
+  transition: all 0.3s ease;
+}
+
+.why-choose-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .card-icon {
@@ -404,7 +409,7 @@ body {
   left: -1.25rem;
 }
 
-.student-icon {
+.h-student-icon {
   background-color: #00c170;
   color: white !important;
 }
@@ -437,6 +442,7 @@ body {
   list-style: none;
   padding: 0;
   margin-bottom: 1.5rem;
+  text-align: left;
 }
 
 .benefits-list li span {

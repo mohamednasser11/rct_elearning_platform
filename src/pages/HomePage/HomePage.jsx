@@ -499,7 +499,7 @@ for freelance opportunities."
         />
         <div className="why-choose-cards">
           <div className="why-choose-card student-card">
-            <div className="card-icon student-icon">S</div>
+            <div className="card-icon h-student-icon">S</div>
             <h3>For Students</h3>
             <p className="desc-card">
               Accelerate your learning with our AI-powered tools designed to
