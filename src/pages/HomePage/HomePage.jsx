@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./HomePage.css";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import { FaChalkboardTeacher, FaRegClock } from "react-icons/fa";
+import { FaChalkboardTeacher, FaRegClock, FaStar } from "react-icons/fa";
 import { RiGroupLine } from "react-icons/ri";
 import { FiBookOpen, FiUserCheck } from "react-icons/fi";
 import { TfiCup } from "react-icons/tfi";
@@ -304,11 +304,13 @@ function Stats() {
 function Student() {
   return (
     <section className="student-section">
-      <Header
-        title="What Our Students Are Saying"
-        desc="Join thousands of students who have transformed their learning journey with our AI-powered platform.
-            Discover how Beyond the Blackboard is revolutionizing education."
-      />
+      <div className="testimonials-header">
+        <h2 className="testimonials-heading">What Our Students Are Saying</h2>
+        <p className="testimonials-subtitle">
+          Join thousands of students who have transformed their learning journey with our AI-powered platform.
+          Discover how Beyond the Blackboard is revolutionizing education.
+        </p>
+      </div>
 
       <div className="testimonial-grid">
         {[
@@ -316,15 +318,13 @@ function Student() {
             "https://i.pravatar.cc/50?img=48",
             "Emma Rodriguez",
             "Computer Science Student",
-            `"Beyond the Blackboard changed my approach to learning programming. The AI tools 
-helped me grasp complex concepts much faster than traditional methods." `,
+            `"Beyond the Blackboard changed my approach to learning programming. The AI tools helped me grasp complex concepts much faster than traditional methods." `,
           ],
           [
             "https://i.pravatar.cc/50?img=32",
             "David Chen",
             "Business Administration Major",
-            `"The quality of courses and instructors is exceptional. I especially like the personalized 
-recommendations that helped me discover content I wouldn't have found otherwise."`,
+            `"The quality of courses and instructors is exceptional. I especially like the personalized recommendations that helped me discover content I wouldn't have found otherwise."`, 
           ],
           [
             "https://i.pravatar.cc/50?img=47",
@@ -335,28 +335,26 @@ saved me countless hours of study time while improving my retention."`,
           ],
         ].map(([img, name, role, text], i) => (
           <div className="testimonial-card" key={i}>
-            <div className="star-quote-icon">
-              <div className="hero-stars">
-                <span className="star">★</span>
-                <span className="star">★</span>
-                <span className="star">★</span>
-                <span className="star">★</span>
-                <span className="star">★</span>
+            <div className="testimonial-top">
+              <img 
+                src={img} 
+                alt={name} 
+                className="testimonial-avatar" 
+              />
+              <div className="testimonial-details">
+                <h4>{name}</h4>
+                <p className="student-title">{role}</p>
               </div>
-              <LuQuote className="star-quote-icon" />
+            </div>
+            <div className="rating">
+              {[...Array(5)].map((_, i) => (
+                <FaStar key={i} className="star" />
+              ))}
             </div>
             <p>{text}</p>
-            <div className="testimonial-author">
-              <img src={img} alt={name} />
-              <div>
-                <strong>{name}</strong>
-                <div className="testimonial-role">{role}</div>
-              </div>
-            </div>
           </div>
         ))}
       </div>
-
     </section>
   );
 }
