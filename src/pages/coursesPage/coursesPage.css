@@ -59,12 +59,15 @@
   /* background: #ffffff; */
   min-height: 80vh;
   transition: all var(--transition-normal);
+  transform: scale(0.8);
+  transform-origin: top center;
+  margin-top: -10vh; /* Compensate for the scaling effect */
 }
 
 .courses-header {
   text-align: center;
   margin-bottom: var(--spacing-xxl);
-  margin-top: var(--spacing-xxl);
+  margin-top: calc(var(--spacing-xxl) * 4); /* Increased top margin */
   padding: var(--spacing-xl) 0;
   background: var(--white);
   border-radius: var(--radius-xl);
@@ -609,6 +612,7 @@
   align-items: center;
   gap: 0.8rem;
   margin-top: 3rem;
+  margin-bottom: -50rem;
   padding: 1.5rem;
   background: var(--white);
   border-radius: 16px;
@@ -908,6 +912,9 @@
 @media (max-width: 768px) {
   .courses-page {
     padding: var(--spacing-md);
+    transform: scale(0.8);
+    transform-origin: top center;
+    margin-top: -5vh;
   }
 
   .courses-header {
@@ -952,6 +959,9 @@
 @media (max-width: 576px) {
   .courses-page {
     padding: var(--spacing-md);
+    transform: scale(0.8);
+    transform-origin: top center;
+    margin-top: -5vh;
   }
 
   .categories-container {

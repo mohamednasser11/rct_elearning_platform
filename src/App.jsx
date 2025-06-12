@@ -1,4 +1,5 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import "./App.css";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -14,10 +15,36 @@ import Footer from "./components/Footer/Footer";
 import { CartProvider } from "./contexts/cartContext.jsx";
 import HomePage from "./pages/HomePage/HomePage";
 
+// ScrollToTop component integrated directly
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    const resetScroll = () => {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo(0, 0);
+      const rootElement = document.getElementById('root');
+      if (rootElement) {
+        rootElement.scrollTop = 0;
+      }
+    };
+    resetScroll();
+    requestAnimationFrame(resetScroll);
+    setTimeout(resetScroll, 0);
+    setTimeout(resetScroll, 10);
+  }, [pathname]);
+
+  return null;
+};
+
 const App = () => {
   return (
     <CartProvider>
       <Router>
+        <ScrollToTop />
         <MainNavigation />
         <Routes>
           <Route path="/" element={<HomePage />} />

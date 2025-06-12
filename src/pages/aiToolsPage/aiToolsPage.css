@@ -87,29 +87,27 @@
   align-items: center;
 }
 
-/* Hero Section */
+/* Hero Section - Preserved at original size */
 .ai-hero-section {
-  /* Top banner section with headline and preview */
+  margin-top: 6rem !important;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-3xl);
   align-items: center;
-  padding: var(--spacing-3xl) var(--spacing-xl);
+  padding: var(--spacing-3xl) 6vw var(--spacing-3xl) 3vw;
   background: transparent;
   margin-bottom: var(--spacing-3xl);
   max-width: var(--container-2xl);
   min-width: var(--container-sm);
   width: 100%;
   margin: 0 auto;
+  transform: scale(1);
 }
 
-.ai-hero-content {
-  /* Left side content of hero section */
-  text-align: left;
-  padding-right: var(--spacing-xl);
-  max-width: 800px;
-  background: transparent;
-  margin-left: -10rem;
+.ai-hero-content,
+.ai-hero-preview {
+  margin: 0;
+  /* Remove any negative or extra margins */
 }
 
 .ai-hero-section h1 {
@@ -135,7 +133,7 @@
   color: var(--text-muted);
   margin-bottom: var(--spacing-xl);
   line-height: 1.6;
-  text-align: left;
+  /* text-align: left; */
 }
 
 /* CTA buttons in hero section */
@@ -223,7 +221,9 @@
 }
 
 .ai-hero-preview {
-  /* Right side of hero section with preview image */
+  margin: 0;
+  justify-self: end;
+  /* Ensures the preview aligns to the right edge of its grid cell */
   position: relative;
   width: 100%;
   display: flex;
@@ -348,7 +348,8 @@
   transition: none;
   flex: 1;
   text-align: center;
-  pointer-events: none; /* Disable all pointer events */
+  pointer-events: none;
+  /* Disable all pointer events */
 }
 
 .summary-btn:hover {
@@ -358,6 +359,16 @@
   border-color: var(--border-color);
   transform: none;
   box-shadow: none;
+}
+
+/* Scale down all content after hero section */
+.ai-tools-section,
+.our-tools-section,
+.ai-testimonials-section {
+  transform: scale(0.8);
+  transform-origin: top center;
+  margin-top: -10%;
+  /* Adjust margin to compensate for scaling */
 }
 
 /* AI Tools Section - The main content area showcasing the learning tools */
@@ -571,6 +582,7 @@
   padding: 0 var(--spacing-xl);
   max-width: var(--container-xl);
   width: 100%;
+  margin-bottom: -18rem;
   margin-left: var(--spacing-md);
   margin-right: auto;
 }
@@ -880,6 +892,7 @@
   margin-left: 0;
   max-width: 1400px;
   margin: 0.2rem 0.8rem 0;
+  margin-bottom: -18rem;
 }
 
 .content-wrapper {
@@ -1284,19 +1297,6 @@
   transition: all 0.2s ease;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 .select-files-btn:hover {
   background-color: var(--primary-color);
   border-color: var(--primary-color-border);
@@ -1403,7 +1403,8 @@
 .difficulty-buttons {
   display: flex;
   gap: 0.75rem;
-  margin-bottom: 1rem; /* Add some space below the buttons */
+  margin-bottom: 1rem;
+  /* Add some space below the buttons */
 }
 
 /* Individual Difficulty Button */
@@ -1411,9 +1412,12 @@
   flex: 1;
   padding: 0.6rem 1rem;
   border-radius: var(--radius-md);
-  background-color: #f7fafc; /* Light gray background */
-  color: #4a5568; /* Dark gray text */
-  border: 1px solid #e2e8f0; /* Light gray border */
+  background-color: #f7fafc;
+  /* Light gray background */
+  color: #4a5568;
+  /* Dark gray text */
+  border: 1px solid #e2e8f0;
+  /* Light gray border */
   font-size: var(--text-sm);
   font-weight: 500;
   cursor: pointer;
@@ -1423,7 +1427,8 @@
 
 /* Hover state for difficulty buttons */
 .difficulty-btn:hover {
-  background-color: #e2e8f0; /* Slightly darker gray on hover */
+  background-color: #e2e8f0;
+  /* Slightly darker gray on hover */
   border-color: #cbd5e0;
   color: #2d3748;
 }
