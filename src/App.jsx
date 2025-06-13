@@ -1,8 +1,8 @@
 import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import "./App.css";
-import SignupPage from "./pages/SignupPage/SignupPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
+import SignupPage from "./pages/signupPage/signupPage";
+import LoginPage from "./pages/loginPage/loginPage";
 import ForStudentsPage from "./pages/forStudentsPage/forStudentsPage";
 import ForEducatorsPage from "./pages/forEducatorsPage/forEducatorsPage";
 import AiToolsPage from "./pages/aiToolsPage/aiToolsPage";

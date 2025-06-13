@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Input from "../../components/Inputs/InputsComponent";
+import Input from "../../components/inputs/InputsComponent";
 import { useAuth } from "../../contexts/authContext";
 import ForgotPasswordModal from "../../components/ForgotPasswordModal/ForgotPasswordModal";
-import "./LoginPage.css";
+import "./loginPage.css";
 import "../../components/inputs/Inputs.styles.css";
 
 const LoginPage = () => {
