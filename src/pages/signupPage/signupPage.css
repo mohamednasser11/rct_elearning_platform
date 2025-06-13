@@ -11,11 +11,11 @@
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.048);
-  padding: 60px;
+  padding: 30px;
   width: 100%;
   height: auto;
   border: 3px solid #ebebeb;
-  max-width: 380px;
+  max-width: 510px;
 }
 
 .signup-container h1 {
@@ -116,32 +116,6 @@
 
 .login-link a:hover {
   text-decoration: underline;
-}
-
-.btn-custom {
-  width: 100%;
-  background-color: #14c78e;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 12px;
-  font-size: 18px;
-  font-weight: 630;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  margin-top: 20px;
-}
-
-.btn-custom:hover {
-  background-color: rgba(18, 177, 121, 0.842);
-  transform: translateY(-2px);
-
-  border: 1px solid transparent;
-}
-
-.btn-custom:focus {
-  outline: none;
-  box-shadow: none;
 }
 
 @media (max-width: 480px) {

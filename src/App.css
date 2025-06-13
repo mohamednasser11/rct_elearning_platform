@@ -1,9 +1,35 @@
 #root {
   max-width: 100%;
-  max-height: 150%;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 4000px;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* body {
+  zoom: 0.82; 
+} */
+
+.app-content {
+  flex: 1 0 auto;
 }
 
 @keyframes logo-spin {

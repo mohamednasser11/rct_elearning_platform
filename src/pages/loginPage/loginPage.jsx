@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Input } from "../SignupPage/SignupPage";
+import Input from "../../components/Inputs/InputsComponent";
 import { useAuth } from "../../contexts/authContext";
+import ForgotPasswordModal from "../../components/ForgotPasswordModal/ForgotPasswordModal";
 import "./LoginPage.css";
 import "../../components/inputs/Inputs.styles.css";
 
@@ -9,6 +10,7 @@ const LoginPage = () => {
   const [error, setError] = useState(undefined);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
 
@@ -46,15 +48,15 @@ const LoginPage = () => {
               <Input 
                 name="email" 
                 type="email" 
-                placeholder="examples@examples.com" 
+                placeholder="example@example.com" 
                 onChangeFunction={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="input-group">
               <label className="input-label">Password</label>
-              <Input 
+              <Input
                 name="password" 
-                type="password" 
+                type="password"
                 placeholder="* * * * * * * * *" 
                 onChangeFunction={(e) => setPassword(e.target.value)}
               />
@@ -65,10 +67,11 @@ const LoginPage = () => {
             Don't have an account? <Link to="/signup">Sign Up</Link>
           </div>
           <div className="forgot-password">
-            <Link to="/forgot-password">Forgot Password?</Link>
+            <a href="#" onClick={() => setShowForgotPasswordModal(true)}>Forgot Password?</a>
           </div>
         </form>
       </div>
+      {showForgotPasswordModal && <ForgotPasswordModal onClose={() => setShowForgotPasswordModal(false)} />}
     </div>
   );
 };

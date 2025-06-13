@@ -1,0 +1,402 @@
+.transition-default {
+  transition: all var(--transition-duration) ease;
+}
+
+/* Categories hamburger menu for left side */
+.categories-hamburger-menu {
+  display: flex;
+  cursor: pointer;
+  z-index: 997; /* Reduced z-index to be below the sidebar */
+  margin-right: 1rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #0fb480;
+  position: relative;
+  transition: all var(--transition-duration) ease;
+}
+
+.categories-hamburger-menu:hover {
+  transform: scale(1.05);
+  color: #0a9e6f;
+}
+
+/* Categories menu overlay */
+.categories-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+.categories-overlay.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Categories sidebar */
+.categories-sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0; /* Ensure it extends to the bottom of the viewport */
+  left: -500px;
+  width: 350px;
+  height: 100%; /* Use percentage instead of viewport units */
+  border-radius: 16px 0 0 0; /* Only round the top-left corner */
+  background-color: rgb(255, 255, 255);
+  z-index: 1010; /* Increased z-index to be above the hamburger icon */
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 20px; /* Add padding at the bottom for better spacing */
+}
+
+.categories-sidebar.open {
+  left: 0;
+}
+
+/* Categories sidebar header */
+.categories-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+  /* border-bottom: 1px solid #f0f0f0; */
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2;
+}
+
+
+/* Sidebar close button */
+.sidebar-close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #5555555b;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.sidebar-close-button:hover {
+  background-color: rgba(20, 199, 142, 0.1);
+  color: #0fb480;
+  transform: rotate(90deg);
+}
+
+/* Sidebar logo styles */
+.sidebar-logo {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.sidebar-logo:hover {
+  transform: scale(1.02);
+}
+
+.sidebar-book-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: all var(--transition-duration) ease;
+
+}
+
+.sidebar-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 3px;
+}
+
+.sidebar-logo-first {
+  color: #000000;
+  font-size: 1.4rem;
+  margin-bottom: -5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+}
+
+.sidebar-logo-second {
+  color: #29cb98;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar-logo-the {
+  color: #000000;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Category dropdown styles */
+.category-dropdown {
+  width: 100%;
+}
+
+.category-dropdown-header {
+  display: flex;
+  color: #333;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all var(--transition-duration) ease;
+  margin-top: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.category-dropdown-header:hover {
+  background-color: rgba(20, 199, 142, 0.1);
+  color: #14c78e;
+}
+
+.category-dropdown-header.expanded {
+  background-color: rgba(20, 199, 142, 0.1);
+  color: #14c78e;
+}
+
+.dropdown-icon {
+  font-size: 1.2rem;
+  transition: all var(--transition-duration) ease;
+
+}
+
+.dropdown-icon.expanded {
+  color: #14c78e;
+}
+
+.categories-list {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f91e;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.category-dropdown-header.expanded + .categories-list {
+  max-height: 1000px;
+  transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.category-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1.5rem 0.7rem 2.5rem;
+  color: #4d4d4def;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.category-item:hover {
+  background-color: rgba(20, 199, 142, 0.1);
+  color: #14c78e;
+}
+
+/* .category-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+} */
+
+.category-item:hover {
+  transform: translateX(3px);
+}
+
+.sidebar-navigation {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.sidebar-nav-item {
+  color: #000000;
+  display: flex;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  /* border-bottom: 1px solid #eee; */
+}
+
+.sidebar-nav-item:hover {
+  background-color: rgba(20, 199, 142, 0.1);
+  color: #14c78e;
+}
+
+/* Add bottom space to AI Tools item */
+.ai-tools-item {
+  margin-bottom: 2rem;
+  /* border-bottom: 1px solid #eee; */
+  padding-bottom: 1rem;
+}
+
+/* Auth buttons in sidebar */
+.auth-btn {
+  margin: 0.5rem auto;
+  font-size: 16px;
+  margin-top: 8px;
+  height: 37px;
+  /* min-height: 40px; */
+  width: 60%;
+  max-width: 10rem;
+  padding: 0.8rem 1rem !important;
+  text-align: center;
+  border-radius: 18px;
+  font-weight: 600;
+  transition: all var(--transition-duration) ease;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.151);
+}
+
+.login-btn {
+  margin-top: 2rem;
+  background-color: #f1f1f1;
+  color: #333333;
+  width: 9.7rem; 
+  /* height: 32px; */
+  border-color: #f1f1f1;
+
+}
+
+/* .login-btn:hover {
+  background-color: #f1f1f1;
+  color: #333333;
+  transform: translateY(-4px);
+} */
+
+.signup-btn {
+  background-color: #0fb480;
+  /* color: white !important; */
+  width: 10rem; 
+  /* height: 32px; */
+  border-color: #0fb480;
+}
+
+/* Responsive styles */
+@media screen and (min-width: 1200px) {
+  .categories-sidebar {
+    width: 380px;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .categories-sidebar {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .categories-hamburger-menu {
+    order: -1; /* Left-most item */
+    margin-right: 1rem;
+  }
+  
+  .categories-sidebar {
+    width: 320px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .categories-hamburger-menu {
+    font-size: 1.2rem;
+  }
+  
+  .categories-sidebar {
+    width: 300px;
+    bottom: 0; /* Ensure it extends to the bottom on mobile */
+  }
+  
+  .sidebar-logo-first {
+    font-size: 1.3rem;
+  }
+  
+  .sidebar-logo-second {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .categories-sidebar {
+    width: 100%;
+    left: -100%;
+    border-radius: 0; /* No radius on small screens */
+  }
+  
+  .categories-hamburger-menu {
+    font-size: 1rem;
+  }
+  
+  .sidebar-nav-item {
+    padding: 1rem 1.5rem;
+  }
+  
+  .auth-btn {
+    width: 90%;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar-logo-first {
+    font-size: 1.2rem;
+  }
+  
+  .sidebar-logo-second {
+    font-size: 1rem;
+  }
+  
+  .category-item {
+    padding: 0.8rem 1.2rem 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Touch device optimization */
+@media (hover: none) and (pointer: coarse) {
+  .sidebar-nav-item, 
+  .category-item {
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+  }
+  
+  .auth-btn {
+    min-height: 44px;
+  }
+}
+
+/* Safe area insets for notched phones */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .categories-sidebar {
+    padding-bottom: calc(20px + env(safe-area-inset-bottom));
+  }
+}

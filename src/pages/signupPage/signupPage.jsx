@@ -2,22 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 import { Link } from "react-router-dom";
+import Input from "../../components/Inputs/InputsComponent";
+import CustomButton from "../../components/customButton/CustomButton";
 import "./SignupPage.css";
-import "../../components/inputs/Inputs.styles.css";
 
-const CustomButton = ({ buttonText, type, handleOnClick }) => {
-  return (
-    <button className="btn-custom" type={type} onClick={handleOnClick}>
-      {buttonText}
-    </button>
-  );
-};
 
-const Input = ({type, placeholder, name, onChangeFunction}) => {
-  return (
-    <input className="input" name={name} type={type} placeholder={placeholder} onChange={onChangeFunction} />
-  );
-};
 
 const SignupPage = () => {
   const [error, setError] = useState(undefined);
@@ -82,7 +71,7 @@ const SignupPage = () => {
             
             <div className="input-group">
               <label className="input-label">Password</label>
-              <Input 
+              <Input
                 name="password" 
                 type="password" 
                 placeholder=" * * * * * * * * * " 

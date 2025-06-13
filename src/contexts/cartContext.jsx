@@ -16,15 +16,37 @@ export const CartProvider = ({ children }) => {
     if (storedCart) {
       const parsedCart = JSON.parse(storedCart);
       setCartItems(parsedCart);
-      setCartCount(parsedCart.length);
+      setCartCount(parsedCart.reduce((total, item) => total + item.quantity, 0));
     }
   }, []);
 
   // Update localStorage whenever cart changes
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
-    setCartCount(cartItems.length);
+    setCartCount(cartItems.reduce((total, item) => total + item.quantity, 0));
   }, [cartItems]);
+
+  // Listen for storage events from other tabs
+  useEffect(() => {
+    const handleStorageChange = (e) => {
+      if (e.key === 'cart' && e.newValue) {
+        const updatedCart = JSON.parse(e.newValue);
+        setCartItems(updatedCart);
+        setCartCount(updatedCart.reduce((total, item) => total + item.quantity, 0));
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
+  // Check if item is in cart
+  const isInCart = (itemId) => {
+    return cartItems.some((item) => item.id === itemId);
+  };
 
   // Add item to cart
   const addToCart = (item) => {
@@ -82,6 +104,7 @@ export const CartProvider = ({ children }) => {
     removeFromCart,
     updateQuantity,
     clearCart,
+    isInCart,
   };
 
   return (
