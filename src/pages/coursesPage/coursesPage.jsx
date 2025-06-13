@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
-import './CoursesPage.css';
+import './coursesPage.css';
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { useCart } from '../../contexts/cartContext';
-import { coursesData } from '../../data/coursesData';
+import { coursesData as defaultCourses } from '../../data/coursesData';
 import { FaStar, FaFilter, FaChevronLeft, FaChevronRight, FaBookReader, FaSearch, FaSortAmountDown, FaRegClock, FaUserGraduate } from 'react-icons/fa';
+import { useAuth } from '../../contexts/authContext';
+import Cookies from 'js-cookie';
+import axios from 'axios';
 
 // Custom hook for debouncing values
 const useDebounce = (value, delay) => {
@@ -37,6 +40,7 @@ const CoursesPage = () => {
   });
   const [activeTab, setActiveTab] = useState('categories');
   const [searchTerm, setSearchTerm] = useState('');
+  const [coursesData, setCoursesData] = useState(defaultCourses); // Initialize with static data
   // Debounce the search term to avoid filtering on every keystroke
   const debouncedSearchTerm = useDebounce(searchTerm, 300); // 300ms delay
   const [sortOption, setSortOption] = useState('popularity');
@@ -63,7 +67,7 @@ const CoursesPage = () => {
   const indexOfLastCourse = currentPage * coursesPerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
 
-  const fields = ['All', ...new Set(coursesData.map(course => course.field))];
+  const fields = ['All', ...new Set(coursesData.map(course => course.field || 'Other'))]; // Extract unique fields from coursesData
   const priceRanges = [
     { label: 'All', min: 0, max: Infinity },
     { label: 'Under $50', min: 0, max: 50 },
@@ -73,72 +77,130 @@ const CoursesPage = () => {
   ];
   const ratings = ['All', '4.8 & up', '4.5 & up', '4.0 & up'];
 
+
+  useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
+  
+    const fetchCourses = async () => {
+      try {
+        setIsLoading(true);
+        setError(null);
+        const token = Cookies.get('refresh_token') || '';
+        
+        const config = {
+          headers: { Authorization: `Bearer ${token}` },
+          signal: controller.signal
+        };
+  
+        const response = await axios.get('http://localhost:8000/api/v1/courses/?limit=20&offset=0', config);
+        
+        if (isMounted) {
+          const processedData = response.data.map(course => ({
+            ...course,
+            id: course.courseId,
+            price: parseFloat(course.price) // Ensure price is a number
+          }));
+          console.log("Fetched courses data:", processedData);
+          setCoursesData(processedData);
+        }
+      } catch (err) {
+        if (isMounted && !axios.isCancel(err)) {
+          console.error("Fetch error:", err);
+          setError(err.message);
+          setCoursesData(defaultCourses);
+        }
+      } finally {
+        if (isMounted) setIsLoading(false);
+      }
+    };
+  
+    fetchCourses();
+  
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
+  }, []);
+
+
   // Memoize filtered and sorted courses to prevent unnecessary recalculations
   const courses = useMemo(() => {
     try {
-      let filteredCourses = coursesData;
-
+      // Return empty array if data isn't loaded yet
+      if (isLoading || coursesData.length === 0) return [];
+      
+      let filteredCourses = [...coursesData]; // Create a new array to avoid mutating original
+  
+      // Field filter
       if (filters.field !== 'All') {
-        filteredCourses = filteredCourses.filter(course => course.field === filters.field);
+        filteredCourses = filteredCourses.filter(course => 
+          course.field?.toLowerCase() === filters.field.toLowerCase()
+        );
       }
-
+  
+      // Price filter
       if (filters.priceRange !== 'All') {
-        if (filters.priceRange === 'Free') {
-          filteredCourses = filteredCourses.filter(course => course.price === 0);
-        } else if (filters.priceRange === 'Paid') {
-          filteredCourses = filteredCourses.filter(course => course.price > 0);
-        } else {
+        filteredCourses = filteredCourses.filter(course => {
+          const price = Number(course.price); // Ensure price is a number
+          
+          if (filters.priceRange === 'Free') return price === 0;
+          if (filters.priceRange === 'Paid') return price > 0;
+          
           const selectedRange = priceRanges.find(range => range.label === filters.priceRange);
-          filteredCourses = filteredCourses.filter(
-            course => course.price >= selectedRange.min && course.price < selectedRange.max
-          );
-        }
+          return selectedRange 
+            ? price >= selectedRange.min && price < selectedRange.max
+            : true;
+        });
       }
-
+  
+      // Rating filter
       if (filters.rating !== 'All') {
         const minRating = parseFloat(filters.rating.split(' ')[0]);
-        filteredCourses = filteredCourses.filter(course => course.rating >= minRating);
-      }
-      
-      // Apply search term filter
-      if (debouncedSearchTerm.trim() !== '') {
-        const search = debouncedSearchTerm.toLowerCase();
         filteredCourses = filteredCourses.filter(course => 
-          course.title.toLowerCase().includes(search) || 
-          course.description.toLowerCase().includes(search) ||
-          course.field.toLowerCase().includes(search)
+          Number(course.rating) >= minRating
         );
       }
       
-      // Apply sorting
+      // Search filter
+      if (debouncedSearchTerm.trim() !== '') {
+        const search = debouncedSearchTerm.toLowerCase();
+        filteredCourses = filteredCourses.filter(course => 
+          course.title?.toLowerCase().includes(search) || 
+          course.description?.toLowerCase().includes(search) ||
+          course.field?.toLowerCase().includes(search)
+        );
+      }
+      
+      // Sorting
       switch(sortOption) {
         case 'popularity':
-          filteredCourses = [...filteredCourses].sort((a, b) => (b.popular ? 1 : 0) - (a.popular ? 1 : 0));
+          filteredCourses.sort((a, b) => (b.popular ? 1 : 0) - (a.popular ? 1 : 0));
           break;
         case 'rating':
-          filteredCourses = [...filteredCourses].sort((a, b) => b.rating - a.rating);
+          filteredCourses.sort((a, b) => Number(b.rating) - Number(a.rating));
           break;
         case 'alphabetical':
-          filteredCourses = [...filteredCourses].sort((a, b) => a.title.localeCompare(b.title));
+          filteredCourses.sort((a, b) => a.title?.localeCompare(b.title));
           break;
         case 'price-low':
-          filteredCourses = [...filteredCourses].sort((a, b) => a.price - b.price);
+          filteredCourses.sort((a, b) => Number(a.price) - Number(b.price));
           break;
         case 'price-high':
-          filteredCourses = [...filteredCourses].sort((a, b) => b.price - a.price);
+          filteredCourses.sort((a, b) => Number(b.price) - Number(a.price));
           break;
         default:
           break;
       }
-
+  
       return filteredCourses;
     } catch (err) {
-      // Handle any errors during filtering
       console.error("Error filtering courses:", err);
       setError("An error occurred while filtering courses. Please try again.");
-      return [];
+      return coursesData; // Return unfiltered data as fallback
     }
-  }, [filters, debouncedSearchTerm, sortOption]);
+  }, [coursesData, filters, debouncedSearchTerm, sortOption, isLoading]); // Added isLoading
+
 
   // Calculate total pages based on filtered courses
   const totalPages = Math.ceil(courses.length / coursesPerPage);
@@ -187,59 +249,53 @@ const CoursesPage = () => {
       }));
     }
   }, [searchParams]);
-  
-  // Intersection Observer for lazy loading cards
   useEffect(() => {
-    // Cleanup function to stop observing and disconnect the observer
-    const cleanupObserver = () => {
-      if (observerRef.current) {
-        // Unobserve all elements that are being observed
-        Object.values(courseCardRefs.current).forEach(cardRef => {
-          if (cardRef && observerRef.current) {
-            observerRef.current.unobserve(cardRef);
-          }
-        });
-        // Disconnect the observer completely
-        observerRef.current.disconnect();
-        observerRef.current = null;
-      }
-    };
+    console.log('Current courses state:', {
+      fetchedData: coursesData,
+      filtered: courses,
+      currentPageCourses: currentCourses,
+      visibleCards
+    });
+  }, [coursesData, courses, currentCourses, visibleCards]);
+  // Intersection Observer for lazy loading cards
+useEffect(() => {
+  if (isLoading || currentCourses.length === 0) return;
 
-    if (!isLoading) {
-      // Cleanup any existing observer before creating a new one
-      cleanupObserver();
-      
-      // Create new IntersectionObserver
-      observerRef.current = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const courseId = entry.target.dataset.id;
-              if (!visibleCards.includes(courseId)) {
-                setVisibleCards(prev => [...prev, courseId]);
-              }
-              // Stop observing once visible
-              observerRef.current.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
+  const cleanupObserver = () => {
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+      observerRef.current = null;
+    }
+  };
 
-      // Observe each course card using refs
-      Object.values(courseCardRefs.current).forEach(cardRef => {
-        if (cardRef && observerRef.current) {
-          observerRef.current.observe(cardRef);
+  // Small delay to ensure DOM is ready
+  const timer = setTimeout(() => {
+    cleanupObserver();
+    
+    observerRef.current = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const courseId = entry.target.dataset.id;
+          setVisibleCards(prev => [...new Set([...prev, courseId])]);
+          observerRef.current?.unobserve(entry.target);
         }
       });
+    }, { threshold: 0.1 });
 
-      // Return cleanup function
-      return cleanupObserver;
-    }
-    
-    // Clean up observer if loading state changes
-    return cleanupObserver;
-  }, [isLoading, currentCourses, visibleCards]);
+    // Observe only visible cards that aren't already visible
+    currentCourses.forEach(course => {
+      const ref = courseCardRefs.current[course.id];
+      if (ref && !visibleCards.includes(course.id)) {
+        observerRef.current.observe(ref);
+      }
+    });
+  }, 100);
+
+  return () => {
+    cleanupObserver();
+    clearTimeout(timer);
+  };
+}, [currentCourses, isLoading]);
 
   // Function to create or get a ref for a course card
   const getCardRef = useCallback(id => {
@@ -479,69 +535,72 @@ const CoursesPage = () => {
           </div>
         ) : (
           // Course cards with animation
-          currentCourses.map(course => (
-            <div 
-              key={course.id} 
-              ref={getCardRef(course.id)}
-              className={`course-card ${visibleCards.includes(course.id.toString()) ? 'visible' : ''}`}
-              data-id={course.id}
-              onClick={(e) => navigateToCourse(course.id, e)}
+          currentCourses.map(course => {
+            const isVisible = visibleCards.includes(course.id.toString());
+            return (
+              <div 
+                key={course.id}
+                ref={getCardRef(course.id)}
+                className={`course-card ${isVisible ? 'visible' : ''}`}
+                data-id={course.id}
+                onClick={(e) => navigateToCourse(course.id, e)}
             >
-              {course.popular && (
-                <div className="popular-badge">Popular</div>
-              )}
-              <div className="price-badge">${course.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
-              <div className="image-container">
-                <img 
-                  src={course.image} 
-                  alt={course.title} 
-                  className="course-image" 
-                  loading="lazy"
-                />
-                <div className="hover-overlay">
-                  <div className="overlay-buttons">
-                    <button 
-                      className="quick-view-btn"
-                      onClick={(e) => navigateToCourse(course.id, e)}
-                    >
-                      View Course
-                    </button>
-                    <button 
-                      className="add-cart-btn"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        addToCart(course);
-                      }}
-                    >
-                      Add to Cart
-                    </button>
+                {course.number_of_students > 10000 && (
+                  <div className="popular-badge">Popular</div>
+                )}
+                <div className="price-badge">${course.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                <div className="image-container">
+                  <img 
+                    src={course.image_url} 
+                    alt={course.title} 
+                    className="course-image" 
+                    loading="lazy"
+                  />
+                  <div className="hover-overlay">
+                    <div className="overlay-buttons">
+                      <button 
+                        className="quick-view-btn"
+                        onClick={(e) => navigateToCourse(course.id, e)}
+                      >
+                        View Course
+                      </button>
+                      <button 
+                        className="add-cart-btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          addToCart(course);
+                        }}
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className="course-content">
+                  <div className="course-meta">
+                    <span className="course-field">{course.field}</span>
+                  </div>
+                  <h3>{course.title}</h3>
+                  <p>{course.description}</p>
+                  
+                  <div className="course-footer">
+                    <div className="course-rating">
+                      <FaStar className="star-icon" />
+                      <span>{course.rating}</span>
+                    </div>
+                    <div className="course-duration">
+                      <FaRegClock className="clock-icon" />
+                      <span>{course.duration || 50}</span>
+                    </div>
+                    <div className="students-count">
+                      <FaUserGraduate className="student-icon" />
+                      <span>{(course.number_of_students || 2000).toLocaleString()}</span>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="course-content">
-                <div className="course-meta">
-                  <span className="course-field">{course.field}</span>
-                </div>
-                <h3>{course.title}</h3>
-                <p>{course.description}</p>
-                
-                <div className="course-footer">
-                  <div className="course-rating">
-                    <FaStar className="star-icon" />
-                    <span>{course.rating}</span>
-                  </div>
-                  <div className="course-duration">
-                    <FaRegClock className="clock-icon" />
-                    <span>{course.duration}</span>
-                  </div>
-                  <div className="students-count">
-                    <FaUserGraduate className="student-icon" />
-                    <span>{course.students.toLocaleString()}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))
+            )
+          })
         )}
       </div>
 

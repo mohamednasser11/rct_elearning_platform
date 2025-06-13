@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const DepartmentContext = createContext();
 
@@ -13,7 +14,14 @@ export const DepartmentProvider = ({ children }) => {
   const fetchDepartments = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/departments/`);
+      const token =  Cookies.get('refresh_token') || '';
+      let config = {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        }
+      }
+
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/v1/departments/`, config);
       setDepartments(response.data);
       setError(null);
     } catch (err) {
