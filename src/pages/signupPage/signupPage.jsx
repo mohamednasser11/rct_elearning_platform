@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 import { Link } from "react-router-dom";
-import Input from "../../components/Inputs/InputsComponent";
+import Input from "../../components/inputs/InputsComponent";
 import CustomButton from "../../components/customButton/CustomButton";
-import "./SignupPage.css";
+import "./signupPage.css";
 
 
 
