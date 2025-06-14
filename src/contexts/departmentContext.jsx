@@ -8,6 +8,8 @@ export const useDepartment = () => useContext(DepartmentContext);
 
 export const DepartmentProvider = ({ children }) => {
   const [departments, setDepartments] = useState([]);
+  const [currentCourseId, setCurrentCourseId] = useState();
+  const [courses, setCourses] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
@@ -40,7 +42,11 @@ export const DepartmentProvider = ({ children }) => {
     departments,
     loading,
     error,
-    fetchDepartments
+    fetchDepartments,
+    currentCourseId,
+    courses,
+    setCurrentCourseId,
+    setCourses
   };
 
   return (

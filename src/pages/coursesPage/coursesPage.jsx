@@ -7,6 +7,7 @@ import { FaStar, FaFilter, FaChevronLeft, FaChevronRight, FaBookReader, FaSearch
 import { useAuth } from '../../contexts/authContext';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import { useDepartment } from '../../contexts/departmentContext';
 
 // Custom hook for debouncing values
 const useDebounce = (value, delay) => {
@@ -32,6 +33,7 @@ const CoursesPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams] = useSearchParams();
+  const {courses: coursesArray, setCourses, setCurrentCourseId, currentCourseId} = useDepartment();
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({
     field: searchParams.get('field') || 'All',
@@ -40,20 +42,26 @@ const CoursesPage = () => {
   });
   const [activeTab, setActiveTab] = useState('categories');
   const [searchTerm, setSearchTerm] = useState('');
-  const [coursesData, setCoursesData] = useState(defaultCourses); // Initialize with static data
-  // Debounce the search term to avoid filtering on every keystroke
-  const debouncedSearchTerm = useDebounce(searchTerm, 300); // 300ms delay
+  const [coursesData, setCoursesData] = useState([]); // Initialize with static data
   const [sortOption, setSortOption] = useState('popularity');
   const [isLoading, setIsLoading] = useState(true);
   const [visibleCards, setVisibleCards] = useState([]);
+  const [pagination, setPagination] = useState({
+    "limit": 15,
+    "offset": 0
+  });
+  const [error, setError] = useState(null);
+  const [totalNumberOfCourses, setTotalNumberOfCourses] = useState(0);
+  const [fields, setFields] = useState(['All']);
+  
   const coursesRef = useRef(null);
   // Object to store refs for course cards
   const courseCardRefs = useRef({});
   // Store the IntersectionObserver instance in a ref
   const observerRef = useRef(null);
   // Add error state for handling errors
-  const [error, setError] = useState(null);
   
+  const debouncedSearchTerm = useDebounce(searchTerm, 300); // 300ms delay
   // Responsive courses per page based on screen width
   const getCoursesPerPage = () => {
     const width = window.innerWidth;
@@ -67,7 +75,7 @@ const CoursesPage = () => {
   const indexOfLastCourse = currentPage * coursesPerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
 
-  const fields = ['All', ...new Set(coursesData.map(course => course.field || 'Other'))]; // Extract unique fields from coursesData
+  //const fields = ['All', ...new Set(coursesData.map(course => course.field || 'Other'))]; // Extract unique fields from coursesData
   const priceRanges = [
     { label: 'All', min: 0, max: Infinity },
     { label: 'Under $50', min: 0, max: 50 },
@@ -77,6 +85,44 @@ const CoursesPage = () => {
   ];
   const ratings = ['All', '4.8 & up', '4.5 & up', '4.0 & up'];
 
+  useEffect(()=> {
+    try {
+      const fetchFields = async() => {
+        const token = Cookies.get('refresh_token') || '';
+        const config = {
+          headers: { Authorization: `Bearer ${token}` },
+        };
+  
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/v1/courses/?fields=true`, config);
+
+        if(response?.data.fields) {
+          setFields(['All', ...response.data.fields]);
+        } else {
+          setFields(['All',
+            "Writing",
+            "Data Science",
+            "Photography",
+            "IT Security",
+            "Business",
+            "Design",
+            "Finance",
+            "Music",
+            "Cloud Computing",
+            "Technology",
+            "Programming",
+            "Health",
+            "DevOps",
+            "IT",
+            "Marketing"
+        ])
+        } 
+      }
+
+      fetchFields();
+    } catch (error) {
+      setError(error.message)
+    }
+  }, [])
 
   useEffect(() => {
     let isMounted = true;
@@ -93,22 +139,24 @@ const CoursesPage = () => {
           signal: controller.signal
         };
   
-        const response = await axios.get('http://localhost:8000/api/v1/courses/?limit=20&offset=0', config);
-        
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/v1/courses/?limit=${pagination.limit}&offset=${pagination.offset}`, config);
         if (isMounted) {
-          const processedData = response.data.map(course => ({
+          const processedData = response.data.data.map(course => ({
             ...course,
             id: course.courseId,
             price: parseFloat(course.price) // Ensure price is a number
           }));
-          console.log("Fetched courses data:", processedData);
-          setCoursesData(processedData);
+          let finalData = [...coursesData, ...processedData]; 
+          setCoursesData(finalData);
+          setCourses(finalData);
+          setTotalNumberOfCourses(response.data.count || processedData.length);
         }
       } catch (err) {
         if (isMounted && !axios.isCancel(err)) {
           console.error("Fetch error:", err);
           setError(err.message);
           setCoursesData(defaultCourses);
+          setCourses(defaultCourses)
         }
       } finally {
         if (isMounted) setIsLoading(false);
@@ -121,7 +169,7 @@ const CoursesPage = () => {
       isMounted = false;
       controller.abort();
     };
-  }, []);
+  }, [pagination]); // Fetch courses when pagination changes 
 
 
   // Memoize filtered and sorted courses to prevent unnecessary recalculations
@@ -203,7 +251,7 @@ const CoursesPage = () => {
 
 
   // Calculate total pages based on filtered courses
-  const totalPages = Math.ceil(courses.length / coursesPerPage);
+  const totalPages = Math.ceil(totalNumberOfCourses / coursesPerPage);
 
   const currentCourses = useMemo(() => {
     return courses.slice(indexOfFirstCourse, indexOfLastCourse);
@@ -313,8 +361,22 @@ useEffect(() => {
     }));
   };
 
-  const handlePageChange = (pageNumber) => {
+  const changePagination = (pageNumber) => {
+    if (pageNumber < 1 || pageNumber > totalPages) return;
+    const newOffset = (pageNumber - 1) * coursesPerPage;
+    const newLimit = coursesPerPage;
+
+  
+    setPagination({
+      limit: newLimit,
+      offset: newOffset
+    });
+
     setCurrentPage(pageNumber);
+  };
+  
+  const handlePageChange = (pageNumber) => {
+    changePagination(pageNumber);
     // Scroll to courses section instead of top of page
     if (coursesRef.current) {
       coursesRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -350,6 +412,7 @@ useEffect(() => {
   // Navigate to course detail page
   const navigateToCourse = (courseId, event) => {
     // Prevent the click event from bubbling up to parent elements
+    setCurrentCourseId(courseId);
     event.stopPropagation();
     navigate(`/courses/${courseId}`);
   };
@@ -606,7 +669,15 @@ useEffect(() => {
 
       {courses.length > 0 && (
         <div className="pagination">
-        {renderPagination()}
+        {/* {renderPagination()} */}
+        <button 
+          className="pagination-btn"
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          aria-label="Prev page"
+        >
+          Prev
+        </button>
         <button 
           className="pagination-btn"
           onClick={() => handlePageChange(currentPage + 1)}
