@@ -1,42 +1,130 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './ChatbotHead.css';
-import { FiSend, FiX } from 'react-icons/fi';
+import React, { useState, useRef, useEffect } from "react";
+import "./ChatbotHead.css";
+import { FiSend } from "react-icons/fi";
 import { RiRobot2Fill } from "react-icons/ri";
 import { BsRobot } from "react-icons/bs";
+import Cookies from "js-cookie";
+import ReactMarkdown from "react-markdown";
 
-const ChatbotHead = ({ courseTitle }) => {
+const ChatbotHead = ({ courseId, courseTitle }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const chatWidgetRef = useRef(null);
   const sendButtonRef = useRef(null);
   const messagesEndRef = useRef(null);
 
-  const getCurrentTime = () => {
-    const now = new Date();
-    let hours = now.getHours();
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    return `${hours}:${minutes} ${ampm}`;
+  const wsRef = useRef(null);
+  const [wsIsConnected, setWsIsConnected] = useState(false);
+  const [isWaiting, setIsWaiting] = useState(false);
+  const [wsMessageType, setWsMessageType] = useState(null);
+  const [messages, setMessages] = useState([]);
+
+  const wsConnect = () => {
+    const token = Cookies.get("refresh_token");
+
+    const chatSessions = JSON.parse(localStorage.getItem("chatSessions")) || {};
+    const session = chatSessions[courseId] || null;
+
+    const wsUrl = new URL("ws://localhost:8000/ws/chat/");
+    wsUrl.searchParams.set("token", token);
+    wsUrl.searchParams.set("course_id", courseId);
+    if (session) wsUrl.searchParams.set("session_id", session);
+
+    console.log("connecting", wsUrl.toString());
+    wsRef.current = new WebSocket(wsUrl.toString());
+
+    wsRef.current.onopen = () => {
+      setWsIsConnected(true);
+    };
+
+    wsRef.current.onmessage = function (e) {
+      setIsWaiting(false);
+      const message = JSON.parse(e.data);
+      console.log(message);
+      try {
+        setWsMessageType(message.type);
+        switch (message.type) {
+          case "session.new": {
+            const chatSessions =
+              JSON.parse(localStorage.getItem("chatSessions")) || {};
+
+            chatSessions[courseId] = message.data.session_id;
+
+            localStorage.setItem("chatSessions", JSON.stringify(chatSessions));
+            break;
+          }
+
+          case "session.resume": {
+            setMessages(
+              message.data.history.map((e) => ({
+                ...e,
+                timestamp: new Date(e.timestamp),
+              })),
+            );
+            break;
+          }
+
+          case "stream.start": {
+            setMessages((prev) => [
+              ...prev,
+              {
+                role: "assistant",
+                content: "",
+                timestamp: new Date(),
+              },
+            ]);
+            break;
+          }
+
+          case "stream.chunk":
+            setMessages((prev) => {
+              const newMessages = [...prev];
+              const lastMessage = newMessages[newMessages.length - 1];
+              if (lastMessage?.role === "assistant") {
+                return [
+                  ...newMessages.slice(0, -1),
+                  {
+                    ...lastMessage,
+                    content:
+                      lastMessage.content +
+                      message.data.message.replace(/\n/g, "  \n"),
+                  },
+                ];
+              }
+              return newMessages;
+            });
+            break;
+
+          case "stream.end":
+            break;
+
+          default:
+            console.error("unhandled message", message);
+            break;
+        }
+      } catch (error) {
+        console.error("Error processing message:", error);
+      }
+    };
+
+    wsRef.current.onclose = (e) => {
+      // TODO: handle close codes
+      setIsWaiting(false);
+      setWsIsConnected(false);
+      if (!e.wasClean) {
+        setTimeout(wsConnect, 3000);
+      }
+    };
+
+    wsRef.current.onerror = function (error) {
+      console.error("WebSocket error:", error);
+    };
   };
 
-  const createInitialMessage = () => ({
-    sender: 'Course Assistant',
-    timestamp: getCurrentTime(),
-    text: "Hi! I'm your AI course assistant"
-  });
-
-  // Load messages from localStorage on component mount
-  const [messages, setMessages] = useState(() => {
-    const savedMessages = localStorage.getItem('chatMessages');
-    return savedMessages ? JSON.parse(savedMessages) : [createInitialMessage()];
-  });
-
-  // Save messages to localStorage whenever they change
-  useEffect(() => {
-    localStorage.setItem('chatMessages', JSON.stringify(messages));
-  }, [messages]);
+  const wsDisconnect = () => {
+    wsRef.current?.close();
+    wsRef.current = null;
+  };
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
@@ -46,31 +134,40 @@ const ChatbotHead = ({ courseTitle }) => {
     setInputValue(e.target.value);
   };
 
+  const canSend =
+    wsIsConnected &&
+    !isWaiting &&
+    inputValue.trim() &&
+    wsMessageType !== "stream.start" &&
+    wsMessageType !== "stream.chunk";
+
   const handleSendMessage = () => {
-    if (!inputValue.trim()) return;
+    if (!canSend) return;
 
-    // Add user message
-    const userMessage = {
-      sender: 'You',
-      timestamp: getCurrentTime(),
-      text: inputValue
-    };
+    wsRef.current?.send(
+      JSON.stringify({ type: "send", data: { message: inputValue } }),
+    );
 
-    // Add AI response
-    const aiResponse = {
-      sender: 'Course Assistant',
-      timestamp: getCurrentTime(),
-      text: "I'm your AI course assistant"
-    };
+    setMessages((prev) => [
+      ...prev,
+      {
+        role: "user",
+        content: inputValue,
+        timestamp: new Date(),
+      },
+    ]);
 
-    setMessages(prev => [...prev, userMessage, aiResponse]);
-    setInputValue('');
+    setInputValue("");
+    setIsWaiting(true);
   };
 
   const handleEndChat = () => {
-    // Clear messages from localStorage and reset to initial message
-    localStorage.removeItem('chatMessages');
-    setMessages([createInitialMessage()]);
+    const chatSessions = JSON.parse(localStorage.getItem("chatSessions")) || {};
+    delete chatSessions[courseId];
+    localStorage.setItem("chatSessions", JSON.stringify(chatSessions));
+    setMessages([]);
+    wsDisconnect();
+    wsConnect();
   };
 
   const scrollToBottom = () => {
@@ -82,16 +179,22 @@ const ChatbotHead = ({ courseTitle }) => {
   }, [messages]);
 
   useEffect(() => {
+    if (isOpen && wsRef.current == null) wsConnect();
+
     const handleClickOutside = (event) => {
-      if (isOpen && chatWidgetRef.current && !chatWidgetRef.current.contains(event.target) && 
-          !event.target.closest('.chatbot-head')) {
+      if (
+        isOpen &&
+        chatWidgetRef.current &&
+        !chatWidgetRef.current.contains(event.target) &&
+        !event.target.closest(".chatbot-head")
+      ) {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
 
@@ -114,56 +217,61 @@ const ChatbotHead = ({ courseTitle }) => {
               </div>
               <div className="header-text-block">
                 <h3 className="header-title">Course Advisor AI</h3>
-                <span className="header-status">Online · Ready to help</span>
+                <span className="header-status">
+                  {wsIsConnected ? "Online · Ready to help" : "Offline"}
+                </span>
               </div>
             </div>
-            <button
-              className="end-chat-btn"
-              onClick={handleEndChat}
-            >
+            <button className="end-chat-btn" onClick={handleEndChat}>
               End Chat
             </button>
           </div>
           <div className="chat-widget-messages">
-            {messages.length === 0 ? (
-              <div style={{ color: '#888', textAlign: 'center', marginTop: '40%' }}>
-                Chat session ended. Start a new conversation!
-              </div>
-            ) : (
-              <>
-                {messages.map((msg, idx) => (
-                  <div className="message-bubble-wrapper" key={idx} data-sender={msg.sender}>
-                    <div className="message-bubble">
-                      <div className="message-header">
-                        <span className="sender-name">{msg.sender}</span>
-                        <span className="message-timestamp">{msg.timestamp}</span>
-                      </div>
-                      <div className="message-text">{msg.text}</div>
-                    </div>
+            {messages.map((msg, idx) => (
+              <div
+                className="message-bubble-wrapper"
+                key={idx}
+                data-sender={msg.role}
+              >
+                <div className="message-bubble">
+                  <div className="message-header">
+                    <span className="sender-name">
+                      {msg.role == "user" ? "You" : "Course Assistant"}
+                    </span>
+                    <span className="message-timestamp">
+                      {msg.timestamp.toLocaleTimeString("en-US", {
+                        hour: "numeric",
+                        minute: "numeric",
+                        hour12: true,
+                      })}
+                    </span>
                   </div>
-                ))}
-                <div ref={messagesEndRef} />
-              </>
-            )}
+                  <div className="message-text">
+                    <ReactMarkdown>{msg.content}</ReactMarkdown>
+                  </div>
+                </div>
+              </div>
+            ))}
+            <div ref={messagesEndRef} />
           </div>
           <div className="chat-widget-input">
-            <input 
-              type="text" 
-              placeholder="Ask about this course..." 
+            <input
+              type="text"
+              placeholder="Ask about this course..."
               value={inputValue}
               onChange={handleInputChange}
               onKeyDown={(e) => {
-                if (e.key === 'Enter' && inputValue.trim()) {
+                if (e.key === "Enter" && inputValue.trim()) {
                   handleSendMessage();
                 }
               }}
             />
-            <button 
-              className="send-button" 
-              disabled={!inputValue.trim()}
-              style={{ 
-                opacity: !inputValue.trim() ? 0.5 : 1,
-                cursor: !inputValue.trim() ? 'not-allowed' : 'pointer'
+            <button
+              className="send-button"
+              disabled={!canSend}
+              style={{
+                opacity: !canSend ? 0.5 : 1,
+                cursor: !canSend ? "not-allowed" : "pointer",
               }}
               ref={sendButtonRef}
               onClick={() => {
@@ -174,13 +282,11 @@ const ChatbotHead = ({ courseTitle }) => {
               <FiSend />
             </button>
           </div>
-          <div className="chat-widget-footer">
-            Course Name: {courseTitle}
-          </div>
+          <div className="chat-widget-footer">Course Name: {courseTitle}</div>
         </div>
       )}
     </>
   );
 };
 
-export default ChatbotHead; 
+export default ChatbotHead;

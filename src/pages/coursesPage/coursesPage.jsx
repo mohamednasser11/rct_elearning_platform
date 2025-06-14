@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
-import './CoursesPage.css';
+import './coursesPage.css';
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { useCart } from '../../contexts/cartContext';
 import { coursesData } from '../../data/coursesData';
