@@ -9,6 +9,7 @@ import CourseVideo from './CourseVideo';
 import CourseOutline from './CourseOutline';
 import { FiCheckCircle } from "react-icons/fi";
 import ChatbotHead from './ChatbotHead';
+import { useDepartment } from '../../../contexts/departmentContext.jsx';
 
 // Sample curriculum data as a fallback
 const sampleCurriculum = [
@@ -301,6 +302,8 @@ const CourseDetail = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [currentLesson, setCurrentLesson] = useState(null);
   const [addedToCart, setAddedToCart] = useState(false);
+
+  const {courses, currentCourseId} = useDepartment()
   
   // Calculate total lessons from curriculum
   const curriculum = useMemo(() => {
@@ -318,7 +321,7 @@ const CourseDetail = () => {
   useEffect(() => {
     // Simulate API call to fetch course details
     setTimeout(() => {
-      const fetchedCourse = coursesData.find(c => c.id === parseInt(courseId));
+      const fetchedCourse = (courses || []).find(c => c.id === parseInt(courseId));
       
       if (fetchedCourse) {
         // Add original price for discount demonstration if not already present
