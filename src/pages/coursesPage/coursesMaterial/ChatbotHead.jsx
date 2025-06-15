@@ -15,7 +15,7 @@ const ChatbotHead = ({ courseId, courseTitle }) => {
 
   const wsRef = useRef(null);
   const [wsIsConnected, setWsIsConnected] = useState(false);
-  const [isWaiting, setIsWaiting] = useState(false);
+  const [wsIsWaiting, setWsIsWaiting] = useState(false);
   const [wsMessageType, setWsMessageType] = useState(null);
   const [messages, setMessages] = useState([]);
 
@@ -38,7 +38,7 @@ const ChatbotHead = ({ courseId, courseTitle }) => {
     };
 
     wsRef.current.onmessage = function (e) {
-      setIsWaiting(false);
+      setWsIsWaiting(false);
       const message = JSON.parse(e.data);
       console.log(message);
       try {
@@ -159,7 +159,7 @@ const ChatbotHead = ({ courseId, courseTitle }) => {
 
   const canSend =
     wsIsConnected &&
-    !isWaiting &&
+    !wsIsWaiting &&
     inputValue.trim() &&
     wsMessageType !== "stream.start" &&
     wsMessageType !== "stream.chunk";
@@ -181,16 +181,7 @@ const ChatbotHead = ({ courseId, courseTitle }) => {
     ]);
 
     setInputValue("");
-    setIsWaiting(true);
-  };
-
-  const handleEndChat = () => {
-    const chatSessions = JSON.parse(localStorage.getItem("chatSessions")) || {};
-    delete chatSessions[courseId];
-    localStorage.setItem("chatSessions", JSON.stringify(chatSessions));
-    setMessages([]);
-    wsDisconnect();
-    wsConnect();
+    setWsIsWaiting(true);
   };
 
   const scrollToBottom = () => {
