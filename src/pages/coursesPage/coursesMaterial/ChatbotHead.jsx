@@ -108,12 +108,35 @@ const ChatbotHead = ({ courseId, courseTitle }) => {
     };
 
     wsRef.current.onclose = (e) => {
-      // TODO: handle close codes
-      setIsWaiting(false);
+      setWsIsWaiting(false);
       setWsIsConnected(false);
-      if (!e.wasClean) {
-        setTimeout(wsConnect, 3000);
+      console.log(e.code);
+
+      switch (e.code) {
+        case 4000: // missing token
+        case 4001: // invalid token
+        case 4011: // course does not exist
+        case 4013: // user not enrolled to the course
+          break;
+
+        case 4002: // user is unauthorized
+        case 4012: /* session does not exist */ {
+          const chatSessions =
+            JSON.parse(localStorage.getItem("chatSessions")) || {};
+          delete chatSessions[courseId];
+          localStorage.setItem("chatSessions", JSON.stringify(chatSessions));
+          setTimeout(wsConnect, 3000);
+          break;
+        }
+
+        default:
+          if (!e.wasClean) {
+            setTimeout(wsConnect, 3000);
+          }
+          break;
       }
+
+      wsRef.current = null;
     };
 
     wsRef.current.onerror = function (error) {
