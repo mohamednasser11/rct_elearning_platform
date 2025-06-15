@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
 
         const currentTime = Date.now() / 1000;
         if (decoded.exp < currentTime) {
-          console.error("Token has expired");
+          Cookies.remove("refresh_token");
           return;
         }
 
