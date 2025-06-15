@@ -128,10 +128,7 @@ const ChatbotHead = ({ courseId, courseTitle }) => {
 
         case 4002: // user is unauthorized
         case 4012: /* session does not exist */ {
-          const chatSessions =
-            JSON.parse(localStorage.getItem("chatSessions")) || {};
-          delete chatSessions[courseId];
-          localStorage.setItem("chatSessions", JSON.stringify(chatSessions));
+          endSession();
           setTimeout(wsConnect, 3000);
           break;
         }
@@ -151,9 +148,12 @@ const ChatbotHead = ({ courseId, courseTitle }) => {
     };
   };
 
-  const wsDisconnect = () => {
-    wsRef.current?.close();
-    wsRef.current = null;
+  const endSession = () => {
+    const chatSessions = JSON.parse(localStorage.getItem("chatSessions")) || {};
+    delete chatSessions[courseId];
+    localStorage.setItem("chatSessions", JSON.stringify(chatSessions));
+    wsRef.current?.send(JSON.stringify({ type: "end", data: {} }));
+    setMessages([]);
   };
 
   const toggleChat = () => {
@@ -249,7 +249,7 @@ const ChatbotHead = ({ courseId, courseTitle }) => {
                 </span>
               </div>
             </div>
-            <button className="end-chat-btn" onClick={handleEndChat}>
+            <button className="end-chat-btn" onClick={endSession}>
               End Chat
             </button>
           </div>
