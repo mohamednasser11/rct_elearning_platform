@@ -26,12 +26,11 @@ const ChatbotHead = ({ courseId, courseTitle }) => {
     const chatSessions = JSON.parse(localStorage.getItem("chatSessions")) || {};
     const session = chatSessions[courseId] || null;
 
-    const wsUrl = new URL("ws://localhost:8000/ws/chat/");
+    const wsUrl = new URL(`${import.meta.env.VITE_WS_BASE_URL}/ws/chat/`);
     wsUrl.searchParams.set("token", token);
     wsUrl.searchParams.set("course_id", courseId);
     if (session) wsUrl.searchParams.set("session_id", session);
 
-    console.log("connecting", wsUrl.toString());
     wsRef.current = new WebSocket(wsUrl.toString());
 
     wsRef.current.onopen = () => {
@@ -106,18 +105,17 @@ const ChatbotHead = ({ courseId, courseTitle }) => {
             break;
 
           default:
-            console.error("unhandled message", message);
+            console.error("unhandled message:", message);
             break;
         }
       } catch (error) {
-        console.error("Error processing message:", error);
+        console.error("error processing message:", error);
       }
     };
 
     wsRef.current.onclose = (e) => {
       setWsIsWaiting(false);
       setWsIsConnected(false);
-      console.log(e.code);
 
       switch (e.code) {
         case 4000: // missing token
