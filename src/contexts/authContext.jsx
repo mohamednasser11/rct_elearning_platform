@@ -1,5 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import authService from "../services/authService";
+import { jwtDecode } from "jwt-decode";
+import Cookies from "js-cookie";
 
 // Create the AuthContext
 const AuthContext = createContext();
@@ -9,22 +11,49 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
 
-  // Check authentication status on mount
-  useEffect(() => {
-    const checkAuth = async () => {
-      const authenticated = authService.isAuthenticated();
-      setIsAuthenticated(authenticated);
-    };
+  const setAuthData = () => {
+    const accessToken = Cookies.get("refresh_token");
 
-    checkAuth();
+    if (accessToken) {
+      try {
+        const decoded = jwtDecode(accessToken);
+
+        const currentTime = Date.now() / 1000;
+        if (decoded.exp < currentTime) {
+          Cookies.remove("refresh_token");
+          return;
+        }
+
+        setUser({
+          id: decoded.user_id,
+          username: decoded.username,
+          email: decoded.email,
+          firstName: decoded.first_name,
+          lastName: decoded.last_name,
+          isStudent: decoded.is_student,
+        });
+
+        setIsAuthenticated(true);
+      } catch (error) {
+        console.error("Failed to decode JWT:", error);
+      }
+    }
+  };
+
+  const clearAuthData = () => {
+    setIsAuthenticated(false);
+    setUser(null);
+  };
+
+  useEffect(() => {
+    setAuthData();
   }, []);
 
   // Login function
   const login = async (email, password) => {
     try {
-      const user = await authService.login(email, password);
-      setIsAuthenticated(true); // Update authentication state
-      setUser(user);
+      await authService.login(email, password);
+      setAuthData();
     } catch (error) {
       console.error("Login failed:", error);
       throw error;
@@ -34,9 +63,8 @@ export const AuthProvider = ({ children }) => {
   // Social login function
   const socialLogin = async (provider) => {
     try {
-      const user = await authService.socialLogin(provider);
-      setIsAuthenticated(true);
-      setUser(user);
+      await authService.socialLogin(provider);
+      setAuthData();
     } catch (error) {
       console.error(`${provider} login failed:`, error);
       throw error;
@@ -47,8 +75,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await authService.logout();
-      setIsAuthenticated(false); // Update authentication state
-      setUser(null);
+      clearAuthData();
     } catch (error) {
       console.error("Logout failed:", error);
       throw error;
@@ -62,7 +89,7 @@ export const AuthProvider = ({ children }) => {
         password,
         username,
         firstname,
-        lastname
+        lastname,
       );
       response && login(email, password);
     } catch (error) {
