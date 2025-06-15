@@ -15,6 +15,7 @@ const ChatbotHead = ({ courseId, courseTitle }) => {
 
   const wsRef = useRef(null);
   const [wsIsConnected, setWsIsConnected] = useState(false);
+  const [wsIsEstablished, setWsIsEstablished] = useState(false);
   const [wsIsWaiting, setWsIsWaiting] = useState(false);
   const [wsMessageType, setWsMessageType] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -39,11 +40,17 @@ const ChatbotHead = ({ courseId, courseTitle }) => {
 
     wsRef.current.onmessage = function (e) {
       setWsIsWaiting(false);
+
       const message = JSON.parse(e.data);
-      console.log(message);
+
       try {
         setWsMessageType(message.type);
+
         switch (message.type) {
+          case "established":
+            setWsIsEstablished(true);
+            break;
+
           case "session.new": {
             const chatSessions =
               JSON.parse(localStorage.getItem("chatSessions")) || {};
@@ -189,12 +196,14 @@ const ChatbotHead = ({ courseId, courseTitle }) => {
   };
 
   useEffect(() => {
+    if (wsRef.current == null) wsConnect();
+  }, []);
+
+  useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
   useEffect(() => {
-    if (isOpen && wsRef.current == null) wsConnect();
-
     const handleClickOutside = (event) => {
       if (
         isOpen &&
@@ -211,6 +220,10 @@ const ChatbotHead = ({ courseId, courseTitle }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
+
+  if (!wsIsEstablished) {
+    return <></>;
+  }
 
   return (
     <>
