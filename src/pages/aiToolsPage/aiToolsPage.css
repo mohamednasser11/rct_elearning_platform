@@ -10,18 +10,18 @@
 
   /* Text Colors */
   --text-primary: #000000;
-  --text-secondary: #4A5568;
+  --text-secondary: #4a5568;
   --text-muted: #718096;
-  --text-light: #A0AEC0;
+  --text-light: #a0aec0;
 
   /* Background Colors */
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F7FAFC;
-  --bg-tertiary: #EDF2F7;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7fafc;
+  --bg-tertiary: #edf2f7;
   --bg-light: rgba(238, 249, 254, 255);
 
   /* Border Colors */
-  --border-color: #E2E8F0;
+  --border-color: #e2e8f0;
   --border-color-light: rgba(21, 198, 142, 0.3);
 
   /* Shadow */
@@ -78,7 +78,11 @@
   max-width: 100%;
   margin: 0;
   padding: 0 var(--spacing-xl);
-  background: linear-gradient(to bottom, rgba(10, 238, 105, 0.15) 3%, rgba(255, 255, 255, 1) 22%);
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 238, 105, 0.15) 3%,
+    rgba(255, 255, 255, 1) 22%
+  );
   min-height: 100vh;
   overflow-x: hidden;
   width: 100%;
@@ -266,7 +270,9 @@
   /* Higher z-index so it appears above the small card */
   border: 1px solid var(--border-color);
   transform: translateY(0);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .preview-header {
@@ -804,7 +810,7 @@
 }
 
 .toggle-label::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 4px;
   width: calc(50% - 8px);
@@ -1032,7 +1038,7 @@
 }
 
 .drop-box::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -1089,7 +1095,7 @@
 }
 
 .drop-zone::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -1297,6 +1303,18 @@
   transition: all 0.2s ease;
 }
 
+.select-files-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #15c68e;
+}
+
+.select-files-btn:hover:not(:disabled) {
+  background: #15c68e;
+  color: #fff;
+  border-color: #fdfdfd;
+}
+
 .select-files-btn:hover {
   background-color: var(--primary-color);
   border-color: var(--primary-color-border);
@@ -1338,6 +1356,18 @@
   font-size: var(--text-xs);
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+.length-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #15c68e;
+}
+
+.length-btn:hover:not(:disabled) {
+  background: #15c68e;
+  color: #fff;
+  border-color: #fdfdfd;
 }
 
 .length-btn:hover {
@@ -1385,6 +1415,18 @@
 .generate-btn:hover {
   background: var(--primary-color-hover);
   transform: translateY(-2px);
+}
+
+.generate-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #15c68e;
+}
+
+.generate-btn:hover:not(:disabled) {
+  background: #15c68e;
+  color: #fff;
+  border-color: #fdfdfd;
 }
 
 .generate-icon {
@@ -1464,22 +1506,6 @@
   margin: 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* for educators left panel  - Exam Generator tool */
 .exam-generator-panel {
   /* Container for exam generator panel */
@@ -1495,7 +1521,7 @@
 }
 
 .exam-generator-panel::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -1522,7 +1548,7 @@
 
 .exam-subtitle {
   /* Subtitle below the exam generator title */
-  color: #4A5568;
+  color: #4a5568;
   font-size: 1rem;
   margin-bottom: 1.5rem;
   margin-top: -0.25rem;
@@ -1946,7 +1972,7 @@
 
 .ai-testimonials-section h2 {
   font-size: 2.5rem;
-  color: #2D3748;
+  color: #2d3748;
   margin-bottom: 1rem;
   margin-top: 1.5rem;
 }
@@ -1954,7 +1980,7 @@
 .testimonials-subtitle {
   font-size: 1.3rem;
   text-align: center;
-  color: #4A5568;
+  color: #4a5568;
   margin-bottom: 3rem;
   max-width: 800px;
   margin-left: auto;
@@ -1981,13 +2007,13 @@
 }
 
 .testimonial-card h4 {
-  color: #2D3748;
+  color: #2d3748;
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
 }
 
 .rating {
-  color: #F6AD55;
+  color: #f6ad55;
   margin-bottom: 1rem;
   display: flex;
   justify-content: center;
@@ -2041,13 +2067,13 @@
 }
 
 .testimonial-card h4 {
-  color: #2D3748;
+  color: #2d3748;
   font-size: 1.125rem;
   margin: 0;
 }
 
 .rating {
-  color: #F6AD55;
+  color: #f6ad55;
   margin-bottom: 1rem;
   display: flex;
   justify-content: flex-start;
@@ -2055,7 +2081,7 @@
 }
 
 .testimonial-card p {
-  color: #4A5568;
+  color: #4a5568;
   margin: 0;
   line-height: 1.6;
 }
@@ -2078,20 +2104,7 @@
   border-color: #15c68e;
 }
 
-.download-result-btn:not(:disabled) {
-  background: #0dbd857a;
-  color: #fff;
-  /* border-color: #15c68e; */
-}
-
-.download-result-btn:hover:not(:disabled) {
-  background: #15c68e;
-  color: #fff;
-  border-color: #fdfdfd;
-}
-
 @media screen and (max-width: 768px) {
-
   /* Mobile Responsive Styles */
   .hero-section {
     grid-template-columns: 1fr;
@@ -2167,7 +2180,6 @@
 }
 
 @media screen and (max-width: 480px) {
-
   /* Extra small screens */
   .hero-section h1 {
     font-size: 2rem;
@@ -2193,7 +2205,6 @@
 }
 
 @media (max-width: 1200px) {
-
   /* Styles for screens up to 1200px wide */
   .ai-feature-cards {
     grid-template-columns: repeat(2, 1fr);
@@ -2202,7 +2213,6 @@
 }
 
 @media (max-width: 768px) {
-
   /* Styles for mobile phones */
   .hero-section h1 {
     font-size: 2.25rem;
@@ -2242,7 +2252,6 @@
 }
 
 @media (max-width: 768px) {
-
   /* Styles for mobile phones */
   .tab-content-section {
     flex-direction: column;
@@ -2250,7 +2259,6 @@
 }
 
 @media (max-width: 1024px) {
-
   /* For screens up to 1024px wide (tablets) */
   .educator-layout {
     flex-direction: column-reverse;
@@ -2258,7 +2266,6 @@
 }
 
 @media (max-width: 1024px) {
-
   /* For screens up to 1024px wide (tablets) */
   .exam-generator-panel {
     max-width: 100%;
@@ -2286,7 +2293,6 @@
 }
 
 @media (max-width: 1024px) {
-
   /* Responsive Design */
   .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -2374,7 +2380,6 @@
 }
 
 @media (min-width: 1600px) {
-
   /* Extra Large screens - prevent content from spreading too far on wide screens or when zoomed out */
   .hero-section,
   .ai-tools-section,
@@ -2395,4 +2400,13 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin {
+  animation: spin 1s linear infinite;
 }
