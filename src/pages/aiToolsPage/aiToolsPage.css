@@ -1467,6 +1467,18 @@
   text-align: center;
 }
 
+.difficulty-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #15c68e;
+}
+
+.difficulty-btn:hover:not(:disabled) {
+  background: #15c68e;
+  color: #fff;
+  border-color: #fdfdfd;
+}
+
 /* Hover state for difficulty buttons */
 .difficulty-btn:hover {
   background-color: #e2e8f0;
@@ -1786,6 +1798,18 @@
   cursor: pointer;
   transition: all 0.2s;
   margin-bottom: 1.7rem;
+}
+
+.generate-exam-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #15c68e;
+}
+
+.generate-exam-button:hover:not(:disabled) {
+  background: #15c68e;
+  color: #fff;
+  border-color: #fdfdfd;
 }
 
 .generate-exam-button:hover {

@@ -74,6 +74,28 @@ const AiToolsPage = () => {
     }
   };
 
+  const handleGenerateExam = async () => {
+    if (isGenerating) return;
+
+    console.log(educatorFile.type);
+    if (educatorFile && suppertedTypes.includes(educatorFile.type)) {
+      setIsGenerated(true);
+      setGenerateResponse(null);
+      try {
+        const res = await aiToolsService.generateExam(
+          educatorFile,
+          activeLength,
+          questionCount,
+        );
+        setGenerateResponse(res);
+        setIsGenerated(false);
+      } catch (error) {
+        console.error(error);
+        setIsGenerated(false);
+      }
+    }
+  };
+
   // Handle file selection
   const handleFileSelect = (file, setFile) => {
     if (file) {
@@ -695,6 +717,7 @@ const AiToolsPage = () => {
                     <button
                       className="select-files-btn"
                       onClick={handleEducatorSelectFileClick}
+                      disabled={isGenerating}
                     >
                       Select Files
                     </button>
@@ -724,6 +747,8 @@ const AiToolsPage = () => {
                         max="40"
                         value={questionCount}
                         onChange={(e) => {
+                          if (isGenerating) return;
+
                           const newValue = parseInt(e.target.value);
                           setQuestionCount(newValue);
 
@@ -749,18 +774,21 @@ const AiToolsPage = () => {
                       <button
                         className={`difficulty-btn easy ${activeDifficulty === "easy" ? "active" : ""}`}
                         onClick={() => setActiveDifficulty("easy")}
+                        disabled={isGenerating}
                       >
                         Easy
                       </button>
                       <button
                         className={`difficulty-btn medium ${activeDifficulty === "medium" ? "active" : ""}`}
                         onClick={() => setActiveDifficulty("medium")}
+                        disabled={isGenerating}
                       >
                         Medium
                       </button>
                       <button
                         className={`difficulty-btn hard ${activeDifficulty === "hard" ? "active" : ""}`}
                         onClick={() => setActiveDifficulty("hard")}
+                        disabled={isGenerating}
                       >
                         Hard
                       </button>
@@ -781,27 +809,36 @@ const AiToolsPage = () => {
 
                   <button
                     className="generate-exam-button"
+                    onClick={handleGenerateExam}
                     disabled={isGenerating}
                   >
-                    Generate Exam <LuSparkles className="button-sparkle" />
+                    Generate Exam
+                    {isGenerating ? (
+                      <FaSpinner className="spin" />
+                    ) : (
+                      <LuSparkles className="generate-icon" />
+                    )}
                   </button>
 
-                  <button
-                    className="download-result-btn"
-                    style={{
-                      marginTop: "1rem",
-                      width: "100%",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: "0.5rem",
-                    }}
-                    onClick={handleDownloadFile}
-                    disabled={isGenerating || generatedResponse == null}
-                  >
-                    <FaArrowDown style={{ fontSize: "1.1rem" }} /> Download
-                    Result
-                  </button>
+                  {!isGenerating && generatedResponse != null ? (
+                    <button
+                      className="download-result-btn"
+                      style={{
+                        marginTop: "1rem",
+                        width: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "0.5rem",
+                      }}
+                      onClick={handleDownloadFile}
+                    >
+                      <FaArrowDown style={{ fontSize: "1.1rem" }} /> Download
+                      Result
+                    </button>
+                  ) : (
+                    <></>
+                  )}
                 </div>
               </div>
             </div>
