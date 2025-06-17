@@ -1,4 +1,9 @@
-import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import { useEffect } from "react";
 import "./App.css";
 import SignupPage from "./pages/signupPage/signupPage";
@@ -14,19 +19,20 @@ import MainNavigation from "./components/NavBar/MainNavigation";
 import Footer from "./components/Footer/Footer";
 import { CartProvider } from "./contexts/cartContext.jsx";
 import HomePage from "./pages/HomePage/HomePage";
+import AuthLayout from "./layouts/auth_layout.jsx";
 
 // ScrollToTop component integrated directly
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
-    if ('scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
     }
     const resetScroll = () => {
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
       window.scrollTo(0, 0);
-      const rootElement = document.getElementById('root');
+      const rootElement = document.getElementById("root");
       if (rootElement) {
         rootElement.scrollTop = 0;
       }
@@ -50,13 +56,15 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/for-students" element={<ForStudentsPage />} />
-          <Route path="/for-educators" element={<ForEducatorsPage />} />
-          <Route path="/ai-tools" element={<AiToolsPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/courses/:courseId" element={<CourseDetail />} />
-          <Route path="/course-creation" element={<CourseCreationPage />} />
+          <Route element={<AuthLayout />}>
+            <Route path="/for-students" element={<ForStudentsPage />} />
+            <Route path="/for-educators" element={<ForEducatorsPage />} />
+            <Route path="/ai-tools" element={<AiToolsPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/courses" element={<CoursesPage />} />
+            <Route path="/courses/:courseId" element={<CourseDetail />} />
+            <Route path="/course-creation" element={<CourseCreationPage />} />
+          </Route>
         </Routes>
         <Footer />
       </Router>
