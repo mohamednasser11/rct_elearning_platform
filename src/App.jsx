@@ -20,6 +20,8 @@ import Footer from "./components/Footer/Footer";
 import { CartProvider } from "./contexts/cartContext.jsx";
 import HomePage from "./pages/HomePage/HomePage";
 import AuthLayout from "./layouts/auth_layout.jsx";
+import GuestLayout from "./layouts/guest_layout.jsx";
+import { AuthProvider } from "./contexts/authContext.jsx";
 
 // ScrollToTop component integrated directly
 const ScrollToTop = () => {
@@ -54,11 +56,13 @@ const App = () => {
         <MainNavigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/for-students" element={<ForStudentsPage />} />
+          <Route path="/for-educators" element={<ForEducatorsPage />} />
+          <Route element={<GuestLayout />}>
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/login" element={<LoginPage />} />
+          </Route>
           <Route element={<AuthLayout />}>
-            <Route path="/for-students" element={<ForStudentsPage />} />
-            <Route path="/for-educators" element={<ForEducatorsPage />} />
             <Route path="/ai-tools" element={<AiToolsPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/courses" element={<CoursesPage />} />
