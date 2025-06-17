@@ -1,4 +1,10 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+} from "react";
 import authService from "../services/authService";
 import { jwtDecode } from "jwt-decode";
 import Cookies from "js-cookie";
@@ -10,8 +16,9 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const setAuthData = () => {
+  const setAuthData = useCallback(() => {
     const accessToken = Cookies.get("refresh_token");
 
     if (accessToken) {
@@ -36,18 +43,21 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(true);
       } catch (error) {
         console.error("Failed to decode JWT:", error);
+      } finally {
+        setIsLoading(false);
       }
     }
-  };
+  }, []);
 
-  const clearAuthData = () => {
+  const clearAuthData = useCallback(() => {
     setIsAuthenticated(false);
+    setIsLoading(false);
     setUser(null);
-  };
+  }, []);
 
   useEffect(() => {
     setAuthData();
-  }, []);
+  }, [setAuthData]);
 
   // Login function
   const login = async (email, password) => {
@@ -100,7 +110,15 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, user, login, logout, signUp, socialLogin }}
+      value={{
+        isLoading,
+        isAuthenticated,
+        user,
+        login,
+        logout,
+        signUp,
+        socialLogin,
+      }}
     >
       {children}
     </AuthContext.Provider>
