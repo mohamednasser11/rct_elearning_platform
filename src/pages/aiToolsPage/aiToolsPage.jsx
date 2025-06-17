@@ -49,8 +49,9 @@ const AiToolsPage = () => {
   const [educatorFile, setEducatorFile] = React.useState(null);
   const [isDragging, setIsDragging] = React.useState(false);
 
-  const [isGenerating, setIsGenerated] = React.useState(false);
+  const [isGenerating, setIsGenerating] = React.useState(false);
   const [generatedResponse, setGenerateResponse] = React.useState(null);
+  const [error, setError] = React.useState(null);
 
   // Refs for file inputs
   const studentFileRef = React.useRef(null);
@@ -59,45 +60,69 @@ const AiToolsPage = () => {
   const handleGenerateSummary = async () => {
     if (isGenerating) return;
 
-    console.log(studentFile.type);
-    if (studentFile && suppertedTypes.includes(studentFile.type)) {
-      setIsGenerated(true);
-      setGenerateResponse(null);
-      try {
-        const res = await aiToolsService.summarize(studentFile, activeLength);
-        setGenerateResponse(res);
-        setIsGenerated(false);
-      } catch (error) {
-        console.error(error);
-        setIsGenerated(false);
-      }
+    setError(null);
+
+    if (studentFile == null) {
+      setError("No file selected");
+      return;
+    }
+
+    if (!suppertedTypes.includes(studentFile.type)) {
+      setError("Unsupported format");
+      return;
+    }
+
+    setIsGenerating(true);
+    setGenerateResponse(null);
+    try {
+      const res = await aiToolsService.summarize(studentFile, activeLength);
+      setGenerateResponse(res);
+      setIsGenerating(false);
+    } catch (error) {
+      console.error(error);
+      setError("Something went wrong, please contact support");
+      setIsGenerating(false);
     }
   };
 
   const handleGenerateExam = async () => {
     if (isGenerating) return;
 
-    console.log(educatorFile.type);
-    if (educatorFile && suppertedTypes.includes(educatorFile.type)) {
-      setIsGenerated(true);
-      setGenerateResponse(null);
-      try {
-        const res = await aiToolsService.generateExam(
-          educatorFile,
-          activeLength,
-          questionCount,
-        );
-        setGenerateResponse(res);
-        setIsGenerated(false);
-      } catch (error) {
-        console.error(error);
-        setIsGenerated(false);
-      }
+    if (educatorFile == null) {
+      setError("No file selected");
+      return;
+    }
+
+    setError(null);
+
+    if (!suppertedTypes.includes(educatorFile.type)) {
+      setError("Unsupported format");
+      return;
+    }
+
+    setIsGenerating(true);
+    setGenerateResponse(null);
+    try {
+      const res = await aiToolsService.generateExam(
+        educatorFile,
+        activeLength,
+        questionCount,
+      );
+      setGenerateResponse(res);
+      setIsGenerating(false);
+    } catch (error) {
+      console.error(error);
+      setError("Something went wrong, please contact support");
+      setIsGenerating(false);
     }
   };
 
   // Handle file selection
   const handleFileSelect = (file, setFile) => {
+    if (isGenerating) return;
+
+    setError(null);
+
     if (file) {
       setFile(file);
     }
@@ -105,8 +130,6 @@ const AiToolsPage = () => {
 
   // Click handlers for "Select Files" buttons
   const handleStudentSelectFileClick = () => {
-    if (isGenerating) return;
-
     if (studentFileRef.current) {
       studentFileRef.current.value = null;
       studentFileRef.current.click();
@@ -114,8 +137,6 @@ const AiToolsPage = () => {
   };
 
   const handleEducatorSelectFileClick = () => {
-    if (isGenerating) return;
-
     if (educatorFileRef.current) {
       educatorFileRef.current.value = null;
       educatorFileRef.current.click();
@@ -124,15 +145,11 @@ const AiToolsPage = () => {
 
   // Change handlers for file inputs
   const handleStudentFileChange = (event) => {
-    if (isGenerating) return;
-
     const file = event.target.files[0];
     handleFileSelect(file, setStudentFile);
   };
 
   const handleEducatorFileChange = (event) => {
-    if (isGenerating) return;
-
     const file = event.target.files[0];
     handleFileSelect(file, setEducatorFile);
   };
@@ -140,6 +157,8 @@ const AiToolsPage = () => {
   // Remove file handlers
   const handleRemoveStudentFile = () => {
     if (isGenerating) return;
+
+    setError(null);
 
     setStudentFile(null);
     if (studentFileRef.current) {
@@ -195,7 +214,7 @@ const AiToolsPage = () => {
   const handleTabToggle = (tab) => {
     if (isGenerating) return;
 
-    console.log("Switching to tab:", tab);
+    setError(null);
     setActiveTab(tab);
   };
 
@@ -617,6 +636,11 @@ const AiToolsPage = () => {
                   ) : (
                     <></>
                   )}
+                  {error != null ? (
+                    <p style={{ color: "red", textAlign: "center" }}>{error}</p>
+                  ) : (
+                    <></>
+                  )}
                 </div>
               </div>
             </div>
@@ -836,6 +860,11 @@ const AiToolsPage = () => {
                       <FaArrowDown style={{ fontSize: "1.1rem" }} /> Download
                       Result
                     </button>
+                  ) : (
+                    <></>
+                  )}
+                  {error != null ? (
+                    <p style={{ color: "red", textAlign: "center" }}>{error}</p>
                   ) : (
                     <></>
                   )}
