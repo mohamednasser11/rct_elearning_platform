@@ -22,6 +22,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import AuthLayout from "./layouts/auth_layout.jsx";
 import GuestLayout from "./layouts/guest_layout.jsx";
 import { AuthProvider } from "./contexts/authContext.jsx";
+import InstructorLayout from "./layouts/instructor_layout.jsx";
 
 // ScrollToTop component integrated directly
 const ScrollToTop = () => {
@@ -67,7 +68,9 @@ const App = () => {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/courses" element={<CoursesPage />} />
             <Route path="/courses/:courseId" element={<CourseDetail />} />
-            <Route path="/course-creation" element={<CourseCreationPage />} />
+            <Route element={<InstructorLayout />}>
+              <Route path="/course-creation" element={<CourseCreationPage />} />
+            </Route>
           </Route>
         </Routes>
         <Footer />
