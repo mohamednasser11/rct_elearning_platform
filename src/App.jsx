@@ -23,6 +23,7 @@ import AuthLayout from "./layouts/auth_layout.jsx";
 import GuestLayout from "./layouts/guest_layout.jsx";
 import { AuthProvider } from "./contexts/authContext.jsx";
 import InstructorLayout from "./layouts/instructor_layout.jsx";
+import { DepartmentProvider } from "./contexts/departmentContext.jsx";
 
 // ScrollToTop component integrated directly
 const ScrollToTop = () => {
@@ -51,7 +52,8 @@ const ScrollToTop = () => {
 
 const App = () => {
   return (
-    <CartProvider>
+   <DepartmentProvider>
+     <CartProvider>
       <Router>
         <ScrollToTop />
         <MainNavigation />
@@ -76,6 +78,7 @@ const App = () => {
         <Footer />
       </Router>
     </CartProvider>
+   </DepartmentProvider>
   );
 };
 
