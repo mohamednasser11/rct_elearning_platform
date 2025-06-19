@@ -19,6 +19,10 @@ import MainNavigation from "./components/NavBar/MainNavigation";
 import Footer from "./components/Footer/Footer";
 import { CartProvider } from "./contexts/cartContext.jsx";
 import HomePage from "./pages/HomePage/HomePage";
+import AuthLayout from "./layouts/auth_layout.jsx";
+import GuestLayout from "./layouts/guest_layout.jsx";
+import { AuthProvider } from "./contexts/authContext.jsx";
+import InstructorLayout from "./layouts/instructor_layout.jsx";
 import { DepartmentProvider } from "./contexts/departmentContext.jsx";
 
 // ScrollToTop component integrated directly
@@ -48,27 +52,33 @@ const ScrollToTop = () => {
 
 const App = () => {
   return (
-    <DepartmentProvider>
-      <CartProvider>
-        <Router>
-          <ScrollToTop />
-          <MainNavigation />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
+   <DepartmentProvider>
+     <CartProvider>
+      <Router>
+        <ScrollToTop />
+        <MainNavigation />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/for-students" element={<ForStudentsPage />} />
+          <Route path="/for-educators" element={<ForEducatorsPage />} />
+          <Route element={<GuestLayout />}>
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/for-students" element={<ForStudentsPage />} />
-            <Route path="/for-educators" element={<ForEducatorsPage />} />
+          </Route>
+          <Route element={<AuthLayout />}>
             <Route path="/ai-tools" element={<AiToolsPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/courses" element={<CoursesPage />} />
             <Route path="/courses/:courseId" element={<CourseDetail />} />
-            <Route path="/course-creation" element={<CourseCreationPage />} />
-          </Routes>
-          <Footer />
-        </Router>
-      </CartProvider>
-    </DepartmentProvider>
+            <Route element={<InstructorLayout />}>
+              <Route path="/course-creation" element={<CourseCreationPage />} />
+            </Route>
+          </Route>
+        </Routes>
+        <Footer />
+      </Router>
+    </CartProvider>
+   </DepartmentProvider>
   );
 };
 

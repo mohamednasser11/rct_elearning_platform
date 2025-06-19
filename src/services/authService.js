@@ -151,9 +151,8 @@ const logout = async () => {
       {},
       {
         headers: {
-          Authorization: 'Bearer ' + token,
+          Authorization: `Bearer ${token}`,
         },
-        withCredentials: true,
       },
     );
 
