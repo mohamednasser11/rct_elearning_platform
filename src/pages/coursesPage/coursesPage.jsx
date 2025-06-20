@@ -191,6 +191,7 @@ const CoursesPage = () => {
             ...course,
             id: course.courseId,
             price: parseFloat(course.price),
+			image_url: `${import.meta.env.VITE_BASE_URL}${course.image_url}`
           }));
 
           setCoursesData(processedData);
