@@ -212,9 +212,12 @@ const AiToolsPage = () => {
 
   // Simple toggle function with direct state update
   const handleTabToggle = (tab) => {
-    if (isGenerating) return;
+    if (tab == activeTab || isGenerating) return;
 
     setError(null);
+    setGenerateResponse(null);
+    setStudentFile(null);
+    setEducatorFile(null);
     setActiveTab(tab);
   };
 

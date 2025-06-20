@@ -43,10 +43,10 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(true);
       } catch (error) {
         console.error("Failed to decode JWT:", error);
-      } finally {
-        setIsLoading(false);
       }
     }
+
+    setIsLoading(false);
   }, []);
 
   const clearAuthData = useCallback(() => {
