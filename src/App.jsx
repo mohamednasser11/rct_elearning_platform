@@ -52,33 +52,32 @@ const ScrollToTop = () => {
 
 const App = () => {
   return (
-   <DepartmentProvider>
-     <CartProvider>
-      <Router>
-        <ScrollToTop />
-        <MainNavigation />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/for-students" element={<ForStudentsPage />} />
-          <Route path="/for-educators" element={<ForEducatorsPage />} />
-          <Route element={<GuestLayout />}>
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="/login" element={<LoginPage />} />
-          </Route>
-          <Route element={<AuthLayout />}>
-            <Route path="/ai-tools" element={<AiToolsPage />} />
-            <Route path="/cart" element={<CartPage />} />
+    <DepartmentProvider>
+      <CartProvider>
+        <Router>
+          <ScrollToTop />
+          <MainNavigation />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/for-students" element={<ForStudentsPage />} />
+            <Route path="/for-educators" element={<ForEducatorsPage />} />
             <Route path="/courses" element={<CoursesPage />} />
-            <Route path="/courses/:courseId" element={<CourseDetail />} />
-            <Route element={<InstructorLayout />}>
-              <Route path="/course-creation" element={<CourseCreationPage />} />
-            </Route>
-          </Route>
-        </Routes>
-        <Footer />
-      </Router>
-    </CartProvider>
-   </DepartmentProvider>
+              <Route path="/courses/:courseId" element={<CourseDetail />} />
+            <Route path="/signup" element={<SignupPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/cart" element={<CartPage />} />
+            <Route element={<AuthLayout />}>
+              <Route path="/ai-tools" element={<AiToolsPage />} />
+                <Route
+                  path="/course-creation"
+                  element={<CourseCreationPage />}
+                />
+              </Route>
+          </Routes>
+          <Footer />
+        </Router>
+      </CartProvider>
+    </DepartmentProvider>
   );
 };
 

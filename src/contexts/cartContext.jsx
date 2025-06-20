@@ -99,6 +99,7 @@ export const CartProvider = ({ children }) => {
 
   const value = {
     cartItems,
+    setCartItems,
     cartCount,
     addToCart,
     removeFromCart,

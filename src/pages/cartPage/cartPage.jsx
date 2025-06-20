@@ -1,27 +1,71 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { BsCartCheckFill } from "react-icons/bs";
-import { FaShoppingBag, FaTrashAlt, FaLongArrowAltRight, FaTag, FaCheckCircle } from 'react-icons/fa';
-import { useCart } from '../../contexts/cartContext';
-import './cartPage.css';
+import {
+  FaShoppingBag,
+  FaTrashAlt,
+  FaLongArrowAltRight,
+  FaTag,
+  FaCheckCircle,
+} from "react-icons/fa";
+import { useCart } from "../../contexts/cartContext";
+import "./cartPage.css";
+import axios from "axios";
+import { useAuth } from "../../contexts/authContext";
+import Cookies from "js-cookie";
 
 // Promo codes with their discount percentages
 const PROMO_CODES = {
-  'WELCOME10': 10,
-  'STUDENT25': 25,
-  'SAVE15': 15
+  WELCOME10: 10,
+  STUDENT25: 25,
+  SAVE15: 15,
 };
 
 const CartPage = () => {
-  const { cartItems, removeFromCart, updateQuantity, clearCart, cartCount } = useCart();
-  const [promoCode, setPromoCode] = useState('');
+  const { cartItems, setCartItems ,removeFromCart, updateQuantity, clearCart, cartCount } =
+    useCart();
+  const [promoCode, setPromoCode] = useState("");
   const [appliedPromo, setAppliedPromo] = useState(null);
-  const [promoError, setPromoError] = useState('');
+  const [promoError, setPromoError] = useState("");
   const [showNotification, setShowNotification] = useState(false);
-  const [notificationMessage, setNotificationMessage] = useState('');
+  const [notificationMessage, setNotificationMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleCourseEnrollment = async () => {
+    try {
+      setIsLoading(true);
+      const token = Cookies.get("refresh_token") || "";
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
+
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/courses/purchase/${
+          cartItems[0].courseId
+        }/${user.id}/`,
+        {},
+        config
+      );
+
+      if (response) {
+        setIsLoading(false);
+        setCartItems([]);
+        navigate(`/courses/${cartItems[0].courseId}`, { replace: true });
+      }
+    } catch (error) {
+      setIsLoading(false);
+      throw Error("Failed to enroll in courses. Please try again later.");
+    }
+  };
 
   const calculateSubtotal = () => {
-    return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    return cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
   };
 
   const calculateDiscount = () => {
@@ -38,38 +82,40 @@ const CartPage = () => {
   const handleApplyPromo = () => {
     const code = promoCode.trim().toUpperCase();
     if (!code) {
-      setPromoError('Please enter a promo code');
+      setPromoError("Please enter a promo code");
       return;
     }
 
     if (PROMO_CODES[code]) {
       setAppliedPromo({
         code: code,
-        discount: PROMO_CODES[code]
+        discount: PROMO_CODES[code],
       });
-      setPromoError('');
+      setPromoError("");
       // Show notification
-      setNotificationMessage(`Promo code ${code} applied! ${PROMO_CODES[code]}% discount`);
+      setNotificationMessage(
+        `Promo code ${code} applied! ${PROMO_CODES[code]}% discount`
+      );
       setShowNotification(true);
-      
+
       // Hide notification after 5 seconds
       setTimeout(() => {
         setShowNotification(false);
       }, 5000);
     } else {
-      setPromoError('Invalid promo code');
+      setPromoError("Invalid promo code");
       setAppliedPromo(null);
     }
   };
 
   const handleRemovePromo = () => {
     setAppliedPromo(null);
-    setPromoCode('');
-    setPromoError('');
+    setPromoCode("");
+    setPromoError("");
     // Show notification for removing promo
-    setNotificationMessage('Promo code removed');
+    setNotificationMessage("Promo code removed");
     setShowNotification(true);
-    
+
     // Hide notification after 5 seconds
     setTimeout(() => {
       setShowNotification(false);
@@ -78,7 +124,10 @@ const CartPage = () => {
 
   return (
     <div className="cart-container">
-      <h1><BsCartCheckFill className="cart-icon" size={24} /> Shopping Cart {cartCount > 0 && <span>({cartCount} items)</span>}</h1>
+      <h1>
+        <BsCartCheckFill className="cart-icon" size={24} /> Shopping Cart{" "}
+        {cartCount > 0 && <span>({cartCount} items)</span>}
+      </h1>
       <div className="cart-content">
         <div className="cart-items">
           {cartItems.length > 0 ? (
@@ -101,8 +150,8 @@ const CartPage = () => {
                   <div className="item-total">
                     <p>${(item.price * item.quantity).toFixed(2)}</p>
                   </div>
-                  <button 
-                    className="remove-item" 
+                  <button
+                    className="remove-item"
                     onClick={() => removeFromCart(item.id)}
                     aria-label="Remove item"
                   >
@@ -123,7 +172,9 @@ const CartPage = () => {
             <div className="empty-cart">
               <BsCartCheckFill size={60} color="#d1d5db" />
               <p>Your cart is empty</p>
-              <p className="empty-cart-message">Looks like you haven't added any courses to your cart yet.</p>
+              <p className="empty-cart-message">
+                Looks like you haven't added any courses to your cart yet.
+              </p>
               <Link to="/courses" className="continue-shopping">
                 Browse Courses <FaLongArrowAltRight size={16} />
               </Link>
@@ -139,7 +190,9 @@ const CartPage = () => {
           {appliedPromo && (
             <div className="summary-item discount-line">
               <span>Discount ({appliedPromo.discount}%)</span>
-              <span className="discount-amount">-${calculateDiscount().toFixed(2)}</span>
+              <span className="discount-amount">
+                -${calculateDiscount().toFixed(2)}
+              </span>
             </div>
           )}
           <div className="summary-total">
@@ -153,24 +206,21 @@ const CartPage = () => {
               <span>Promo Code</span>
             </div>
             <div className="promo-code-input-group">
-              <input 
-                type="text" 
+              <input
+                type="text"
                 value={promoCode}
                 onChange={(e) => setPromoCode(e.target.value)}
                 placeholder="Enter promo code"
                 disabled={appliedPromo !== null}
-                className={promoError ? 'promo-error' : ''}
+                className={promoError ? "promo-error" : ""}
               />
               {!appliedPromo ? (
-                <button 
-                  className="apply-promo-btn" 
-                  onClick={handleApplyPromo}
-                >
+                <button className="apply-promo-btn" onClick={handleApplyPromo}>
                   Apply
                 </button>
               ) : (
-                <button 
-                  className="remove-promo-btn" 
+                <button
+                  className="remove-promo-btn"
                   onClick={handleRemovePromo}
                 >
                   Remove
@@ -179,20 +229,25 @@ const CartPage = () => {
             </div>
             {promoError && <p className="promo-error-message">{promoError}</p>}
           </div>
-          <button 
-            className="checkout-button" 
-            disabled={cartItems.length === 0}
+          <button
+            className="checkout-button"
+            disabled={isLoading || cartItems.length === 0}
+            onClick={handleCourseEnrollment}
           >
             Proceed to Checkout
           </button>
           {cartItems.length > 0 && (
             <div className="promo-hint">
-              <p><small>Hint: Try promo codes 'WELCOME10', 'STUDENT25', or 'SAVE15'</small></p>
+              <p>
+                <small>
+                  Hint: Try promo codes 'WELCOME10', 'STUDENT25', or 'SAVE15'
+                </small>
+              </p>
             </div>
           )}
         </div>
       </div>
-      
+
       {/* Notification popup */}
       {showNotification && (
         <div className="notification-popup">
