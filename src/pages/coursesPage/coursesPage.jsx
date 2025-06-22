@@ -20,7 +20,7 @@ const CoursesPage = () => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { departments, courses, loading } = useDepartment();
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({
@@ -47,6 +47,14 @@ const CoursesPage = () => {
         ) || "0",
     }));
   }, [departments, searchParams]);
+
+  useEffect(() => {
+    if (departments[filters.field]) {
+      const newParams = new URLSearchParams(searchParams);
+      newParams.set("category", departments[filters.field]);
+      setSearchParams(newParams);
+    }
+  }, [departments, filters.field, searchParams, setSearchParams]);
 
   useEffect(() => {
     let newCourses = [...courses];
