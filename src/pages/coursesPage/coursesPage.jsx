@@ -143,13 +143,6 @@ const CoursesPage = () => {
     const indexOfLastCourse = currentPage * coursesPerPage;
     const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
 
-    console.log(filteredCourses.length, coursesPerPage);
-    console.log("currentPage", currentPage);
-    console.log(
-      "totalPages",
-      Math.ceil(filteredCourses.length / coursesPerPage),
-    );
-
     let newCourses = [...filteredCourses];
     newCourses = newCourses.slice(indexOfFirstCourse, indexOfLastCourse);
     setPageCourses(newCourses);
@@ -171,14 +164,11 @@ const CoursesPage = () => {
   };
 
   const changePagination = (pageNumber) => {
-    console.log("Changing pagination to page:", pageNumber);
-    console.log("totalPages:", totalPages);
     if (pageNumber < 1 || pageNumber > totalPages) return;
     setCurrentPage(pageNumber);
   };
 
   const handlePageChange = (pageNumber) => {
-    console.log(pageNumber);
     changePagination(pageNumber);
     if (coursesRef.current) {
       coursesRef.current.scrollIntoView({ behavior: "smooth", block: "start" });

@@ -358,7 +358,6 @@ const CourseDetail = () => {
     if (loading) return;
 
     const fetchedCourse = courses.find((c) => c.id === parseInt(courseId));
-    console.log(fetchedCourse);
 
     if (fetchedCourse) {
       // Add original price for discount demonstration if not already present
