@@ -61,15 +61,15 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/for-students" element={<ForStudentsPage />} />
             <Route path="/for-educators" element={<ForEducatorsPage />} />
+            <Route path="/courses" element={<CoursesPage />} />
+            <Route path="/courses/:courseId" element={<CourseDetail />} />
+            <Route path="/ai-tools" element={<AiToolsPage />} />
+            <Route path="/cart" element={<CartPage />} />
             <Route element={<GuestLayout />}>
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/login" element={<LoginPage />} />
             </Route>
             <Route element={<AuthLayout />}>
-              <Route path="/cart" element={<CartPage />} />
-              <Route path="/courses" element={<CoursesPage />} />
-              <Route path="/courses/:courseId" element={<CourseDetail />} />
-              <Route path="/ai-tools" element={<AiToolsPage />} />
               <Route path="/course-creation" element={<CourseCreationPage />} />
             </Route>
           </Routes>

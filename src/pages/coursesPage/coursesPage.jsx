@@ -59,9 +59,9 @@ const CoursesPage = () => {
   useEffect(() => {
     let newCourses = [...courses];
 
-    if (filters.myCourses) {
+    if (filters.myCourses && isAuthenticated) {
       newCourses = newCourses.filter(
-        (course) => (course.instructorId = user.id),
+        (course) => course.instructorId == user.id,
       );
     }
 
@@ -136,7 +136,7 @@ const CoursesPage = () => {
 
     setFilteredCourses(newCourses);
     setCurrentPage(1);
-  }, [courses, filters, searchTerm, sortOption, user.id]);
+  }, [courses, filters, searchTerm, sortOption]);
 
   useEffect(() => {
     setTotalPages(Math.ceil(filteredCourses.length / coursesPerPage));
@@ -255,10 +255,10 @@ const CoursesPage = () => {
                   >
                     My courses
                   </button>
+                  <div>|</div>
                 </div>
               )}
 
-              <div>|</div>
               {Object.keys(departments).map((dep) => {
                 return (
                   <button
