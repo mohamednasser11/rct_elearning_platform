@@ -1,11 +1,10 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
-import NotFound from "../pages/NotFoundPage/404NotFound";
 
 export default function AuthLayout() {
   const { isLoading, isAuthenticated } = useAuth();
 
-  if (isLoading) return <NotFound />;
+  if (isLoading) return <div style={{ height: "100vh" }}></div>;
 
   if (!isAuthenticated) return <Navigate to="/login" replace />;
 
