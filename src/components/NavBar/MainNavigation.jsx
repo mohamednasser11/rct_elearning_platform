@@ -7,6 +7,7 @@ import { PiBookOpenBold } from "react-icons/pi";
 import { FaShoppingCart } from "react-icons/fa";
 import { coursesData } from "../../data/coursesData";
 import HamburgerMenu from "./HamburgerMenu";
+import { useDepartment } from "../../contexts/departmentContext";
 
 const MainNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +16,7 @@ const MainNavigation = () => {
   const [categoriesExpanded, setCategoriesExpanded] = useState(false);
   const [isPulsing, setIsPulsing] = useState(false);
   const { isAuthenticated, logout } = useAuth();
+  const { departments } = useDepartment();
   const { cartCount } = useCart();
 
   // Add pulse animation when cart count changes
@@ -29,9 +31,6 @@ const MainNavigation = () => {
   }, [cartCount]);
 
   // Extract unique course categories
-  const courseCategories = [
-    ...new Set(coursesData.map((course) => course.field)),
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,7 +76,7 @@ const MainNavigation = () => {
       <HamburgerMenu
         isCategoryMenuOpen={isCategoryMenuOpen}
         setIsCategoryMenuOpen={setIsCategoryMenuOpen}
-        courseCategories={courseCategories}
+        courseCategories={Object.values(departments)}
         categoriesExpanded={categoriesExpanded}
         setCategoriesExpanded={setCategoriesExpanded}
         isAuthenticated={isAuthenticated}
