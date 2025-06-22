@@ -2,14 +2,12 @@ import { createContext, useState, useContext, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { coursesData } from "../data/coursesData";
-import { useAuth } from "./authContext";
 
 const DepartmentContext = createContext();
 
 export const useDepartment = () => useContext(DepartmentContext);
 
 export const DepartmentProvider = ({ children }) => {
-  const { isAuthenticated } = useAuth();
   const [departments, setDepartments] = useState({});
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,16 +15,8 @@ export const DepartmentProvider = ({ children }) => {
 
   const fetchData = async () => {
     try {
-      const token = Cookies.get("refresh_token");
-      let config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
       const departmentsResponse = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/api/v1/departments/`,
-        config,
       );
       const newDepartments = { 0: "All" };
       for (const dep of departmentsResponse.data) {
@@ -36,7 +26,6 @@ export const DepartmentProvider = ({ children }) => {
 
       const coursesResponse = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/api/v1/courses/`,
-        config,
       );
 
       if (coursesResponse.data.data.length > 0) {
@@ -79,9 +68,8 @@ export const DepartmentProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (!isAuthenticated) return;
     fetchData();
-  }, [isAuthenticated]);
+  }, []);
 
   const value = {
     loading,
