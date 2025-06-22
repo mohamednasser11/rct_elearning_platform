@@ -618,7 +618,7 @@
   align-items: center;
   gap: 0.8rem;
   margin-top: 3rem;
-  margin-bottom: -50rem;
+  margin-bottom: 50rem;
   padding: 1.5rem;
   background: var(--white);
   border-radius: 16px;
