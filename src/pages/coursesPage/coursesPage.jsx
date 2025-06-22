@@ -61,7 +61,7 @@ const CoursesPage = () => {
 
     if (filters.myCourses) {
       newCourses = newCourses.filter(
-        (course) => (course.instructorId = user.id),
+        (course) => course.instructorId == user.id,
       );
     }
 
@@ -255,10 +255,10 @@ const CoursesPage = () => {
                   >
                     My courses
                   </button>
+                  <div>|</div>
                 </div>
               )}
 
-              <div>|</div>
               {Object.keys(departments).map((dep) => {
                 return (
                   <button
