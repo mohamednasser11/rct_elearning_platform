@@ -146,7 +146,7 @@ const logout = async () => {
   try {
     const token = Cookies.get("refresh_token");
 
-    const response = await axios.post(
+    await axios.post(
       `${import.meta.env.VITE_BASE_URL}/api/v1/users/logout/`,
       {},
       {
@@ -155,12 +155,10 @@ const logout = async () => {
         },
       },
     );
-
-    if (response) {
-      Cookies.remove("refresh_token");
-    }
   } catch (error) {
     throw new Error(error.response?.data?.message || "Logout Failed");
+  } finally {
+    Cookies.remove("refresh_token");
   }
 };
 

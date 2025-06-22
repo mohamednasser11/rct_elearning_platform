@@ -1,52 +1,93 @@
-import { createContext, useState, useContext, useEffect } from 'react';
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import { createContext, useState, useContext, useEffect } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { coursesData } from "../data/coursesData";
+import { useAuth } from "./authContext";
 
 const DepartmentContext = createContext();
 
 export const useDepartment = () => useContext(DepartmentContext);
 
 export const DepartmentProvider = ({ children }) => {
-  const [departments, setDepartments] = useState([]);
-  const [currentCourseId, setCurrentCourseId] = useState();
-  const [courses, setCourses] = useState();
+  const { isAuthenticated } = useAuth();
+  const [departments, setDepartments] = useState({});
+  const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
-  const fetchDepartments = async () => {
+
+  const fetchData = async () => {
     try {
-      setLoading(true);
-      const token =  Cookies.get('refresh_token') || '';
+      const token = Cookies.get("refresh_token");
       let config = {
         headers: {
-          'Authorization': `Bearer ${token}`,
-        }
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const departmentsResponse = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/departments/`,
+        config,
+      );
+      const newDepartments = { 0: "All" };
+      for (const dep of departmentsResponse.data) {
+        newDepartments[dep.departmentId] = dep.name;
+      }
+      setDepartments(newDepartments);
+
+      const coursesResponse = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/courses/`,
+        config,
+      );
+
+      if (coursesResponse.data.data.length > 0) {
+        setCourses(
+          coursesResponse.data.data.map((course) => ({
+            ...course,
+            id: course.courseId,
+            image_url: `${import.meta.env.VITE_BASE_URL}${course.image_url}`,
+          })),
+        );
+      } else {
+        setCourses(coursesData);
+        setDepartments({
+          0: "All",
+          1: "Writing",
+          2: "Data Science",
+          3: "Photography",
+          4: "IT Security",
+          5: "Business",
+          6: "Design",
+          8: "Finance",
+          9: "Music",
+          10: "Cloud Computing",
+          11: "Technology",
+          12: "Programming",
+          13: "Health",
+          14: "DevOps",
+          15: "IT",
+          16: "Marketing",
+        });
       }
 
-      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/v1/departments/`, config);
-      setDepartments(response.data);
       setError(null);
     } catch (err) {
-      setError('Failed to fetch departments');
-      console.error('Error fetching departments:', err);
+      setError("Failed to fetch departments");
+      console.error(err);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchDepartments();
-  }, []);
+    if (!isAuthenticated) return;
+    fetchData();
+  }, [isAuthenticated]);
 
   const value = {
-    departments,
     loading,
     error,
-    fetchDepartments,
-    currentCourseId,
+    departments,
     courses,
-    setCurrentCourseId,
-    setCourses
   };
 
   return (

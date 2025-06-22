@@ -22,8 +22,8 @@ import "./CourseDetail.css";
 import CourseVideo from "./CourseVideo";
 import CourseOutline from "./CourseOutline";
 import { FiCheckCircle } from "react-icons/fi";
-import ChatbotHead from './ChatbotHead';
-import { useDepartment } from '../../../contexts/departmentContext.jsx';
+import ChatbotHead from "./ChatbotHead";
+import { useDepartment } from "../../../contexts/departmentContext.jsx";
 
 // Sample curriculum data as a fallback
 const sampleCurriculum = [
@@ -330,14 +330,11 @@ const CourseDetail = () => {
   const navigate = useNavigate();
   const { addToCart, cartItems } = useCart();
   const [course, setCourse] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState("overview");
   const [currentLesson, setCurrentLesson] = useState(null);
-  const [addedToCart, setAddedToCart] = useState(false);
 
-  const {courses, currentCourseId} = useDepartment()
-  
+  const { departments, courses, loading, error } = useDepartment();
+
   // Calculate total lessons from curriculum
   const curriculum = useMemo(() => {
     return sampleCurriculum; // Use sample curriculum since coursesData doesn't have curriculum
@@ -358,49 +355,46 @@ const CourseDetail = () => {
   );
 
   useEffect(() => {
-    // Simulate API call to fetch course details
-    setTimeout(() => {
-      const fetchedCourse = (courses || []).find(c => c.id === parseInt(courseId));
-      
-      if (fetchedCourse) {
-        // Add original price for discount demonstration if not already present
-        if (!fetchedCourse.originalPrice && fetchedCourse.price) {
-          fetchedCourse.originalPrice = Math.round(fetchedCourse.price * 1.2);
-        }
+    if (loading) return;
 
-        // Add sample curriculum if missing
-        if (!fetchedCourse.curriculum) {
-          fetchedCourse.curriculum = sampleCurriculum;
-        }
+    const fetchedCourse = courses.find((c) => c.id === parseInt(courseId));
 
-        // Ensure instructor is set
-        if (!fetchedCourse.instructor) {
-          fetchedCourse.instructor = "John Doe";
-        }
-
-        // Ensure reviews count
-        if (!fetchedCourse.reviews && fetchedCourse.students) {
-          fetchedCourse.reviews = Math.round(fetchedCourse.students * 0.25);
-        }
-
-        setCourse(fetchedCourse);
-
-        // Set first lesson as current if available
-        if (
-          sampleCurriculum &&
-          sampleCurriculum.length > 0 &&
-          sampleCurriculum[0].lessons &&
-          sampleCurriculum[0].lessons.length > 0
-        ) {
-          setCurrentLesson(sampleCurriculum[0].lessons[0]);
-        }
-      } else {
-        setError("Course not found");
+    if (fetchedCourse) {
+      // Add original price for discount demonstration if not already present
+      if (!fetchedCourse.originalPrice && fetchedCourse.price) {
+        fetchedCourse.originalPrice = Math.round(fetchedCourse.price * 1.2);
       }
 
-      setLoading(false);
-    }, 500);
-  }, [courseId]);
+      // Add sample curriculum if missing
+      if (!fetchedCourse.curriculum) {
+        fetchedCourse.curriculum = sampleCurriculum;
+      }
+
+      // Ensure instructor is set
+      if (!fetchedCourse.instructor) {
+        fetchedCourse.instructor = "John Doe";
+      }
+
+      // Ensure reviews count
+      if (!fetchedCourse.reviews && fetchedCourse.students) {
+        fetchedCourse.reviews = Math.round(fetchedCourse.students * 0.25);
+      }
+
+      setCourse(fetchedCourse);
+
+      // Set first lesson as current if available
+      if (
+        sampleCurriculum &&
+        sampleCurriculum.length > 0 &&
+        sampleCurriculum[0].lessons &&
+        sampleCurriculum[0].lessons.length > 0
+      ) {
+        setCurrentLesson(sampleCurriculum[0].lessons[0]);
+      }
+    } else {
+      navigate("/courses");
+    }
+  }, [courses, loading]);
 
   // Handle back button click
   const handleBack = () => {
@@ -435,7 +429,7 @@ const CourseDetail = () => {
     }
   };
 
-  if (loading) {
+  if (loading || !course) {
     return (
       <div className="course-detail-container">
         <div className="course-detail-loading">
@@ -469,19 +463,12 @@ const CourseDetail = () => {
         </button>
 
         <div className="course-filed">
-          {course.field && (
-            <a
-              href={`/courses?category=${course.field}`}
-              className="course-category-tag"
-            >
-              {course.field}
-            </a>
-          )}
-          {!course.field && (
-            <a href="/courses?category=General" className="course-category-tag">
-              General
-            </a>
-          )}
+          <a
+            href={`/courses?category=${departments[course.id]}`}
+            className="course-category-tag"
+          >
+            {departments[course.id]}
+          </a>
         </div>
 
         <h1 className="course-title">{course.title}</h1>

@@ -7,7 +7,7 @@ export const coursesData = [
     price: 99.99,
     duration: "12 weeks",
     rating: 4.8,
-    field: "Programming",
+    departmentId: 12,
     popular: true,
     number_of_students: 12845,
     image_url:
@@ -21,7 +21,7 @@ export const coursesData = [
     price: 89.99,
     duration: "8 weeks",
     rating: 4.7,
-    field: "Data Science",
+    departmentId: 2,
     number_of_students: 8932,
     image_url:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
@@ -34,7 +34,7 @@ export const coursesData = [
     price: 79.99,
     duration: "6 weeks",
     rating: 4.6,
-    field: "Marketing",
+    departmentId: 16,
     number_of_students: 7456,
     image_url:
       "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=800&q=80",
@@ -47,7 +47,7 @@ export const coursesData = [
     price: 129.99,
     duration: "10 weeks",
     rating: 4.9,
-    field: "Programming",
+    departmentId: 12,
     number_of_students: 10567,
     image_url:
       "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=800&q=80",
@@ -60,7 +60,7 @@ export const coursesData = [
     price: 149.99,
     duration: "12 weeks",
     rating: 4.7,
-    field: "Finance",
+    departmentId: 8,
     number_of_students: 8231,
     image_url:
       "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80",
@@ -73,7 +73,7 @@ export const coursesData = [
     price: 89.99,
     duration: "8 weeks",
     rating: 4.5,
-    field: "Design",
+    departmentId: 6,
     number_of_students: 6543,
     image_url:
       "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80",
@@ -86,7 +86,7 @@ export const coursesData = [
     price: 159.99,
     duration: "16 weeks",
     rating: 4.8,
-    field: "Data Science",
+    departmentId: 2,
     popular: true,
     number_of_students: 12098,
     image_url:
@@ -100,7 +100,7 @@ export const coursesData = [
     price: 119.99,
     duration: "10 weeks",
     rating: 4.6,
-    field: "Programming",
+    departmentId: 12,
     number_of_students: 9567,
     image_url:
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80",
@@ -113,7 +113,7 @@ export const coursesData = [
     price: 99.99,
     duration: "8 weeks",
     rating: 4.5,
-    field: "Business",
+    departmentId: 5,
     number_of_students: 8123,
     image_url:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
@@ -126,7 +126,7 @@ export const coursesData = [
     price: 94.99,
     duration: "8 weeks",
     rating: 4.7,
-    field: "Design",
+    departmentId: 6,
     number_of_students: 9234,
     image_url:
       "https://images.unsplash.com/photo-1586936893354-362ad6ae47ba?auto=format&fit=crop&w=800&q=80",
@@ -139,7 +139,7 @@ export const coursesData = [
     price: 139.99,
     duration: "12 weeks",
     rating: 4.8,
-    field: "IT Security",
+    departmentId: 4,
     popular: true,
     number_of_students: 11567,
     image_url:
@@ -153,7 +153,7 @@ export const coursesData = [
     price: 144.99,
     duration: "12 weeks",
     rating: 4.6,
-    field: "DevOps",
+    departmentId: 14,
     number_of_students: 9876,
     image_url:
       "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
@@ -166,7 +166,7 @@ export const coursesData = [
     price: 84.99,
     duration: "6 weeks",
     rating: 4.5,
-    field: "Marketing",
+    departmentId: 16,
     number_of_students: 7345,
     image_url:
       "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=800&q=80",
@@ -179,7 +179,7 @@ export const coursesData = [
     price: 89.99,
     duration: "8 weeks",
     rating: 4.6,
-    field: "Business",
+    departmentId: 5,
     number_of_students: 7345,
     image_url:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
@@ -192,7 +192,7 @@ export const coursesData = [
     price: 169.99,
     duration: "16 weeks",
     rating: 4.9,
-    field: "Data Science",
+    departmentId: 2,
     number_of_students: 13298,
     image_url:
       "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
@@ -205,7 +205,7 @@ export const coursesData = [
     price: 129.99,
     duration: "12 weeks",
     rating: 4.7,
-    field: "Cloud Computing",
+    departmentId: 10,
     number_of_students: 10543,
     image_url:
       "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=800&q=80",
@@ -218,7 +218,7 @@ export const coursesData = [
     price: 79.99,
     duration: "6 weeks",
     rating: 4.6,
-    field: "Marketing",
+    departmentId: 16,
     number_of_students: 7345,
     image_url:
       "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
@@ -231,7 +231,7 @@ export const coursesData = [
     price: 59.99,
     duration: "6 weeks",
     rating: 4.7,
-    field: "Business",
+    departmentId: 5,
     number_of_students: 9231,
     image_url:
       "https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&w=800&q=80",
@@ -244,7 +244,7 @@ export const coursesData = [
     price: 119.99,
     duration: "10 weeks",
     rating: 4.6,
-    field: "Design",
+    departmentId: 6,
     number_of_students: 8765,
     image_url:
       "https://images.unsplash.com/photo-1627163439134-7a8c47e08208?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3DA",
@@ -257,7 +257,7 @@ export const coursesData = [
     price: 159.99,
     duration: "12 weeks",
     rating: 4.7,
-    field: "Programming",
+    departmentId: 12,
     number_of_students: 11892,
     image_url:
       "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80",
@@ -270,7 +270,7 @@ export const coursesData = [
     price: 129.99,
     duration: "12 weeks",
     rating: 4.8,
-    field: "Programming",
+    departmentId: 12,
     number_of_students: 10987,
     image_url:
       "https://images.unsplash.com/photo-1580327344181-c1163234e5a0?auto=format&fit=crop&w=800&q=80",
@@ -283,7 +283,7 @@ export const coursesData = [
     price: 79.99,
     duration: "6 weeks",
     rating: 4.6,
-    field: "Marketing",
+    departmentId: 16,
     number_of_students: 7345,
     image_url:
       "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80",
@@ -296,7 +296,7 @@ export const coursesData = [
     price: 109.99,
     duration: "10 weeks",
     rating: 4.7,
-    field: "Music",
+    departmentId: 9,
     number_of_students: 8765,
     image_url:
       "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80",
@@ -309,7 +309,7 @@ export const coursesData = [
     price: 94.99,
     duration: "8 weeks",
     rating: 4.5,
-    field: "Data Science",
+    departmentId: 2,
     number_of_students: 8123,
     image_url:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
@@ -322,7 +322,7 @@ export const coursesData = [
     price: 119.99,
     duration: "10 weeks",
     rating: 4.8,
-    field: "Design",
+    departmentId: 6,
     number_of_students: 10987,
     image_url:
       "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80",
@@ -335,7 +335,7 @@ export const coursesData = [
     price: 89.99,
     duration: "6 weeks",
     rating: 4.6,
-    field: "Marketing",
+    departmentId: 16,
     number_of_students: 7345,
     image_url:
       "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&w=800&q=80",
@@ -348,7 +348,7 @@ export const coursesData = [
     price: 139.99,
     duration: "12 weeks",
     rating: 4.7,
-    field: "Programming",
+    departmentId: 12,
     number_of_students: 11892,
     image_url:
       "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
@@ -361,7 +361,7 @@ export const coursesData = [
     price: 69.99,
     duration: "4 weeks",
     rating: 4.5,
-    field: "Business",
+    departmentId: 5,
     number_of_students: 6543,
     image_url:
       "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80",
@@ -374,7 +374,7 @@ export const coursesData = [
     price: 129.99,
     duration: "9 weeks",
     rating: 4.8,
-    field: "Design",
+    departmentId: 6,
     number_of_students: 5632,
     image_url:
       "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
@@ -387,7 +387,7 @@ export const coursesData = [
     price: 84.99,
     duration: "5 weeks",
     rating: 4.6,
-    field: "Business",
+    departmentId: 5,
     number_of_students: 3245,
     image_url:
       "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80",
@@ -400,7 +400,7 @@ export const coursesData = [
     price: 149.99,
     duration: "14 weeks",
     rating: 4.8,
-    field: "IT",
+    departmentId: 15,
     popular: true,
     number_of_students: 9876,
     image_url:
@@ -414,7 +414,7 @@ export const coursesData = [
     price: 89.99,
     duration: "8 weeks",
     rating: 4.7,
-    field: "Photography",
+    departmentId: 3,
     number_of_students: 7652,
     image_url:
       "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80",
@@ -427,7 +427,7 @@ export const coursesData = [
     price: 109.99,
     duration: "9 weeks",
     rating: 4.6,
-    field: "Business",
+    departmentId: 5,
     number_of_students: 6234,
     image_url:
       "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80",
@@ -440,7 +440,7 @@ export const coursesData = [
     price: 129.99,
     duration: "10 weeks",
     rating: 4.9,
-    field: "Design",
+    departmentId: 6,
     popular: true,
     number_of_students: 11432,
     image_url:
@@ -450,11 +450,11 @@ export const coursesData = [
     id: 35,
     title: "Quantum Computing Fundamentals",
     description:
-      "Delve into the emerging field of quantum computing. Understand quantum mechanics, qubits, and algorithms that promise to revolutionize computation.",
+      "Delve into the emerging departmentId of quantum computing. Understand quantum mechanics, qubits, and algorithms that promise to revolutionize computation.",
     price: 179.99,
     duration: "16 weeks",
     rating: 4.8,
-    field: "Programming",
+    departmentId: 12,
     number_of_students: 5321,
     image_url:
       "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80",
@@ -467,7 +467,7 @@ export const coursesData = [
     price: 79.99,
     duration: "6 weeks",
     rating: 4.7,
-    field: "Marketing",
+    departmentId: 16,
     number_of_students: 8975,
     image_url:
       "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
@@ -480,7 +480,7 @@ export const coursesData = [
     price: 94.99,
     duration: "8 weeks",
     rating: 4.6,
-    field: "Health",
+    departmentId: 13,
     number_of_students: 7345,
     image_url:
       "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80",
@@ -493,7 +493,7 @@ export const coursesData = [
     price: 159.99,
     duration: "14 weeks",
     rating: 4.8,
-    field: "Programming",
+    departmentId: 12,
     number_of_students: 6789,
     image_url:
       "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&w=800&q=80",
@@ -506,7 +506,7 @@ export const coursesData = [
     price: 149.99,
     duration: "12 weeks",
     rating: 4.7,
-    field: "Business",
+    departmentId: 5,
     popular: true,
     number_of_students: 10543,
     image_url:
@@ -520,7 +520,7 @@ export const coursesData = [
     price: 119.99,
     duration: "10 weeks",
     rating: 4.6,
-    field: "Design",
+    departmentId: 6,
     number_of_students: 5432,
     image_url:
       "https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=800&q=80",
@@ -533,7 +533,7 @@ export const coursesData = [
     price: 0,
     duration: "6 weeks",
     rating: 4.7,
-    field: "Programming",
+    departmentId: 12,
     popular: true,
     number_of_students: 15678,
     image_url:
@@ -547,7 +547,7 @@ export const coursesData = [
     price: 0,
     duration: "4 weeks",
     rating: 4.5,
-    field: "Technology",
+    departmentId: 11,
     number_of_students: 9876,
     image_url:
       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
@@ -560,7 +560,7 @@ export const coursesData = [
     price: 0,
     duration: "3 weeks",
     rating: 4.8,
-    field: "Health",
+    departmentId: 13,
     number_of_students: 12345,
     image_url:
       "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
@@ -573,7 +573,7 @@ export const coursesData = [
     price: 0,
     duration: "5 weeks",
     rating: 4.6,
-    field: "Finance",
+    departmentId: 8,
     popular: true,
     number_of_students: 11432,
     image_url:
@@ -587,7 +587,7 @@ export const coursesData = [
     price: 0,
     duration: "6 weeks",
     rating: 4.7,
-    field: "Writing",
+    departmentId: 2,
     number_of_students: 8765,
     image_url:
       "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80",
