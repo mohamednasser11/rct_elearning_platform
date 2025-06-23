@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   FaStar,
@@ -24,6 +24,8 @@ import CourseOutline from "./CourseOutline";
 import { FiCheckCircle } from "react-icons/fi";
 import ChatbotHead from "./ChatbotHead";
 import { useDepartment } from "../../../contexts/departmentContext.jsx";
+import courseService from "../../../services/courseService.js";
+import { useAuth } from "../../../contexts/authContext.jsx";
 
 // Sample curriculum data as a fallback
 const sampleCurriculum = [
@@ -332,8 +334,10 @@ const CourseDetail = () => {
   const [course, setCourse] = useState(null);
   const [activeTab, setActiveTab] = useState("overview");
   const [currentLesson, setCurrentLesson] = useState(null);
+  const [isEnrolled, setIsEnrolled] = useState(false);
 
   const { departments, courses, loading, error } = useDepartment();
+  const { isAuthenticated, user } = useAuth();
 
   // Calculate total lessons from curriculum
   const curriculum = useMemo(() => {
@@ -354,8 +358,34 @@ const CourseDetail = () => {
     [cartItems, course],
   );
 
+  const [isLoading, setIsLoading] = useState(loading);
   useEffect(() => {
-    if (loading) return;
+    setIsLoading(loading);
+  }, [loading]);
+
+  const fetchIsEnrolled = useCallback(async () => {
+    if (!isAuthenticated) return;
+    try {
+      setIsLoading(true);
+      const enrolledCourses = await courseService.getEnrolled(user.id);
+      console.log(enrolledCourses);
+      const course = enrolledCourses.find(
+        (course) => course.courseId == courseId,
+      );
+      setIsEnrolled(course != undefined);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [courseId, isAuthenticated]);
+
+  useEffect(() => {
+    fetchIsEnrolled();
+  }, [fetchIsEnrolled]);
+
+  useEffect(() => {
+    if (isLoading) return;
 
     const fetchedCourse = courses.find((c) => c.id === parseInt(courseId));
 
@@ -429,7 +459,7 @@ const CourseDetail = () => {
     }
   };
 
-  if (loading || !course) {
+  if (isLoading || !course) {
     return (
       <div className="course-detail-container">
         <div className="course-detail-loading">
@@ -464,10 +494,10 @@ const CourseDetail = () => {
 
         <div className="course-filed">
           <a
-            href={`/courses?category=${departments[course.id]}`}
+            href={`/courses?category=${departments[course.departmentId]}`}
             className="course-category-tag"
           >
-            {departments[course.id]}
+            {departments[course.departmentId]}
           </a>
         </div>
 
@@ -560,19 +590,25 @@ const CourseDetail = () => {
             </div>
           </div>
 
-          <button
-            className={`enrollment-button ${isInCart ? "in-cart" : ""}`}
-            onClick={() =>
-              isInCart ? navigate("/cart") : handleAddToCart(course)
-            }
-          >
-            {isInCart ? "Go to Cart" : "Enroll Now"}
-          </button>
+          {!isEnrolled ? (
+            <>
+              <button
+                className={`enrollment-button ${isInCart ? "in-cart" : ""}`}
+                onClick={() =>
+                  isInCart ? navigate("/cart") : handleAddToCart(course)
+                }
+              >
+                {isInCart ? "Go to Cart" : "Enroll Now"}
+              </button>
 
-          {!isInCart && (
-            <p className="secure-payment-note">
-              <FaLock className="lock-icon" /> Secure payment
-            </p>
+              {!isInCart && (
+                <p className="secure-payment-note">
+                  <FaLock className="lock-icon" /> Secure payment
+                </p>
+              )}
+            </>
+          ) : (
+            <></>
           )}
         </div>
       </div>
@@ -897,7 +933,11 @@ const CourseDetail = () => {
         </div>
       </div>
 
-      <ChatbotHead courseId={course.id} courseTitle={course.title} />
+      {isEnrolled ? (
+        <ChatbotHead courseId={course.id} courseTitle={course.title} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
