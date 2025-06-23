@@ -53,9 +53,10 @@ const CartPage = () => {
         headers: { Authorization: `Bearer ${token}` },
       };
 
+     cartItems.forEach(async (cartItem) => {
       const response = await axios.post(
         `${import.meta.env.VITE_BASE_URL}/api/v1/courses/purchase/${
-          cartItems[0].courseId
+          cartItem.courseId
         }/${user.id}/`,
         {},
         config,
@@ -66,6 +67,8 @@ const CartPage = () => {
         setCartItems([]);
         navigate(`/courses/${cartItems[0].courseId}`, { replace: true });
       }
+     })
+
     } catch (error) {
       setIsLoading(false);
       throw Error("Failed to enroll in courses. Please try again later.");
