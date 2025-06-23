@@ -11,6 +11,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import courseService from "../../services/courseService";
 import { useNavigate } from "react-router-dom";
+import { useDepartment } from "../../contexts/departmentContext";
 
 const CourseCreationPage = () => {
   // State for tracking current step
@@ -35,6 +36,7 @@ const CourseCreationPage = () => {
   const [notificationMessage, setNotificationMessage] = useState("");
 
   const [departments, setDepartments] = useState([]);
+  const { fetchData } = useDepartment();
 
   const fetchDepartments = useCallback(async () => {
     if (departments.length == 0) {
@@ -102,6 +104,8 @@ const CourseCreationPage = () => {
           lesson.video,
         );
       }
+
+      await fetchData();
 
       setNotificationMessage("Course published successfully!");
       setShowNotification(true);
