@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { useAuth } from "../../contexts/authContext";
 import { useDepartment } from "../../contexts/departmentContext";
+import courseService from "../../services/courseService";
 
 const ratings = ["All", "4.8 & up", "4.5 & up", "4.0 & up"];
 const coursesPerPage = 12;
@@ -34,9 +35,32 @@ const CoursesPage = () => {
   const [sortOption, setSortOption] = useState("popularity");
   const [pageCourses, setPageCourses] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
 
   const coursesRef = useRef(null);
   const courseCardRefs = useRef({});
+
+  const [isLoading, setIsLoading] = useState(loading);
+  useEffect(() => {
+    setIsLoading(loading);
+  }, [loading]);
+
+  const fetchEnrolled = useCallback(async () => {
+    if (!isAuthenticated) return;
+    try {
+      setIsLoading(true);
+      const newEnrolledCourses = await courseService.getEnrolled(user.id);
+      setEnrolledCourses(newEnrolledCourses);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    fetchEnrolled();
+  }, [fetchEnrolled]);
 
   useEffect(() => {
     setFilters((prev) => ({
@@ -311,7 +335,7 @@ const CoursesPage = () => {
       </div>
 
       <div className="courses-container" ref={coursesRef}>
-        {loading ? (
+        {isLoading ? (
           // Loading skeleton
           Array.from({ length: coursesPerPage }).map((_, index) => (
             <div key={`skeleton-${index}`} className="course-card skeleton">
@@ -386,15 +410,20 @@ const CoursesPage = () => {
                       >
                         View Course
                       </button>
-                      <button
-                        className="add-cart-btn"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          addToCart(course);
-                        }}
-                      >
-                        Add to Cart
-                      </button>
+                      {enrolledCourses.find((c) => c.courseId == course.id) ==
+                      undefined ? (
+                        <button
+                          className="add-cart-btn"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            addToCart(course);
+                          }}
+                        >
+                          Add to Cart
+                        </button>
+                      ) : (
+                        <></>
+                      )}
                     </div>
                   </div>
                 </div>

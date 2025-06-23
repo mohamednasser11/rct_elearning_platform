@@ -26,8 +26,24 @@ const create = async (departmentId, title, description, thumbnail, price) => {
   }
 };
 
+const getEnrolled = async (userId) => {
+  try {
+    const response = await axios.get(
+      `${import.meta.env.VITE_BASE_URL}/api/v1/courses/?userId=${userId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("refresh_token")}`,
+        },
+      },
+    );
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error?.response?.message || error.message);
+  }
+};
+
 const addLesson = async (courseId, title, description, video) => {
-  console.log(title, description, video);
   try {
     const formData = new FormData();
     formData.append("title", title);
@@ -52,5 +68,6 @@ const addLesson = async (courseId, title, description, video) => {
 
 export default {
   create,
+  getEnrolled,
   addLesson,
 };

@@ -22,8 +22,14 @@ const PROMO_CODES = {
 };
 
 const CartPage = () => {
-  const { cartItems, setCartItems ,removeFromCart, updateQuantity, clearCart, cartCount } =
-    useCart();
+  const {
+    cartItems,
+    setCartItems,
+    removeFromCart,
+    updateQuantity,
+    clearCart,
+    cartCount,
+  } = useCart();
   const [promoCode, setPromoCode] = useState("");
   const [appliedPromo, setAppliedPromo] = useState(null);
   const [promoError, setPromoError] = useState("");
@@ -31,12 +37,17 @@ const CartPage = () => {
   const [notificationMessage, setNotificationMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const { user } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const navigate = useNavigate();
 
   const handleCourseEnrollment = async () => {
     try {
       setIsLoading(true);
+      if (!isAuthenticated) {
+        navigate("/login");
+        return;
+      }
+
       const token = Cookies.get("refresh_token") || "";
       const config = {
         headers: { Authorization: `Bearer ${token}` },
@@ -47,7 +58,7 @@ const CartPage = () => {
           cartItems[0].courseId
         }/${user.id}/`,
         {},
-        config
+        config,
       );
 
       if (response) {
@@ -64,7 +75,7 @@ const CartPage = () => {
   const calculateSubtotal = () => {
     return cartItems.reduce(
       (total, item) => total + item.price * item.quantity,
-      0
+      0,
     );
   };
 
@@ -94,7 +105,7 @@ const CartPage = () => {
       setPromoError("");
       // Show notification
       setNotificationMessage(
-        `Promo code ${code} applied! ${PROMO_CODES[code]}% discount`
+        `Promo code ${code} applied! ${PROMO_CODES[code]}% discount`,
       );
       setShowNotification(true);
 
@@ -145,10 +156,12 @@ const CartPage = () => {
                   </div>
                   <div className="item-details">
                     <h3>{item.title}</h3>
-                    <p className="item-price">${item.price.toFixed(2)}</p>
+                    <p className="item-price">
+                      ${Number(item.price).toFixed(2)}
+                    </p>
                   </div>
                   <div className="item-total">
-                    <p>${(item.price * item.quantity).toFixed(2)}</p>
+                    <p>${(Number(item.price) * item.quantity).toFixed(2)}</p>
                   </div>
                   <button
                     className="remove-item"
