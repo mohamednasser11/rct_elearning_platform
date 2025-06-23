@@ -1,6 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
 import { coursesData } from "../data/coursesData";
 
 const DepartmentContext = createContext();
@@ -15,6 +14,7 @@ export const DepartmentProvider = ({ children }) => {
 
   const fetchData = async () => {
     try {
+      setLoading(true);
       const departmentsResponse = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/api/v1/departments/`,
       );
@@ -76,6 +76,7 @@ export const DepartmentProvider = ({ children }) => {
     error,
     departments,
     courses,
+    fetchData,
   };
 
   return (
